@@ -421,7 +421,12 @@
   bottom: auto;
   right: auto;
   height: auto;
-  width: 40%;
+  width: 50%;
+}
+
+.sd-coaches__overlay--top .sd-coaches__wave {
+  top: 0;
+  bottom: auto;
 }
 
 .sd-coaches__wave {
