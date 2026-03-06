@@ -43,7 +43,7 @@
 /* Buttons */
 .sd-btn {
   display: inline-block;
-  padding: 14px 32px;
+  padding: 1rem 3rem;
   font-family: var(--sd-font-body);
   font-size: 16px;
   text-transform: capitalize;
@@ -53,23 +53,23 @@
   border: none;
   border-radius: var(--sd-radius-pill);
   cursor: pointer;
-  transition: opacity 0.3s ease, transform 0.2s ease;
+  transition: opacity 0.3s ease;
   text-align: center;
   line-height: 1.4;
 }
 
 .sd-btn:hover {
   opacity: 0.9;
-  transform: translateY(-1px);
 }
 
 .sd-btn:active {
-  transform: translateY(0);
+  transform: scale(0.99);
+  transition: transform 50ms ease;
 }
 
 .sd-btn--outline {
   display: inline-block;
-  padding: 10px 24px;
+  padding: 1rem 3rem;
   font-family: var(--sd-font-body);
   font-size: 14px;
   color: var(--sd-light-blue);
@@ -83,6 +83,11 @@
 
 .sd-btn--outline:hover {
   background-color: rgba(217, 247, 252, 0.15);
+}
+
+.sd-btn--outline:active {
+  transform: scale(0.99);
+  transition: transform 50ms ease;
 }
 
 /* Cards (Classes) */
