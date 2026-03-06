@@ -10,16 +10,33 @@
 
   if (!header) return;
 
-  // Sticky header - add .scrolling class on scroll
+  // Sticky header - add .scrolling class on scroll + hide/show on direction
+  const HIDE_THRESHOLD = 400;
+  let lastScrollY = 0;
   let ticking = false;
+
   function onScroll() {
     if (!ticking) {
       window.requestAnimationFrame(function () {
-        if (window.scrollY > SCROLL_THRESHOLD) {
+        var currentScrollY = window.scrollY;
+
+        if (currentScrollY > SCROLL_THRESHOLD) {
           header.classList.add('scrolling');
         } else {
           header.classList.remove('scrolling');
         }
+
+        if (currentScrollY > HIDE_THRESHOLD) {
+          if (currentScrollY > lastScrollY) {
+            header.classList.add('header-hidden');
+          } else {
+            header.classList.remove('header-hidden');
+          }
+        } else {
+          header.classList.remove('header-hidden');
+        }
+
+        lastScrollY = currentScrollY;
         ticking = false;
       });
       ticking = true;
