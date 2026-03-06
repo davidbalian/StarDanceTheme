@@ -6,10 +6,11 @@
             <div class="sd-coaches__item">
                 <div class="sd-coaches__card">
                     <img src="http://stardance.com.cy/wp-content/uploads/2026/02/coach.jpg" alt="Svetlana Grincevschi" loading="lazy">
+                    <div class="sd-coaches__overlay sd-coaches__overlay--top">
+                        <img class="sd-coaches__wave" src="http://stardance.com.cy/wp-content/uploads/2026/02/coach-top-svg-1.svg" alt="" aria-hidden="true">
+                    </div>
                     <div class="sd-coaches__overlay">
-                        <svg class="sd-coaches__wave" viewBox="0 0 552 213" preserveAspectRatio="none" aria-hidden="true">
-                            <path d="M0 213V60C80 20 160 0 276 30C392 60 472 40 552 0V213H0Z" fill="var(--sd-light-blue)"/>
-                        </svg>
+                        <img class="sd-coaches__wave" src="http://stardance.com.cy/wp-content/uploads/2026/02/coach-bottom-svg-1.svg" alt="" aria-hidden="true">
                     </div>
                     <h3 class="sd-coaches__name">Svetlana Grincevschi</h3>
                 </div>
@@ -20,10 +21,11 @@
             <div class="sd-coaches__item">
                 <div class="sd-coaches__card">
                     <img src="http://stardance.com.cy/wp-content/uploads/2026/02/coach.jpg" alt="Svetlana Grincevschi" loading="lazy">
+                    <div class="sd-coaches__overlay sd-coaches__overlay--top">
+                        <img class="sd-coaches__wave" src="http://stardance.com.cy/wp-content/uploads/2026/02/coach-top-svg-2.svg" alt="" aria-hidden="true">
+                    </div>
                     <div class="sd-coaches__overlay">
-                        <svg class="sd-coaches__wave" viewBox="0 0 552 213" preserveAspectRatio="none" aria-hidden="true">
-                            <path d="M0 213V60C80 20 160 0 276 30C392 60 472 40 552 0V213H0Z" fill="var(--sd-light-blue)"/>
-                        </svg>
+                        <img class="sd-coaches__wave" src="http://stardance.com.cy/wp-content/uploads/2026/02/coach-bottom-svg-2.svg" alt="" aria-hidden="true">
                     </div>
                     <h3 class="sd-coaches__name">Svetlana Grincevschi</h3>
                 </div>
@@ -33,10 +35,11 @@
             <div class="sd-coaches__item">
                 <div class="sd-coaches__card">
                     <img src="http://stardance.com.cy/wp-content/uploads/2026/02/coach.jpg" alt="Svetlana Grincevschi" loading="lazy">
+                    <div class="sd-coaches__overlay sd-coaches__overlay--top">
+                        <img class="sd-coaches__wave" src="http://stardance.com.cy/wp-content/uploads/2026/02/coach-top-svg-3.svg" alt="" aria-hidden="true">
+                    </div>
                     <div class="sd-coaches__overlay">
-                        <svg class="sd-coaches__wave" viewBox="0 0 552 213" preserveAspectRatio="none" aria-hidden="true">
-                            <path d="M0 213V60C80 20 160 0 276 30C392 60 472 40 552 0V213H0Z" fill="var(--sd-light-blue)"/>
-                        </svg>
+                        <img class="sd-coaches__wave" src="http://stardance.com.cy/wp-content/uploads/2026/02/coach-bottom-svg-3.svg" alt="" aria-hidden="true">
                     </div>
                     <h3 class="sd-coaches__name">Svetlana Grincevschi</h3>
                 </div>
