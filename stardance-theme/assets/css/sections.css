@@ -412,6 +412,7 @@
   right: 0;
   height: 40%;
   pointer-events: none;
+  z-index: 1;
 }
 
 .sd-coaches__wave {
