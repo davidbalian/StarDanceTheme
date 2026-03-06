@@ -79,6 +79,7 @@
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
   text-align: center;
+  line-height: 1;
 }
 
 .sd-btn--outline:hover {
