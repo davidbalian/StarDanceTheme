@@ -1,0 +1,601 @@
+/* ========================================
+   Section-Specific Layouts
+   ======================================== */
+
+/* ---- Header ---- */
+.sd-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sd-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.sd-header__logo img {
+  width: 50px;
+  height: auto;
+}
+
+.sd-header__nav .sd-header__menu,
+.sd-header__nav .menu {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.sd-header__nav .sd-header__menu li a,
+.sd-header__nav .menu li a {
+  font-family: var(--sd-font-body);
+  font-size: 16px;
+  color: var(--sd-white);
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
+
+.sd-header__nav .sd-header__menu li a:hover,
+.sd-header__nav .menu li a:hover {
+  color: var(--sd-gold);
+}
+
+/* Header scrolling state */
+.sd-header.scrolling {
+  background-color: hsl(0, 0%, 100%);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.sd-header.scrolling .sd-header__menu li a,
+.sd-header.scrolling .menu li a {
+  color: var(--sd-navy);
+}
+
+.sd-header.scrolling .sd-header__menu li a:hover,
+.sd-header.scrolling .menu li a:hover {
+  color: var(--sd-gold-dark);
+}
+
+/* Hamburger toggle */
+.sd-header__toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 1001;
+}
+
+.sd-header__toggle span {
+  display: block;
+  width: 28px;
+  height: 2px;
+  background-color: var(--sd-gold-border);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.sd-header__toggle.is-active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.sd-header__toggle.is-active span:nth-child(2) {
+  opacity: 0;
+}
+
+.sd-header__toggle.is-active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ---- Hero ---- */
+.sd-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('http://stardance.com.cy/wp-content/uploads/2026/02/Mask-group.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  margin-top: -80px;
+  padding-top: 80px;
+}
+
+.sd-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 1;
+}
+
+.sd-hero__content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.sd-hero__tagline {
+  display: block;
+  font-family: var(--sd-font-heading);
+  font-weight: 600;
+  font-size: 30px;
+  color: var(--sd-gold);
+  text-shadow: 0 0 10px var(--sd-gold);
+  margin-bottom: 16px;
+}
+
+.sd-hero__title {
+  font-family: var(--sd-font-heading);
+  font-weight: 600;
+  font-size: 56px;
+  color: var(--sd-white);
+  line-height: 1.05;
+  max-width: 35ch;
+  margin: 0 auto 24px;
+}
+
+.sd-hero__desc {
+  font-family: var(--sd-font-body);
+  font-size: 18px;
+  color: var(--sd-white);
+  line-height: 1.5;
+  max-width: 65ch;
+  margin: 0 auto 40px;
+}
+
+.sd-hero__actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ---- Classes ---- */
+.sd-classes__title {
+  margin-bottom: 40px;
+}
+
+.sd-classes__grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* ---- Gallery ---- */
+.sd-gallery__title {
+  margin-bottom: 40px;
+}
+
+.sd-gallery__portrait {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sd-grid-gap);
+  margin-bottom: var(--sd-grid-gap);
+}
+
+.sd-gallery__portrait a {
+  display: block;
+  border-radius: var(--sd-radius);
+  overflow: hidden;
+  aspect-ratio: 2 / 3;
+}
+
+.sd-gallery__portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.sd-gallery__portrait a:hover img {
+  transform: scale(1.05);
+}
+
+.sd-gallery__landscape {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sd-grid-gap);
+}
+
+.sd-gallery__landscape a {
+  display: block;
+  border-radius: var(--sd-radius);
+  overflow: hidden;
+  aspect-ratio: 21 / 9;
+}
+
+.sd-gallery__landscape img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.sd-gallery__landscape a:hover img {
+  transform: scale(1.05);
+}
+
+/* ---- About ---- */
+.sd-about {
+  position: relative;
+  overflow: hidden;
+}
+
+.sd-about__title {
+  margin-bottom: 50px;
+}
+
+.sd-about__features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+
+.sd-about__feature {
+  flex: 0 0 calc(33.333% - 30px);
+  max-width: 300px;
+  text-align: center;
+}
+
+.sd-about__icon {
+  margin-bottom: 16px;
+}
+
+.sd-about__icon img {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto;
+}
+
+.sd-about__feature-title {
+  font-family: var(--sd-font-heading);
+  font-weight: 600;
+  font-size: 22px;
+  color: var(--sd-navy);
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+
+.sd-about__feature-desc {
+  font-family: var(--sd-font-body);
+  font-size: 15px;
+  color: var(--sd-body-text);
+  line-height: 1.4;
+  max-width: 250px;
+  margin: 0 auto;
+}
+
+.sd-about__flourish {
+  position: absolute;
+  width: 25vw;
+  pointer-events: none;
+  opacity: 0.15;
+}
+
+.sd-about__flourish--top {
+  right: 0;
+  top: 0;
+}
+
+.sd-about__flourish--bottom {
+  left: 0;
+  bottom: 5vw;
+}
+
+.sd-about__flourish img {
+  width: 100%;
+  height: auto;
+}
+
+/* ---- Timetable ---- */
+.sd-timetable__title {
+  margin-bottom: 16px;
+}
+
+.sd-timetable__desc {
+  margin-bottom: 40px;
+  font-size: 17px;
+}
+
+.sd-timetable__visual {
+  margin-bottom: 20px;
+  border-radius: var(--sd-radius);
+  overflow: hidden;
+}
+
+.sd-timetable__visual img {
+  width: 100%;
+  height: auto;
+}
+
+/* ---- Competitions ---- */
+.sd-competitions__title {
+  margin-bottom: 16px;
+}
+
+.sd-competitions__desc {
+  margin-bottom: 40px;
+  font-size: 17px;
+}
+
+.sd-competitions__grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.sd-competitions__card {
+  position: relative;
+  aspect-ratio: 2 / 3;
+  border-radius: var(--sd-radius);
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  border: 2px solid var(--sd-gold-border);
+  display: flex;
+  align-items: flex-end;
+}
+
+.sd-competitions__card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.1) 50%, transparent 100%);
+  z-index: 1;
+}
+
+.sd-competitions__card-content {
+  position: relative;
+  z-index: 2;
+  padding: 24px;
+  width: 100%;
+}
+
+.sd-competitions__date {
+  font-family: var(--sd-font-body);
+  font-size: 14px;
+  color: var(--sd-white);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.sd-competitions__card-title {
+  font-family: var(--sd-font-heading);
+  font-weight: 600;
+  font-size: 26px;
+  color: var(--sd-white);
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+/* ---- Coaches ---- */
+.sd-coaches__title {
+  margin-bottom: 40px;
+}
+
+.sd-coaches__grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.sd-coaches__item {
+  text-align: center;
+}
+
+.sd-coaches__card {
+  position: relative;
+  aspect-ratio: 69 / 100;
+  border-radius: var(--sd-radius);
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.sd-coaches__card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sd-coaches__overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  pointer-events: none;
+}
+
+.sd-coaches__wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.sd-coaches__name {
+  position: absolute;
+  bottom: 2rem;
+  right: 1rem;
+  left: 1rem;
+  font-family: var(--sd-font-heading);
+  font-weight: 600;
+  font-size: 28px;
+  color: var(--sd-navy);
+  line-height: 1.1;
+  text-align: right;
+  z-index: 2;
+}
+
+.sd-coaches__desc {
+  font-family: var(--sd-font-body);
+  font-size: 15px;
+  color: var(--sd-body-text);
+  line-height: 1.4;
+  text-align: left;
+  margin-bottom: 12px;
+}
+
+/* ---- Contact ---- */
+.sd-contact {
+  background-image: url('http://stardance.com.cy/wp-content/uploads/2026/02/contact-sec-bg-1536x497.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.sd-contact::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 56, 109, 0.6);
+  z-index: 0;
+}
+
+.sd-contact > .sd-container {
+  position: relative;
+  z-index: 1;
+}
+
+.sd-contact__title {
+  color: var(--sd-white);
+  margin-bottom: 40px;
+}
+
+.sd-contact__fields {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.sd-contact__field--full {
+  grid-column: 1 / -1;
+}
+
+.sd-contact__submit {
+  text-align: center;
+}
+
+.sd-contact__status {
+  text-align: center;
+  margin-top: 16px;
+  font-family: var(--sd-font-body);
+  font-size: 16px;
+}
+
+.sd-contact__status.success {
+  color: #4ade80;
+}
+
+.sd-contact__status.error {
+  color: #f87171;
+}
+
+/* ---- Footer ---- */
+.sd-footer {
+  background-color: var(--sd-light-blue);
+  padding: 60px 0 0;
+}
+
+.sd-footer__main {
+  display: grid;
+  grid-template-columns: 35% 30% 35%;
+  gap: 40px;
+  padding-bottom: 40px;
+}
+
+.sd-footer__brand {
+  display: flex;
+  align-items: flex-start;
+}
+
+.sd-footer__logo {
+  width: 135px;
+  height: auto;
+}
+
+.sd-footer__heading {
+  font-family: var(--sd-font-heading);
+  font-weight: 600;
+  font-size: 22px;
+  color: var(--sd-navy);
+  margin-bottom: 20px;
+}
+
+.sd-footer__menu,
+.sd-footer__menu li {
+  list-style: none;
+}
+
+.sd-footer__menu li {
+  margin-bottom: 10px;
+}
+
+.sd-footer__menu li a {
+  font-family: var(--sd-font-body);
+  font-size: 15px;
+  color: var(--sd-body-text);
+  transition: color 0.3s ease;
+}
+
+.sd-footer__menu li a:hover {
+  color: var(--sd-gold-dark);
+}
+
+.sd-footer__contact-item {
+  margin-bottom: 14px;
+  font-family: var(--sd-font-body);
+  font-size: 15px;
+  color: var(--sd-body-text);
+  line-height: 1.5;
+}
+
+.sd-footer__contact-item strong {
+  display: block;
+  color: var(--sd-navy);
+  margin-bottom: 2px;
+}
+
+.sd-footer__contact-item a {
+  color: var(--sd-body-text);
+  transition: color 0.3s ease;
+}
+
+.sd-footer__contact-item a:hover {
+  color: var(--sd-gold-dark);
+}
+
+.sd-footer__legal {
+  border-top: 2px solid transparent;
+  border-image: var(--sd-footer-border) 1;
+  padding: 20px 0;
+}
+
+.sd-footer__legal-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--sd-font-body);
+  font-size: 14px;
+}
+
+.sd-footer__legal a {
+  color: var(--sd-body-text);
+  transition: color 0.3s ease;
+}
+
+.sd-footer__legal a:hover {
+  color: var(--sd-gold-dark);
+}
+
+.sd-footer__legal-sep {
+  color: var(--sd-body-text);
+  opacity: 0.5;
+}

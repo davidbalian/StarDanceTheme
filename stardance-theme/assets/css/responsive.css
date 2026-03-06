@@ -1,0 +1,283 @@
+/* ========================================
+   Responsive - Media Query Overrides
+   ======================================== */
+
+/* XL Upscale (1920px+) */
+@media (min-width: 1920px) {
+  :root {
+    --sd-max-width: 1400px;
+  }
+
+  .sd-heading {
+    font-size: 64px;
+  }
+
+  .sd-hero__tagline {
+    font-size: 50px;
+  }
+
+  .sd-hero__title {
+    font-size: 80px;
+  }
+
+  .sd-hero__desc {
+    font-size: 20px;
+  }
+
+  .sd-header__logo img {
+    width: 60px;
+  }
+
+  .sd-card__title {
+    font-size: 30px;
+  }
+
+  .sd-about__icon img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .sd-about__feature-title {
+    font-size: 32px;
+  }
+
+  .sd-footer__logo {
+    width: 145px;
+  }
+}
+
+/* Tablet (max-width: 991px) */
+@media (max-width: 991px) {
+  .sd-heading {
+    font-size: 40px;
+  }
+
+  .sd-hero__title {
+    font-size: 42px;
+  }
+
+  .sd-hero__tagline {
+    font-size: 24px;
+  }
+
+  .sd-classes__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .sd-gallery__portrait {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .sd-competitions__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .sd-coaches__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .sd-about__feature {
+    flex: 0 0 calc(50% - 20px);
+  }
+
+  .sd-footer__main {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+
+  .sd-footer__brand {
+    grid-column: 1 / -1;
+    justify-content: center;
+  }
+}
+
+/* Mobile (max-width: 767px) */
+@media (max-width: 767px) {
+  :root {
+    --sd-section-padding: 60px 0;
+  }
+
+  .sd-heading {
+    font-size: 36px;
+    margin-bottom: 30px;
+  }
+
+  /* Mobile Menu */
+  .sd-header__toggle {
+    display: flex;
+  }
+
+  .sd-header__nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 350px;
+    height: 100vh;
+    background-color: var(--sd-white);
+    z-index: 1000;
+    transition: right 0.3s ease;
+    padding: 80px 30px 30px;
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+    overflow-y: auto;
+  }
+
+  .sd-header__nav.is-open {
+    right: 0;
+  }
+
+  .sd-header__nav .sd-header__menu,
+  .sd-header__nav .menu {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+
+  .sd-header__nav .sd-header__menu li,
+  .sd-header__nav .menu li {
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .sd-header__nav .sd-header__menu li a,
+  .sd-header__nav .menu li a {
+    display: block;
+    padding: 16px 0;
+    color: var(--sd-navy);
+    font-size: 18px;
+  }
+
+  body.menu-open {
+    overflow: hidden;
+  }
+
+  /* Header */
+  .sd-header__logo img {
+    width: 70px;
+  }
+
+  /* Hero */
+  .sd-hero {
+    background-attachment: scroll;
+  }
+
+  .sd-hero__title {
+    font-size: 36px;
+  }
+
+  .sd-hero__tagline {
+    font-size: 22px;
+  }
+
+  .sd-hero__desc {
+    font-size: 16px;
+  }
+
+  .sd-hero__actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Classes */
+  .sd-classes__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .sd-card {
+    height: 300px;
+  }
+
+  /* Gallery */
+  .sd-gallery__portrait {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .sd-gallery__landscape {
+    grid-template-columns: 1fr;
+  }
+
+  /* About */
+  .sd-about__feature {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .sd-about__flourish {
+    width: 40vw;
+  }
+
+  /* Competitions */
+  .sd-competitions__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Coaches */
+  .sd-coaches__grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  /* Contact */
+  .sd-contact__fields {
+    grid-template-columns: 1fr;
+  }
+
+  /* Footer */
+  .sd-footer__main {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .sd-footer__brand {
+    justify-content: center;
+  }
+
+  .sd-footer__logo {
+    width: 100px;
+  }
+
+  .sd-footer__contact-item strong {
+    display: inline;
+  }
+}
+
+/* Small Mobile (max-width: 478px) */
+@media (max-width: 478px) {
+  .sd-heading {
+    font-size: 30px;
+  }
+
+  .sd-hero__title {
+    font-size: 28px;
+  }
+
+  .sd-hero__tagline {
+    font-size: 18px;
+  }
+
+  .sd-classes__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sd-gallery__portrait {
+    grid-template-columns: 1fr;
+  }
+
+  .sd-competitions__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sd-card {
+    height: 280px;
+  }
+
+  .sd-card__title {
+    font-size: 22px;
+  }
+
+  .sd-btn {
+    padding: 12px 24px;
+    font-size: 15px;
+  }
+}

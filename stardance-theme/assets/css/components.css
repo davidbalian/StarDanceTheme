@@ -1,0 +1,182 @@
+/* ========================================
+   Components - Buttons, Cards, Forms, Containers
+   ======================================== */
+
+/* Container */
+.sd-container {
+  width: 100%;
+  max-width: var(--sd-max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Section */
+.sd-section {
+  padding: var(--sd-section-padding);
+  background-color: var(--sd-light-blue);
+}
+
+.sd-section__cta {
+  text-align: center;
+  margin-top: 40px;
+}
+
+/* Headings */
+.sd-heading {
+  font-family: var(--sd-font-heading);
+  font-weight: 600;
+  color: var(--sd-navy);
+  line-height: 1;
+  text-align: center;
+  font-size: 48px;
+  margin-bottom: 40px;
+}
+
+/* Text */
+.sd-text {
+  font-family: var(--sd-font-body);
+  line-height: 1.4;
+  text-align: center;
+  color: var(--sd-body-text);
+}
+
+/* Buttons */
+.sd-btn {
+  display: inline-block;
+  padding: 14px 32px;
+  font-family: var(--sd-font-body);
+  font-size: 16px;
+  text-transform: capitalize;
+  color: var(--sd-white);
+  background-image: var(--sd-gold-gradient);
+  background-color: var(--sd-gold-dark);
+  border: none;
+  border-radius: var(--sd-radius-pill);
+  cursor: pointer;
+  transition: opacity 0.3s ease, transform 0.2s ease;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.sd-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.sd-btn:active {
+  transform: translateY(0);
+}
+
+.sd-btn--outline {
+  display: inline-block;
+  padding: 10px 24px;
+  font-family: var(--sd-font-body);
+  font-size: 14px;
+  color: var(--sd-light-blue);
+  background: transparent;
+  border: 1px solid var(--sd-light-blue);
+  border-radius: var(--sd-radius-pill);
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-align: center;
+}
+
+.sd-btn--outline:hover {
+  background-color: rgba(217, 247, 252, 0.15);
+}
+
+/* Cards (Classes) */
+.sd-card {
+  position: relative;
+  height: 390px;
+  border-radius: var(--sd-radius);
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+}
+
+.sd-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.1) 50%, transparent 100%);
+  z-index: 1;
+}
+
+.sd-card__content {
+  position: relative;
+  z-index: 2;
+  padding: 24px;
+  width: 100%;
+}
+
+.sd-card__title {
+  font-family: var(--sd-font-heading);
+  font-weight: 600;
+  font-size: 26px;
+  color: var(--sd-white);
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+
+.sd-card__desc {
+  font-family: var(--sd-font-body);
+  font-size: 14px;
+  color: var(--sd-white);
+  line-height: 1.4;
+  opacity: 0.9;
+}
+
+/* Grid */
+.sd-grid {
+  display: grid;
+  gap: var(--sd-grid-gap);
+}
+
+/* Form Inputs */
+.sd-contact__form input,
+.sd-contact__form select,
+.sd-contact__form textarea {
+  width: 100%;
+  padding: 14px 18px;
+  font-family: var(--sd-font-body);
+  font-size: 16px;
+  color: var(--sd-white);
+  background-color: var(--sd-form-bg);
+  border: 1px solid var(--sd-gold-border);
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.sd-contact__form input::placeholder,
+.sd-contact__form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.sd-contact__form select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23DC9A72' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 18px center;
+  padding-right: 44px;
+  cursor: pointer;
+}
+
+.sd-contact__form select option {
+  background-color: var(--sd-navy);
+  color: var(--sd-white);
+}
+
+.sd-contact__form select:invalid,
+.sd-contact__form select option[value=""][disabled] {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.sd-contact__form input:focus,
+.sd-contact__form select:focus,
+.sd-contact__form textarea:focus {
+  border-color: var(--sd-gold);
+}

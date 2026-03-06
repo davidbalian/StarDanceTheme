@@ -1,0 +1,89 @@
+/*
+Theme Name: Star Dance Studio
+Theme URI: https://stardance.com.cy
+Author: Balian Web Dev Co.
+Description: Custom theme for Star Dance Studio - Latin American & European Ballroom Dance Classes in Limassol
+Version: 1.0.0
+Text Domain: stardance
+*/
+
+/* ========================================
+   Design Tokens
+   ======================================== */
+
+:root {
+  /* Colors */
+  --sd-gold: #EABE81;
+  --sd-gold-dark: #BE6D2B;
+  --sd-gold-border: #DC9A72;
+  --sd-gold-gradient: linear-gradient(65deg, #E4AF78, #DC9A72, #BE6D2B, #EABE81);
+  --sd-navy: #00386D;
+  --sd-light-blue: #d9f7fc;
+  --sd-body-text: #2D292A;
+  --sd-white: #FFFFFF;
+  --sd-form-bg: rgba(0, 56, 109, 0.6);
+  --sd-footer-border: linear-gradient(to right, rgb(224, 164, 117), rgb(194, 115, 52), rgb(224, 164, 117));
+
+  /* Typography */
+  --sd-font-heading: 'Cormorant', serif;
+  --sd-font-body: 'Libertinus Sans', sans-serif;
+
+  /* Layout */
+  --sd-max-width: 1200px;
+  --sd-section-padding: 80px 0;
+  --sd-grid-gap: 24px;
+  --sd-radius: 12px;
+  --sd-radius-pill: 500px;
+}
+
+/* ========================================
+   Base Resets
+   ======================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--sd-font-body);
+  color: var(--sd-body-text);
+  line-height: 1.5;
+  background-color: var(--sd-light-blue);
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--sd-font-heading);
+  font-weight: 600;
+  line-height: 1;
+}
+
+input, select, textarea, button {
+  font-family: inherit;
+  font-size: inherit;
+}
