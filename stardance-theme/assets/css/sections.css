@@ -421,10 +421,13 @@
   bottom: auto;
   right: auto;
   height: auto;
-  width: 50%;
+  width: 100%;
 }
 
 .sd-coaches__wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
   width: 100%;
   height: auto;
   display: block;
@@ -432,7 +435,7 @@
 
 .sd-coaches__name {
   position: absolute;
-  bottom: 2rem;
+  bottom: 1rem;
   right: 1rem;
   left: 1rem;
   font-family: var(--sd-font-heading);
