@@ -53,17 +53,3 @@
 <?php wp_footer(); ?>
 </body>
 </html>
-<?php
-function stardance_fallback_footer_menu() {
-    ?>
-    <ul class="sd-footer__menu">
-        <li><a href="<?php echo esc_url(home_url('/')); ?>">Home</a></li>
-        <li><a href="#about">About Us</a></li>
-        <li><a href="#coaches">Meet the Coach</a></li>
-        <li><a href="#classes">Dance Classes</a></li>
-        <li><a href="#timetable">Timetable</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
-    <?php
-}
-?>

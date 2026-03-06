@@ -32,19 +32,3 @@
         </button>
     </div>
 </header>
-<?php
-// Fallback menu if no menu is assigned
-function stardance_fallback_menu() {
-    ?>
-    <ul class="sd-header__menu">
-        <li><a href="<?php echo esc_url(home_url('/')); ?>">Home</a></li>
-        <li><a href="#classes">Classes</a></li>
-        <li><a href="#competitions">Events</a></li>
-        <li><a href="#timetable">Schedule</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
-    <?php
-}
-?>

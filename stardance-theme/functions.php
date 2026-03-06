@@ -98,3 +98,31 @@ function stardance_handle_contact_form() {
 }
 add_action('wp_ajax_stardance_contact', 'stardance_handle_contact_form');
 add_action('wp_ajax_nopriv_stardance_contact', 'stardance_handle_contact_form');
+
+// Fallback Menus (when no menu is assigned in admin)
+function stardance_fallback_menu() {
+    ?>
+    <ul class="sd-header__menu">
+        <li><a href="<?php echo esc_url(home_url('/')); ?>">Home</a></li>
+        <li><a href="#classes">Classes</a></li>
+        <li><a href="#competitions">Events</a></li>
+        <li><a href="#timetable">Schedule</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+    <?php
+}
+
+function stardance_fallback_footer_menu() {
+    ?>
+    <ul class="sd-footer__menu">
+        <li><a href="<?php echo esc_url(home_url('/')); ?>">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#coaches">Meet the Coach</a></li>
+        <li><a href="#classes">Dance Classes</a></li>
+        <li><a href="#timetable">Timetable</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+    <?php
+}
