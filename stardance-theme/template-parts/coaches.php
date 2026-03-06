@@ -41,7 +41,7 @@
                     <div class="sd-coaches__overlay">
                         <img class="sd-coaches__wave" src="http://stardance.com.cy/wp-content/uploads/2026/02/coach-bottom-svg-3.svg" alt="" aria-hidden="true">
                     </div>
-                    <h3 class="sd-coaches__name">Svetlana Grincevschi</h3>
+                    <h3 class="sd-coaches__name sd-coaches__name--light">Svetlana Grincevschi</h3>
                 </div>
                 <p class="sd-coaches__desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
             </div>

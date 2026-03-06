@@ -444,6 +444,10 @@
   z-index: 2;
 }
 
+.sd-coaches__name--light {
+  color: var(--sd-white);
+}
+
 .sd-coaches__desc {
   font-family: var(--sd-font-body);
   font-size: 15px;
