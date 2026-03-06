@@ -55,7 +55,7 @@
   cursor: pointer;
   transition: opacity 0.3s ease;
   text-align: center;
-  line-height: 1.4;
+  line-height: 1;
 }
 
 .sd-btn:hover {
