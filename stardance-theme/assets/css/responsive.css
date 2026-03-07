@@ -240,6 +240,21 @@
   .sd-footer__contact-item strong {
     display: inline;
   }
+
+  /* Disable stagger on mobile */
+  .fade-in-delay-0,
+  .fade-in-delay-1,
+  .fade-in-delay-2,
+  .fade-in-delay-3,
+  .fade-in-delay-4,
+  .fade-in-delay-5,
+  .fade-in-delay-6,
+  .fade-in-delay-7,
+  .fade-in-delay-8,
+  .fade-in-delay-9,
+  .fade-in-delay-10 {
+    transition-delay: 0s;
+  }
 }
 
 /* Small Mobile (max-width: 478px) */

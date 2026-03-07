@@ -45,6 +45,7 @@ function stardance_enqueue_assets() {
 
     // Theme Scripts
     wp_enqueue_script('stardance-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array(), '1.0.0', true);
+    wp_enqueue_script('stardance-animations', get_template_directory_uri() . '/assets/js/animations.js', array(), '1.0.0', true);
     wp_enqueue_script('stardance-gallery', get_template_directory_uri() . '/assets/js/gallery.js', array('photoswipe', 'photoswipe-lightbox'), '1.0.0', true);
     wp_enqueue_script('stardance-contact-form', get_template_directory_uri() . '/assets/js/contact-form.js', array(), '1.0.0', true);
 

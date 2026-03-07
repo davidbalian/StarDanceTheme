@@ -1,8 +1,8 @@
 <section class="sd-section sd-gallery" id="gallery">
     <div class="sd-container">
-        <h2 class="sd-heading sd-gallery__title">Gallery</h2>
+        <h2 class="sd-heading sd-gallery__title fade-in fade-in-delay-0">Gallery</h2>
 
-        <div class="sd-gallery__portrait" id="gallery-portrait">
+        <div class="sd-gallery__portrait fade-in fade-in-delay-1" id="gallery-portrait">
             <a href="https://stardance.com.cy/wp-content/uploads/2026/02/img1.jpg" data-pswp-width="720" data-pswp-height="1080" target="_blank">
                 <img src="https://stardance.com.cy/wp-content/uploads/2026/02/img1.jpg" alt="Dance performance" loading="lazy">
             </a>
@@ -17,7 +17,7 @@
             </a>
         </div>
 
-        <div class="sd-gallery__landscape" id="gallery-landscape">
+        <div class="sd-gallery__landscape fade-in fade-in-delay-2" id="gallery-landscape">
             <a href="https://stardance.com.cy/wp-content/uploads/2026/02/img5.jpg" data-pswp-width="1920" data-pswp-height="823" target="_blank">
                 <img src="https://stardance.com.cy/wp-content/uploads/2026/02/img5-768x328.jpg" alt="Dance performance" loading="lazy">
             </a>
@@ -26,7 +26,7 @@
             </a>
         </div>
 
-        <div class="sd-section__cta">
+        <div class="sd-section__cta fade-in fade-in-delay-3">
             <a href="#" class="sd-btn">View Full Gallery</a>
         </div>
     </div>

@@ -1,8 +1,8 @@
 <section class="sd-section sd-contact" id="contact">
     <div class="sd-container">
-        <h2 class="sd-heading sd-contact__title">Get In Touch</h2>
+        <h2 class="sd-heading sd-contact__title fade-in fade-in-delay-0">Get In Touch</h2>
 
-        <form class="sd-contact__form" id="stardance-contact-form" novalidate>
+        <form class="sd-contact__form fade-in fade-in-delay-1" id="stardance-contact-form" novalidate>
             <input type="hidden" name="action" value="stardance_contact">
             <input type="hidden" name="nonce" value="">
 
