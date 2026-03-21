@@ -211,6 +211,7 @@ function stardance_create_pages() {
     update_option('stardance_pages_created', true);
 }
 add_action('after_switch_theme', 'stardance_create_pages');
+add_action('admin_init', 'stardance_create_pages');
 
 // Contact Form AJAX Handler
 function stardance_handle_contact_form() {
