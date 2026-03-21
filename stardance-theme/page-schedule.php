@@ -13,9 +13,9 @@ get_header();
     <!-- Hero -->
     <section class="sd-page-hero sd-page-hero--schedule sd-section">
         <div class="sd-container">
-            <h1 class="sd-heading sd-page-hero__title fade-in fade-in-delay-0">Class Schedule</h1>
+            <h1 class="sd-heading sd-page-hero__title fade-in fade-in-delay-0">Class Timetable</h1>
             <p class="sd-text sd-page-hero__desc fade-in fade-in-delay-1">
-                Find the right class at the right time. Our weekly timetable covers all disciplines and levels, Monday through Saturday.
+                View our weekly class schedule below. Classes run Monday through Friday at the Limassol studio. Contact us if you have questions about specific classes or to arrange a trial session.
             </p>
         </div>
     </section>
@@ -272,8 +272,8 @@ get_header();
     <!-- CTA -->
     <section class="sd-section sd-cta" id="cta">
         <div class="sd-container sd-cta__inner">
-            <h2 class="sd-heading sd-cta__title fade-in fade-in-delay-0">Not Sure Which Class to Join?</h2>
-            <p class="sd-text sd-cta__desc fade-in fade-in-delay-1">We'll help you find the right fit. Get in touch and we'll recommend the best starting point for you.</p>
+            <h2 class="sd-heading sd-cta__title fade-in fade-in-delay-0">Questions About Our Schedule?</h2>
+            <p class="sd-text sd-cta__desc fade-in fade-in-delay-1">Looking for a specific class or want to book a trial session? Get in touch and we'll help find the right fit.</p>
             <a href="<?php echo esc_url(home_url('/#contact')); ?>" class="sd-btn fade-in fade-in-delay-2">Contact Us</a>
         </div>
     </section>

@@ -28,21 +28,21 @@ get_header();
             <div class="sd-gallery-page__filters fade-in fade-in-delay-0" role="group" aria-label="Filter gallery">
 
                 <div class="sd-gallery-page__filter-group">
-                    <span class="sd-gallery-page__filter-label">Year:</span>
+                    <span class="sd-gallery-page__filter-label">Filter by Year:</span>
                     <div class="sd-gallery-page__filter-tabs" role="tablist">
-                        <button class="sd-gallery-page__tab is-active" role="tab" aria-selected="true" data-filter="year" data-value="all">All</button>
-                        <button class="sd-gallery-page__tab" role="tab" aria-selected="false" data-filter="year" data-value="2026">2026</button>
-                        <button class="sd-gallery-page__tab" role="tab" aria-selected="false" data-filter="year" data-value="2025">2025</button>
+                        <button class="sd-gallery-page__tab is-active" role="tab" aria-selected="true" data-filter="year" data-value="all">ANY</button>
                         <button class="sd-gallery-page__tab" role="tab" aria-selected="false" data-filter="year" data-value="2024">2024</button>
+                        <button class="sd-gallery-page__tab" role="tab" aria-selected="false" data-filter="year" data-value="2023">2023</button>
+                        <button class="sd-gallery-page__tab" role="tab" aria-selected="false" data-filter="year" data-value="2022">2022</button>
+                        <button class="sd-gallery-page__tab" role="tab" aria-selected="false" data-filter="year" data-value="2021">2021</button>
                     </div>
                 </div>
 
                 <div class="sd-gallery-page__filter-group">
-                    <span class="sd-gallery-page__filter-label">Type:</span>
+                    <span class="sd-gallery-page__filter-label">Filter by Type:</span>
                     <div class="sd-gallery-page__filter-tabs" role="tablist">
-                        <button class="sd-gallery-page__tab is-active" role="tab" aria-selected="true" data-filter="type" data-value="all">All</button>
-                        <button class="sd-gallery-page__tab" role="tab" aria-selected="false" data-filter="type" data-value="competition">Competition</button>
-                        <button class="sd-gallery-page__tab" role="tab" aria-selected="false" data-filter="type" data-value="showcase">Showcase</button>
+                        <button class="sd-gallery-page__tab is-active" role="tab" aria-selected="true" data-filter="type" data-value="all">Competitions</button>
+                        <button class="sd-gallery-page__tab" role="tab" aria-selected="false" data-filter="type" data-value="performances">Dance &amp; Performances</button>
                         <button class="sd-gallery-page__tab" role="tab" aria-selected="false" data-filter="type" data-value="studio">Studio</button>
                     </div>
                 </div>

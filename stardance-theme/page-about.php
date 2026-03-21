@@ -26,7 +26,7 @@ get_header();
             <div class="sd-about-overview__layout">
 
                 <div class="sd-about-overview__text fade-in fade-in-delay-0">
-                    <h2 class="sd-heading">World-Class Training in Limassol</h2>
+                    <h2 class="sd-heading">Professional Training in Limassol</h2>
                     <p class="sd-text">
                         Founded and led by World and European championship medallist Svetlana Panova, Star Dance Studio has been shaping champions since its inception. Our approach combines rigorous technique, expressive artistry, and a supportive training environment that brings out the best in every dancer.
                     </p>
@@ -53,32 +53,32 @@ get_header();
                     <div class="sd-about-values__icon" aria-hidden="true">
                         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icon-star.svg" alt="" width="48" height="48">
                     </div>
-                    <h3 class="sd-about-values__name">Excellence</h3>
-                    <p class="sd-text">We pursue the highest standard in every class, every rehearsal, and every competition appearance.</p>
+                    <h3 class="sd-about-values__name">Passion for Dance</h3>
+                    <p class="sd-text">We believe dance is more than movement — it's a lifelong discipline that builds character, confidence, and connection.</p>
                 </div>
 
                 <div class="sd-about-values__card fade-in fade-in-delay-2">
                     <div class="sd-about-values__icon" aria-hidden="true">
                         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icon-star.svg" alt="" width="48" height="48">
                     </div>
-                    <h3 class="sd-about-values__name">Inclusivity</h3>
-                    <p class="sd-text">Every age, background, and ability level is welcome. Dance is for everyone.</p>
+                    <h3 class="sd-about-values__name">Excellence in Training</h3>
+                    <p class="sd-text">The studio is committed to delivering internationally competitive standards of teaching to every student who walks through the door.</p>
                 </div>
 
                 <div class="sd-about-values__card fade-in fade-in-delay-3">
                     <div class="sd-about-values__icon" aria-hidden="true">
                         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icon-star.svg" alt="" width="48" height="48">
                     </div>
-                    <h3 class="sd-about-values__name">Discipline</h3>
-                    <p class="sd-text">Progress in dance — as in life — is built on consistent effort, focused practice, and patient repetition.</p>
+                    <h3 class="sd-about-values__name">Individual Growth</h3>
+                    <p class="sd-text">Every dancer progresses at their own pace, with personalised guidance to help them reach their full potential on and off the floor.</p>
                 </div>
 
                 <div class="sd-about-values__card fade-in fade-in-delay-4">
                     <div class="sd-about-values__icon" aria-hidden="true">
                         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icon-star.svg" alt="" width="48" height="48">
                     </div>
-                    <h3 class="sd-about-values__name">Community</h3>
-                    <p class="sd-text">Our studio is a place where friendships are formed, confidence is built, and dance becomes a way of life.</p>
+                    <h3 class="sd-about-values__name">Supportive Community</h3>
+                    <p class="sd-text">Our studio is open to all ages and welcomes everyone from beginners to elite competitors. Dance here is for life.</p>
                 </div>
 
             </div>
@@ -88,7 +88,7 @@ get_header();
     <!-- Champions Section -->
     <section class="sd-section sd-about-champions" id="champions">
         <div class="sd-container">
-            <h2 class="sd-heading sd-about-champions__title fade-in fade-in-delay-0">Why Star Dance</h2>
+            <h2 class="sd-heading sd-about-champions__title fade-in fade-in-delay-0">We Grow Champions</h2>
             <div class="sd-about-champions__grid">
 
                 <div class="sd-about-champions__item fade-in fade-in-delay-1">
@@ -118,25 +118,32 @@ get_header();
     <!-- Coach Profile: Svetlana -->
     <section class="sd-section sd-about-coach" id="coach">
         <div class="sd-container">
+            <h2 class="sd-heading sd-about-coach__section-title fade-in fade-in-delay-0">Head Coach &amp; International Adjudicator</h2>
             <div class="sd-about-coach__layout">
 
-                <div class="sd-about-coach__image fade-in fade-in-delay-0">
-                    <img src="http://stardance.com.cy/wp-content/uploads/2026/02/Latin-American.png" alt="Svetlana Panova — Head Coach" width="540" height="680" loading="lazy">
+                <div class="sd-about-coach__bio fade-in fade-in-delay-0">
+                    <h3 class="sd-heading sd-about-coach__name">Svetlana Grimcevski</h3>
+
+                    <div class="sd-about-coach__subsection">
+                        <h4 class="sd-about-coach__subsection-title">Qualifications</h4>
+                        <p class="sd-text">10 years of My Star Dance Studio — qualified to judge Latin American and Standard European dances at international tournaments.</p>
+                    </div>
+
+                    <div class="sd-about-coach__subsection">
+                        <h4 class="sd-about-coach__subsection-title">Experience</h4>
+                        <p class="sd-text">From 2005–2015, Svetlana competed at the highest levels of international ballroom dance, achieving podium finishes across Europe and representing Cyprus on the world stage. She has since dedicated herself fully to developing the next generation of champions.</p>
+                    </div>
+
+                    <div class="sd-about-coach__subsection">
+                        <h4 class="sd-about-coach__subsection-title">Coaching Philosophy</h4>
+                        <p class="sd-text">Svetlana approaches coaching with individual attention to each student, combining technical precision with artistic expression. She believes every dancer has unique potential — her role is to find it and develop it.</p>
+                    </div>
+
+                    <a href="<?php echo esc_url(home_url('/#contact')); ?>" class="sd-btn">Train with Svetlana</a>
                 </div>
 
-                <div class="sd-about-coach__bio fade-in fade-in-delay-1">
-                    <span class="sd-about-coach__label">Head Coach</span>
-                    <h2 class="sd-heading sd-about-coach__name">Svetlana Panova</h2>
-                    <p class="sd-text">
-                        Svetlana is a World and European championship medallist with a career spanning over twenty-five years at the elite level of competitive ballroom and Latin dance. After retiring from international competition, she dedicated herself entirely to coaching — bringing the same precision and passion that took her to world finals into every class at Star Dance Studio.
-                    </p>
-                    <p class="sd-text">
-                        Her coaching philosophy centres on understanding each dancer as an individual: their body, their learning style, and their personal goals. She believes that technical excellence and artistic expression are not opposing forces — they are two sides of the same coin.
-                    </p>
-                    <p class="sd-text">
-                        Svetlana holds a WDSF coaching certification and judges at national and international competitions across Europe.
-                    </p>
-                    <a href="<?php echo esc_url(home_url('/#contact')); ?>" class="sd-btn">Train with Svetlana</a>
+                <div class="sd-about-coach__image fade-in fade-in-delay-1">
+                    <img src="http://stardance.com.cy/wp-content/uploads/2026/02/Latin-American.png" alt="Svetlana Grimcevski — Head Coach" width="540" height="680" loading="lazy">
                 </div>
 
             </div>
@@ -146,8 +153,8 @@ get_header();
     <!-- CTA -->
     <section class="sd-section sd-cta" id="cta">
         <div class="sd-container sd-cta__inner">
-            <h2 class="sd-heading sd-cta__title fade-in fade-in-delay-0">Come and See for Yourself</h2>
-            <p class="sd-text sd-cta__desc fade-in fade-in-delay-1">Book a visit or trial class — no commitment required.</p>
+            <h2 class="sd-heading sd-cta__title fade-in fade-in-delay-0">Ready to Join Us?</h2>
+            <p class="sd-text sd-cta__desc fade-in fade-in-delay-1">Take the first step. Book a trial class or simply come in and see what Star Dance Studio is all about.</p>
             <a href="<?php echo esc_url(home_url('/#contact')); ?>" class="sd-btn fade-in fade-in-delay-2">Get in Touch</a>
         </div>
     </section>

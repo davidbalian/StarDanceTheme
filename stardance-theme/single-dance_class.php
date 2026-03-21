@@ -33,7 +33,7 @@ the_post();
     <!-- Detail Cards -->
     <section class="sd-section sd-class-details" id="class-details">
         <div class="sd-container">
-            <h2 class="sd-heading sd-class-details__title fade-in fade-in-delay-0">Training Options</h2>
+            <h2 class="sd-heading sd-class-details__title fade-in fade-in-delay-0">Class Details</h2>
             <div class="sd-class-details__grid sd-grid">
 
                 <div class="sd-class-details__card fade-in fade-in-delay-1">
@@ -121,51 +121,41 @@ the_post();
 
                 <div class="sd-faq__item fade-in fade-in-delay-1">
                     <button class="sd-faq__question" aria-expanded="false">
-                        Is this class suitable for complete beginners?
+                        What level do I need to be to join this class?
                         <span class="sd-faq__icon" aria-hidden="true"></span>
                     </button>
                     <div class="sd-faq__answer" hidden>
-                        <p>Yes. We welcome dancers at every level. Beginners start with foundational technique, rhythm, and posture before progressing to more advanced elements.</p>
+                        <p>This class is open to all levels. Whether you're a complete beginner or a more experienced dancer, we'll work with you at the right pace and in the right group.</p>
                     </div>
                 </div>
 
                 <div class="sd-faq__item fade-in fade-in-delay-2">
                     <button class="sd-faq__question" aria-expanded="false">
-                        Do I need special shoes or clothing?
+                        Do I need a partner?
                         <span class="sd-faq__icon" aria-hidden="true"></span>
                     </button>
                     <div class="sd-faq__answer" hidden>
-                        <p>For your first session, comfortable clothes and clean flat-soled shoes are fine. As you progress, we'll recommend appropriate dance shoes for this style.</p>
+                        <p>No. Many students join solo. We rotate partners in group classes and can always find you someone to train with.</p>
                     </div>
                 </div>
 
                 <div class="sd-faq__item fade-in fade-in-delay-3">
                     <button class="sd-faq__question" aria-expanded="false">
-                        Can I try a single session before committing?
+                        What age groups are these classes for?
                         <span class="sd-faq__icon" aria-hidden="true"></span>
                     </button>
                     <div class="sd-faq__answer" hidden>
-                        <p>Absolutely. We offer trial classes with no obligation. It's the best way to experience the teaching style and see if the class is the right fit for you.</p>
+                        <p>We run separate sessions for children and adults. Check the timetable or contact us for the age-specific schedule for this class.</p>
                     </div>
                 </div>
 
                 <div class="sd-faq__item fade-in fade-in-delay-4">
                     <button class="sd-faq__question" aria-expanded="false">
-                        How quickly will I see progress?
+                        How often should I attend?
                         <span class="sd-faq__icon" aria-hidden="true"></span>
                     </button>
                     <div class="sd-faq__answer" hidden>
-                        <p>Most students notice visible improvement within 4–6 weeks of consistent attendance. Progress accelerates significantly when group classes are combined with individual lessons.</p>
-                    </div>
-                </div>
-
-                <div class="sd-faq__item fade-in fade-in-delay-5">
-                    <button class="sd-faq__question" aria-expanded="false">
-                        Is there an opportunity to compete?
-                        <span class="sd-faq__icon" aria-hidden="true"></span>
-                    </button>
-                    <div class="sd-faq__answer" hidden>
-                        <p>Competition is encouraged but never mandatory. Students who wish to compete receive additional coaching, choreography, and full guidance through the competition process.</p>
+                        <p>We recommend at least two sessions per week for steady progress. Even one session a week will produce results over time. Private lessons alongside group classes accelerate development significantly.</p>
                     </div>
                 </div>
 
@@ -176,7 +166,7 @@ the_post();
     <!-- Dancer Gallery -->
     <section class="sd-section sd-class-gallery" id="class-gallery">
         <div class="sd-container">
-            <h2 class="sd-heading sd-class-gallery__title fade-in fade-in-delay-0">In the Studio</h2>
+            <h2 class="sd-heading sd-class-gallery__title fade-in fade-in-delay-0">See Our Dancers in Action</h2>
             <div class="sd-class-gallery__grid"
                  data-photoswipe-gallery
                  itemscope
@@ -231,7 +221,7 @@ the_post();
     <!-- CTA -->
     <section class="sd-section sd-cta" id="cta">
         <div class="sd-container sd-cta__inner">
-            <h2 class="sd-heading sd-cta__title fade-in fade-in-delay-0">Ready to Try <?php the_title(); ?>?</h2>
+            <h2 class="sd-heading sd-cta__title fade-in fade-in-delay-0">Ready to Start?</h2>
             <p class="sd-text sd-cta__desc fade-in fade-in-delay-1">Book a trial class today — no experience or commitment needed.</p>
             <a href="<?php echo esc_url(home_url('/#contact')); ?>" class="sd-btn fade-in fade-in-delay-2">Book a Trial Class</a>
         </div>

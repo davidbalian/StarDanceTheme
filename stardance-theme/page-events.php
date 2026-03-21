@@ -13,9 +13,9 @@ get_header();
     <!-- Hero -->
     <section class="sd-page-hero sd-page-hero--events sd-section">
         <div class="sd-container">
-            <h1 class="sd-heading sd-page-hero__title fade-in fade-in-delay-0">Events &amp; Competitions</h1>
+            <h1 class="sd-heading sd-page-hero__title fade-in fade-in-delay-0">Competition Calendar &amp; Events</h1>
             <p class="sd-text sd-page-hero__desc fade-in fade-in-delay-1">
-                Follow our students and coaches on the competition circuit — local, national, and international events throughout the year.
+                Stay up to date with upcoming dance competitions, showcases, and tournaments. From local Cyprus events to international championships, follow our students and coaches on the circuit.
             </p>
         </div>
     </section>
@@ -23,6 +23,7 @@ get_header();
     <!-- Events Layout: Sidebar + Grid -->
     <section class="sd-section sd-events-page" id="events-list">
         <div class="sd-container">
+            <h2 class="sd-heading sd-events-page__title fade-in fade-in-delay-0">List of Events</h2>
             <div class="sd-events-page__layout">
 
                 <!-- Sidebar Filters -->
@@ -30,49 +31,43 @@ get_header();
                     <div class="sd-events-filter">
 
                         <div class="sd-events-filter__group">
-                            <h3 class="sd-events-filter__label">Year</h3>
+                            <h3 class="sd-events-filter__label">Filter by Year</h3>
                             <ul class="sd-events-filter__options">
-                                <li><button class="sd-events-filter__btn is-active" data-filter="year" data-value="all">All Years</button></li>
-                                <li><button class="sd-events-filter__btn" data-filter="year" data-value="2026">2026</button></li>
-                                <li><button class="sd-events-filter__btn" data-filter="year" data-value="2025">2025</button></li>
-                                <li><button class="sd-events-filter__btn" data-filter="year" data-value="2024">2024</button></li>
+                                <li><button class="sd-events-filter__btn is-active" data-filter="year" data-value="all">2026</button></li>
                             </ul>
                         </div>
 
                         <div class="sd-events-filter__group">
-                            <h3 class="sd-events-filter__label">Category</h3>
+                            <h3 class="sd-events-filter__label">Filter by Category</h3>
                             <ul class="sd-events-filter__options">
-                                <li><button class="sd-events-filter__btn is-active" data-filter="category" data-value="all">All Categories</button></li>
-                                <li><button class="sd-events-filter__btn" data-filter="category" data-value="ballroom">Ballroom</button></li>
-                                <li><button class="sd-events-filter__btn" data-filter="category" data-value="latin">Latin</button></li>
-                                <li><button class="sd-events-filter__btn" data-filter="category" data-value="kids">Kids</button></li>
+                                <li><button class="sd-events-filter__btn is-active" data-filter="category" data-value="all">Latin American/Standard Competitions</button></li>
+                                <li><button class="sd-events-filter__btn" data-filter="category" data-value="wdsf-international">WDSF International Competitions</button></li>
+                                <li><button class="sd-events-filter__btn" data-filter="category" data-value="cyprus-cup">Cyprus Cup</button></li>
+                                <li><button class="sd-events-filter__btn" data-filter="category" data-value="other">Other</button></li>
                             </ul>
                         </div>
 
                         <div class="sd-events-filter__group">
-                            <h3 class="sd-events-filter__label">Type</h3>
+                            <h3 class="sd-events-filter__label">Filter by Type</h3>
                             <ul class="sd-events-filter__options">
-                                <li><button class="sd-events-filter__btn is-active" data-filter="type" data-value="all">All Types</button></li>
-                                <li><button class="sd-events-filter__btn" data-filter="type" data-value="competition">Competition</button></li>
-                                <li><button class="sd-events-filter__btn" data-filter="type" data-value="showcase">Showcase</button></li>
-                                <li><button class="sd-events-filter__btn" data-filter="type" data-value="workshop">Workshop</button></li>
+                                <li><button class="sd-events-filter__btn is-active" data-filter="type" data-value="all">Championship</button></li>
+                                <li><button class="sd-events-filter__btn" data-filter="type" data-value="tournament">Tournament</button></li>
                             </ul>
                         </div>
 
                         <div class="sd-events-filter__group">
-                            <h3 class="sd-events-filter__label">Body</h3>
+                            <h3 class="sd-events-filter__label">Filter by Body</h3>
                             <ul class="sd-events-filter__options">
-                                <li><button class="sd-events-filter__btn is-active" data-filter="body" data-value="all">All Bodies</button></li>
-                                <li><button class="sd-events-filter__btn" data-filter="body" data-value="wdsf">WDSF</button></li>
-                                <li><button class="sd-events-filter__btn" data-filter="body" data-value="national">National</button></li>
-                                <li><button class="sd-events-filter__btn" data-filter="body" data-value="local">Local</button></li>
+                                <li><button class="sd-events-filter__btn is-active" data-filter="body" data-value="all">Jury</button></li>
+                                <li><button class="sd-events-filter__btn" data-filter="body" data-value="locality">Locality</button></li>
+                                <li><button class="sd-events-filter__btn" data-filter="body" data-value="show-teams">Show Teams</button></li>
                             </ul>
                         </div>
 
                     </div>
                 </aside>
 
-                <!-- Event Card Grid -->
+                <!-- Event Card Grid (2-column) -->
                 <div class="sd-events-page__grid" id="events-grid">
 
                     <article class="sd-event-card fade-in fade-in-delay-1" data-year="2026" data-category="ballroom" data-type="competition" data-body="wdsf">
@@ -162,9 +157,9 @@ get_header();
     <!-- CTA -->
     <section class="sd-section sd-cta" id="cta">
         <div class="sd-container sd-cta__inner">
-            <h2 class="sd-heading sd-cta__title fade-in fade-in-delay-0">Want to Compete?</h2>
-            <p class="sd-text sd-cta__desc fade-in fade-in-delay-1">We guide students of all levels through their first competition and beyond.</p>
-            <a href="<?php echo esc_url(home_url('/#contact')); ?>" class="sd-btn fade-in fade-in-delay-2">Talk to Us</a>
+            <h2 class="sd-heading sd-cta__title fade-in fade-in-delay-0">Want to Compete or Attend an Event?</h2>
+            <p class="sd-text sd-cta__desc fade-in fade-in-delay-1">Contact us to learn more about competition opportunities, event schedules, and how to get involved.</p>
+            <a href="<?php echo esc_url(home_url('/#contact')); ?>" class="sd-btn fade-in fade-in-delay-2">Contact Us</a>
         </div>
     </section>
 

@@ -13,9 +13,9 @@ get_header();
     <!-- Hero -->
     <section class="sd-page-hero sd-page-hero--classes sd-section">
         <div class="sd-container">
-            <h1 class="sd-heading sd-page-hero__title fade-in fade-in-delay-0">Our Classes</h1>
+            <h1 class="sd-heading sd-page-hero__title fade-in fade-in-delay-0">Find Your Perfect Dance Class</h1>
             <p class="sd-text sd-page-hero__desc fade-in fade-in-delay-1">
-                Whether you're stepping onto the dance floor for the first time or refining your competitive technique, Star Dance Studio has a class for you.
+                Our Dance Classes offer a comprehensive and structured curriculum tailored for dancers of all ages and levels. Whether you're a beginner or an experienced dancer, we have the right class for you.
             </p>
         </div>
     </section>
@@ -23,6 +23,7 @@ get_header();
     <!-- Class Card Grid -->
     <section class="sd-section sd-classes-page" id="classes-grid">
         <div class="sd-container">
+            <h2 class="sd-heading sd-classes-page__title fade-in fade-in-delay-0">List of Classes</h2>
             <div class="sd-classes-page__grid sd-grid">
 
                 <div class="sd-card fade-in fade-in-delay-1" style="background-image: url('http://stardance.com.cy/wp-content/uploads/2026/02/European-Ballroom.png');">
@@ -86,25 +87,15 @@ get_header();
 
                 <div class="sd-faq__item fade-in fade-in-delay-1">
                     <button class="sd-faq__question" aria-expanded="false">
-                        Do I need any prior dance experience to join?
+                        What age can my child start dancing?
                         <span class="sd-faq__icon" aria-hidden="true"></span>
                     </button>
                     <div class="sd-faq__answer" hidden>
-                        <p>No experience is needed. Our classes welcome complete beginners as well as experienced dancers. We group students by level so everyone progresses at the right pace.</p>
+                        <p>We welcome children from age 4. Our Kids Programs are fun and engaging, building dance skills appropriate for each age group.</p>
                     </div>
                 </div>
 
                 <div class="sd-faq__item fade-in fade-in-delay-2">
-                    <button class="sd-faq__question" aria-expanded="false">
-                        What age groups do you cater to?
-                        <span class="sd-faq__icon" aria-hidden="true"></span>
-                    </button>
-                    <div class="sd-faq__answer" hidden>
-                        <p>We offer classes for children from age 4, teens, adults, and seniors. Our Kids Program is specifically designed for younger dancers, while all other classes are open to adults of any age.</p>
-                    </div>
-                </div>
-
-                <div class="sd-faq__item fade-in fade-in-delay-3">
                     <button class="sd-faq__question" aria-expanded="false">
                         Do I need a partner to join?
                         <span class="sd-faq__icon" aria-hidden="true"></span>
@@ -114,29 +105,29 @@ get_header();
                     </div>
                 </div>
 
-                <div class="sd-faq__item fade-in fade-in-delay-4">
+                <div class="sd-faq__item fade-in fade-in-delay-3">
                     <button class="sd-faq__question" aria-expanded="false">
-                        How often should I attend classes?
+                        I've never danced before. Which class should I start with?
                         <span class="sd-faq__icon" aria-hidden="true"></span>
                     </button>
                     <div class="sd-faq__answer" hidden>
-                        <p>We recommend at least two sessions per week for consistent progress. However, even one session per week will yield results over time. We can help you build a schedule that suits your lifestyle.</p>
+                        <p>We recommend starting with a beginner European Ballroom or Latin American group class. Both offer a solid technical foundation. Contact us and we'll help you choose the best starting point.</p>
+                    </div>
+                </div>
+
+                <div class="sd-faq__item fade-in fade-in-delay-4">
+                    <button class="sd-faq__question" aria-expanded="false">
+                        Can I try a class before committing?
+                        <span class="sd-faq__icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="sd-faq__answer" hidden>
+                        <p>Absolutely. We offer trial classes with no obligation. It's the best way to experience the teaching style and see if the class is the right fit for you.</p>
                     </div>
                 </div>
 
                 <div class="sd-faq__item fade-in fade-in-delay-5">
                     <button class="sd-faq__question" aria-expanded="false">
-                        What should I wear and bring to class?
-                        <span class="sd-faq__icon" aria-hidden="true"></span>
-                    </button>
-                    <div class="sd-faq__answer" hidden>
-                        <p>Comfortable, flexible clothing is ideal. For footwear, dance shoes are preferred but not required for your first session — any clean, flat-soled shoe will do. Bring a water bottle and arrive 5–10 minutes early.</p>
-                    </div>
-                </div>
-
-                <div class="sd-faq__item fade-in fade-in-delay-6">
-                    <button class="sd-faq__question" aria-expanded="false">
-                        Do you prepare students for competitions?
+                        Do you offer classes for competitive dancers?
                         <span class="sd-faq__icon" aria-hidden="true"></span>
                     </button>
                     <div class="sd-faq__answer" hidden>
@@ -144,13 +135,23 @@ get_header();
                     </div>
                 </div>
 
-                <div class="sd-faq__item fade-in fade-in-delay-7">
+                <div class="sd-faq__item fade-in fade-in-delay-6">
                     <button class="sd-faq__question" aria-expanded="false">
-                        How do I enrol?
+                        What should I wear to class?
                         <span class="sd-faq__icon" aria-hidden="true"></span>
                     </button>
                     <div class="sd-faq__answer" hidden>
-                        <p>Simply contact us via phone, email, or the contact form on our website. We'll discuss your goals, recommend the right class, and book your first session — which is often a trial lesson at no obligation.</p>
+                        <p>Comfortable, flexible clothing is ideal. For footwear, dance shoes are preferred but not required for your first session — any clean, flat-soled shoe will do.</p>
+                    </div>
+                </div>
+
+                <div class="sd-faq__item fade-in fade-in-delay-7">
+                    <button class="sd-faq__question" aria-expanded="false">
+                        How do I know which level I am?
+                        <span class="sd-faq__icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="sd-faq__answer" hidden>
+                        <p>Don't worry about labelling yourself. Come in for a trial class and our coaches will assess where you are and place you in the right group. Everyone is welcome regardless of prior experience.</p>
                     </div>
                 </div>
 
