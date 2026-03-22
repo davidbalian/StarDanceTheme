@@ -152,11 +152,15 @@
 
 .sd-about-values__grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 2fr 1fr;
   gap: var(--sd-space-lg);
-  position: relative;
-  max-width: 900px;
-  margin: 0 auto;
+  align-items: center;
+}
+
+.sd-about-values__col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sd-space-lg);
 }
 
 .sd-about-values__card {
@@ -175,22 +179,18 @@
 
 .sd-about-values__card .sd-text {
   font-size: 15px;
-  max-width: 300px;
-  margin: 0 auto;
 }
 
 .sd-about-values__trophy {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .sd-about-values__trophy img {
-  max-height: 300px;
-  width: auto;
+  width: 100%;
+  height: auto;
+  max-width: 280px;
 }
 
 /* ========================================
@@ -381,23 +381,7 @@
   }
 
   .sd-about-values__trophy {
-    position: relative;
-    top: auto;
-    left: auto;
-    transform: none;
-    text-align: center;
-    margin-bottom: var(--sd-space-md);
     order: -1;
-  }
-
-  .sd-about-values__grid {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .sd-about-values__card {
-    width: 100%;
   }
 }
 

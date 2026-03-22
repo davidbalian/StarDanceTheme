@@ -49,28 +49,30 @@ get_header();
             <h2 class="sd-heading sd-about-values__title fade-in fade-in-delay-0">What We Stand For</h2>
             <div class="sd-about-values__grid">
 
-                <div class="sd-about-values__card fade-in fade-in-delay-1">
-                    <h3 class="sd-about-values__card-title">Passion for Dance</h3>
-                    <p class="sd-text">We believe dance is more than movement — it's a lifelong discipline that builds character, confidence, and connection.</p>
+                <div class="sd-about-values__col">
+                    <div class="sd-about-values__card fade-in fade-in-delay-1">
+                        <h3 class="sd-about-values__card-title">Passion for Dance</h3>
+                        <p class="sd-text">We believe dance is more than movement. It's expression, connection, and joy. We bring that energy to every class.</p>
+                    </div>
+                    <div class="sd-about-values__card fade-in fade-in-delay-2">
+                        <h3 class="sd-about-values__card-title">Individual Growth</h3>
+                        <p class="sd-text">Every student has different goals. We tailor our approach to help each dancer progress at their own pace, whether they're dancing for fun or preparing for competition.</p>
+                    </div>
                 </div>
 
-                <div class="sd-about-values__card fade-in fade-in-delay-2">
-                    <h3 class="sd-about-values__card-title">Excellence in Training</h3>
-                    <p class="sd-text">The studio is committed to delivering internationally competitive standards of teaching to every student who walks through the door.</p>
-                </div>
-
-                <div class="sd-about-values__trophy fade-in fade-in-delay-2" aria-hidden="true">
+                <div class="sd-about-values__trophy fade-in fade-in-delay-1" aria-hidden="true">
                     <img src="https://stardance.com.cy/wp-content/uploads/2026/03/what-we-stand-for-trophy.webp" alt="" width="220" height="300" loading="lazy">
                 </div>
 
-                <div class="sd-about-values__card fade-in fade-in-delay-3">
-                    <h3 class="sd-about-values__card-title">Individual Growth</h3>
-                    <p class="sd-text">Every dancer progresses at their own pace, with personalised guidance to help them reach their full potential on and off the floor.</p>
-                </div>
-
-                <div class="sd-about-values__card fade-in fade-in-delay-4">
-                    <h3 class="sd-about-values__card-title">Supportive Community</h3>
-                    <p class="sd-text">Our studio is open to all ages and welcomes everyone from beginners to elite competitors. Dance here is for life.</p>
+                <div class="sd-about-values__col">
+                    <div class="sd-about-values__card fade-in fade-in-delay-1">
+                        <h3 class="sd-about-values__card-title">Excellence in Training</h3>
+                        <p class="sd-text">Our instruction follows international standards. We focus on proper technique, musicality, and performance quality from day one.</p>
+                    </div>
+                    <div class="sd-about-values__card fade-in fade-in-delay-2">
+                        <h3 class="sd-about-values__card-title">Supportive Community</h3>
+                        <p class="sd-text">Our studio is a welcoming space for all ages and backgrounds. We celebrate each other's progress and create lasting friendships through dance.</p>
+                    </div>
                 </div>
 
             </div>
