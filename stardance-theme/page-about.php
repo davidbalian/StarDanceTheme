@@ -19,26 +19,23 @@ get_header();
     <!-- Training Overview -->
     <section class="sd-section sd-about-overview" id="overview">
         <div class="sd-container">
+            <h2 class="sd-heading sd-about-overview__title fade-in fade-in-delay-0">Professional Training in Limassol</h2>
             <div class="sd-about-overview__layout">
 
-                <div class="sd-about-overview__text fade-in fade-in-delay-0">
-                    <h2 class="sd-heading">Professional Training in Limassol</h2>
+                <div class="sd-about-overview__text fade-in fade-in-delay-1">
                     <p class="sd-text">
-                        Founded and led by World and European championship medallist Svetlana Panova, Star Dance Studio has been shaping champions since its inception. Our approach combines rigorous technique, expressive artistry, and a supportive training environment that brings out the best in every dancer.
+                        Star Dance Studio is an official member of the Cyprus Federation of Social &amp; Sport Dance. Our studio provides certified instruction following international standards for both Latin American and European Ballroom programs.
                     </p>
                     <p class="sd-text">
-                        We train dancers of all ages and levels — from children taking their first steps in rhythm to adults preparing for the international competition circuit. Every student receives personalised attention, structured progression, and access to the same methodology used by our podium finishers.
+                        We welcome students from age 3 through adults, offering group classes, private lessons, and competition training. Whether you want to dance for fun, fitness, or to compete at the highest level, we have a program for you.
                     </p>
                 </div>
 
                 <div class="sd-about-overview__image fade-in fade-in-delay-1">
                     <div class="sd-about-overview__video">
                         <img src="https://stardance.com.cy/wp-content/uploads/2026/03/about-page-video-cover.webp" alt="Training at Star Dance Studio" width="600" height="450" loading="lazy">
-                        <span class="sd-about-overview__play-btn" aria-hidden="true">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8 5v14l11-7L8 5z" fill="currentColor"/>
-                            </svg>
-                        </span>
+                        <img src="https://stardance.com.cy/wp-content/uploads/2026/03/play-button.svg" alt="" class="sd-about-overview__play-btn" aria-hidden="true" width="72" height="72">
+                        <img src="https://stardance.com.cy/wp-content/uploads/2026/02/coach-bottom-svg-1.svg" alt="" class="sd-about-overview__corner-svg" aria-hidden="true">
                     </div>
                 </div>
 

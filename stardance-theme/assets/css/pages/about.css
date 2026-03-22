@@ -83,17 +83,16 @@
    Training Overview
    ======================================== */
 
+.sd-about-overview__title {
+  text-align: center;
+  margin-bottom: var(--sd-space-lg);
+}
+
 .sd-about-overview__layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--sd-space-xl);
   align-items: center;
-}
-
-.sd-about-overview__text .sd-heading {
-  text-align: left;
-  font-size: 36px;
-  margin-bottom: var(--sd-space-md);
 }
 
 .sd-about-overview__text .sd-text {
@@ -112,7 +111,7 @@
   overflow: hidden;
 }
 
-.sd-about-overview__video img {
+.sd-about-overview__video > img:first-child {
   display: block;
   width: 100%;
   height: auto;
@@ -123,16 +122,21 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 68px;
-  height: 68px;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.92);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--sd-navy);
-  box-shadow: var(--sd-shadow-md);
+  width: 72px;
+  height: 72px;
   pointer-events: none;
+}
+
+.sd-about-overview__corner-svg {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: auto;
+  height: auto;
+  max-width: 40%;
+  border-bottom-right-radius: var(--sd-radius);
+  pointer-events: none;
+  display: block;
 }
 
 /* ========================================
@@ -328,10 +332,6 @@
   .sd-about-overview__layout {
     grid-template-columns: 1fr;
     gap: var(--sd-space-lg);
-  }
-
-  .sd-about-overview__text .sd-heading {
-    text-align: center;
   }
 
   .sd-about-overview__text .sd-text {
