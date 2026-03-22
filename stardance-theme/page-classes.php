@@ -6,6 +6,17 @@
  */
 
 get_header();
+
+$classes_query = new WP_Query(array(
+    'post_type'      => 'dance_class',
+    'post_status'    => 'publish',
+    'posts_per_page' => -1,
+    'orderby'        => array(
+        'menu_order' => 'ASC',
+        'title'      => 'ASC',
+    ),
+    'order'          => 'ASC',
+));
 ?>
 
 <main class="sd-page sd-page--classes" id="main-content">
@@ -21,72 +32,35 @@ get_header();
         <div class="sd-container">
             <h2 class="sd-heading sd-classes-page__title fade-in fade-in-delay-0">List of Classes</h2>
             <div class="sd-classes-page__grid sd-grid sd-grid--3">
+                <?php if ( $classes_query->have_posts() ) : ?>
+                    <?php
+                    $delay = 1;
+                    while ( $classes_query->have_posts() ) :
+                        $classes_query->the_post();
 
-                <?php stardance_render_overlay_card(array(
-                    'image_url'   => 'https://stardance.com.cy/wp-content/uploads/2026/03/european-ballroom-class.webp',
-                    'decoration_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/card-overlay-tall-gold.svg',
-                    'title'       => 'European Ballroom',
-                    'description' => 'Master the elegance of international Ballroom dancing. Our program covers all five classic dances: Slow Waltz, Tango, Viennese Waltz, Foxtrot, and Quickstep. Perfect for couples seeking grace, poise, and timeless dance skills.',
-                    'link_url'    => home_url('/classes/european-ballroom/'),
-                    'link_text'   => 'Learn More>>',
-                    'variant'     => 'tall',
-                    'delay'       => 1,
-                )); ?>
+                        $image_url = get_the_post_thumbnail_url( get_the_ID(), 'large' );
+                        $description = get_the_excerpt();
 
-                <?php stardance_render_overlay_card(array(
-                    'image_url'   => 'https://stardance.com.cy/wp-content/uploads/2026/03/latin-american-class.webp',
-                    'decoration_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/card-overlay-tall-dark-blue.svg',
-                    'title'       => 'Latin American',
-                    'description' => 'The international Latin-American dances consist of: Samba, Cha-Cha-Cha, Rumba, Pasodoble, Jive.',
-                    'link_url'    => home_url('/classes/latin-american/'),
-                    'link_text'   => 'Learn More>>',
-                    'variant'     => 'tall',
-                    'delay'       => 2,
-                )); ?>
+                        if ( ! $description ) {
+                            $description = wp_strip_all_tags( get_the_content() );
+                        }
 
-                <?php stardance_render_overlay_card(array(
-                    'image_url'   => 'https://stardance.com.cy/wp-content/uploads/2026/03/latin-fusion-ladies-class.webp',
-                    'decoration_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/card-overlay-tall-dark-blue.svg',
-                    'title'       => 'Latin Fusion Ladies',
-                    'description' => 'A high-energy class designed exclusively for women. Blend Latin dance techniques with fitness and feminine styling. Build confidence, improve coordination, and have fun-no partner required.',
-                    'link_url'    => home_url('/classes/latin-fusion-ladies/'),
-                    'link_text'   => 'Learn More>>',
-                    'variant'     => 'tall',
-                    'delay'       => 3,
-                )); ?>
+                        stardance_render_overlay_card(array(
+                            'image_url'      => $image_url,
+                            'decoration_url' => get_post_meta( get_the_ID(), '_stardance_overlay_url', true ),
+                            'title'          => get_the_title(),
+                            'description'    => $description,
+                            'link_url'       => get_permalink(),
+                            'link_text'      => 'Learn More>>',
+                            'variant'        => 'tall',
+                            'delay'          => min( $delay, 10 ),
+                        ));
 
-                <?php stardance_render_overlay_card(array(
-                    'image_url'   => 'https://stardance.com.cy/wp-content/uploads/2026/03/kids-programs-class.webp',
-                    'decoration_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/card-overlay-tall-turquise.svg',
-                    'title'       => 'Kids Programs',
-                    'description' => 'Introduce your child to the joy of dance from age 3 and up. Our kids programs develop coordination, musicality, discipline, and social skills through age-appropriate instruction in both Ballroom and Latin styles.',
-                    'link_url'    => home_url('/classes/kids-program/'),
-                    'link_text'   => 'Learn More>>',
-                    'variant'     => 'tall',
-                    'delay'       => 4,
-                )); ?>
-
-                <?php stardance_render_overlay_card(array(
-                    'image_url'   => 'https://stardance.com.cy/wp-content/uploads/2026/03/wedding-choreography-class.webp',
-                    'decoration_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/card-overlay-tall-turquise.svg',
-                    'title'       => 'Wedding Choreography',
-                    'description' => 'Make your first dance unforgettable. We create custom choreography tailored to your song, skill level, and vision. Private sessions ensure you feel confident and camera-ready on your special day.',
-                    'link_url'    => home_url('/classes/wedding-choreography/'),
-                    'link_text'   => 'Learn More>>',
-                    'variant'     => 'tall',
-                    'delay'       => 5,
-                )); ?>
-
-                <?php stardance_render_overlay_card(array(
-                    'image_url'   => 'https://stardance.com.cy/wp-content/uploads/2026/03/individual-lessons-class.webp',
-                    'decoration_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/card-overlay-tall-gold.svg',
-                    'title'       => 'Individual Lessons',
-                    'description' => 'Accelerate your progress with one-on-one instruction. Private lessons are ideal for competition preparation, perfecting specific techniques, or learning at your own pace with personalized attention from our coaches.',
-                    'link_url'    => home_url('/classes/individual-lessons/'),
-                    'link_text'   => 'Learn More>>',
-                    'variant'     => 'tall',
-                    'delay'       => 6,
-                )); ?>
+                        $delay++;
+                    endwhile;
+                    wp_reset_postdata();
+                    ?>
+                <?php endif; ?>
 
             </div>
         </div>
