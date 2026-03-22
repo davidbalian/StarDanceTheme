@@ -15,6 +15,14 @@
   --sd-page-cta-bg-image: url('https://stardance.com.cy/wp-content/uploads/2026/03/classes-page-cta-bg.webp');
   --sd-page-cta-top-width: 35%;
   --sd-page-cta-bottom-width: 50%;
+  background-position: top center;
+}
+
+.sd-page--classes {
+  --sd-classes-card-heading-dark: #00386D;
+  --sd-classes-card-body-dark: #2D292A;
+  --sd-classes-card-heading-light: #D9F7FC;
+  --sd-classes-card-body-light: var(--sd-white);
 }
 
 /* ========================================
@@ -30,7 +38,8 @@
 }
 
 .sd-page--classes .sd-overlay-card--tall {
-  height: 380px;
+  aspect-ratio: 3 / 4;
+  height: auto;
   border-radius: 18px;
   background-position: center;
   box-shadow:
@@ -82,21 +91,21 @@
 .sd-page--classes .sd-overlay-card--gold .sd-btn,
 .sd-page--classes .sd-overlay-card--turquoise .sd-overlay-card__title,
 .sd-page--classes .sd-overlay-card--turquoise .sd-btn {
-  color: #4A2E1F;
+  color: var(--sd-classes-card-heading-dark);
 }
 
 .sd-page--classes .sd-overlay-card--gold .sd-overlay-card__desc,
 .sd-page--classes .sd-overlay-card--turquoise .sd-overlay-card__desc {
-  color: #4A2E1F;
+  color: var(--sd-classes-card-body-dark);
 }
 
 .sd-page--classes .sd-overlay-card--navy .sd-overlay-card__title,
 .sd-page--classes .sd-overlay-card--navy .sd-btn {
-  color: #D9F7FC;
+  color: var(--sd-classes-card-heading-light);
 }
 
 .sd-page--classes .sd-overlay-card--navy .sd-overlay-card__desc {
-  color: var(--sd-white);
+  color: var(--sd-classes-card-body-light);
 }
 
 .sd-page--classes .sd-overlay-card__decoration {
@@ -161,7 +170,12 @@
 }
 
 .sd-page--classes .sd-faq__answer {
-  padding: 1rem 0 0;
+  padding: 0;
+}
+
+.sd-page--classes .sd-faq__item.is-open .sd-faq__answer {
+  padding-top: 1rem;
+  padding-bottom: 0;
 }
 
 .sd-page--classes .sd-faq__icon {
@@ -189,7 +203,6 @@
   box-shadow:
     0 24px 40px rgba(0, 56, 109, 0.08),
     0 0 0 1px rgba(255, 255, 255, 0.2) inset;
-  min-height: 100%;
 }
 
 .sd-classes-faq__image {
@@ -208,6 +221,7 @@
   height: auto;
   object-fit: contain;
   object-position: bottom center;
+  transform: translateY(50%);
   pointer-events: none;
 }
 
@@ -217,7 +231,7 @@
 
 @media (max-width: 991px) {
   .sd-page--classes .sd-overlay-card--tall {
-    height: 360px;
+    aspect-ratio: 3 / 4;
   }
 
   .sd-classes-faq__layout {
@@ -241,7 +255,7 @@
   }
 
   .sd-page--classes .sd-overlay-card--tall {
-    height: 320px;
+    aspect-ratio: 3 / 4;
   }
 
   .sd-page--classes .sd-overlay-card__content {
@@ -263,7 +277,7 @@
   }
 
   .sd-page--classes .sd-overlay-card--tall {
-    height: 300px;
+    aspect-ratio: 3 / 4;
   }
 
   .sd-page--classes .sd-overlay-card__title {
