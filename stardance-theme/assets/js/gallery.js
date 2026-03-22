@@ -17,7 +17,7 @@
     });
   }
 
-  function openLightbox(slides, startIndex, loadMore) {
+  function openLightbox(slides, startIndex, loadMore, hasMore) {
     if (activeLightbox) {
       activeLightbox.close();
     }
@@ -85,7 +85,8 @@
     function updateUI() {
       counter.textContent = (current + 1) + ' / ' + slides.length;
       prevBtn.disabled = current === 0;
-      nextBtn.disabled = current >= slides.length - 1 && !loadMore;
+      var moreAvailable = loadMore && (!hasMore || hasMore());
+      nextBtn.disabled = current >= slides.length - 1 && !moreAvailable;
     }
 
     function goTo(index, animate) {
@@ -227,7 +228,9 @@
     e.preventDefault();
     var links = getGalleryLinks();
     var index = links.indexOf(link);
-    openLightbox(getSlides(links), Math.max(0, index), loadMoreGallery);
+    openLightbox(getSlides(links), Math.max(0, index), loadMoreGallery, function () {
+      return showMoreButton && !showMoreButton.hidden;
+    });
   });
 
   async function fetchFilteredGallery(options) {
