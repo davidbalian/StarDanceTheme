@@ -109,12 +109,15 @@
   display: block;
   border-radius: var(--sd-radius);
   overflow: hidden;
+  aspect-ratio: 16 / 9;
 }
 
 .sd-about-overview__video > img:first-child {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
 }
 
 .sd-about-overview__play-btn {
