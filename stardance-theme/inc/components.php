@@ -113,6 +113,7 @@ function stardance_render_cta( $args = array() ) {
  *
  * @param array $args {
  *     @type string $image_url   Required. Background image URL.
+ *     @type string $decoration_url Optional. Decorative overlay image shown above the background.
  *     @type string $title       Required. Card heading text.
  *     @type string $description Optional. Description text.
  *     @type string $meta        Optional. Meta text displayed above title (e.g. date).
@@ -125,6 +126,7 @@ function stardance_render_cta( $args = array() ) {
 function stardance_render_overlay_card( $args = array() ) {
     $args = wp_parse_args( $args, array(
         'image_url'   => '',
+        'decoration_url' => '',
         'title'       => '',
         'description' => '',
         'meta'        => '',
@@ -138,6 +140,14 @@ function stardance_render_overlay_card( $args = array() ) {
     ?>
     <div class="sd-overlay-card <?php echo esc_attr( $variant_class ); ?> fade-in fade-in-delay-<?php echo absint( $args['delay'] ); ?>"
          style="background-image: url('<?php echo esc_url( $args['image_url'] ); ?>');">
+        <?php if ( $args['decoration_url'] ) : ?>
+            <img
+                src="<?php echo esc_url( $args['decoration_url'] ); ?>"
+                alt=""
+                class="sd-overlay-card__decoration"
+                aria-hidden="true"
+            >
+        <?php endif; ?>
         <div class="sd-overlay-card__content">
             <?php if ( $args['meta'] ) : ?>
                 <span class="sd-overlay-card__meta"><?php echo esc_html( $args['meta'] ); ?></span>

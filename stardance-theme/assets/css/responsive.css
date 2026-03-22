@@ -179,6 +179,17 @@
     padding-top: 100px;
   }
 
+  .sd-page-hero--about .sd-page-hero__title,
+  .sd-page-hero--classes .sd-page-hero__title {
+    font-size: 42px;
+  }
+
+  .sd-page-hero--about .sd-page-hero__desc,
+  .sd-page-hero--classes .sd-page-hero__desc {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
   /* Overlay card */
   .sd-overlay-card--tall {
     height: 300px;
@@ -262,6 +273,19 @@
 
   .sd-hero__title {
     font-size: 28px;
+  }
+
+  .sd-page-hero--about .sd-page-hero__title,
+  .sd-page-hero--classes .sd-page-hero__title {
+    font-size: 34px;
+  }
+
+  .sd-page-hero--about::before,
+  .sd-page-hero--classes::before,
+  .sd-page-hero--about::after,
+  .sd-page-hero--classes::after {
+    width: 38vw;
+    height: 26vw;
   }
 
   .sd-hero__tagline {

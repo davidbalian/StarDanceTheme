@@ -302,18 +302,29 @@
   background-position: center;
   display: flex;
   align-items: flex-end;
+  isolation: isolate;
 }
 
 .sd-overlay-card::before {
   content: '';
   position: absolute;
   inset: 0;
+  z-index: 2;
+}
+
+.sd-overlay-card__decoration {
+  position: absolute;
+  inset: 0;
   z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
 }
 
 .sd-overlay-card__content {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   padding: 24px;
   width: 100%;
 }
@@ -453,6 +464,90 @@
   text-align: center;
 }
 
+.sd-page-hero--about,
+.sd-page-hero--classes {
+  --sd-page-hero-bg-image: none;
+  --sd-page-hero-line-image: url('https://stardance.com.cy/wp-content/uploads/2026/03/white-and-gold-lines.svg');
+  --sd-page-hero-line-left-width: 520px;
+  --sd-page-hero-line-left-height: 352px;
+  --sd-page-hero-line-right-width: 520px;
+  --sd-page-hero-line-right-height: 352px;
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(var(--sd-navy-rgb), 0.1) 10.1%,
+      rgba(var(--sd-navy-rgb), 0.8) 100%
+    ),
+    var(--sd-page-hero-bg-image);
+  background-size: cover;
+  background-position: center top;
+  position: relative;
+  min-height: 900px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.sd-page-hero--about::before,
+.sd-page-hero--classes::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: var(--sd-page-hero-line-left-width);
+  height: var(--sd-page-hero-line-left-height);
+  background-image: var(--sd-page-hero-line-image);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: left center;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.sd-page-hero--about::after,
+.sd-page-hero--classes::after {
+  content: '';
+  position: absolute;
+  right: 40px;
+  bottom: -5rem;
+  width: var(--sd-page-hero-line-right-width);
+  height: var(--sd-page-hero-line-right-height);
+  background-image: var(--sd-page-hero-line-image);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.sd-page-hero--about > .sd-container,
+.sd-page-hero--classes > .sd-container {
+  position: relative;
+  z-index: 2;
+}
+
+.sd-page-hero--about .sd-page-hero__title,
+.sd-page-hero--classes .sd-page-hero__title {
+  color: var(--sd-white);
+  font-size: 5rem;
+  line-height: 1;
+  letter-spacing: 0;
+  text-shadow: var(--sd-shadow-title-gold);
+  text-wrap: balance;
+}
+
+.sd-page-hero--about .sd-page-hero__desc,
+.sd-page-hero--classes .sd-page-hero__desc {
+  color: var(--sd-white);
+  font-family: var(--sd-font-body);
+  font-weight: 400;
+  font-size: 1.375rem;
+  line-height: 1.5rem;
+  letter-spacing: 0;
+  text-wrap: pretty;
+}
+
 .sd-page-hero__title {
   margin-bottom: var(--sd-space-sm);
 }
@@ -473,6 +568,93 @@
 .sd-cta__decoration {
   position: absolute;
   pointer-events: none;
+}
+
+.sd-page--about .sd-cta,
+.sd-page--classes .sd-cta {
+  --sd-page-cta-bg-image: none;
+  --sd-page-cta-top-width: 35%;
+  --sd-page-cta-bottom-width: 50%;
+  background-image: var(--sd-page-cta-bg-image);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  min-height: 600px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.sd-page--about .sd-cta::before,
+.sd-page--classes .sd-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(180deg, rgba(0, 56, 109, 0.1) 10.1%, rgba(0, 56, 109, 0.8) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.sd-page--about .sd-cta .sd-cta__decoration,
+.sd-page--classes .sd-cta .sd-cta__decoration {
+  position: absolute;
+  display: block;
+  pointer-events: none;
+  z-index: 1;
+  max-width: none;
+  height: auto;
+}
+
+.sd-page--about .sd-cta .sd-cta__decoration--top,
+.sd-page--classes .sd-cta .sd-cta__decoration--top {
+  top: 0;
+  right: 0;
+  width: var(--sd-page-cta-top-width);
+}
+
+.sd-page--about .sd-cta .sd-cta__decoration--bottom,
+.sd-page--classes .sd-cta .sd-cta__decoration--bottom {
+  left: 0;
+  bottom: 0;
+  width: var(--sd-page-cta-bottom-width);
+}
+
+.sd-page--about .sd-cta > .sd-container,
+.sd-page--classes .sd-cta > .sd-container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  min-height: 600px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sd-space-md);
+}
+
+.sd-page--about .sd-cta .sd-cta__title,
+.sd-page--about .sd-cta .sd-cta__desc,
+.sd-page--classes .sd-cta .sd-cta__title,
+.sd-page--classes .sd-cta .sd-cta__desc {
+  color: var(--sd-white);
+}
+
+.sd-page--about .sd-cta .sd-cta__title,
+.sd-page--classes .sd-cta .sd-cta__title {
+  margin-bottom: 0;
+  text-wrap: balance;
+}
+
+.sd-page--about .sd-cta .sd-cta__desc,
+.sd-page--classes .sd-cta .sd-cta__desc {
+  max-width: 640px;
+  margin: 0;
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+.sd-page--about .sd-cta .sd-btn,
+.sd-page--classes .sd-cta .sd-btn {
+  margin-top: var(--sd-space-xs);
 }
 
 .sd-cta__inner {

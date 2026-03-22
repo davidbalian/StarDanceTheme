@@ -8,75 +8,7 @@
    ======================================== */
 
 .sd-page-hero--about {
-  background-image:
-    linear-gradient(
-      180deg,
-      rgba(var(--sd-navy-rgb), 0.1) 10.1%,
-      rgba(var(--sd-navy-rgb), 0.8) 100%
-    ),
-    url('https://stardance.com.cy/wp-content/uploads/2026/03/about-page-hero-bg.webp');
-  background-size: cover;
-  background-position: center top;
-  position: relative;
-  min-height: 900px;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-}
-
-/* Left decorative lines */
-.sd-page-hero--about::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 520px;
-  height: 352px;
-  background-image: url('https://stardance.com.cy/wp-content/uploads/2026/03/white-and-gold-lines.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: left center;
-  z-index: 1;
-  pointer-events: none;
-}
-
-/* Bottom-right decorative lines */
-.sd-page-hero--about::after {
-  content: '';
-  position: absolute;
-  right: 40px;
-  bottom: -5rem;
-  width: 520px;
-  height: 352px;
-  background-image: url('https://stardance.com.cy/wp-content/uploads/2026/03/white-and-gold-lines.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: right bottom;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.sd-page-hero--about > .sd-container {
-  position: relative;
-  z-index: 2;
-}
-
-.sd-page-hero--about .sd-page-hero__title {
-  color: var(--sd-white);
-  font-size: 5rem;
-  line-height: 1;
-  letter-spacing: 0;
-  text-shadow: var(--sd-shadow-title-gold);
-}
-
-.sd-page-hero--about .sd-page-hero__desc {
-  color: var(--sd-white);
-  font-family: var(--sd-font-body);
-  font-weight: 400;
-  font-size: 1.375rem;
-  line-height: 1.5rem;
-  letter-spacing: 0;
+  --sd-page-hero-bg-image: url('https://stardance.com.cy/wp-content/uploads/2026/03/about-page-hero-bg.webp');
 }
 
 /* ========================================
@@ -401,75 +333,9 @@
    ======================================== */
 
 .sd-page--about .sd-cta {
-  background-image: url('https://stardance.com.cy/wp-content/uploads/2026/03/about-page-cta-bg.webp');
-  background-size: cover;
-  background-position: center;
-  position: relative;
-  min-height: 600px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-}
-
-.sd-page--about .sd-cta::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: linear-gradient(180deg, rgba(0, 56, 109, 0.1) 10.1%, rgba(0, 56, 109, 0.8) 100%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.sd-page--about .sd-cta .sd-cta__decoration {
-  position: absolute;
-  display: block;
-  pointer-events: none;
-  z-index: 1;
-  width: 50%;
-  max-width: none;
-  height: auto;
-}
-
-.sd-page--about .sd-cta .sd-cta__decoration--top {
-  top: 0;
-  right: 0;
-  width: 35%;
-}
-
-.sd-page--about .sd-cta .sd-cta__decoration--bottom {
-  left: 0;
-  bottom: 0;
-  width: 50%;
-}
-
-.sd-page--about .sd-cta > .sd-container {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  min-height: 600px;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: var(--sd-space-md);
-}
-
-.sd-page--about .sd-cta .sd-cta__title,
-.sd-page--about .sd-cta .sd-cta__desc {
-  color: var(--sd-white);
-}
-
-.sd-page--about .sd-cta .sd-cta__title {
-  margin-bottom: 0;
-}
-
-.sd-page--about .sd-cta .sd-cta__desc {
-  max-width: 640px;
-  margin: 0;
-  line-height: 1.6;
-}
-
-.sd-page--about .sd-cta .sd-btn {
-  margin-top: var(--sd-space-xs);
+  --sd-page-cta-bg-image: url('https://stardance.com.cy/wp-content/uploads/2026/03/about-page-cta-bg.webp');
+  --sd-page-cta-top-width: 35%;
+  --sd-page-cta-bottom-width: 50%;
 }
 
 /* ========================================
@@ -532,10 +398,6 @@
   .sd-page--about .sd-cta,
   .sd-page--about .sd-cta > .sd-container {
     min-height: 520px;
-  }
-
-  .sd-page--about .sd-cta .sd-cta__decoration {
-    width: 50%;
   }
 }
 
