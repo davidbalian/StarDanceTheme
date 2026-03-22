@@ -336,11 +336,11 @@
 }
 
 .sd-about-coach__arrow--prev {
-  left: -3rem;
+  left: -3.5rem;
 }
 
 .sd-about-coach__arrow--next {
-  right: -3rem;
+  right: -3.5rem;
 }
 
 .sd-about-coach__arrow img {
@@ -372,7 +372,7 @@
   font-family: var(--sd-font-heading);
   font-weight: 600;
   font-size: 20px;
-  color: var(--sd-gold-dark);
+  color: var(--sd-navy);
   margin-bottom: var(--sd-space-xs);
 }
 
@@ -405,24 +405,73 @@
   background-size: cover;
   background-position: center;
   position: relative;
+  min-height: 600px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 
 .sd-page--about .sd-cta::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.55);
+  background: linear-gradient(180deg, rgba(0, 56, 109, 0.1) 10.1%, rgba(0, 56, 109, 0.8) 100%);
   z-index: 0;
+}
+
+.sd-page--about .sd-cta::after,
+.sd-page--about .sd-cta > .sd-container::before {
+  content: '';
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  background-image: url('https://stardance.com.cy/wp-content/uploads/2026/03/red-and-orange-lines.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.sd-page--about .sd-cta::after {
+  bottom: 0;
+  left: 0;
+}
+
+.sd-page--about .sd-cta > .sd-container::before {
+  top: 0;
+  right: 0;
+  transform: scale(-1);
+  transform-origin: center;
 }
 
 .sd-page--about .sd-cta > .sd-container {
   position: relative;
-  z-index: 1;
+  z-index: 2;
+  display: flex;
+  min-height: 600px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sd-space-md);
 }
 
 .sd-page--about .sd-cta .sd-cta__title,
 .sd-page--about .sd-cta .sd-cta__desc {
   color: var(--sd-white);
+}
+
+.sd-page--about .sd-cta .sd-cta__title {
+  margin-bottom: 0;
+}
+
+.sd-page--about .sd-cta .sd-cta__desc {
+  max-width: 640px;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.sd-page--about .sd-cta .sd-btn {
+  margin-top: var(--sd-space-xs);
 }
 
 /* ========================================
@@ -480,6 +529,17 @@
 
   .sd-about-values__trophy {
     order: -1;
+  }
+
+  .sd-page--about .sd-cta,
+  .sd-page--about .sd-cta > .sd-container {
+    min-height: 520px;
+  }
+
+  .sd-page--about .sd-cta::after,
+  .sd-page--about .sd-cta > .sd-container::before {
+    width: 160px;
+    height: 160px;
   }
 }
 

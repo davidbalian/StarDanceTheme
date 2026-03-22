@@ -266,8 +266,8 @@ get_header();
 
     <?php stardance_render_cta(array(
         'title'       => 'Ready to Join Us?',
-        'description' => 'Take the first step. Book a trial class or simply come in and see what Star Dance Studio is all about.',
-        'button_text' => 'Get in Touch',
+        'description' => 'Contact us to learn more about our classes, schedule a trial session, or discuss your dance goals',
+        'button_text' => 'Contact Us',
         'button_url'  => home_url('/#contact'),
     )); ?>
 
