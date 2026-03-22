@@ -64,7 +64,7 @@
 .sd-page--classes .sd-overlay-card__desc {
   font-family: var(--sd-font-body);
   font-weight: 400;
-  font-size: 22px;
+  font-size: 12px;
   line-height: 24px;
   letter-spacing: 0;
   max-width: none;
