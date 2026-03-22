@@ -207,14 +207,40 @@
   gap: var(--sd-space-md);
 }
 
+/* Shared gradient border for both text and image cards */
+.sd-about-champions__item,
+.sd-about-champions__image {
+  border-radius: var(--sd-space-xs);
+  border: 1px solid transparent;
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+
 .sd-about-champions__item {
-  background-color: var(--sd-white);
-  border-radius: var(--sd-radius);
-  padding: var(--sd-space-lg) var(--sd-space-md);
-  box-shadow: var(--sd-shadow-sm);
+  background-image:
+    linear-gradient(#F3FBFC, #F3FBFC),
+    linear-gradient(85.69deg, #E4AF78 0%, #DC9A72 20%, #BE6D2B 60%, #EABE81 100%);
+  padding: 56px 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative SVG overlay — top-right of text cards */
+.sd-about-champions__item::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60%;
+  height: 60%;
+  background-image: url('https://stardance.com.cy/wp-content/uploads/2026/03/red-and-gold-lines.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: top right;
+  pointer-events: none;
 }
 
 .sd-about-champions__item-title {
@@ -223,6 +249,8 @@
   font-size: 26px;
   color: var(--sd-navy);
   margin-bottom: var(--sd-space-xs);
+  position: relative;
+  z-index: 1;
 }
 
 .sd-about-champions__item .sd-text {
@@ -230,18 +258,23 @@
   font-size: 15px;
   line-height: 1.6;
   margin-bottom: 0;
+  position: relative;
+  z-index: 1;
 }
 
 .sd-about-champions__image {
-  border-radius: var(--sd-radius);
+  background-image:
+    linear-gradient(transparent, transparent),
+    linear-gradient(85.69deg, #E4AF78 0%, #DC9A72 20%, #BE6D2B 60%, #EABE81 100%);
   overflow: hidden;
-  min-height: 240px;
+  height: 100%;
 }
 
 .sd-about-champions__image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   display: block;
 }
 
@@ -392,6 +425,11 @@
 @media (max-width: 478px) {
   .sd-about-champions__grid {
     grid-template-columns: 1fr;
+  }
+
+  .sd-about-champions__image {
+    min-height: 260px;
+    height: auto;
   }
 
   .sd-about-overview__text .sd-heading {

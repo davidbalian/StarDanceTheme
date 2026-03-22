@@ -87,30 +87,30 @@ get_header();
 
                 <div class="sd-about-champions__item fade-in fade-in-delay-1">
                     <h3 class="sd-about-champions__item-title">Experience</h3>
-                    <p class="sd-text">Over two decades of training competitive dancers at the highest levels of ballroom and Latin dance.</p>
+                    <p class="sd-text">Over 18 years of professional coaching experience. Our training methods are proven at the highest levels of international competition.</p>
                 </div>
 
                 <div class="sd-about-champions__item fade-in fade-in-delay-2">
                     <h3 class="sd-about-champions__item-title">Results</h3>
-                    <p class="sd-text">Numerous Cypriot National Champions, European finalists, and World Championship representatives.</p>
+                    <p class="sd-text">Our students have competed at finals level in major international competitions including Stuttgart, Blackpool, and Boston. We've trained champions from Cyprus, Israel, Italy, Greece, Estonia, Poland, Macedonia, and Ireland.</p>
                 </div>
 
                 <div class="sd-about-champions__image fade-in fade-in-delay-3">
-                    <img src="https://stardance.com.cy/wp-content/uploads/2026/03/about-page-we-grow-champions-top-right.webp" alt="Star Dance Studio champions" width="400" height="300" loading="lazy">
+                    <img src="https://stardance.com.cy/wp-content/uploads/2026/03/about-page-we-grow-champions-top-right.webp" alt="Star Dance Studio champions" loading="lazy">
                 </div>
 
                 <div class="sd-about-champions__image fade-in fade-in-delay-3">
-                    <img src="https://stardance.com.cy/wp-content/uploads/2026/03/about-page-we-grow-champions-bottom-left.webp" alt="Star Dance Studio students competing" width="400" height="300" loading="lazy">
+                    <img src="https://stardance.com.cy/wp-content/uploads/2026/03/about-page-we-grow-champions-bottom-left.webp" alt="Star Dance Studio students competing" loading="lazy">
                 </div>
 
                 <div class="sd-about-champions__item fade-in fade-in-delay-4">
                     <h3 class="sd-about-champions__item-title">Approach</h3>
-                    <p class="sd-text">Each student receives a personalised development plan combining group classes, private lessons, and competition coaching.</p>
+                    <p class="sd-text">We combine technical excellence with a supportive learning environment. Our coaches give personal attention to each student, focusing on both skill development and confidence building.</p>
                 </div>
 
                 <div class="sd-about-champions__item fade-in fade-in-delay-5">
                     <h3 class="sd-about-champions__item-title">Credentials</h3>
-                    <p class="sd-text">WDSF-certified coaching. Our head coach is a decorated international competitor and certified adjudicator.</p>
+                    <p class="sd-text">Official member of the Cyprus Federation of Social &amp; Sport Dance. International-level coaching and judging qualifications.</p>
                 </div>
 
             </div>
