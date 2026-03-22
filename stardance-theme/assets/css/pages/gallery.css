@@ -14,6 +14,7 @@
   --sd-gallery-filter-text: #2d292a;
   --sd-gallery-filter-active: #de9446;
   --sd-gallery-surface: #d9f7fc;
+  --sd-gallery-lightbox-bg: rgba(217, 247, 252, 0.85);
   padding: 6rem 0 7rem;
   background: var(--sd-gallery-surface);
 }
@@ -102,11 +103,13 @@
 }
 
 .pswp {
-  --pswp-bg: #d9f7fc;
+  --pswp-bg: var(--sd-gallery-lightbox-bg);
 }
 
 .pswp__bg {
-  background: #d9f7fc !important;
+  background: var(--sd-gallery-lightbox-bg) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .pswp__button--arrow--prev,
