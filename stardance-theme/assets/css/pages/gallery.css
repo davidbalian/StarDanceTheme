@@ -13,10 +13,9 @@
   --sd-gallery-filter-title: #00386d;
   --sd-gallery-filter-text: #2d292a;
   --sd-gallery-filter-active: #de9446;
+  --sd-gallery-surface: #d9f7fc;
   padding: 6rem 0 7rem;
-  background:
-    radial-gradient(circle at top center, rgba(217, 247, 252, 0.55), transparent 42%),
-    linear-gradient(180deg, #fffdfa 0%, #f3fbfc 100%);
+  background: var(--sd-gallery-surface);
 }
 
 .sd-gallery-page__filters {
@@ -100,6 +99,49 @@
   aspect-ratio: 1 / 1;
   background: #d9f7fc;
   box-shadow: 0 20px 44px rgba(0, 56, 109, 0.14);
+}
+
+.pswp {
+  --pswp-bg: #d9f7fc;
+}
+
+.pswp__bg {
+  background: #d9f7fc !important;
+}
+
+.pswp__button--arrow--prev,
+.pswp__button--arrow--next {
+  width: 40px;
+  height: 40px;
+  margin-top: -20px;
+  background: transparent;
+  opacity: 0.8;
+  transition: opacity var(--sd-transition);
+}
+
+.pswp__button--arrow--prev:hover,
+.pswp__button--arrow--next:hover {
+  opacity: 1;
+}
+
+.pswp__button--arrow--prev::before,
+.pswp__button--arrow--next::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("https://stardance.com.cy/wp-content/uploads/2026/03/left-arrow.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 40px 40px;
+}
+
+.pswp__button--arrow--next::before {
+  transform: scaleX(-1);
+}
+
+.pswp__button--arrow--prev .pswp__icn,
+.pswp__button--arrow--next .pswp__icn {
+  display: none;
 }
 
 .sd-gallery-page__item::after {
