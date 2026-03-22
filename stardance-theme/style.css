@@ -18,6 +18,7 @@ Text Domain: stardance
   --sd-gold-border: #DC9A72;
   --sd-gold-gradient: linear-gradient(65deg, #E4AF78, #DC9A72, #BE6D2B, #EABE81);
   --sd-navy: #00386D;
+  --sd-navy-rgb: 0, 56, 109;
   --sd-light-blue: #d9f7fc;
   --sd-body-text: #2D292A;
   --sd-white: #FFFFFF;
@@ -45,6 +46,7 @@ Text Domain: stardance
   /* Shadows */
   --sd-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
   --sd-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
+  --sd-shadow-title-gold: 0px 4px 10px 0px var(--sd-gold);
 
   /* Overlays & Gradients */
   --sd-overlay-dark: rgba(0, 0, 0, 0.35);
