@@ -21,6 +21,7 @@
 
 .sd-gallery-page__filters {
   display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.5rem;
   margin-bottom: 3rem;
 }
@@ -32,15 +33,16 @@
   gap: 2rem;
   padding: 1.5rem;
   border: 1px solid transparent;
-  border-image: var(--sd-gallery-filter-border) 1;
+  background:
+    linear-gradient(var(--sd-gallery-filter-bg), var(--sd-gallery-filter-bg)) padding-box,
+    var(--sd-gallery-filter-border) border-box;
   border-radius: 8px;
-  background: var(--sd-gallery-filter-bg);
 }
 
 .sd-gallery-page__filter-label {
   font-family: var(--sd-font-heading);
   font-weight: 600;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 1;
   color: var(--sd-gallery-filter-title);
   flex: 0 0 auto;
@@ -61,8 +63,8 @@
   color: var(--sd-gallery-filter-text);
   font-family: var(--sd-font-body);
   font-weight: 400;
-  font-size: 22px;
-  line-height: 24px;
+  font-size: 18px;
+  line-height: 20px;
   letter-spacing: 0;
   cursor: pointer;
   transition:
@@ -80,7 +82,7 @@
 .sd-gallery-page__tab.is-active {
   color: var(--sd-gallery-filter-active);
   font-weight: 700;
-  line-height: 20px;
+  line-height: 18px;
 }
 
 .sd-gallery-page__grid {
@@ -163,6 +165,10 @@
 }
 
 @media (max-width: 1100px) {
+  .sd-gallery-page__filters {
+    grid-template-columns: 1fr;
+  }
+
   .sd-gallery-page__grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -174,7 +180,7 @@
   }
 
   .sd-gallery-page__filter-label {
-    font-size: 24px;
+    font-size: 18px;
   }
 
   .sd-gallery-page__grid {

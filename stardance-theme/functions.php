@@ -409,6 +409,7 @@ function stardance_get_gallery_query_payload( $filters = array() ) {
         'gallery_occasion' => '',
         'posts_per_page' => 12,
         'paged' => 1,
+        'animate' => true,
     ));
 
     $query = new WP_Query( stardance_get_gallery_query_args( $filters ) );
@@ -420,15 +421,17 @@ function stardance_get_gallery_query_payload( $filters = array() ) {
 
         while ( $query->have_posts() ) {
             $query->the_post();
-            stardance_render_gallery_item( get_the_ID(), min( $delay, 10 ) );
+            stardance_render_gallery_item( get_the_ID(), min( $delay, 10 ), (bool) $filters['animate'] );
             $delay++;
         }
     } else {
-        ?>
-        <div class="sd-gallery-page__empty">
-            <p class="sd-text">No gallery images match those filters yet.</p>
-        </div>
-        <?php
+        if ( (int) $filters['paged'] <= 1 ) {
+            ?>
+            <div class="sd-gallery-page__empty">
+                <p class="sd-text">No gallery images match those filters yet.</p>
+            </div>
+            <?php
+        }
     }
 
     $markup = trim( ob_get_clean() );
@@ -728,6 +731,7 @@ function stardance_filter_gallery() {
         'gallery_occasion' => sanitize_text_field( $_POST['gallery_occasion'] ?? '' ),
         'posts_per_page'   => max( 1, (int) ( $_POST['posts_per_page'] ?? 12 ) ),
         'paged'            => max( 1, (int) ( $_POST['paged'] ?? 1 ) ),
+        'animate'          => false,
     );
 
     $payload = stardance_get_gallery_query_payload( $filters );

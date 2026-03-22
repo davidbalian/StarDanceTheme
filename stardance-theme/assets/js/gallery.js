@@ -68,7 +68,9 @@
       }
 
       if (append) {
-        galleryGrid.insertAdjacentHTML('beforeend', payload.data.markup);
+        if (payload.data.markup.trim()) {
+          galleryGrid.insertAdjacentHTML('beforeend', payload.data.markup);
+        }
       } else {
         galleryGrid.innerHTML = payload.data.markup;
       }
@@ -116,6 +118,7 @@
 
     const showMore = event.target.closest('[data-gallery-show-more]');
     if (!showMore) return;
+    if (showMore.hidden || showMore.disabled) return;
 
     state.paged += 1;
     fetchFilteredGallery({ append: true });

@@ -260,11 +260,12 @@ function stardance_render_event_card( $args = array() ) {
 /**
  * Render a gallery item card for the Gallery page and AJAX responses.
  *
- * @param int $post_id Gallery item post ID.
- * @param int $delay   Optional fade-in delay index.
+ * @param int  $post_id  Gallery item post ID.
+ * @param int  $delay    Optional fade-in delay index.
+ * @param bool $animate  Whether to include fade-in animation classes.
  * @return void
  */
-function stardance_render_gallery_item( $post_id, $delay = 0 ) {
+function stardance_render_gallery_item( $post_id, $delay = 0, $animate = true ) {
     $post_id = absint( $post_id );
 
     if ( ! $post_id ) {
@@ -296,10 +297,11 @@ function stardance_render_gallery_item( $post_id, $delay = 0 ) {
     if ( ! $image_full || ! $image_large ) {
         return;
     }
+    $animation_class = $animate ? ' fade-in fade-in-delay-' . absint( $delay ) : '';
     ?>
     <a
         href="<?php echo esc_url( $image_full[0] ); ?>"
-        class="sd-gallery-page__item fade-in fade-in-delay-<?php echo absint( $delay ); ?>"
+        class="sd-gallery-page__item<?php echo esc_attr( $animation_class ); ?>"
         data-pswp-width="<?php echo esc_attr( (string) absint( $image_full[1] ) ); ?>"
         data-pswp-height="<?php echo esc_attr( (string) absint( $image_full[2] ) ); ?>"
         itemprop="associatedMedia"
