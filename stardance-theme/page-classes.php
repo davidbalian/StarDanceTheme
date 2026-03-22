@@ -40,19 +40,28 @@ $classes_query = new WP_Query(array(
 
                         $image_url = get_the_post_thumbnail_url( get_the_ID(), 'large' );
                         $description = get_the_excerpt();
+                        $overlay_url = get_post_meta( get_the_ID(), '_stardance_overlay_url', true );
+                        $card_modifier = 'navy';
 
                         if ( ! $description ) {
                             $description = wp_strip_all_tags( get_the_content() );
                         }
 
+                        if ( false !== strpos( $overlay_url, 'gold' ) ) {
+                            $card_modifier = 'gold';
+                        } elseif ( false !== strpos( $overlay_url, 'turquise' ) || false !== strpos( $overlay_url, 'turquoise' ) ) {
+                            $card_modifier = 'turquoise';
+                        }
+
                         stardance_render_overlay_card(array(
                             'image_url'      => $image_url,
-                            'decoration_url' => get_post_meta( get_the_ID(), '_stardance_overlay_url', true ),
+                            'decoration_url' => $overlay_url,
                             'title'          => get_the_title(),
                             'description'    => $description,
                             'link_url'       => get_permalink(),
                             'link_text'      => 'Learn More>>',
                             'variant'        => 'tall',
+                            'modifier'       => $card_modifier,
                             'delay'          => min( $delay, 10 ),
                         ));
 

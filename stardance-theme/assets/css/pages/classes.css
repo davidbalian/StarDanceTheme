@@ -40,7 +40,7 @@
 
 .sd-page--classes .sd-overlay-card__content {
   min-height: 100%;
-  padding: 24px 22px 20px;
+  padding: 24px 22px 20px 3.5rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -76,6 +76,27 @@
   letter-spacing: 0.01em;
   text-transform: none;
   box-shadow: none;
+}
+
+.sd-page--classes .sd-overlay-card--gold .sd-overlay-card__title,
+.sd-page--classes .sd-overlay-card--gold .sd-btn,
+.sd-page--classes .sd-overlay-card--turquoise .sd-overlay-card__title,
+.sd-page--classes .sd-overlay-card--turquoise .sd-btn {
+  color: #4A2E1F;
+}
+
+.sd-page--classes .sd-overlay-card--gold .sd-overlay-card__desc,
+.sd-page--classes .sd-overlay-card--turquoise .sd-overlay-card__desc {
+  color: #4A2E1F;
+}
+
+.sd-page--classes .sd-overlay-card--navy .sd-overlay-card__title,
+.sd-page--classes .sd-overlay-card--navy .sd-btn {
+  color: #D9F7FC;
+}
+
+.sd-page--classes .sd-overlay-card--navy .sd-overlay-card__desc {
+  color: var(--sd-white);
 }
 
 .sd-page--classes .sd-overlay-card__decoration {
@@ -224,7 +245,7 @@
   }
 
   .sd-page--classes .sd-overlay-card__content {
-    padding: 20px 18px 18px;
+    padding: 20px 18px 18px 3rem;
   }
 
   .sd-page--classes .sd-faq__list {

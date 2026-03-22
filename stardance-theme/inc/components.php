@@ -120,6 +120,7 @@ function stardance_render_cta( $args = array() ) {
  *     @type string $link_url    Optional. Button URL.
  *     @type string $link_text   Optional. Button label. Default 'Learn More'.
  *     @type string $variant     Optional. 'tall' (class card) or 'portrait' (competition card). Default 'tall'.
+ *     @type string $modifier    Optional. Additional modifier class suffix.
  *     @type int    $delay       Optional. Fade-in delay index (0–10). Default 0.
  * }
  */
@@ -133,12 +134,14 @@ function stardance_render_overlay_card( $args = array() ) {
         'link_url'    => '',
         'link_text'   => 'Learn More',
         'variant'     => 'tall',
+        'modifier'    => '',
         'delay'       => 0,
     ) );
 
     $variant_class = 'sd-overlay-card--' . sanitize_html_class( $args['variant'] );
+    $modifier_class = $args['modifier'] ? ' sd-overlay-card--' . sanitize_html_class( $args['modifier'] ) : '';
     ?>
-    <div class="sd-overlay-card <?php echo esc_attr( $variant_class ); ?> fade-in fade-in-delay-<?php echo absint( $args['delay'] ); ?>"
+    <div class="sd-overlay-card <?php echo esc_attr( $variant_class . $modifier_class ); ?> fade-in fade-in-delay-<?php echo absint( $args['delay'] ); ?>"
          style="background-image: url('<?php echo esc_url( $args['image_url'] ); ?>');">
         <?php if ( $args['decoration_url'] ) : ?>
             <img
