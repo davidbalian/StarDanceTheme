@@ -71,11 +71,14 @@
     function makeSlide(s) {
       var div = document.createElement('div');
       div.className = 'sd-lightbox__slide';
+      var frame = document.createElement('div');
+      frame.className = 'sd-lightbox__frame';
       var img = document.createElement('img');
       img.src = s.src;
       img.alt = s.alt;
       img.loading = 'lazy';
-      div.appendChild(img);
+      frame.appendChild(img);
+      div.appendChild(frame);
       return div;
     }
 

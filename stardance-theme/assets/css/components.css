@@ -883,12 +883,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 80px 100px 48px;
+  padding: 72px 100px 40px;
 }
 
-.sd-lightbox__slide img {
-  max-width: 100%;
-  max-height: 100%;
+.sd-lightbox__frame {
+  width: min(72vh, 72vw);
+  height: min(72vh, 72vw);
+  flex-shrink: 0;
+}
+
+.sd-lightbox__frame img {
+  width: 100%;
+  height: 100%;
   object-fit: contain;
   display: block;
 }
@@ -969,7 +975,12 @@
 
 @media (max-width: 767px) {
   .sd-lightbox__slide {
-    padding: 72px 64px 40px;
+    padding: 72px 16px 40px;
+  }
+
+  .sd-lightbox__frame {
+    width: min(60vh, 90vw);
+    height: min(60vh, 90vw);
   }
 
   .sd-lightbox__arrow--prev {
