@@ -67,7 +67,7 @@
   font-size: 5rem;
   line-height: 1;
   letter-spacing: 0;
-  box-shadow: var(--sd-shadow-title-gold);
+  text-shadow: var(--sd-shadow-title-gold);
 }
 
 .sd-page-hero--about .sd-page-hero__desc {
@@ -164,7 +164,7 @@
 }
 
 .sd-about-values__card {
-  text-align: center;
+  text-align: left;
   padding: var(--sd-space-md);
 }
 
@@ -179,6 +179,7 @@
 
 .sd-about-values__card .sd-text {
   font-size: 15px;
+  text-align: left;
 }
 
 .sd-about-values__trophy {
