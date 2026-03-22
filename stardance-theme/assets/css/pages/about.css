@@ -8,30 +8,59 @@
    ======================================== */
 
 .sd-page-hero--about {
-  background-image: url('https://stardance.com.cy/wp-content/uploads/2026/03/about-page-hero-bg.webp');
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(var(--sd-navy-rgb), 0.1) 10.1%,
+      rgba(var(--sd-navy-rgb), 0.8) 100%
+    ),
+    url('https://stardance.com.cy/wp-content/uploads/2026/03/about-page-hero-bg.webp');
   background-size: cover;
   background-position: center top;
   position: relative;
   min-height: 900px;
   display: flex;
   align-items: center;
+  overflow: hidden;
 }
 
+/* Left decorative lines */
 .sd-page-hero--about::before {
   content: '';
   position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(var(--sd-navy-rgb), 0.1) 10.1%,
-    rgba(var(--sd-navy-rgb), 0.8) 100%
-  );
-  z-index: 0;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 520px;
+  height: 352px;
+  background-image: url('https://stardance.com.cy/wp-content/uploads/2026/03/white-and-gold-lines.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: left center;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Bottom-right decorative lines (mirrored) */
+.sd-page-hero--about::after {
+  content: '';
+  position: absolute;
+  right: 40px;
+  bottom: 40px;
+  width: 520px;
+  height: 352px;
+  background-image: url('https://stardance.com.cy/wp-content/uploads/2026/03/white-and-gold-lines.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  transform: scaleX(-1);
+  z-index: 1;
+  pointer-events: none;
 }
 
 .sd-page-hero--about > .sd-container {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .sd-page-hero--about .sd-page-hero__title {
