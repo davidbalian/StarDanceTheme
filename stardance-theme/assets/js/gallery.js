@@ -1,7 +1,7 @@
 /**
  * Star Dance Studio - Gallery filters and PhotoSwipe initialization.
  */
-document.addEventListener('DOMContentLoaded', function () {
+(function () {
   const galleryGrid = document.querySelector('[data-gallery-grid]');
   if (!galleryGrid) return;
 
@@ -127,4 +127,4 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   initLightbox();
-});
+})();
