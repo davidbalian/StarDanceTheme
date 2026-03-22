@@ -51,6 +51,7 @@ function stardance_enqueue_assets() {
     }
     if ( is_page_template('page-about.php') ) {
         wp_enqueue_style('stardance-page-about', $pages_css_dir . 'about.css', array('stardance-responsive'), '1.0.0');
+        wp_enqueue_script('stardance-about', get_template_directory_uri() . '/assets/js/about.js', array(), '1.0.0', true);
     }
     if ( is_page_template('page-schedule.php') ) {
         wp_enqueue_style('stardance-page-schedule', $pages_css_dir . 'schedule.css', array('stardance-responsive'), '1.0.0');

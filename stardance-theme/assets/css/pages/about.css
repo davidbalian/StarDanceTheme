@@ -224,6 +224,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 1rem;
   position: relative;
   overflow: hidden;
 }
@@ -250,7 +251,6 @@
   line-height: 1;
   letter-spacing: 0;
   color: var(--sd-navy);
-  margin-bottom: 10px;
   position: relative;
   z-index: 1;
 }
@@ -293,16 +293,60 @@
   margin-bottom: var(--sd-space-lg);
 }
 
-.sd-about-coach__layout {
+/* Slider */
+.sd-about-coach__slider {
+  overflow: hidden;
+}
+
+.sd-about-coach__track {
+  display: flex;
+  transition: transform 300ms ease;
+  will-change: transform;
+}
+
+.sd-about-coach__slide {
+  min-width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--sd-space-xl);
   align-items: start;
 }
 
+/* Controls */
+.sd-about-coach__controls {
+  display: flex;
+  gap: var(--sd-space-sm);
+  margin-top: var(--sd-space-lg);
+}
+
+.sd-about-coach__arrow {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  line-height: 0;
+  opacity: 0.8;
+  transition: opacity var(--sd-transition);
+}
+
+.sd-about-coach__arrow:hover {
+  opacity: 1;
+}
+
+.sd-about-coach__arrow img {
+  width: 40px;
+  height: 40px;
+  display: block;
+}
+
+.sd-about-coach__arrow--next img {
+  transform: scaleX(-1);
+}
+
+/* Bio */
 .sd-about-coach__name {
   text-align: left;
-  font-size: 32px;
+  font-size: 2rem;
   margin-bottom: var(--sd-space-lg);
 }
 
@@ -327,15 +371,19 @@
   line-height: 1.6;
 }
 
+.sd-about-coach__list {
+  list-style: disc;
+  padding-left: var(--sd-space-md);
+  margin-top: var(--sd-space-xs);
+  font-family: var(--sd-font-body);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--sd-body-text);
+}
+
 .sd-about-coach__image {
   border-radius: var(--sd-radius);
   overflow: hidden;
-}
-
-.sd-about-coach__image img {
-  width: 100%;
-  height: auto;
-  display: block;
 }
 
 /* ========================================
