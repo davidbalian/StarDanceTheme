@@ -422,20 +422,24 @@
 
 .sd-page--about .sd-cta .sd-cta__decoration {
   position: absolute;
+  display: block;
   pointer-events: none;
   z-index: 1;
   width: 50%;
+  max-width: none;
   height: auto;
 }
 
 .sd-page--about .sd-cta .sd-cta__decoration--top {
   top: 0;
   right: 0;
+  width: 50%;
 }
 
 .sd-page--about .sd-cta .sd-cta__decoration--bottom {
   left: 0;
   bottom: 0;
+  width: 50%;
 }
 
 .sd-page--about .sd-cta > .sd-container {
