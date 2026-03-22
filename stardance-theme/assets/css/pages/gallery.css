@@ -102,8 +102,99 @@
   box-shadow: 0 20px 44px rgba(0, 56, 109, 0.14);
 }
 
+/* PhotoSwipe base layout — vendor CSS only applies these under .pswp.brx (Bricks),
+   so we re-declare them for the plain .pswp element used here. */
 .pswp {
   --pswp-bg: var(--sd-gallery-lightbox-bg);
+  --pswp-root-z-index: 100000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: var(--pswp-root-z-index);
+  overflow: hidden;
+  touch-action: none;
+  outline: 0;
+  contain: layout style size;
+  opacity: 0.003;
+  will-change: opacity;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  display: none;
+}
+
+.pswp:focus { outline: 0; }
+.pswp * { box-sizing: border-box; }
+.pswp img { max-width: none; }
+.pswp.pswp--open { display: block; }
+
+.pswp .pswp__bg,
+.pswp .pswp__container,
+.pswp .pswp__content,
+.pswp .pswp__img,
+.pswp .pswp__item,
+.pswp .pswp__scroll-wrap,
+.pswp .pswp__zoom-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.pswp .pswp__img,
+.pswp .pswp__zoom-wrap {
+  width: auto;
+  height: auto;
+}
+
+.pswp .pswp__scroll-wrap { overflow: hidden; }
+.pswp .pswp__item { overflow: hidden; z-index: 1; }
+.pswp .pswp__content { pointer-events: none; }
+.pswp .pswp__content > * { pointer-events: auto; }
+.pswp .pswp__hidden { display: none !important; }
+
+.pswp .pswp__top-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 20px;
+  z-index: 10;
+  pointer-events: none !important;
+}
+
+.pswp .pswp__top-bar > * { pointer-events: auto; }
+
+.pswp .pswp__button--arrow {
+  position: absolute;
+  top: 50%;
+  margin-top: -60px;
+  width: 75px;
+  height: 100px;
+}
+
+.pswp .pswp__button--arrow--prev { left: 0; right: auto; }
+.pswp .pswp__button--arrow--next { right: 0; }
+
+.pswp.pswp--one-slide .pswp__button--arrow,
+.pswp.pswp--one-slide .pswp__counter { display: none; }
+
+.pswp .pswp__hide-on-close {
+  opacity: 0.005;
+  pointer-events: none;
+  will-change: opacity;
+  z-index: 10;
+  transition: opacity var(--pswp-transition-duration) cubic-bezier(.4, 0, .22, 1);
+}
+
+.pswp.pswp--ui-visible .pswp__hide-on-close {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .pswp__bg {
