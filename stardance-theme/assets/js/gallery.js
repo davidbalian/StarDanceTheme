@@ -1,11 +1,11 @@
 /**
  * Star Dance Studio - Gallery filters and PhotoSwipe initialization.
  */
-(function () {
+document.addEventListener('DOMContentLoaded', function () {
   const galleryGrid = document.querySelector('[data-gallery-grid]');
   if (!galleryGrid) return;
-  const showMoreButton = document.querySelector('[data-gallery-show-more]');
 
+  const showMoreButton = document.querySelector('[data-gallery-show-more]');
   let lightbox = null;
   const state = {
     photo_year: 'all',
@@ -16,19 +16,21 @@
   };
 
   function initLightbox() {
-    if (typeof PhotoSwipeLightbox === 'undefined' || typeof PhotoSwipe === 'undefined') {
+    if (typeof window.PhotoSwipeLightbox === 'undefined' || typeof window.PhotoSwipe === 'undefined') {
       return;
     }
 
     if (lightbox) {
       lightbox.destroy();
+      lightbox = null;
     }
 
-    lightbox = new PhotoSwipeLightbox({
-      gallery: '[data-photoswipe-gallery]',
-      children: 'a',
-      pswpModule: PhotoSwipe,
-      bgOpacity: 0.92,
+    lightbox = new window.PhotoSwipeLightbox({
+      gallery: '#gallery-grid',
+      children: '.sd-gallery-page__item',
+      pswpModule: window.PhotoSwipe,
+      bgOpacity: 1,
+      showHideAnimationType: 'zoom',
       padding: { top: 24, bottom: 24, left: 24, right: 24 },
     });
 
@@ -41,7 +43,6 @@
     }
 
     const append = Boolean(options.append);
-
     const formData = new FormData();
     formData.append('action', 'stardance_filter_gallery');
     formData.append('nonce', stardanceGallery.nonce);
@@ -61,8 +62,8 @@
         method: 'POST',
         body: formData,
       });
-
       const payload = await response.json();
+
       if (!payload.success || !payload.data || typeof payload.data.markup !== 'string') {
         throw new Error('Invalid gallery response');
       }
@@ -108,21 +109,22 @@
     });
   }
 
-  document.addEventListener('click', (event) => {
-    const button = event.target.closest('.sd-gallery-page__tab');
-    if (button) {
-      updateActiveTab(button);
+  document.addEventListener('click', function (event) {
+    const filterButton = event.target.closest('.sd-gallery-page__tab');
+    if (filterButton) {
+      updateActiveTab(filterButton);
       fetchFilteredGallery();
       return;
     }
 
     const showMore = event.target.closest('[data-gallery-show-more]');
-    if (!showMore) return;
-    if (showMore.hidden || showMore.disabled) return;
+    if (!showMore || showMore.hidden || showMore.disabled) {
+      return;
+    }
 
     state.paged += 1;
     fetchFilteredGallery({ append: true });
   });
 
   initLightbox();
-})();
+});
