@@ -38,7 +38,7 @@ Before writing **any** HTML, CSS, or PHP for this project, read `stardance-theme
 
 8. **BEM + `sd-` namespace.** All new classes follow `.sd-block__element--modifier`. Never introduce a class that doesn't follow this pattern.
 
-9. **No Bricks Builder.** This theme has zero dependency on Bricks Builder. Never use `.brx` classes, `bricks_` PHP hooks, or Bricks-modified vendor files. All vendor libraries must be their official upstream versions (e.g. PhotoSwipe from photoswipe.com/npm, not a Bricks-bundled copy).
+9. **No Bricks Builder. No third-party sliders or lightboxes.** This theme uses a custom vanilla JS lightbox slider (`assets/js/gallery.js`) and a custom coach slider (`assets/js/about.js`). Do not introduce PhotoSwipe, Swiper, Glide, or any similar library. Lightbox styles live in `components.css` (`.sd-lightbox*`). Never use `.brx` classes or `bricks_` PHP hooks.
 
 ---
 

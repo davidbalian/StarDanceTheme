@@ -149,14 +149,12 @@ the_post();
         <div class="sd-container">
             <h2 class="sd-heading sd-class-gallery__title fade-in fade-in-delay-0">See Our Dancers in Action</h2>
             <div class="sd-class-gallery__grid"
-                 data-photoswipe-gallery
+                 data-gallery-lightbox
                  itemscope
                  itemtype="http://schema.org/ImageGallery">
 
                 <a href="http://stardance.com.cy/wp-content/uploads/2026/02/European-Ballroom.png"
                    class="sd-class-gallery__item fade-in fade-in-delay-1"
-                   data-pswp-width="1200"
-                   data-pswp-height="900"
                    itemprop="associatedMedia"
                    itemscope
                    itemtype="http://schema.org/ImageObject">
@@ -169,8 +167,6 @@ the_post();
 
                 <a href="http://stardance.com.cy/wp-content/uploads/2026/02/Latin-American.png"
                    class="sd-class-gallery__item fade-in fade-in-delay-2"
-                   data-pswp-width="1200"
-                   data-pswp-height="900"
                    itemprop="associatedMedia"
                    itemscope
                    itemtype="http://schema.org/ImageObject">
@@ -183,8 +179,6 @@ the_post();
 
                 <a href="http://stardance.com.cy/wp-content/uploads/2026/02/Latin-Fusion-Ladies.png"
                    class="sd-class-gallery__item fade-in fade-in-delay-3"
-                   data-pswp-width="1200"
-                   data-pswp-height="900"
                    itemprop="associatedMedia"
                    itemscope
                    itemtype="http://schema.org/ImageObject">

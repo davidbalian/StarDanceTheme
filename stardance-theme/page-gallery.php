@@ -60,7 +60,6 @@ get_header();
                 class="sd-gallery-page__grid"
                 id="gallery-grid"
                 data-gallery-grid
-                data-photoswipe-gallery
                 itemscope
                 itemtype="https://schema.org/ImageGallery"
             >

@@ -302,8 +302,6 @@ function stardance_render_gallery_item( $post_id, $delay = 0, $animate = true ) 
     <a
         href="<?php echo esc_url( $image_full[0] ); ?>"
         class="sd-gallery-page__item<?php echo esc_attr( $animation_class ); ?>"
-        data-pswp-width="<?php echo esc_attr( (string) absint( $image_full[1] ) ); ?>"
-        data-pswp-height="<?php echo esc_attr( (string) absint( $image_full[2] ) ); ?>"
         itemprop="associatedMedia"
         itemscope
         itemtype="https://schema.org/ImageObject"

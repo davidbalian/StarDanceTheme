@@ -81,16 +81,11 @@ function stardance_enqueue_assets() {
         wp_enqueue_style('stardance-single-class', $pages_css_dir . 'single-class.css', array('stardance-responsive'), stardance_asset_version('assets/css/pages/single-class.css'));
     }
 
-    // PhotoSwipe Vendor
-    wp_enqueue_style('photoswipe', get_template_directory_uri() . '/assets/vendor/photoswipe.min.css', array(), '5.4.4');
-    wp_enqueue_script('photoswipe', get_template_directory_uri() . '/assets/vendor/photoswipe.umd.min.js', array(), '5.4.4', true);
-    wp_enqueue_script('photoswipe-lightbox', get_template_directory_uri() . '/assets/vendor/photoswipe-lightbox.umd.min.js', array(), '5.4.4', true);
-
     // Theme Scripts
     wp_enqueue_script('stardance-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array(), stardance_asset_version('assets/js/navigation.js'), true);
     wp_enqueue_script('stardance-animations', get_template_directory_uri() . '/assets/js/animations.js', array(), stardance_asset_version('assets/js/animations.js'), true);
     wp_enqueue_script('stardance-faq', get_template_directory_uri() . '/assets/js/faq.js', array(), stardance_asset_version('assets/js/faq.js'), true);
-    wp_enqueue_script('stardance-gallery', get_template_directory_uri() . '/assets/js/gallery.js', array('photoswipe', 'photoswipe-lightbox'), stardance_asset_version('assets/js/gallery.js'), true);
+    wp_enqueue_script('stardance-gallery', get_template_directory_uri() . '/assets/js/gallery.js', array(), stardance_asset_version('assets/js/gallery.js'), true);
     wp_enqueue_script('stardance-contact-form', get_template_directory_uri() . '/assets/js/contact-form.js', array(), stardance_asset_version('assets/js/contact-form.js'), true);
 
     wp_localize_script('stardance-gallery', 'stardanceGallery', array(
