@@ -304,7 +304,7 @@
 
 .sd-about-coach__track {
   display: flex;
-  transition: transform 300ms ease;
+  transition: transform 500ms ease;
   will-change: transform;
 }
 
@@ -419,7 +419,7 @@
     url('https://stardance.com.cy/wp-content/uploads/2026/03/red-and-orange-lines.svg'),
     linear-gradient(180deg, rgba(0, 56, 109, 0.1) 10.1%, rgba(0, 56, 109, 0.8) 100%);
   background-repeat: no-repeat, no-repeat;
-  background-size: 100% auto, cover;
+  background-size: 50% auto, cover;
   background-position: top left, center;
   pointer-events: none;
   transform: scaleX(-1);
@@ -433,7 +433,7 @@
   inset: 0;
   background-image: url('https://stardance.com.cy/wp-content/uploads/2026/03/red-and-orange-lines.svg');
   background-repeat: no-repeat;
-  background-size: 100% auto;
+  background-size: 50% auto;
   background-position: bottom left;
   pointer-events: none;
   z-index: 1;
@@ -532,11 +532,11 @@
   }
 
   .sd-page--about .sd-cta::before {
-    background-size: 100% auto, cover;
+    background-size: 50% auto, cover;
   }
 
   .sd-page--about .sd-cta::after {
-    background-size: 100% auto;
+    background-size: 50% auto;
   }
 }
 
