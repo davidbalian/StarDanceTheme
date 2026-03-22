@@ -6,6 +6,8 @@
   if (!galleryGrid) return;
 
   const showMoreButton = document.querySelector('[data-gallery-show-more]');
+  let activeLightbox = null;
+  let isFetchingMoreInLightbox = false;
   const state = {
     photo_year: 'all',
     gallery_type: 'all',
@@ -32,7 +34,7 @@
   }
 
   function openLightbox(index) {
-    if (typeof window.PhotoSwipe === 'undefined') {
+    if (typeof window.PhotoSwipe5 === 'undefined') {
       return;
     }
 
@@ -41,7 +43,7 @@
       return;
     }
 
-    const lightbox = new window.PhotoSwipe({
+    const lightbox = new window.PhotoSwipe5({
       dataSource: items,
       index,
       bgOpacity: 1,
@@ -51,12 +53,49 @@
       paddingFn: () => ({ top: 24, bottom: 24, left: 24, right: 24 }),
     });
 
+    activeLightbox = lightbox;
+
+    lightbox.on('change', function () {
+      const currentIndex = lightbox.currIndex ?? 0;
+      const atLastLoadedItem = currentIndex >= getGalleryItems().length - 1;
+
+      if (!atLastLoadedItem || !showMoreButton || showMoreButton.hidden || isFetchingMoreInLightbox) {
+        return;
+      }
+
+      isFetchingMoreInLightbox = true;
+      state.paged += 1;
+
+      fetchFilteredGallery({ append: true }).then((appended) => {
+        if (!appended) {
+          state.paged -= 1;
+          return;
+        }
+
+        lightbox.options.dataSource = getGalleryItems();
+
+        if (typeof lightbox.refreshSlideContent === 'function') {
+          lightbox.refreshSlideContent(currentIndex);
+          if (currentIndex + 1 < lightbox.getNumItems()) {
+            lightbox.refreshSlideContent(currentIndex + 1);
+          }
+        }
+      }).finally(() => {
+        isFetchingMoreInLightbox = false;
+      });
+    });
+
+    lightbox.on('destroy', function () {
+      activeLightbox = null;
+      isFetchingMoreInLightbox = false;
+    });
+
     lightbox.init();
   }
 
   async function fetchFilteredGallery(options = {}) {
     if (typeof stardanceGallery === 'undefined') {
-      return;
+      return false;
     }
 
     const append = Boolean(options.append);
@@ -88,16 +127,25 @@
       if (append) {
         if (payload.data.markup.trim()) {
           galleryGrid.insertAdjacentHTML('beforeend', payload.data.markup);
+          if (activeLightbox) {
+            activeLightbox.options.dataSource = getGalleryItems();
+          }
+          return true;
         }
       } else {
         galleryGrid.innerHTML = payload.data.markup;
+        if (activeLightbox) {
+          activeLightbox.options.dataSource = getGalleryItems();
+        }
       }
 
       if (showMoreButton) {
         showMoreButton.hidden = !payload.data.has_more;
       }
+      return !append;
     } catch (error) {
       console.error('Gallery filter request failed', error);
+      return false;
     } finally {
       galleryGrid.classList.remove('is-loading');
       if (showMoreButton) {
