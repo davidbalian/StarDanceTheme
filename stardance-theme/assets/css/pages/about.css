@@ -294,6 +294,10 @@
 }
 
 /* Slider */
+.sd-about-coach__wrapper {
+  position: relative;
+}
+
 .sd-about-coach__slider {
   overflow: hidden;
 }
@@ -312,14 +316,11 @@
   align-items: start;
 }
 
-/* Controls */
-.sd-about-coach__controls {
-  display: flex;
-  gap: var(--sd-space-sm);
-  margin-top: var(--sd-space-lg);
-}
-
+/* Arrows — positioned on left and right sides */
 .sd-about-coach__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   background: none;
   border: none;
   cursor: pointer;
@@ -327,10 +328,19 @@
   line-height: 0;
   opacity: 0.8;
   transition: opacity var(--sd-transition);
+  z-index: 2;
 }
 
 .sd-about-coach__arrow:hover {
   opacity: 1;
+}
+
+.sd-about-coach__arrow--prev {
+  left: -3rem;
+}
+
+.sd-about-coach__arrow--next {
+  right: -3rem;
 }
 
 .sd-about-coach__arrow img {

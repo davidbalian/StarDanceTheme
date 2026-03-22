@@ -122,6 +122,7 @@ get_header();
         <div class="sd-container">
             <h2 class="sd-heading sd-about-coach__section-title fade-in fade-in-delay-0">Head Coach &amp; International Adjudicator</h2>
 
+            <div class="sd-about-coach__wrapper">
             <div class="sd-about-coach__slider" aria-live="polite">
                 <div class="sd-about-coach__track">
 
@@ -251,14 +252,14 @@ get_header();
                 </div><!-- /.sd-about-coach__track -->
             </div><!-- /.sd-about-coach__slider -->
 
-            <div class="sd-about-coach__controls">
-                <button class="sd-about-coach__arrow sd-about-coach__arrow--prev" aria-label="Previous coach">
-                    <img src="https://stardance.com.cy/wp-content/uploads/2026/03/left-arrow.svg" alt="" aria-hidden="true">
-                </button>
-                <button class="sd-about-coach__arrow sd-about-coach__arrow--next" aria-label="Next coach">
-                    <img src="https://stardance.com.cy/wp-content/uploads/2026/03/left-arrow.svg" alt="" aria-hidden="true">
-                </button>
-            </div>
+            <button class="sd-about-coach__arrow sd-about-coach__arrow--prev" aria-label="Previous coach">
+                <img src="https://stardance.com.cy/wp-content/uploads/2026/03/left-arrow.svg" alt="" aria-hidden="true">
+            </button>
+            <button class="sd-about-coach__arrow sd-about-coach__arrow--next" aria-label="Next coach">
+                <img src="https://stardance.com.cy/wp-content/uploads/2026/03/left-arrow.svg" alt="" aria-hidden="true">
+            </button>
+
+            </div><!-- /.sd-about-coach__wrapper -->
 
         </div>
     </section>
