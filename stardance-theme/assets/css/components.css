@@ -577,7 +577,8 @@
 }
 
 .sd-page--about .sd-cta,
-.sd-page--classes .sd-cta {
+.sd-page--classes .sd-cta,
+.sd-page--schedule .sd-cta {
   --sd-page-cta-bg-image: none;
   --sd-page-cta-top-width: 35%;
   --sd-page-cta-bottom-width: 50%;
@@ -592,7 +593,8 @@
 }
 
 .sd-page--about .sd-cta::before,
-.sd-page--classes .sd-cta::before {
+.sd-page--classes .sd-cta::before,
+.sd-page--schedule .sd-cta::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -602,7 +604,8 @@
 }
 
 .sd-page--about .sd-cta .sd-cta__decoration,
-.sd-page--classes .sd-cta .sd-cta__decoration {
+.sd-page--classes .sd-cta .sd-cta__decoration,
+.sd-page--schedule .sd-cta .sd-cta__decoration {
   position: absolute;
   display: block;
   pointer-events: none;
@@ -612,21 +615,24 @@
 }
 
 .sd-page--about .sd-cta .sd-cta__decoration--top,
-.sd-page--classes .sd-cta .sd-cta__decoration--top {
+.sd-page--classes .sd-cta .sd-cta__decoration--top,
+.sd-page--schedule .sd-cta .sd-cta__decoration--top {
   top: 0;
   right: 0;
   width: var(--sd-page-cta-top-width);
 }
 
 .sd-page--about .sd-cta .sd-cta__decoration--bottom,
-.sd-page--classes .sd-cta .sd-cta__decoration--bottom {
+.sd-page--classes .sd-cta .sd-cta__decoration--bottom,
+.sd-page--schedule .sd-cta .sd-cta__decoration--bottom {
   left: 0;
   bottom: 0;
   width: var(--sd-page-cta-bottom-width);
 }
 
 .sd-page--about .sd-cta > .sd-container,
-.sd-page--classes .sd-cta > .sd-container {
+.sd-page--classes .sd-cta > .sd-container,
+.sd-page--schedule .sd-cta > .sd-container {
   position: relative;
   z-index: 2;
   display: flex;
@@ -640,18 +646,22 @@
 .sd-page--about .sd-cta .sd-cta__title,
 .sd-page--about .sd-cta .sd-cta__desc,
 .sd-page--classes .sd-cta .sd-cta__title,
-.sd-page--classes .sd-cta .sd-cta__desc {
+.sd-page--classes .sd-cta .sd-cta__desc,
+.sd-page--schedule .sd-cta .sd-cta__title,
+.sd-page--schedule .sd-cta .sd-cta__desc {
   color: var(--sd-white);
 }
 
 .sd-page--about .sd-cta .sd-cta__title,
-.sd-page--classes .sd-cta .sd-cta__title {
+.sd-page--classes .sd-cta .sd-cta__title,
+.sd-page--schedule .sd-cta .sd-cta__title {
   margin-bottom: 0;
   text-wrap: balance;
 }
 
 .sd-page--about .sd-cta .sd-cta__desc,
-.sd-page--classes .sd-cta .sd-cta__desc {
+.sd-page--classes .sd-cta .sd-cta__desc,
+.sd-page--schedule .sd-cta .sd-cta__desc {
   max-width: 640px;
   margin: 0;
   line-height: 1.6;
@@ -659,7 +669,8 @@
 }
 
 .sd-page--about .sd-cta .sd-btn,
-.sd-page--classes .sd-cta .sd-btn {
+.sd-page--classes .sd-cta .sd-btn,
+.sd-page--schedule .sd-cta .sd-btn {
   margin-top: var(--sd-space-xs);
 }
 
