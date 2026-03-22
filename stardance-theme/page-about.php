@@ -12,7 +12,7 @@ get_header();
 
     <?php stardance_render_page_hero(array(
         'title'       => 'About Star Dance Studio',
-        'description' => 'A professional dance academy in the heart of Limassol, dedicated to the art and discipline of competitive ballroom and Latin dance.',
+        'description' => 'We are a professional dance school in Limassol offering Latin American and Ballroom instruction for all ages and levels. From young beginners to competitive dancers, we help each student reach their full potential on the dance floor.',
         'modifier'    => 'about',
     )); ?>
 

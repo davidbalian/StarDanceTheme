@@ -41,19 +41,18 @@
   pointer-events: none;
 }
 
-/* Bottom-right decorative lines (mirrored) */
+/* Bottom-right decorative lines */
 .sd-page-hero--about::after {
   content: '';
   position: absolute;
   right: 40px;
-  bottom: 40px;
+  bottom: 0;
   width: 520px;
   height: 352px;
   background-image: url('https://stardance.com.cy/wp-content/uploads/2026/03/white-and-gold-lines.svg');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: right bottom;
-  transform: scaleX(-1);
   z-index: 1;
   pointer-events: none;
 }
