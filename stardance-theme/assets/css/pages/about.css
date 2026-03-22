@@ -422,7 +422,7 @@
   background-size: 50% auto, cover;
   background-position: top left, center;
   pointer-events: none;
-  transform: scaleX(-1);
+  transform: scale(-1);
   transform-origin: center;
   z-index: 0;
 }
