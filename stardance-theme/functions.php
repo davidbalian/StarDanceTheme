@@ -41,7 +41,7 @@ function stardance_setup() {
 }
 add_action('after_setup_theme', 'stardance_setup');
 
-define( 'STARDANCE_REWRITE_VERSION', '2026-03-classes-page-fix' );
+define( 'STARDANCE_REWRITE_VERSION', '2026-03-gallery-filters' );
 
 // Enqueue Styles and Scripts
 function stardance_enqueue_assets() {
@@ -93,6 +93,11 @@ function stardance_enqueue_assets() {
     wp_enqueue_script('stardance-gallery', get_template_directory_uri() . '/assets/js/gallery.js', array('photoswipe', 'photoswipe-lightbox'), stardance_asset_version('assets/js/gallery.js'), true);
     wp_enqueue_script('stardance-contact-form', get_template_directory_uri() . '/assets/js/contact-form.js', array(), stardance_asset_version('assets/js/contact-form.js'), true);
 
+    wp_localize_script('stardance-gallery', 'stardanceGallery', array(
+        'ajaxurl' => admin_url('admin-ajax.php'),
+        'nonce'   => wp_create_nonce('stardance_gallery_nonce'),
+    ));
+
     // Localize script for AJAX
     wp_localize_script('stardance-contact-form', 'stardanceAjax', array(
         'ajaxurl' => admin_url('admin-ajax.php'),
@@ -127,8 +132,69 @@ function stardance_register_post_types() {
         'menu_position' => 21,
         'show_in_rest' => true,
     ));
+
+    register_post_type('gallery_item', array(
+        'labels' => array(
+            'name'               => __('Gallery Images', 'stardance'),
+            'singular_name'      => __('Gallery Image', 'stardance'),
+            'add_new'            => __('Add New Image', 'stardance'),
+            'add_new_item'       => __('Add New Gallery Image', 'stardance'),
+            'edit_item'          => __('Edit Gallery Image', 'stardance'),
+            'new_item'           => __('New Gallery Image', 'stardance'),
+            'view_item'          => __('View Gallery Image', 'stardance'),
+            'search_items'       => __('Search Gallery Images', 'stardance'),
+            'not_found'          => __('No gallery images found', 'stardance'),
+            'not_found_in_trash' => __('No gallery images found in trash', 'stardance'),
+            'menu_name'          => __('Gallery Images', 'stardance'),
+        ),
+        'public'             => true,
+        'publicly_queryable' => false,
+        'exclude_from_search' => true,
+        'has_archive'        => false,
+        'rewrite'            => false,
+        'supports'           => array('title', 'editor', 'thumbnail', 'excerpt', 'page-attributes'),
+        'menu_icon'          => 'dashicons-format-gallery',
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'menu_position'      => 22,
+        'show_in_rest'       => true,
+    ));
 }
 add_action('init', 'stardance_register_post_types');
+
+/**
+ * Register gallery taxonomies.
+ *
+ * @return void
+ */
+function stardance_register_taxonomies() {
+    register_taxonomy('gallery_type', array('gallery_item'), array(
+        'labels' => array(
+            'name'          => __('Gallery Types', 'stardance'),
+            'singular_name' => __('Gallery Type', 'stardance'),
+            'menu_name'     => __('Gallery Types', 'stardance'),
+        ),
+        'public'            => false,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'show_in_rest'      => true,
+        'hierarchical'      => true,
+    ));
+
+    register_taxonomy('gallery_occasion', array('gallery_item'), array(
+        'labels' => array(
+            'name'          => __('Gallery Occasions', 'stardance'),
+            'singular_name' => __('Gallery Occasion', 'stardance'),
+            'menu_name'     => __('Gallery Occasions', 'stardance'),
+        ),
+        'public'            => false,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'show_in_rest'      => true,
+        'hierarchical'      => true,
+    ));
+}
+add_action('init', 'stardance_register_taxonomies');
 
 /**
  * Download a remote image into the media library and set it as the featured image.
@@ -162,6 +228,239 @@ function stardance_sync_remote_featured_image( $post_id, $image_url ) {
     set_post_thumbnail( $post_id, $attachment_id );
     update_post_meta( $post_id, '_stardance_remote_featured_image', esc_url_raw( $image_url ) );
 }
+
+/**
+ * Return starter gallery item data.
+ *
+ * @return array<int, array<string, mixed>>
+ */
+function stardance_get_gallery_seed_items() {
+    $items = array();
+
+    for ( $index = 1; $index <= 16; $index++ ) {
+        $items[] = array(
+            'title'         => sprintf( 'Gallery Image %02d', $index ),
+            'slug'          => sprintf( 'gallery-image-%02d', $index ),
+            'image_url'     => sprintf( 'https://stardance.com.cy/wp-content/uploads/2026/03/gallery-%d.png', $index ),
+            'photo_year'    => '2026',
+            'gallery_type'  => array( 'Competition' ),
+            'gallery_occasion' => array( 'Studio Moments' ),
+            'menu_order'    => $index,
+        );
+    }
+
+    return $items;
+}
+
+/**
+ * Return gallery query args from filter input.
+ *
+ * @param array $filters Optional filters.
+ * @return array
+ */
+function stardance_get_gallery_query_args( $filters = array() ) {
+    $filters = wp_parse_args($filters, array(
+        'photo_year' => '',
+        'gallery_type' => '',
+        'gallery_occasion' => '',
+    ));
+
+    $meta_query = array();
+    $tax_query  = array();
+
+    if ( '' !== $filters['photo_year'] && 'all' !== $filters['photo_year'] ) {
+        $meta_query[] = array(
+            'key'   => 'photo_year',
+            'value' => sanitize_text_field( $filters['photo_year'] ),
+        );
+    }
+
+    if ( '' !== $filters['gallery_type'] && 'all' !== $filters['gallery_type'] ) {
+        $tax_query[] = array(
+            'taxonomy' => 'gallery_type',
+            'field'    => 'slug',
+            'terms'    => sanitize_title( $filters['gallery_type'] ),
+        );
+    }
+
+    if ( '' !== $filters['gallery_occasion'] && 'all' !== $filters['gallery_occasion'] ) {
+        $tax_query[] = array(
+            'taxonomy' => 'gallery_occasion',
+            'field'    => 'slug',
+            'terms'    => sanitize_title( $filters['gallery_occasion'] ),
+        );
+    }
+
+    if ( count( $tax_query ) > 1 ) {
+        $tax_query['relation'] = 'AND';
+    }
+
+    $query_args = array(
+        'post_type'      => 'gallery_item',
+        'post_status'    => 'publish',
+        'posts_per_page' => -1,
+        'orderby'        => array(
+            'menu_order' => 'ASC',
+            'date'       => 'DESC',
+        ),
+    );
+
+    if ( ! empty( $meta_query ) ) {
+        $query_args['meta_query'] = $meta_query;
+    }
+
+    if ( ! empty( $tax_query ) ) {
+        $query_args['tax_query'] = $tax_query;
+    }
+
+    return $query_args;
+}
+
+/**
+ * Return gallery filter options from existing gallery items.
+ *
+ * @return array
+ */
+function stardance_get_gallery_filter_options() {
+    $years = get_posts(array(
+        'post_type'      => 'gallery_item',
+        'post_status'    => 'publish',
+        'posts_per_page' => -1,
+        'orderby'        => array(
+            'meta_value' => 'DESC',
+            'menu_order' => 'ASC',
+        ),
+        'meta_key'       => 'photo_year',
+        'fields'         => 'ids',
+    ));
+
+    $year_values = array();
+    foreach ( $years as $post_id ) {
+        $year = get_post_meta( $post_id, 'photo_year', true );
+        if ( $year ) {
+            $year_values[] = $year;
+        }
+    }
+    $year_values = array_values( array_unique( $year_values ) );
+    rsort( $year_values, SORT_NATURAL );
+
+    return array(
+        'years'     => $year_values,
+        'types'     => get_terms(array(
+            'taxonomy'   => 'gallery_type',
+            'hide_empty' => true,
+            'orderby'    => 'name',
+            'order'      => 'ASC',
+        )),
+        'occasions' => get_terms(array(
+            'taxonomy'   => 'gallery_occasion',
+            'hide_empty' => true,
+            'orderby'    => 'name',
+            'order'      => 'ASC',
+        )),
+    );
+}
+
+/**
+ * Render Gallery page grid items.
+ *
+ * @param array $filters Optional filters.
+ * @return string
+ */
+function stardance_get_gallery_grid_markup( $filters = array() ) {
+    $query = new WP_Query( stardance_get_gallery_query_args( $filters ) );
+
+    ob_start();
+
+    if ( $query->have_posts() ) {
+        $delay = 0;
+
+        while ( $query->have_posts() ) {
+            $query->the_post();
+            stardance_render_gallery_item( get_the_ID(), min( $delay, 10 ) );
+            $delay++;
+        }
+    } else {
+        ?>
+        <div class="sd-gallery-page__empty">
+            <p class="sd-text">No gallery images match those filters yet.</p>
+        </div>
+        <?php
+    }
+
+    wp_reset_postdata();
+
+    return trim( ob_get_clean() );
+}
+
+/**
+ * Add gallery year meta box.
+ *
+ * @return void
+ */
+function stardance_add_gallery_meta_box() {
+    add_meta_box(
+        'stardance_gallery_details',
+        __('Gallery Details', 'stardance'),
+        'stardance_render_gallery_meta_box',
+        'gallery_item',
+        'side',
+        'default'
+    );
+}
+add_action('add_meta_boxes', 'stardance_add_gallery_meta_box');
+
+/**
+ * Render gallery details meta box.
+ *
+ * @param WP_Post $post Post object.
+ * @return void
+ */
+function stardance_render_gallery_meta_box( $post ) {
+    wp_nonce_field( 'stardance_save_gallery_meta', 'stardance_gallery_meta_nonce' );
+    $photo_year = get_post_meta( $post->ID, 'photo_year', true );
+    ?>
+    <p>
+        <label for="stardance_photo_year"><strong><?php esc_html_e( 'Photo Year', 'stardance' ); ?></strong></label>
+    </p>
+    <p>
+        <input
+            type="text"
+            id="stardance_photo_year"
+            name="stardance_photo_year"
+            value="<?php echo esc_attr( $photo_year ); ?>"
+            class="widefat"
+            placeholder="2026"
+        >
+    </p>
+    <p class="description"><?php esc_html_e( 'Set the year shown in gallery filters and captions.', 'stardance' ); ?></p>
+    <?php
+}
+
+/**
+ * Save gallery year meta.
+ *
+ * @param int $post_id Post ID.
+ * @return void
+ */
+function stardance_save_gallery_meta( $post_id ) {
+    if ( empty( $_POST['stardance_gallery_meta_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['stardance_gallery_meta_nonce'] ) ), 'stardance_save_gallery_meta' ) ) {
+        return;
+    }
+
+    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+        return;
+    }
+
+    if ( ! current_user_can( 'edit_post', $post_id ) ) {
+        return;
+    }
+
+    if ( isset( $_POST['stardance_photo_year'] ) ) {
+        update_post_meta( $post_id, 'photo_year', sanitize_text_field( wp_unslash( $_POST['stardance_photo_year'] ) ) );
+    }
+}
+add_action('save_post_gallery_item', 'stardance_save_gallery_meta');
 
 // Auto-create pages and sync sample posts.
 function stardance_create_pages() {
@@ -289,6 +588,49 @@ function stardance_create_pages() {
             stardance_sync_remote_featured_image( $post_id, $class_data['image_url'] );
         }
     }
+
+    $gallery_types = array( 'Competition' );
+    $gallery_occasions = array( 'Studio Moments' );
+
+    foreach ( $gallery_types as $gallery_type ) {
+        if ( ! term_exists( $gallery_type, 'gallery_type' ) ) {
+            wp_insert_term( $gallery_type, 'gallery_type' );
+        }
+    }
+
+    foreach ( $gallery_occasions as $gallery_occasion ) {
+        if ( ! term_exists( $gallery_occasion, 'gallery_occasion' ) ) {
+            wp_insert_term( $gallery_occasion, 'gallery_occasion' );
+        }
+    }
+
+    foreach ( stardance_get_gallery_seed_items() as $gallery_item ) {
+        $existing = get_page_by_path( $gallery_item['slug'], OBJECT, 'gallery_item' );
+        $post_args = array(
+            'post_title'   => $gallery_item['title'],
+            'post_name'    => $gallery_item['slug'],
+            'post_excerpt' => $gallery_item['title'],
+            'post_content' => $gallery_item['title'],
+            'post_status'  => 'publish',
+            'post_type'    => 'gallery_item',
+            'post_author'  => 1,
+            'menu_order'   => $gallery_item['menu_order'],
+        );
+
+        if ( $existing ) {
+            $post_args['ID'] = $existing->ID;
+            $post_id = wp_update_post( $post_args, true );
+        } else {
+            $post_id = wp_insert_post( $post_args, true );
+        }
+
+        if ( $post_id && ! is_wp_error( $post_id ) ) {
+            update_post_meta( $post_id, 'photo_year', $gallery_item['photo_year'] );
+            wp_set_object_terms( $post_id, $gallery_item['gallery_type'], 'gallery_type', false );
+            wp_set_object_terms( $post_id, $gallery_item['gallery_occasion'], 'gallery_occasion', false );
+            stardance_sync_remote_featured_image( $post_id, $gallery_item['image_url'] );
+        }
+    }
 }
 
 /**
@@ -319,6 +661,27 @@ function stardance_maybe_flush_rewrite_rules() {
     update_option( 'stardance_rewrite_version', STARDANCE_REWRITE_VERSION );
 }
 add_action( 'admin_init', 'stardance_maybe_flush_rewrite_rules', 20 );
+
+/**
+ * AJAX callback for Gallery page filtering.
+ *
+ * @return void
+ */
+function stardance_filter_gallery() {
+    check_ajax_referer( 'stardance_gallery_nonce', 'nonce' );
+
+    $filters = array(
+        'photo_year'       => sanitize_text_field( $_POST['photo_year'] ?? '' ),
+        'gallery_type'     => sanitize_text_field( $_POST['gallery_type'] ?? '' ),
+        'gallery_occasion' => sanitize_text_field( $_POST['gallery_occasion'] ?? '' ),
+    );
+
+    wp_send_json_success(array(
+        'markup' => stardance_get_gallery_grid_markup( $filters ),
+    ));
+}
+add_action('wp_ajax_stardance_filter_gallery', 'stardance_filter_gallery');
+add_action('wp_ajax_nopriv_stardance_filter_gallery', 'stardance_filter_gallery');
 
 // Contact Form AJAX Handler
 function stardance_handle_contact_form() {

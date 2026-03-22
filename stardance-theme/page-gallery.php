@@ -5,6 +5,8 @@
  * @package stardance
  */
 
+$gallery_filters = stardance_get_gallery_filter_options();
+
 get_header();
 ?>
 
@@ -16,200 +18,50 @@ get_header();
         'modifier'    => 'gallery',
     )); ?>
 
-    <!-- Gallery Section -->
     <section class="sd-section sd-gallery-page" id="gallery">
         <div class="sd-container">
-
-            <!-- Filter Bar -->
-            <div class="sd-gallery-page__filters fade-in fade-in-delay-0" role="group" aria-label="Filter gallery">
-
-                <div class="sd-gallery-page__filter-group">
-                    <span class="sd-gallery-page__filter-label">Filter by Year:</span>
-                    <div class="sd-gallery-page__filter-tabs" role="tablist">
-                        <button class="sd-btn sd-btn--ghost sd-gallery-page__tab is-active" role="tab" aria-selected="true" data-filter="year" data-value="all">ANY</button>
-                        <button class="sd-btn sd-btn--ghost sd-gallery-page__tab" role="tab" aria-selected="false" data-filter="year" data-value="2024">2024</button>
-                        <button class="sd-btn sd-btn--ghost sd-gallery-page__tab" role="tab" aria-selected="false" data-filter="year" data-value="2023">2023</button>
-                        <button class="sd-btn sd-btn--ghost sd-gallery-page__tab" role="tab" aria-selected="false" data-filter="year" data-value="2022">2022</button>
-                        <button class="sd-btn sd-btn--ghost sd-gallery-page__tab" role="tab" aria-selected="false" data-filter="year" data-value="2021">2021</button>
+            <div class="sd-gallery-page__filters fade-in fade-in-delay-0">
+                <div class="sd-gallery-page__filter-group" role="group" aria-label="Filter gallery by year">
+                    <span class="sd-gallery-page__filter-label">Year</span>
+                    <div class="sd-gallery-page__filter-tabs">
+                        <button class="sd-gallery-page__tab is-active" type="button" data-filter-group="photo_year" data-filter-value="all" aria-pressed="true">All</button>
+                        <?php foreach ( $gallery_filters['years'] as $year ) : ?>
+                            <button class="sd-gallery-page__tab" type="button" data-filter-group="photo_year" data-filter-value="<?php echo esc_attr( $year ); ?>" aria-pressed="false"><?php echo esc_html( $year ); ?></button>
+                        <?php endforeach; ?>
                     </div>
                 </div>
 
-                <div class="sd-gallery-page__filter-group">
-                    <span class="sd-gallery-page__filter-label">Filter by Type:</span>
-                    <div class="sd-gallery-page__filter-tabs" role="tablist">
-                        <button class="sd-btn sd-btn--ghost sd-gallery-page__tab is-active" role="tab" aria-selected="true" data-filter="type" data-value="all">Competitions</button>
-                        <button class="sd-btn sd-btn--ghost sd-gallery-page__tab" role="tab" aria-selected="false" data-filter="type" data-value="performances">Dance &amp; Performances</button>
-                        <button class="sd-btn sd-btn--ghost sd-gallery-page__tab" role="tab" aria-selected="false" data-filter="type" data-value="studio">Studio</button>
+                <div class="sd-gallery-page__filter-group" role="group" aria-label="Filter gallery by type">
+                    <span class="sd-gallery-page__filter-label">Type</span>
+                    <div class="sd-gallery-page__filter-tabs">
+                        <button class="sd-gallery-page__tab is-active" type="button" data-filter-group="gallery_type" data-filter-value="all" aria-pressed="true">All</button>
+                        <?php foreach ( $gallery_filters['types'] as $type_term ) : ?>
+                            <button class="sd-gallery-page__tab" type="button" data-filter-group="gallery_type" data-filter-value="<?php echo esc_attr( $type_term->slug ); ?>" aria-pressed="false"><?php echo esc_html( $type_term->name ); ?></button>
+                        <?php endforeach; ?>
                     </div>
                 </div>
 
-            </div><!-- /.sd-gallery-page__filters -->
-
-            <!-- Photo Grid -->
-            <div class="sd-gallery-page__grid" id="gallery-grid"
-                 data-photoswipe-gallery
-                 itemscope
-                 itemtype="http://schema.org/ImageGallery">
-
-                <a href="http://stardance.com.cy/wp-content/uploads/2026/02/European-Ballroom.png"
-                   class="sd-gallery-page__item fade-in fade-in-delay-1"
-                   data-pswp-width="1200"
-                   data-pswp-height="900"
-                   data-year="2026"
-                   data-type="competition"
-                   itemprop="associatedMedia"
-                   itemscope
-                   itemtype="http://schema.org/ImageObject">
-                    <img src="http://stardance.com.cy/wp-content/uploads/2026/02/European-Ballroom.png"
-                         alt="European Ballroom Competition 2026"
-                         width="400" height="300"
-                         loading="lazy"
-                         itemprop="thumbnail">
-                    <span class="sd-gallery-page__overlay">
-                        <span class="sd-gallery-page__caption">European Ballroom — 2026</span>
-                    </span>
-                </a>
-
-                <a href="http://stardance.com.cy/wp-content/uploads/2026/02/Latin-American.png"
-                   class="sd-gallery-page__item fade-in fade-in-delay-2"
-                   data-pswp-width="1200"
-                   data-pswp-height="900"
-                   data-year="2026"
-                   data-type="competition"
-                   itemprop="associatedMedia"
-                   itemscope
-                   itemtype="http://schema.org/ImageObject">
-                    <img src="http://stardance.com.cy/wp-content/uploads/2026/02/Latin-American.png"
-                         alt="Latin American Competition 2026"
-                         width="400" height="300"
-                         loading="lazy"
-                         itemprop="thumbnail">
-                    <span class="sd-gallery-page__overlay">
-                        <span class="sd-gallery-page__caption">Latin American — 2026</span>
-                    </span>
-                </a>
-
-                <a href="http://stardance.com.cy/wp-content/uploads/2026/02/Latin-Fusion-Ladies.png"
-                   class="sd-gallery-page__item fade-in fade-in-delay-3"
-                   data-pswp-width="1200"
-                   data-pswp-height="900"
-                   data-year="2025"
-                   data-type="showcase"
-                   itemprop="associatedMedia"
-                   itemscope
-                   itemtype="http://schema.org/ImageObject">
-                    <img src="http://stardance.com.cy/wp-content/uploads/2026/02/Latin-Fusion-Ladies.png"
-                         alt="Latin Fusion Ladies Showcase 2025"
-                         width="400" height="300"
-                         loading="lazy"
-                         itemprop="thumbnail">
-                    <span class="sd-gallery-page__overlay">
-                        <span class="sd-gallery-page__caption">Latin Fusion Ladies — 2025</span>
-                    </span>
-                </a>
-
-                <a href="http://stardance.com.cy/wp-content/uploads/2026/02/Kids-Programs.png"
-                   class="sd-gallery-page__item fade-in fade-in-delay-4"
-                   data-pswp-width="1200"
-                   data-pswp-height="900"
-                   data-year="2025"
-                   data-type="showcase"
-                   itemprop="associatedMedia"
-                   itemscope
-                   itemtype="http://schema.org/ImageObject">
-                    <img src="http://stardance.com.cy/wp-content/uploads/2026/02/Kids-Programs.png"
-                         alt="Kids Program Showcase 2025"
-                         width="400" height="300"
-                         loading="lazy"
-                         itemprop="thumbnail">
-                    <span class="sd-gallery-page__overlay">
-                        <span class="sd-gallery-page__caption">Kids Program — 2025</span>
-                    </span>
-                </a>
-
-                <a href="http://stardance.com.cy/wp-content/uploads/2026/02/Wedding-Choreography.png"
-                   class="sd-gallery-page__item fade-in fade-in-delay-5"
-                   data-pswp-width="1200"
-                   data-pswp-height="900"
-                   data-year="2025"
-                   data-type="studio"
-                   itemprop="associatedMedia"
-                   itemscope
-                   itemtype="http://schema.org/ImageObject">
-                    <img src="http://stardance.com.cy/wp-content/uploads/2026/02/Wedding-Choreography.png"
-                         alt="Wedding Choreography Studio Session 2025"
-                         width="400" height="300"
-                         loading="lazy"
-                         itemprop="thumbnail">
-                    <span class="sd-gallery-page__overlay">
-                        <span class="sd-gallery-page__caption">Wedding Choreography — 2025</span>
-                    </span>
-                </a>
-
-                <a href="http://stardance.com.cy/wp-content/uploads/2026/02/Individual-Lessons.png"
-                   class="sd-gallery-page__item fade-in fade-in-delay-6"
-                   data-pswp-width="1200"
-                   data-pswp-height="900"
-                   data-year="2024"
-                   data-type="studio"
-                   itemprop="associatedMedia"
-                   itemscope
-                   itemtype="http://schema.org/ImageObject">
-                    <img src="http://stardance.com.cy/wp-content/uploads/2026/02/Individual-Lessons.png"
-                         alt="Individual Lessons Studio Session 2024"
-                         width="400" height="300"
-                         loading="lazy"
-                         itemprop="thumbnail">
-                    <span class="sd-gallery-page__overlay">
-                        <span class="sd-gallery-page__caption">Individual Lessons — 2024</span>
-                    </span>
-                </a>
-
-                <a href="http://stardance.com.cy/wp-content/uploads/2026/02/European-Ballroom.png"
-                   class="sd-gallery-page__item fade-in fade-in-delay-7"
-                   data-pswp-width="1200"
-                   data-pswp-height="900"
-                   data-year="2024"
-                   data-type="competition"
-                   itemprop="associatedMedia"
-                   itemscope
-                   itemtype="http://schema.org/ImageObject">
-                    <img src="http://stardance.com.cy/wp-content/uploads/2026/02/European-Ballroom.png"
-                         alt="European Ballroom Championship 2024"
-                         width="400" height="300"
-                         loading="lazy"
-                         itemprop="thumbnail">
-                    <span class="sd-gallery-page__overlay">
-                        <span class="sd-gallery-page__caption">European Ballroom — 2024</span>
-                    </span>
-                </a>
-
-                <a href="http://stardance.com.cy/wp-content/uploads/2026/02/Latin-American.png"
-                   class="sd-gallery-page__item fade-in fade-in-delay-8"
-                   data-pswp-width="1200"
-                   data-pswp-height="900"
-                   data-year="2024"
-                   data-type="showcase"
-                   itemprop="associatedMedia"
-                   itemscope
-                   itemtype="http://schema.org/ImageObject">
-                    <img src="http://stardance.com.cy/wp-content/uploads/2026/02/Latin-American.png"
-                         alt="Latin American End-of-Year Showcase 2024"
-                         width="400" height="300"
-                         loading="lazy"
-                         itemprop="thumbnail">
-                    <span class="sd-gallery-page__overlay">
-                        <span class="sd-gallery-page__caption">Latin American — 2024</span>
-                    </span>
-                </a>
-
-            </div><!-- /#gallery-grid -->
-
-            <!-- Show More -->
-            <div class="sd-gallery-page__more fade-in fade-in-delay-0">
-                <button class="sd-btn sd-btn--outline" id="gallery-show-more" type="button">Show More</button>
+                <div class="sd-gallery-page__filter-group" role="group" aria-label="Filter gallery by occasion">
+                    <span class="sd-gallery-page__filter-label">Occasion</span>
+                    <div class="sd-gallery-page__filter-tabs">
+                        <button class="sd-gallery-page__tab is-active" type="button" data-filter-group="gallery_occasion" data-filter-value="all" aria-pressed="true">All</button>
+                        <?php foreach ( $gallery_filters['occasions'] as $occasion_term ) : ?>
+                            <button class="sd-gallery-page__tab" type="button" data-filter-group="gallery_occasion" data-filter-value="<?php echo esc_attr( $occasion_term->slug ); ?>" aria-pressed="false"><?php echo esc_html( $occasion_term->name ); ?></button>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
             </div>
 
+            <div
+                class="sd-gallery-page__grid"
+                id="gallery-grid"
+                data-gallery-grid
+                data-photoswipe-gallery
+                itemscope
+                itemtype="https://schema.org/ImageGallery"
+            >
+                <?php echo stardance_get_gallery_grid_markup(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+            </div>
         </div>
     </section>
 

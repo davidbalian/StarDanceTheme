@@ -258,6 +258,73 @@ function stardance_render_event_card( $args = array() ) {
 }
 
 /**
+ * Render a gallery item card for the Gallery page and AJAX responses.
+ *
+ * @param int $post_id Gallery item post ID.
+ * @param int $delay   Optional fade-in delay index.
+ * @return void
+ */
+function stardance_render_gallery_item( $post_id, $delay = 0 ) {
+    $post_id = absint( $post_id );
+
+    if ( ! $post_id ) {
+        return;
+    }
+
+    $image_id = get_post_thumbnail_id( $post_id );
+
+    if ( ! $image_id ) {
+        return;
+    }
+
+    $image_full = wp_get_attachment_image_src( $image_id, 'full' );
+    $image_large = wp_get_attachment_image_src( $image_id, 'large' );
+    $image_alt = get_post_meta( $image_id, '_wp_attachment_image_alt', true );
+    $photo_year = get_post_meta( $post_id, 'photo_year', true );
+    $type_terms = get_the_terms( $post_id, 'gallery_type' );
+    $occasion_terms = get_the_terms( $post_id, 'gallery_occasion' );
+    $type_label = ( ! is_wp_error( $type_terms ) && ! empty( $type_terms ) ) ? $type_terms[0]->name : '';
+    $occasion_label = ( ! is_wp_error( $occasion_terms ) && ! empty( $occasion_terms ) ) ? $occasion_terms[0]->name : '';
+    $caption_bits = array_filter(
+        array(
+            get_the_title( $post_id ),
+            $photo_year,
+            $type_label,
+        )
+    );
+
+    if ( ! $image_full || ! $image_large ) {
+        return;
+    }
+    ?>
+    <a
+        href="<?php echo esc_url( $image_full[0] ); ?>"
+        class="sd-gallery-page__item fade-in fade-in-delay-<?php echo absint( $delay ); ?>"
+        data-pswp-width="<?php echo esc_attr( (string) absint( $image_full[1] ) ); ?>"
+        data-pswp-height="<?php echo esc_attr( (string) absint( $image_full[2] ) ); ?>"
+        itemprop="associatedMedia"
+        itemscope
+        itemtype="https://schema.org/ImageObject"
+    >
+        <img
+            src="<?php echo esc_url( $image_large[0] ); ?>"
+            alt="<?php echo esc_attr( $image_alt ? $image_alt : get_the_title( $post_id ) ); ?>"
+            width="<?php echo esc_attr( (string) absint( $image_large[1] ) ); ?>"
+            height="<?php echo esc_attr( (string) absint( $image_large[2] ) ); ?>"
+            loading="lazy"
+            itemprop="thumbnail"
+        >
+        <span class="sd-gallery-page__overlay">
+            <span class="sd-gallery-page__caption"><?php echo esc_html( implode( ' — ', $caption_bits ) ); ?></span>
+            <?php if ( $occasion_label ) : ?>
+                <span class="sd-gallery-page__meta"><?php echo esc_html( $occasion_label ); ?></span>
+            <?php endif; ?>
+        </span>
+    </a>
+    <?php
+}
+
+/**
  * Render a single FAQ accordion item.
  *
  * @param array $args {
