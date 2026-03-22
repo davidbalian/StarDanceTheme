@@ -4,12 +4,15 @@
 (function () {
   const galleryGrid = document.querySelector('[data-gallery-grid]');
   if (!galleryGrid) return;
+  const showMoreButton = document.querySelector('[data-gallery-show-more]');
 
   let lightbox = null;
   const state = {
     photo_year: 'all',
     gallery_type: 'all',
     gallery_occasion: 'all',
+    paged: 1,
+    posts_per_page: 12,
   };
 
   function initLightbox() {
@@ -32,10 +35,12 @@
     lightbox.init();
   }
 
-  async function fetchFilteredGallery() {
+  async function fetchFilteredGallery(options = {}) {
     if (typeof stardanceGallery === 'undefined') {
       return;
     }
+
+    const append = Boolean(options.append);
 
     const formData = new FormData();
     formData.append('action', 'stardance_filter_gallery');
@@ -43,8 +48,13 @@
     formData.append('photo_year', state.photo_year);
     formData.append('gallery_type', state.gallery_type);
     formData.append('gallery_occasion', state.gallery_occasion);
+    formData.append('paged', state.paged);
+    formData.append('posts_per_page', state.posts_per_page);
 
     galleryGrid.classList.add('is-loading');
+    if (showMoreButton) {
+      showMoreButton.disabled = true;
+    }
 
     try {
       const response = await fetch(stardanceGallery.ajaxurl, {
@@ -57,12 +67,24 @@
         throw new Error('Invalid gallery response');
       }
 
-      galleryGrid.innerHTML = payload.data.markup;
+      if (append) {
+        galleryGrid.insertAdjacentHTML('beforeend', payload.data.markup);
+      } else {
+        galleryGrid.innerHTML = payload.data.markup;
+      }
+
+      if (showMoreButton) {
+        showMoreButton.hidden = !payload.data.has_more;
+      }
+
       initLightbox();
     } catch (error) {
       console.error('Gallery filter request failed', error);
     } finally {
       galleryGrid.classList.remove('is-loading');
+      if (showMoreButton) {
+        showMoreButton.disabled = false;
+      }
     }
   }
 
@@ -75,6 +97,7 @@
     }
 
     state[filterGroup] = filterValue;
+    state.paged = 1;
 
     document.querySelectorAll(`[data-filter-group="${filterGroup}"]`).forEach((tab) => {
       const isActive = tab === button;
@@ -85,10 +108,17 @@
 
   document.addEventListener('click', (event) => {
     const button = event.target.closest('.sd-gallery-page__tab');
-    if (!button) return;
+    if (button) {
+      updateActiveTab(button);
+      fetchFilteredGallery();
+      return;
+    }
 
-    updateActiveTab(button);
-    fetchFilteredGallery();
+    const showMore = event.target.closest('[data-gallery-show-more]');
+    if (!showMore) return;
+
+    state.paged += 1;
+    fetchFilteredGallery({ append: true });
   });
 
   initLightbox();

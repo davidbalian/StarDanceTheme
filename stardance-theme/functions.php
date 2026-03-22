@@ -263,6 +263,8 @@ function stardance_get_gallery_query_args( $filters = array() ) {
         'photo_year' => '',
         'gallery_type' => '',
         'gallery_occasion' => '',
+        'posts_per_page' => -1,
+        'paged' => 1,
     ));
 
     $meta_query = array();
@@ -298,7 +300,8 @@ function stardance_get_gallery_query_args( $filters = array() ) {
     $query_args = array(
         'post_type'      => 'gallery_item',
         'post_status'    => 'publish',
-        'posts_per_page' => -1,
+        'posts_per_page' => (int) $filters['posts_per_page'],
+        'paged'          => max( 1, (int) $filters['paged'] ),
         'orderby'        => array(
             'menu_order' => 'ASC',
             'date'       => 'DESC',
@@ -391,6 +394,55 @@ function stardance_get_gallery_grid_markup( $filters = array() ) {
     wp_reset_postdata();
 
     return trim( ob_get_clean() );
+}
+
+/**
+ * Return gallery query payload for templates and AJAX.
+ *
+ * @param array $filters Optional filters.
+ * @return array
+ */
+function stardance_get_gallery_query_payload( $filters = array() ) {
+    $filters = wp_parse_args($filters, array(
+        'photo_year' => '',
+        'gallery_type' => '',
+        'gallery_occasion' => '',
+        'posts_per_page' => 12,
+        'paged' => 1,
+    ));
+
+    $query = new WP_Query( stardance_get_gallery_query_args( $filters ) );
+
+    ob_start();
+
+    if ( $query->have_posts() ) {
+        $delay = 0;
+
+        while ( $query->have_posts() ) {
+            $query->the_post();
+            stardance_render_gallery_item( get_the_ID(), min( $delay, 10 ) );
+            $delay++;
+        }
+    } else {
+        ?>
+        <div class="sd-gallery-page__empty">
+            <p class="sd-text">No gallery images match those filters yet.</p>
+        </div>
+        <?php
+    }
+
+    $markup = trim( ob_get_clean() );
+    $current_page = max( 1, (int) $filters['paged'] );
+    $has_more = $query->max_num_pages > $current_page;
+
+    wp_reset_postdata();
+
+    return array(
+        'markup' => $markup,
+        'has_more' => $has_more,
+        'max_pages' => (int) $query->max_num_pages,
+        'found_posts' => (int) $query->found_posts,
+    );
 }
 
 /**
@@ -674,10 +726,17 @@ function stardance_filter_gallery() {
         'photo_year'       => sanitize_text_field( $_POST['photo_year'] ?? '' ),
         'gallery_type'     => sanitize_text_field( $_POST['gallery_type'] ?? '' ),
         'gallery_occasion' => sanitize_text_field( $_POST['gallery_occasion'] ?? '' ),
+        'posts_per_page'   => max( 1, (int) ( $_POST['posts_per_page'] ?? 12 ) ),
+        'paged'            => max( 1, (int) ( $_POST['paged'] ?? 1 ) ),
     );
 
+    $payload = stardance_get_gallery_query_payload( $filters );
+
     wp_send_json_success(array(
-        'markup' => stardance_get_gallery_grid_markup( $filters ),
+        'markup'   => $payload['markup'],
+        'has_more' => $payload['has_more'],
+        'max_pages' => $payload['max_pages'],
+        'found_posts' => $payload['found_posts'],
     ));
 }
 add_action('wp_ajax_stardance_filter_gallery', 'stardance_filter_gallery');

@@ -6,6 +6,10 @@
  */
 
 $gallery_filters = stardance_get_gallery_filter_options();
+$gallery_payload = stardance_get_gallery_query_payload(array(
+    'posts_per_page' => 12,
+    'paged'          => 1,
+));
 
 get_header();
 ?>
@@ -60,7 +64,18 @@ get_header();
                 itemscope
                 itemtype="https://schema.org/ImageGallery"
             >
-                <?php echo stardance_get_gallery_grid_markup(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+                <?php echo $gallery_payload['markup']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+            </div>
+
+            <div class="sd-gallery-page__actions">
+                <button
+                    class="sd-btn"
+                    type="button"
+                    data-gallery-show-more
+                    <?php echo $gallery_payload['has_more'] ? '' : 'hidden'; ?>
+                >
+                    Show More
+                </button>
             </div>
         </div>
     </section>
