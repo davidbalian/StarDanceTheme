@@ -258,6 +258,9 @@
       if (append) {
         if (payload.data.markup.trim()) {
           galleryGrid.insertAdjacentHTML('beforeend', payload.data.markup);
+          if (showMoreButton) {
+            showMoreButton.hidden = !payload.data.has_more;
+          }
           return true;
         }
       } else {
