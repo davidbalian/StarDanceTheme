@@ -6,7 +6,6 @@
   if (!galleryGrid) return;
 
   const showMoreButton = document.querySelector('[data-gallery-show-more]');
-  let lightbox = null;
   const state = {
     photo_year: 'all',
     gallery_type: 'all',
@@ -15,23 +14,41 @@
     posts_per_page: 12,
   };
 
-  function initLightbox() {
-    if (typeof window.PhotoSwipeLightbox === 'undefined' || typeof window.PhotoSwipe === 'undefined') {
+  function getGalleryLinks() {
+    return Array.from(galleryGrid.querySelectorAll('.sd-gallery-page__item'));
+  }
+
+  function getGalleryItems() {
+    return getGalleryLinks().map((link) => {
+      const image = link.querySelector('img');
+
+      return {
+        src: link.getAttribute('href'),
+        width: parseInt(link.dataset.pswpWidth || '0', 10),
+        height: parseInt(link.dataset.pswpHeight || '0', 10),
+        alt: image ? image.getAttribute('alt') || '' : '',
+      };
+    });
+  }
+
+  function openLightbox(index) {
+    if (typeof window.PhotoSwipe === 'undefined') {
       return;
     }
 
-    if (lightbox) {
-      lightbox.destroy();
-      lightbox = null;
+    const items = getGalleryItems();
+    if (!items.length) {
+      return;
     }
 
-    lightbox = new window.PhotoSwipeLightbox({
-      gallery: '#gallery-grid',
-      children: '.sd-gallery-page__item',
-      pswpModule: window.PhotoSwipe,
+    const lightbox = new window.PhotoSwipe({
+      dataSource: items,
+      index,
       bgOpacity: 1,
       showHideAnimationType: 'zoom',
-      padding: { top: 24, bottom: 24, left: 24, right: 24 },
+      arrowPrev: true,
+      arrowNext: true,
+      paddingFn: () => ({ top: 24, bottom: 24, left: 24, right: 24 }),
     });
 
     lightbox.init();
@@ -79,8 +96,6 @@
       if (showMoreButton) {
         showMoreButton.hidden = !payload.data.has_more;
       }
-
-      initLightbox();
     } catch (error) {
       console.error('Gallery filter request failed', error);
     } finally {
@@ -109,6 +124,23 @@
     });
   }
 
+  galleryGrid.addEventListener('click', function (event) {
+    const link = event.target.closest('.sd-gallery-page__item');
+    if (!link) {
+      return;
+    }
+
+    const links = getGalleryLinks();
+    const index = links.indexOf(link);
+
+    if (index < 0) {
+      return;
+    }
+
+    event.preventDefault();
+    openLightbox(index);
+  });
+
   document.addEventListener('click', function (event) {
     const filterButton = event.target.closest('.sd-gallery-page__tab');
     if (filterButton) {
@@ -125,6 +157,4 @@
     state.paged += 1;
     fetchFilteredGallery({ append: true });
   });
-
-  initLightbox();
 })();
