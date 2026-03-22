@@ -420,10 +420,10 @@
     linear-gradient(180deg, rgba(0, 56, 109, 0.1) 10.1%, rgba(0, 56, 109, 0.8) 100%);
   background-repeat: no-repeat, no-repeat;
   background-size: 50% auto, cover;
-  background-position: top left, center;
+  background-position: top right, center;
   pointer-events: none;
   transform: scale(-1);
-  transform-origin: center;
+  transform-origin: top right;
   z-index: 0;
 }
 
