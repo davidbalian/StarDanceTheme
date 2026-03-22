@@ -10,15 +10,11 @@ get_header();
 
 <main class="sd-page sd-page--about" id="main-content">
 
-    <!-- Hero -->
-    <section class="sd-page-hero sd-page-hero--about sd-section">
-        <div class="sd-container">
-            <h1 class="sd-heading sd-page-hero__title fade-in fade-in-delay-0">About Star Dance Studio</h1>
-            <p class="sd-text sd-page-hero__desc fade-in fade-in-delay-1">
-                A professional dance academy in the heart of Limassol, dedicated to the art and discipline of competitive ballroom and Latin dance.
-            </p>
-        </div>
-    </section>
+    <?php stardance_render_page_hero(array(
+        'title'       => 'About Star Dance Studio',
+        'description' => 'A professional dance academy in the heart of Limassol, dedicated to the art and discipline of competitive ballroom and Latin dance.',
+        'modifier'    => 'about',
+    )); ?>
 
     <!-- Training Overview -->
     <section class="sd-section sd-about-overview" id="overview">
@@ -47,39 +43,35 @@ get_header();
     <section class="sd-section sd-about-values" id="values">
         <div class="sd-container">
             <h2 class="sd-heading sd-about-values__title fade-in fade-in-delay-0">What We Stand For</h2>
-            <div class="sd-about-values__grid sd-grid">
+            <div class="sd-about-values__grid sd-grid sd-grid--2">
 
-                <div class="sd-about-values__card fade-in fade-in-delay-1">
-                    <div class="sd-about-values__icon" aria-hidden="true">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icon-star.svg" alt="" width="48" height="48">
-                    </div>
-                    <h3 class="sd-about-values__name">Passion for Dance</h3>
-                    <p class="sd-text">We believe dance is more than movement — it's a lifelong discipline that builds character, confidence, and connection.</p>
-                </div>
+                <?php stardance_render_icon_card(array(
+                    'icon_url' => get_template_directory_uri() . '/assets/images/icon-star.svg',
+                    'title'    => 'Passion for Dance',
+                    'text'     => 'We believe dance is more than movement — it\'s a lifelong discipline that builds character, confidence, and connection.',
+                    'delay'    => 1,
+                )); ?>
 
-                <div class="sd-about-values__card fade-in fade-in-delay-2">
-                    <div class="sd-about-values__icon" aria-hidden="true">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icon-star.svg" alt="" width="48" height="48">
-                    </div>
-                    <h3 class="sd-about-values__name">Excellence in Training</h3>
-                    <p class="sd-text">The studio is committed to delivering internationally competitive standards of teaching to every student who walks through the door.</p>
-                </div>
+                <?php stardance_render_icon_card(array(
+                    'icon_url' => get_template_directory_uri() . '/assets/images/icon-star.svg',
+                    'title'    => 'Excellence in Training',
+                    'text'     => 'The studio is committed to delivering internationally competitive standards of teaching to every student who walks through the door.',
+                    'delay'    => 2,
+                )); ?>
 
-                <div class="sd-about-values__card fade-in fade-in-delay-3">
-                    <div class="sd-about-values__icon" aria-hidden="true">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icon-star.svg" alt="" width="48" height="48">
-                    </div>
-                    <h3 class="sd-about-values__name">Individual Growth</h3>
-                    <p class="sd-text">Every dancer progresses at their own pace, with personalised guidance to help them reach their full potential on and off the floor.</p>
-                </div>
+                <?php stardance_render_icon_card(array(
+                    'icon_url' => get_template_directory_uri() . '/assets/images/icon-star.svg',
+                    'title'    => 'Individual Growth',
+                    'text'     => 'Every dancer progresses at their own pace, with personalised guidance to help them reach their full potential on and off the floor.',
+                    'delay'    => 3,
+                )); ?>
 
-                <div class="sd-about-values__card fade-in fade-in-delay-4">
-                    <div class="sd-about-values__icon" aria-hidden="true">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icon-star.svg" alt="" width="48" height="48">
-                    </div>
-                    <h3 class="sd-about-values__name">Supportive Community</h3>
-                    <p class="sd-text">Our studio is open to all ages and welcomes everyone from beginners to elite competitors. Dance here is for life.</p>
-                </div>
+                <?php stardance_render_icon_card(array(
+                    'icon_url' => get_template_directory_uri() . '/assets/images/icon-star.svg',
+                    'title'    => 'Supportive Community',
+                    'text'     => 'Our studio is open to all ages and welcomes everyone from beginners to elite competitors. Dance here is for life.',
+                    'delay'    => 4,
+                )); ?>
 
             </div>
         </div>
@@ -89,7 +81,7 @@ get_header();
     <section class="sd-section sd-about-champions" id="champions">
         <div class="sd-container">
             <h2 class="sd-heading sd-about-champions__title fade-in fade-in-delay-0">We Grow Champions</h2>
-            <div class="sd-about-champions__grid">
+            <div class="sd-about-champions__grid sd-grid sd-grid--2">
 
                 <div class="sd-about-champions__item fade-in fade-in-delay-1">
                     <h3 class="sd-about-champions__item-title">Experience</h3>
@@ -131,7 +123,7 @@ get_header();
 
                     <div class="sd-about-coach__subsection">
                         <h4 class="sd-about-coach__subsection-title">Experience</h4>
-                        <p class="sd-text">From 2005–2015, Svetlana competed at the highest levels of international ballroom dance, achieving podium finishes across Europe and representing Cyprus on the world stage. She has since dedicated herself fully to developing the next generation of champions.</p>
+                        <p class="sd-text">From 2005&ndash;2015, Svetlana competed at the highest levels of international ballroom dance, achieving podium finishes across Europe and representing Cyprus on the world stage. She has since dedicated herself fully to developing the next generation of champions.</p>
                     </div>
 
                     <div class="sd-about-coach__subsection">
@@ -150,14 +142,12 @@ get_header();
         </div>
     </section>
 
-    <!-- CTA -->
-    <section class="sd-section sd-cta" id="cta">
-        <div class="sd-container sd-cta__inner">
-            <h2 class="sd-heading sd-cta__title fade-in fade-in-delay-0">Ready to Join Us?</h2>
-            <p class="sd-text sd-cta__desc fade-in fade-in-delay-1">Take the first step. Book a trial class or simply come in and see what Star Dance Studio is all about.</p>
-            <a href="<?php echo esc_url(home_url('/#contact')); ?>" class="sd-btn fade-in fade-in-delay-2">Get in Touch</a>
-        </div>
-    </section>
+    <?php stardance_render_cta(array(
+        'title'       => 'Ready to Join Us?',
+        'description' => 'Take the first step. Book a trial class or simply come in and see what Star Dance Studio is all about.',
+        'button_text' => 'Get in Touch',
+        'button_url'  => home_url('/#contact'),
+    )); ?>
 
 </main>
 

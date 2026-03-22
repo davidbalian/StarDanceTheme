@@ -168,10 +168,6 @@
   margin-bottom: 40px;
 }
 
-.sd-classes__grid {
-  grid-template-columns: repeat(3, 1fr);
-}
-
 /* ---- Gallery ---- */
 .sd-gallery__title {
   margin-bottom: 40px;
@@ -243,38 +239,10 @@
   gap: 40px;
 }
 
-.sd-about__feature {
+/* Sizing for icon cards inside the homepage about features flex container */
+.sd-about__features .sd-icon-card {
   flex: 0 0 calc(33.333% - 30px);
   max-width: 300px;
-  text-align: center;
-}
-
-.sd-about__icon {
-  margin-bottom: 16px;
-}
-
-.sd-about__icon img {
-  width: 60px;
-  height: 60px;
-  margin: 0 auto;
-}
-
-.sd-about__feature-title {
-  font-family: var(--sd-font-heading);
-  font-weight: 600;
-  font-size: 22px;
-  color: var(--sd-navy);
-  line-height: 1.2;
-  margin-bottom: 10px;
-}
-
-.sd-about__feature-desc {
-  font-family: var(--sd-font-body);
-  font-size: 15px;
-  color: var(--sd-body-text);
-  line-height: 1.4;
-  max-width: 250px;
-  margin: 0 auto;
 }
 
 .sd-about__flourish {
@@ -328,54 +296,6 @@
 .sd-competitions__desc {
   margin-bottom: 40px;
   font-size: 17px;
-}
-
-.sd-competitions__grid {
-  grid-template-columns: repeat(4, 1fr);
-}
-
-.sd-competitions__card {
-  position: relative;
-  aspect-ratio: 2 / 3;
-  border-radius: var(--sd-radius);
-  overflow: hidden;
-  background-size: cover;
-  background-position: center;
-  border: 2px solid var(--sd-gold-border);
-  display: flex;
-  align-items: flex-end;
-}
-
-.sd-competitions__card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.1) 50%, transparent 100%);
-  z-index: 1;
-}
-
-.sd-competitions__card-content {
-  position: relative;
-  z-index: 2;
-  padding: 24px;
-  width: 100%;
-}
-
-.sd-competitions__date {
-  font-family: var(--sd-font-body);
-  font-size: 14px;
-  color: var(--sd-white);
-  margin-bottom: 8px;
-  display: block;
-}
-
-.sd-competitions__card-title {
-  font-family: var(--sd-font-heading);
-  font-weight: 600;
-  font-size: 26px;
-  color: var(--sd-white);
-  line-height: 1.1;
-  margin-bottom: 16px;
 }
 
 /* ---- Coaches ---- */

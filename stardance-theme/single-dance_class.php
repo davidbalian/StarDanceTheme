@@ -34,31 +34,28 @@ the_post();
     <section class="sd-section sd-class-details" id="class-details">
         <div class="sd-container">
             <h2 class="sd-heading sd-class-details__title fade-in fade-in-delay-0">Class Details</h2>
-            <div class="sd-class-details__grid sd-grid">
+            <div class="sd-class-details__grid sd-grid sd-grid--3">
 
-                <div class="sd-class-details__card fade-in fade-in-delay-1">
-                    <div class="sd-class-details__card-icon" aria-hidden="true">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icon-star.svg" alt="" width="48" height="48">
-                    </div>
-                    <h3 class="sd-class-details__card-title">Individual Training</h3>
-                    <p class="sd-text">One-on-one sessions with Svetlana, tailored entirely to your technique, progress, and goals. Ideal for accelerating development at any level.</p>
-                </div>
+                <?php stardance_render_icon_card(array(
+                    'icon_url' => get_template_directory_uri() . '/assets/images/icon-star.svg',
+                    'title'    => 'Individual Training',
+                    'text'     => 'One-on-one sessions with Svetlana, tailored entirely to your technique, progress, and goals. Ideal for accelerating development at any level.',
+                    'delay'    => 1,
+                )); ?>
 
-                <div class="sd-class-details__card fade-in fade-in-delay-2">
-                    <div class="sd-class-details__card-icon" aria-hidden="true">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icon-star.svg" alt="" width="48" height="48">
-                    </div>
-                    <h3 class="sd-class-details__card-title">Partner Training</h3>
-                    <p class="sd-text">Train as a couple with structured coaching on partnership, synchronisation, and the dynamics that separate good dancers from great ones.</p>
-                </div>
+                <?php stardance_render_icon_card(array(
+                    'icon_url' => get_template_directory_uri() . '/assets/images/icon-star.svg',
+                    'title'    => 'Partner Training',
+                    'text'     => 'Train as a couple with structured coaching on partnership, synchronisation, and the dynamics that separate good dancers from great ones.',
+                    'delay'    => 2,
+                )); ?>
 
-                <div class="sd-class-details__card fade-in fade-in-delay-3">
-                    <div class="sd-class-details__card-icon" aria-hidden="true">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icon-star.svg" alt="" width="48" height="48">
-                    </div>
-                    <h3 class="sd-class-details__card-title">Performance Groups</h3>
-                    <p class="sd-text">Join a group rehearsing for showcases or competitions. Build ensemble skills, stage presence, and the energy that only group performance can deliver.</p>
-                </div>
+                <?php stardance_render_icon_card(array(
+                    'icon_url' => get_template_directory_uri() . '/assets/images/icon-star.svg',
+                    'title'    => 'Performance Groups',
+                    'text'     => 'Join a group rehearsing for showcases or competitions. Build ensemble skills, stage presence, and the energy that only group performance can deliver.',
+                    'delay'    => 3,
+                )); ?>
 
             </div>
         </div>
@@ -119,45 +116,29 @@ the_post();
 
             <div class="sd-faq__list">
 
-                <div class="sd-faq__item fade-in fade-in-delay-1">
-                    <button class="sd-faq__question" aria-expanded="false">
-                        What level do I need to be to join this class?
-                        <span class="sd-faq__icon" aria-hidden="true"></span>
-                    </button>
-                    <div class="sd-faq__answer" hidden>
-                        <p>This class is open to all levels. Whether you're a complete beginner or a more experienced dancer, we'll work with you at the right pace and in the right group.</p>
-                    </div>
-                </div>
+                <?php stardance_render_faq_item(array(
+                    'question' => 'What level do I need to be to join this class?',
+                    'answer'   => 'This class is open to all levels. Whether you\'re a complete beginner or a more experienced dancer, we\'ll work with you at the right pace and in the right group.',
+                    'delay'    => 1,
+                )); ?>
 
-                <div class="sd-faq__item fade-in fade-in-delay-2">
-                    <button class="sd-faq__question" aria-expanded="false">
-                        Do I need a partner?
-                        <span class="sd-faq__icon" aria-hidden="true"></span>
-                    </button>
-                    <div class="sd-faq__answer" hidden>
-                        <p>No. Many students join solo. We rotate partners in group classes and can always find you someone to train with.</p>
-                    </div>
-                </div>
+                <?php stardance_render_faq_item(array(
+                    'question' => 'Do I need a partner?',
+                    'answer'   => 'No. Many students join solo. We rotate partners in group classes and can always find you someone to train with.',
+                    'delay'    => 2,
+                )); ?>
 
-                <div class="sd-faq__item fade-in fade-in-delay-3">
-                    <button class="sd-faq__question" aria-expanded="false">
-                        What age groups are these classes for?
-                        <span class="sd-faq__icon" aria-hidden="true"></span>
-                    </button>
-                    <div class="sd-faq__answer" hidden>
-                        <p>We run separate sessions for children and adults. Check the timetable or contact us for the age-specific schedule for this class.</p>
-                    </div>
-                </div>
+                <?php stardance_render_faq_item(array(
+                    'question' => 'What age groups are these classes for?',
+                    'answer'   => 'We run separate sessions for children and adults. Check the timetable or contact us for the age-specific schedule for this class.',
+                    'delay'    => 3,
+                )); ?>
 
-                <div class="sd-faq__item fade-in fade-in-delay-4">
-                    <button class="sd-faq__question" aria-expanded="false">
-                        How often should I attend?
-                        <span class="sd-faq__icon" aria-hidden="true"></span>
-                    </button>
-                    <div class="sd-faq__answer" hidden>
-                        <p>We recommend at least two sessions per week for steady progress. Even one session a week will produce results over time. Private lessons alongside group classes accelerate development significantly.</p>
-                    </div>
-                </div>
+                <?php stardance_render_faq_item(array(
+                    'question' => 'How often should I attend?',
+                    'answer'   => 'We recommend at least two sessions per week for steady progress. Even one session a week will produce results over time. Private lessons alongside group classes accelerate development significantly.',
+                    'delay'    => 4,
+                )); ?>
 
             </div>
         </div>
@@ -218,14 +199,12 @@ the_post();
         </div>
     </section>
 
-    <!-- CTA -->
-    <section class="sd-section sd-cta" id="cta">
-        <div class="sd-container sd-cta__inner">
-            <h2 class="sd-heading sd-cta__title fade-in fade-in-delay-0">Ready to Start?</h2>
-            <p class="sd-text sd-cta__desc fade-in fade-in-delay-1">Book a trial class today — no experience or commitment needed.</p>
-            <a href="<?php echo esc_url(home_url('/#contact')); ?>" class="sd-btn fade-in fade-in-delay-2">Book a Trial Class</a>
-        </div>
-    </section>
+    <?php stardance_render_cta(array(
+        'title'       => 'Ready to Start?',
+        'description' => 'Book a trial class today — no experience or commitment needed.',
+        'button_text' => 'Book a Trial Class',
+        'button_url'  => home_url('/#contact'),
+    )); ?>
 
     <!-- Location / Map -->
     <section class="sd-section sd-class-location" id="location">

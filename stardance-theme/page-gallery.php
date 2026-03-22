@@ -10,15 +10,11 @@ get_header();
 
 <main class="sd-page sd-page--gallery" id="main-content">
 
-    <!-- Hero -->
-    <section class="sd-page-hero sd-page-hero--gallery sd-section">
-        <div class="sd-container">
-            <h1 class="sd-heading sd-page-hero__title fade-in fade-in-delay-0">Gallery</h1>
-            <p class="sd-text sd-page-hero__desc fade-in fade-in-delay-1">
-                Moments from our classes, performances, and competitions — captured on and off the dance floor.
-            </p>
-        </div>
-    </section>
+    <?php stardance_render_page_hero(array(
+        'title'       => 'Gallery',
+        'description' => 'Moments from our classes, performances, and competitions — captured on and off the dance floor.',
+        'modifier'    => 'gallery',
+    )); ?>
 
     <!-- Gallery Section -->
     <section class="sd-section sd-gallery-page" id="gallery">
@@ -30,20 +26,20 @@ get_header();
                 <div class="sd-gallery-page__filter-group">
                     <span class="sd-gallery-page__filter-label">Filter by Year:</span>
                     <div class="sd-gallery-page__filter-tabs" role="tablist">
-                        <button class="sd-gallery-page__tab is-active" role="tab" aria-selected="true" data-filter="year" data-value="all">ANY</button>
-                        <button class="sd-gallery-page__tab" role="tab" aria-selected="false" data-filter="year" data-value="2024">2024</button>
-                        <button class="sd-gallery-page__tab" role="tab" aria-selected="false" data-filter="year" data-value="2023">2023</button>
-                        <button class="sd-gallery-page__tab" role="tab" aria-selected="false" data-filter="year" data-value="2022">2022</button>
-                        <button class="sd-gallery-page__tab" role="tab" aria-selected="false" data-filter="year" data-value="2021">2021</button>
+                        <button class="sd-btn sd-btn--ghost sd-gallery-page__tab is-active" role="tab" aria-selected="true" data-filter="year" data-value="all">ANY</button>
+                        <button class="sd-btn sd-btn--ghost sd-gallery-page__tab" role="tab" aria-selected="false" data-filter="year" data-value="2024">2024</button>
+                        <button class="sd-btn sd-btn--ghost sd-gallery-page__tab" role="tab" aria-selected="false" data-filter="year" data-value="2023">2023</button>
+                        <button class="sd-btn sd-btn--ghost sd-gallery-page__tab" role="tab" aria-selected="false" data-filter="year" data-value="2022">2022</button>
+                        <button class="sd-btn sd-btn--ghost sd-gallery-page__tab" role="tab" aria-selected="false" data-filter="year" data-value="2021">2021</button>
                     </div>
                 </div>
 
                 <div class="sd-gallery-page__filter-group">
                     <span class="sd-gallery-page__filter-label">Filter by Type:</span>
                     <div class="sd-gallery-page__filter-tabs" role="tablist">
-                        <button class="sd-gallery-page__tab is-active" role="tab" aria-selected="true" data-filter="type" data-value="all">Competitions</button>
-                        <button class="sd-gallery-page__tab" role="tab" aria-selected="false" data-filter="type" data-value="performances">Dance &amp; Performances</button>
-                        <button class="sd-gallery-page__tab" role="tab" aria-selected="false" data-filter="type" data-value="studio">Studio</button>
+                        <button class="sd-btn sd-btn--ghost sd-gallery-page__tab is-active" role="tab" aria-selected="true" data-filter="type" data-value="all">Competitions</button>
+                        <button class="sd-btn sd-btn--ghost sd-gallery-page__tab" role="tab" aria-selected="false" data-filter="type" data-value="performances">Dance &amp; Performances</button>
+                        <button class="sd-btn sd-btn--ghost sd-gallery-page__tab" role="tab" aria-selected="false" data-filter="type" data-value="studio">Studio</button>
                     </div>
                 </div>
 

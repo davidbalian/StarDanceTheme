@@ -2,48 +2,54 @@
     <div class="sd-container">
         <h2 class="sd-heading sd-classes__title fade-in fade-in-delay-0">Our Classes</h2>
 
-        <div class="sd-classes__grid sd-grid">
-            <div class="sd-card fade-in fade-in-delay-1" style="background-image: url('http://stardance.com.cy/wp-content/uploads/2026/02/European-Ballroom.png');">
-                <div class="sd-card__content">
-                    <h3 class="sd-card__title">European Ballroom</h3>
-                    <p class="sd-card__desc">The international Ballroom dances consist of: Slow Waltz, Tango, Viennese Waltz, Foxtrot, Quickstep.</p>
-                </div>
-            </div>
+        <div class="sd-classes__grid sd-grid sd-grid--3">
+            <?php stardance_render_overlay_card(array(
+                'image_url' => 'http://stardance.com.cy/wp-content/uploads/2026/02/European-Ballroom.png',
+                'title'     => 'European Ballroom',
+                'description' => 'The international Ballroom dances consist of: Slow Waltz, Tango, Viennese Waltz, Foxtrot, Quickstep.',
+                'variant'   => 'tall',
+                'delay'     => 1,
+            )); ?>
 
-            <div class="sd-card fade-in fade-in-delay-2" style="background-image: url('http://stardance.com.cy/wp-content/uploads/2026/02/Latin-American.png');">
-                <div class="sd-card__content">
-                    <h3 class="sd-card__title">Latin American</h3>
-                    <p class="sd-card__desc">The international Latin-American dances consist of: Samba, Cha-Cha-Cha, Rumba, Pasodoble, Jive.</p>
-                </div>
-            </div>
+            <?php stardance_render_overlay_card(array(
+                'image_url' => 'http://stardance.com.cy/wp-content/uploads/2026/02/Latin-American.png',
+                'title'     => 'Latin American',
+                'description' => 'The international Latin-American dances consist of: Samba, Cha-Cha-Cha, Rumba, Pasodoble, Jive.',
+                'variant'   => 'tall',
+                'delay'     => 2,
+            )); ?>
 
-            <div class="sd-card fade-in fade-in-delay-3" style="background-image: url('http://stardance.com.cy/wp-content/uploads/2026/02/Latin-Fusion-Ladies.png');">
-                <div class="sd-card__content">
-                    <h3 class="sd-card__title">Latin Fusion Ladies</h3>
-                </div>
-            </div>
+            <?php stardance_render_overlay_card(array(
+                'image_url' => 'http://stardance.com.cy/wp-content/uploads/2026/02/Latin-Fusion-Ladies.png',
+                'title'     => 'Latin Fusion Ladies',
+                'variant'   => 'tall',
+                'delay'     => 3,
+            )); ?>
 
-            <div class="sd-card fade-in fade-in-delay-4" style="background-image: url('http://stardance.com.cy/wp-content/uploads/2026/02/Kids-Programs.png');">
-                <div class="sd-card__content">
-                    <h3 class="sd-card__title">Kids Programs</h3>
-                </div>
-            </div>
+            <?php stardance_render_overlay_card(array(
+                'image_url' => 'http://stardance.com.cy/wp-content/uploads/2026/02/Kids-Programs.png',
+                'title'     => 'Kids Programs',
+                'variant'   => 'tall',
+                'delay'     => 4,
+            )); ?>
 
-            <div class="sd-card fade-in fade-in-delay-5" style="background-image: url('http://stardance.com.cy/wp-content/uploads/2026/02/Wedding-Choreography.png');">
-                <div class="sd-card__content">
-                    <h3 class="sd-card__title">Wedding Choreography</h3>
-                </div>
-            </div>
+            <?php stardance_render_overlay_card(array(
+                'image_url' => 'http://stardance.com.cy/wp-content/uploads/2026/02/Wedding-Choreography.png',
+                'title'     => 'Wedding Choreography',
+                'variant'   => 'tall',
+                'delay'     => 5,
+            )); ?>
 
-            <div class="sd-card fade-in fade-in-delay-6" style="background-image: url('http://stardance.com.cy/wp-content/uploads/2026/02/Individual-Lessons.png');">
-                <div class="sd-card__content">
-                    <h3 class="sd-card__title">Individual Lessons</h3>
-                </div>
-            </div>
+            <?php stardance_render_overlay_card(array(
+                'image_url' => 'http://stardance.com.cy/wp-content/uploads/2026/02/Individual-Lessons.png',
+                'title'     => 'Individual Lessons',
+                'variant'   => 'tall',
+                'delay'     => 6,
+            )); ?>
         </div>
 
         <div class="sd-section__cta fade-in fade-in-delay-7">
-            <a href="#" class="sd-btn">View All Classes</a>
+            <a href="<?php echo esc_url(home_url('/classes/')); ?>" class="sd-btn">View All Classes</a>
         </div>
     </div>
 </section>

@@ -34,6 +34,24 @@ Text Domain: stardance
   --sd-grid-gap: 24px;
   --sd-radius: 12px;
   --sd-radius-pill: 500px;
+
+  /* Spacing Scale */
+  --sd-space-xs: 8px;
+  --sd-space-sm: 16px;
+  --sd-space-md: 24px;
+  --sd-space-lg: 40px;
+  --sd-space-xl: 60px;
+
+  /* Shadows */
+  --sd-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --sd-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
+
+  /* Overlays & Gradients */
+  --sd-overlay-dark: rgba(0, 0, 0, 0.35);
+  --sd-gradient-card: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.1) 50%, transparent 100%);
+
+  /* Transitions */
+  --sd-transition: 0.3s ease;
 }
 
 /* ========================================

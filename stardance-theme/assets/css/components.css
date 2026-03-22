@@ -68,27 +68,61 @@
 }
 
 .sd-btn--outline {
-  display: inline-block;
-  padding: 1rem 3rem;
-  font-family: var(--sd-font-body);
-  font-size: 14px;
   color: var(--sd-light-blue);
-  background: transparent;
+  background-image: none;
+  background-color: transparent;
   border: 1px solid var(--sd-light-blue);
-  border-radius: var(--sd-radius-pill);
-  cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  text-align: center;
-  line-height: 1;
+  font-size: 14px;
+  transition: background-color var(--sd-transition), color var(--sd-transition);
 }
 
 .sd-btn--outline:hover {
+  opacity: 1;
   background-color: rgba(217, 247, 252, 0.15);
 }
 
 .sd-btn--outline:active {
   transform: scale(0.99);
   transition: transform 50ms ease;
+}
+
+/* Ghost button — for filter tabs and pill toggles */
+.sd-btn--ghost {
+  background-image: none;
+  background-color: transparent;
+  border: 1px solid var(--sd-gold-border);
+  color: var(--sd-navy);
+  padding: 0.4rem 1.25rem;
+  font-size: 14px;
+  transition: background-color var(--sd-transition), color var(--sd-transition);
+}
+
+.sd-btn--ghost:hover {
+  opacity: 1;
+  background-color: rgba(234, 190, 129, 0.12);
+}
+
+.sd-btn--ghost.is-active {
+  background-image: var(--sd-gold-gradient);
+  background-color: var(--sd-gold-dark);
+  color: var(--sd-white);
+  border-color: transparent;
+}
+
+.sd-btn--ghost.is-active:hover {
+  opacity: 0.9;
+  background-color: transparent;
+}
+
+/* Button size variants */
+.sd-btn--sm {
+  padding: 0.5rem 1.5rem;
+  font-size: 14px;
+}
+
+.sd-btn--lg {
+  padding: 1.25rem 3.5rem;
+  font-size: 18px;
 }
 
 /* Cards (Classes) */
@@ -210,3 +244,388 @@
 .fade-in-delay-8 { transition-delay: 0.8s; }
 .fade-in-delay-9 { transition-delay: 0.9s; }
 .fade-in-delay-10 { transition-delay: 1s; }
+
+/* ========================================
+   Grid Modifiers
+   ======================================== */
+
+.sd-grid--2 { grid-template-columns: repeat(2, 1fr); }
+.sd-grid--3 { grid-template-columns: repeat(3, 1fr); }
+.sd-grid--4 { grid-template-columns: repeat(4, 1fr); }
+
+/* ========================================
+   Icon Card
+   Consolidates: .sd-about__feature, .sd-about-values__card, .sd-class-details__card
+   ======================================== */
+
+.sd-icon-card {
+  text-align: center;
+}
+
+.sd-icon-card__icon {
+  margin-bottom: var(--sd-space-sm);
+}
+
+.sd-icon-card__icon img {
+  display: block;
+  margin: 0 auto;
+}
+
+.sd-icon-card__title {
+  font-family: var(--sd-font-heading);
+  font-weight: 600;
+  font-size: 22px;
+  color: var(--sd-navy);
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+
+.sd-icon-card__text {
+  font-family: var(--sd-font-body);
+  font-size: 15px;
+  color: var(--sd-body-text);
+  line-height: 1.4;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+/* ========================================
+   Overlay Card
+   Consolidates: .sd-card, .sd-competitions__card
+   ======================================== */
+
+.sd-overlay-card {
+  position: relative;
+  border-radius: var(--sd-radius);
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+}
+
+.sd-overlay-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.sd-overlay-card__content {
+  position: relative;
+  z-index: 2;
+  padding: 24px;
+  width: 100%;
+}
+
+.sd-overlay-card__title {
+  font-family: var(--sd-font-heading);
+  font-weight: 600;
+  font-size: 26px;
+  color: var(--sd-white);
+  line-height: 1.1;
+  margin-bottom: var(--sd-space-xs);
+}
+
+.sd-overlay-card__desc {
+  font-family: var(--sd-font-body);
+  font-size: 14px;
+  color: var(--sd-white);
+  line-height: 1.4;
+  opacity: 0.9;
+}
+
+.sd-overlay-card__meta {
+  font-family: var(--sd-font-body);
+  font-size: 14px;
+  color: var(--sd-white);
+  margin-bottom: var(--sd-space-xs);
+  display: block;
+}
+
+/* Tall variant — class cards (fixed height, no gradient) */
+.sd-overlay-card--tall {
+  height: 390px;
+}
+
+.sd-overlay-card--tall::before {
+  background: none;
+}
+
+/* Portrait variant — competition cards (2:3 aspect ratio, gradient, gold border) */
+.sd-overlay-card--portrait {
+  aspect-ratio: 2 / 3;
+  border: 2px solid var(--sd-gold-border);
+}
+
+.sd-overlay-card--portrait::before {
+  background: var(--sd-gradient-card);
+}
+
+.sd-overlay-card--portrait .sd-overlay-card__title {
+  margin-bottom: var(--sd-space-sm);
+}
+
+/* ========================================
+   Event Card
+   ======================================== */
+
+.sd-event-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--sd-radius);
+  overflow: hidden;
+  background-color: var(--sd-white);
+  box-shadow: var(--sd-shadow-sm);
+  transition: box-shadow var(--sd-transition);
+}
+
+.sd-event-card:hover {
+  box-shadow: var(--sd-shadow-md);
+}
+
+.sd-event-card__image {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.sd-event-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.sd-event-card:hover .sd-event-card__image img {
+  transform: scale(1.04);
+}
+
+.sd-event-card__content {
+  padding: var(--sd-space-md);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: var(--sd-space-xs);
+}
+
+.sd-event-card__date {
+  font-family: var(--sd-font-body);
+  font-size: 14px;
+  color: var(--sd-gold-dark);
+  font-weight: 700;
+}
+
+.sd-event-card__tag {
+  display: inline-block;
+  padding: 3px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background-image: var(--sd-gold-gradient);
+  color: var(--sd-white);
+  border-radius: var(--sd-radius-pill);
+  align-self: flex-start;
+}
+
+.sd-event-card__title {
+  font-family: var(--sd-font-heading);
+  font-weight: 600;
+  font-size: 22px;
+  color: var(--sd-navy);
+  line-height: 1.2;
+}
+
+.sd-event-card__location {
+  font-family: var(--sd-font-body);
+  font-size: 14px;
+  color: var(--sd-body-text);
+  opacity: 0.8;
+  flex: 1;
+}
+
+/* ========================================
+   Page Hero (inner pages)
+   ======================================== */
+
+.sd-page-hero {
+  padding-top: 120px;
+  text-align: center;
+}
+
+.sd-page-hero__title {
+  margin-bottom: var(--sd-space-sm);
+}
+
+.sd-page-hero__desc {
+  max-width: 65ch;
+  margin: 0 auto;
+}
+
+/* ========================================
+   CTA Section
+   ======================================== */
+
+.sd-cta {
+  text-align: center;
+}
+
+.sd-cta__inner {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.sd-cta__title {
+  margin-bottom: var(--sd-space-sm);
+}
+
+.sd-cta__desc {
+  margin-bottom: var(--sd-space-lg);
+}
+
+/* ========================================
+   FAQ Accordion
+   ======================================== */
+
+.sd-faq__list {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.sd-faq__item {
+  border-bottom: 1px solid rgba(0, 56, 109, 0.12);
+}
+
+.sd-faq__question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: var(--sd-space-sm) 0;
+  font-family: var(--sd-font-heading);
+  font-weight: 600;
+  font-size: 20px;
+  color: var(--sd-navy);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  gap: var(--sd-space-sm);
+  transition: color var(--sd-transition);
+}
+
+.sd-faq__question:hover {
+  color: var(--sd-gold-dark);
+}
+
+.sd-faq__icon {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  position: relative;
+}
+
+.sd-faq__icon::before,
+.sd-faq__icon::after {
+  content: '';
+  position: absolute;
+  background-color: var(--sd-gold-dark);
+  transition: transform var(--sd-transition);
+}
+
+.sd-faq__icon::before {
+  width: 14px;
+  height: 2px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.sd-faq__icon::after {
+  width: 2px;
+  height: 14px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.sd-faq__question[aria-expanded="true"] .sd-faq__icon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.sd-faq__answer {
+  padding: 0 0 var(--sd-space-sm);
+}
+
+.sd-faq__answer p {
+  font-family: var(--sd-font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--sd-body-text);
+}
+
+/* ========================================
+   Reusable Form Inputs
+   ======================================== */
+
+.sd-input {
+  width: 100%;
+  padding: 14px 18px;
+  font-family: var(--sd-font-body);
+  font-size: 16px;
+  color: var(--sd-white);
+  background-color: var(--sd-form-bg);
+  border: 1px solid var(--sd-gold-border);
+  border-radius: 8px;
+  outline: none;
+  transition: border-color var(--sd-transition);
+}
+
+.sd-input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.sd-input:focus {
+  border-color: var(--sd-gold);
+}
+
+.sd-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23DC9A72' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 18px center;
+  padding-right: 44px;
+  cursor: pointer;
+}
+
+.sd-select option {
+  background-color: var(--sd-navy);
+  color: var(--sd-white);
+}
+
+/* ========================================
+   Section Background Modifiers
+   ======================================== */
+
+.sd-section--white { background-color: var(--sd-white); }
+.sd-section--navy  { background-color: var(--sd-navy); }
+
+/* ========================================
+   Spacing Utilities
+   ======================================== */
+
+.sd-mb-0  { margin-bottom: 0; }
+.sd-mb-sm { margin-bottom: var(--sd-space-sm); }
+.sd-mb-md { margin-bottom: var(--sd-space-md); }
+.sd-mb-lg { margin-bottom: var(--sd-space-lg); }
+.sd-mb-xl { margin-bottom: var(--sd-space-xl); }
+
+/* ========================================
+   Text Utilities
+   ======================================== */
+
+.sd-text-center { text-align: center; }
+.sd-text-left   { text-align: left; }
+.sd-text-white  { color: var(--sd-white); }
+.sd-text-navy   { color: var(--sd-navy); }
+.sd-text-gold   { color: var(--sd-gold); }

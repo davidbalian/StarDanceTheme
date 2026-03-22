@@ -10,15 +10,11 @@ get_header();
 
 <main class="sd-page sd-page--schedule" id="main-content">
 
-    <!-- Hero -->
-    <section class="sd-page-hero sd-page-hero--schedule sd-section">
-        <div class="sd-container">
-            <h1 class="sd-heading sd-page-hero__title fade-in fade-in-delay-0">Class Timetable</h1>
-            <p class="sd-text sd-page-hero__desc fade-in fade-in-delay-1">
-                View our weekly class schedule below. Classes run Monday through Friday at the Limassol studio. Contact us if you have questions about specific classes or to arrange a trial session.
-            </p>
-        </div>
-    </section>
+    <?php stardance_render_page_hero(array(
+        'title'       => 'Class Timetable',
+        'description' => 'View our weekly class schedule below. Classes run Monday through Friday at the Limassol studio. Contact us if you have questions about specific classes or to arrange a trial session.',
+        'modifier'    => 'schedule',
+    )); ?>
 
     <!-- 7-Day Timetable Grid -->
     <section class="sd-section sd-schedule-page" id="timetable">
@@ -269,14 +265,12 @@ get_header();
         </div>
     </section>
 
-    <!-- CTA -->
-    <section class="sd-section sd-cta" id="cta">
-        <div class="sd-container sd-cta__inner">
-            <h2 class="sd-heading sd-cta__title fade-in fade-in-delay-0">Questions About Our Schedule?</h2>
-            <p class="sd-text sd-cta__desc fade-in fade-in-delay-1">Looking for a specific class or want to book a trial session? Get in touch and we'll help find the right fit.</p>
-            <a href="<?php echo esc_url(home_url('/#contact')); ?>" class="sd-btn fade-in fade-in-delay-2">Contact Us</a>
-        </div>
-    </section>
+    <?php stardance_render_cta(array(
+        'title'       => 'Questions About Our Schedule?',
+        'description' => 'Looking for a specific class or want to book a trial session? Get in touch and we\'ll help find the right fit.',
+        'button_text' => 'Contact Us',
+        'button_url'  => home_url('/#contact'),
+    )); ?>
 
 </main>
 

@@ -28,17 +28,14 @@
     width: 60px;
   }
 
-  .sd-card__title {
+  /* Overlay card */
+  .sd-overlay-card__title {
     font-size: 30px;
   }
 
-  .sd-about__icon img {
-    width: 80px;
-    height: 80px;
-  }
-
-  .sd-about__feature-title {
-    font-size: 32px;
+  /* Icon card */
+  .sd-icon-card__title {
+    font-size: 28px;
   }
 
   .sd-footer__logo {
@@ -60,7 +57,9 @@
     font-size: 24px;
   }
 
-  .sd-classes__grid {
+  /* Grid modifiers */
+  .sd-grid--3,
+  .sd-grid--4 {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -68,15 +67,12 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .sd-competitions__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .sd-coaches__grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .sd-about__feature {
+  /* Homepage about features flex */
+  .sd-about__features .sd-icon-card {
     flex: 0 0 calc(50% - 20px);
   }
 
@@ -178,13 +174,19 @@
     align-items: center;
   }
 
-  /* Classes */
-  .sd-classes__grid {
-    grid-template-columns: repeat(2, 1fr);
+  /* Page Hero */
+  .sd-page-hero {
+    padding-top: 100px;
   }
 
-  .sd-card {
+  /* Overlay card */
+  .sd-overlay-card--tall {
     height: 300px;
+  }
+
+  /* Grid modifiers */
+  .sd-grid--3 {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   /* Gallery */
@@ -196,19 +198,14 @@
     grid-template-columns: 1fr;
   }
 
-  /* About */
-  .sd-about__feature {
+  /* Homepage about features flex */
+  .sd-about__features .sd-icon-card {
     flex: 0 0 100%;
     max-width: 100%;
   }
 
   .sd-about__flourish {
     width: 40vw;
-  }
-
-  /* Competitions */
-  .sd-competitions__grid {
-    grid-template-columns: repeat(2, 1fr);
   }
 
   /* Coaches */
@@ -271,7 +268,10 @@
     font-size: 18px;
   }
 
-  .sd-classes__grid {
+  /* Grid modifiers */
+  .sd-grid--2,
+  .sd-grid--3,
+  .sd-grid--4 {
     grid-template-columns: 1fr;
   }
 
@@ -279,16 +279,18 @@
     grid-template-columns: 1fr;
   }
 
-  .sd-competitions__grid {
-    grid-template-columns: 1fr;
-  }
-
-  .sd-card {
+  /* Overlay cards */
+  .sd-overlay-card--tall {
     height: 280px;
   }
 
-  .sd-card__title {
+  .sd-overlay-card__title {
     font-size: 22px;
+  }
+
+  /* Event card */
+  .sd-event-card__content {
+    padding: var(--sd-space-sm);
   }
 
   .sd-btn {
