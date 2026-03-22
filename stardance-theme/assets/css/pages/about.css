@@ -67,7 +67,7 @@
   font-size: 5rem;
   line-height: 1;
   letter-spacing: 0;
-  text-shadow: var(--sd-shadow-title-gold);
+  box-shadow: var(--sd-shadow-title-gold);
 }
 
 .sd-page-hero--about .sd-page-hero__desc {
@@ -190,7 +190,6 @@
 .sd-about-values__trophy img {
   width: 100%;
   height: auto;
-  max-width: 280px;
 }
 
 /* ========================================
