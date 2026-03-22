@@ -41,6 +41,8 @@ function stardance_setup() {
 }
 add_action('after_setup_theme', 'stardance_setup');
 
+define( 'STARDANCE_REWRITE_VERSION', '2026-03-classes-page-fix' );
+
 // Enqueue Styles and Scripts
 function stardance_enqueue_assets() {
     // Google Fonts
@@ -116,7 +118,7 @@ function stardance_register_post_types() {
             'menu_name'          => __('Dance Classes', 'stardance'),
         ),
         'public'      => true,
-        'has_archive' => true,
+        'has_archive' => false,
         'supports'    => array('title', 'editor', 'thumbnail', 'excerpt', 'page-attributes'),
         'rewrite'     => array('slug' => 'classes'),
         'menu_icon'   => 'dashicons-format-video',
@@ -298,9 +300,25 @@ function stardance_activate_theme_setup() {
     stardance_create_pages();
     flush_rewrite_rules();
     update_option('stardance_pages_created', true);
+    update_option('stardance_rewrite_version', STARDANCE_REWRITE_VERSION );
 }
 add_action('after_switch_theme', 'stardance_activate_theme_setup');
 add_action('admin_init', 'stardance_create_pages');
+
+/**
+ * Flush rewrite rules once after routing changes.
+ *
+ * @return void
+ */
+function stardance_maybe_flush_rewrite_rules() {
+    if ( get_option( 'stardance_rewrite_version' ) === STARDANCE_REWRITE_VERSION ) {
+        return;
+    }
+
+    flush_rewrite_rules();
+    update_option( 'stardance_rewrite_version', STARDANCE_REWRITE_VERSION );
+}
+add_action( 'admin_init', 'stardance_maybe_flush_rewrite_rules', 20 );
 
 // Contact Form AJAX Handler
 function stardance_handle_contact_form() {
