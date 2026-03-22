@@ -887,8 +887,9 @@
 }
 
 .sd-lightbox__frame {
-  width: min(72vh, 72vw);
-  height: min(72vh, 72vw);
+  /* fit between arrows (64px each side + 16px gap) and within top/bottom UI, capped at 1920px zone */
+  width: min(calc(100vw - 160px), calc(100vh - 128px), 1760px);
+  height: min(calc(100vw - 160px), calc(100vh - 128px), 1760px);
   flex-shrink: 0;
 }
 
@@ -935,7 +936,7 @@
 .sd-lightbox__arrow {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-50%) scale(1);
   z-index: 1;
   appearance: none;
   background: none;
@@ -943,11 +944,16 @@
   cursor: pointer;
   padding: 0;
   opacity: 0.8;
-  transition: opacity var(--sd-transition);
+  transition: opacity 150ms ease, transform 150ms ease;
 }
 
 .sd-lightbox__arrow:hover {
   opacity: 1;
+  transform: translateY(-50%) scale(1.05);
+}
+
+.sd-lightbox__arrow:active {
+  transform: translateY(-50%) scale(1);
 }
 
 .sd-lightbox__arrow:disabled {
@@ -956,11 +962,12 @@
 }
 
 .sd-lightbox__arrow--prev {
-  left: 24px;
+  /* on screens > 1920px, shift in so arrows stay within the 1920px zone */
+  left: max(24px, calc((100vw - 1920px) / 2 + 24px));
 }
 
 .sd-lightbox__arrow--next {
-  right: 24px;
+  right: max(24px, calc((100vw - 1920px) / 2 + 24px));
 }
 
 .sd-lightbox__arrow img {
@@ -979,8 +986,9 @@
   }
 
   .sd-lightbox__frame {
-    width: min(60vh, 90vw);
-    height: min(60vh, 90vw);
+    /* mobile: arrows at left/right 12px, 28px wide = 40px each side */
+    width: min(calc(100vw - 96px), calc(100vh - 128px));
+    height: min(calc(100vw - 96px), calc(100vh - 128px));
   }
 
   .sd-lightbox__arrow--prev {
