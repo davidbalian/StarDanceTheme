@@ -470,6 +470,11 @@
   text-align: center;
 }
 
+.sd-cta__decoration {
+  position: absolute;
+  pointer-events: none;
+}
+
 .sd-cta__inner {
   max-width: 700px;
   margin: 0 auto;

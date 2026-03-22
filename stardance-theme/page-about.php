@@ -269,6 +269,8 @@ get_header();
         'description' => 'Contact us to learn more about our classes, schedule a trial session, or discuss your dance goals',
         'button_text' => 'Contact Us',
         'button_url'  => home_url('/#contact'),
+        'top_decoration_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/red-and-orange-lines.svg',
+        'bottom_decoration_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/red-and-orange-lines.svg',
     )); ?>
 
 </main>

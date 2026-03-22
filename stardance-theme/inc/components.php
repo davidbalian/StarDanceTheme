@@ -63,6 +63,8 @@ function stardance_render_page_hero( $args = array() ) {
  *     @type string $button_text Optional. Button label. Default 'Get in Touch'.
  *     @type string $button_url  Optional. Button URL.
  *     @type string $id          Optional. Section id attribute. Default 'cta'.
+ *     @type string $top_decoration_url Optional. Decorative image shown at the top edge.
+ *     @type string $bottom_decoration_url Optional. Decorative image shown at the bottom edge.
  * }
  */
 function stardance_render_cta( $args = array() ) {
@@ -72,9 +74,27 @@ function stardance_render_cta( $args = array() ) {
         'button_text' => 'Get in Touch',
         'button_url'  => '',
         'id'          => 'cta',
+        'top_decoration_url' => '',
+        'bottom_decoration_url' => '',
     ) );
     ?>
     <section class="sd-section sd-cta" id="<?php echo esc_attr( $args['id'] ); ?>">
+        <?php if ( $args['top_decoration_url'] ) : ?>
+            <img
+                src="<?php echo esc_url( $args['top_decoration_url'] ); ?>"
+                alt=""
+                class="sd-cta__decoration sd-cta__decoration--top"
+                aria-hidden="true"
+            >
+        <?php endif; ?>
+        <?php if ( $args['bottom_decoration_url'] ) : ?>
+            <img
+                src="<?php echo esc_url( $args['bottom_decoration_url'] ); ?>"
+                alt=""
+                class="sd-cta__decoration sd-cta__decoration--bottom"
+                aria-hidden="true"
+            >
+        <?php endif; ?>
         <div class="sd-container sd-cta__inner">
             <h2 class="sd-heading sd-cta__title fade-in fade-in-delay-0"><?php echo wp_kses_post( $args['title'] ); ?></h2>
             <?php if ( $args['description'] ) : ?>
