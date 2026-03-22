@@ -746,10 +746,10 @@
   opacity: 0;
   padding: 0;
   transition:
-    height 150ms ease,
-    opacity 150ms ease,
-    padding-top 150ms ease,
-    padding-bottom 150ms ease;
+    height 300ms ease,
+    opacity 300ms ease,
+    padding-top 300ms ease,
+    padding-bottom 300ms ease;
 }
 
 .sd-faq__item.is-open .sd-faq__answer {

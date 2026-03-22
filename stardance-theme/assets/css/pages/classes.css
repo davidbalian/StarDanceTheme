@@ -62,12 +62,16 @@
 }
 
 .sd-page--classes .sd-overlay-card__desc {
-  font-size: 12px;
-  line-height: 1.5;
+  font-family: var(--sd-font-body);
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 24px;
+  letter-spacing: 0;
   max-width: none;
   width: 100%;
   opacity: 1;
   text-wrap: pretty;
+  align-self: flex-end;
 }
 
 .sd-page--classes .sd-overlay-card .sd-btn {
@@ -244,9 +248,13 @@
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 850px) {
   .sd-page-hero--classes {
     min-height: 780px;
+  }
+
+  .sd-classes-page__grid {
+    grid-template-columns: 1fr;
   }
 
   .sd-page--classes .sd-cta,
