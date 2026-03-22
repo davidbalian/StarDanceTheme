@@ -14,7 +14,7 @@ get_header();
 
     <?php stardance_render_page_hero(array(
         'title'       => 'Gallery',
-        'description' => 'Moments from our classes, performances, and competitions — captured on and off the dance floor.',
+        'description' => 'Browse photos and videos from competitions, studio events, and performances. See our students in action on dance floors around the world.',
         'modifier'    => 'gallery',
     )); ?>
 
