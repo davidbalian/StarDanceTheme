@@ -242,28 +242,36 @@ function stardance_render_event_card( $args = array() ) {
     ?>
     <article class="sd-event-card<?php echo esc_attr( $animation_class ); ?>"<?php echo $data_attr_string; ?>>
         <?php if ( $args['image_url'] ) : ?>
-        <div class="sd-event-card__image">
-            <img src="<?php echo esc_url( $args['image_url'] ); ?>" alt="<?php echo esc_attr( $args['image_alt'] ); ?>" width="400" height="280" loading="lazy">
-            <?php if ( $args['category'] || $args['type'] ) : ?>
-            <div class="sd-event-card__tags">
-                <?php if ( $args['category'] ) : ?>
-                    <span class="sd-event-card__tag"><?php echo esc_html( $args['category'] ); ?></span>
-                <?php endif; ?>
-                <?php if ( $args['type'] ) : ?>
-                    <span class="sd-event-card__tag sd-event-card__tag--type"><?php echo esc_html( $args['type'] ); ?></span>
-                <?php endif; ?>
-            </div>
+            <img class="sd-event-card__bg" src="<?php echo esc_url( $args['image_url'] ); ?>" alt="<?php echo esc_attr( $args['image_alt'] ); ?>" loading="lazy">
+        <?php endif; ?>
+
+        <img class="sd-event-card__lines" src="https://stardance.com.cy/wp-content/uploads/2026/03/event-card-lines.svg" alt="" aria-hidden="true">
+
+        <?php if ( $args['category'] || $args['type'] ) : ?>
+        <div class="sd-event-card__tags">
+            <?php if ( $args['category'] ) : ?>
+                <span class="sd-event-card__tag"><?php echo esc_html( $args['category'] ); ?></span>
+            <?php endif; ?>
+            <?php if ( $args['type'] ) : ?>
+                <span class="sd-event-card__tag"><?php echo esc_html( $args['type'] ); ?></span>
             <?php endif; ?>
         </div>
         <?php endif; ?>
+
         <div class="sd-event-card__content">
             <?php if ( $args['date'] || $args['location'] ) : ?>
             <div class="sd-event-card__meta">
                 <?php if ( $args['date'] ) : ?>
-                    <span class="sd-event-card__date"><?php echo esc_html( $args['date'] ); ?></span>
+                    <span class="sd-event-card__date">
+                        <img src="https://stardance.com.cy/wp-content/uploads/2026/03/calendar.svg" alt="" aria-hidden="true" width="16" height="16">
+                        <?php echo esc_html( $args['date'] ); ?>
+                    </span>
                 <?php endif; ?>
                 <?php if ( $args['location'] ) : ?>
-                    <span class="sd-event-card__location"><?php echo esc_html( $args['location'] ); ?></span>
+                    <span class="sd-event-card__location">
+                        <img src="https://stardance.com.cy/wp-content/uploads/2026/03/location-pin.svg" alt="" aria-hidden="true" width="14" height="16">
+                        <?php echo esc_html( $args['location'] ); ?>
+                    </span>
                 <?php endif; ?>
             </div>
             <?php endif; ?>
@@ -271,15 +279,10 @@ function stardance_render_event_card( $args = array() ) {
             <?php if ( $args['description'] ) : ?>
                 <p class="sd-event-card__desc"><?php echo esc_html( $args['description'] ); ?></p>
             <?php endif; ?>
-            <?php if ( ! empty( $args['styles'] ) ) : ?>
-            <div class="sd-event-card__styles">
-                <?php foreach ( $args['styles'] as $style ) : ?>
-                    <span class="sd-event-card__style"><?php echo esc_html( $style ); ?></span>
-                <?php endforeach; ?>
-            </div>
-            <?php endif; ?>
             <?php if ( $args['link_url'] ) : ?>
-                <a href="<?php echo esc_url( $args['link_url'] ); ?>" class="sd-btn sd-btn--outline sd-btn--sm"><?php echo esc_html( $args['link_text'] ); ?></a>
+                <a href="<?php echo esc_url( $args['link_url'] ); ?>" class="sd-event-card__btn"><?php echo esc_html( $args['link_text'] ); ?></a>
+            <?php else : ?>
+                <span class="sd-event-card__btn sd-event-card__btn--no-link"><?php echo esc_html( $args['link_text'] ); ?></span>
             <?php endif; ?>
         </div>
     </article>
@@ -307,12 +310,10 @@ function stardance_render_event_item( $post_id, $delay = 0, $animate = true ) {
 
     $cat_terms  = get_the_terms( $post_id, 'event_category' );
     $type_terms = get_the_terms( $post_id, 'event_type' );
-    $style_terms = get_the_terms( $post_id, 'event_style' );
-    $year_terms  = get_the_terms( $post_id, 'event_year' );
+    $year_terms = get_the_terms( $post_id, 'event_year' );
 
     $category = ( ! is_wp_error( $cat_terms ) && ! empty( $cat_terms ) ) ? $cat_terms[0]->name : '';
     $type     = ( ! is_wp_error( $type_terms ) && ! empty( $type_terms ) ) ? $type_terms[0]->name : '';
-    $styles   = ( ! is_wp_error( $style_terms ) && ! empty( $style_terms ) ) ? wp_list_pluck( $style_terms, 'name' ) : array();
     $year     = ( ! is_wp_error( $year_terms ) && ! empty( $year_terms ) ) ? $year_terms[0]->slug : '';
 
     $data_attrs = array(
@@ -330,7 +331,6 @@ function stardance_render_event_item( $post_id, $delay = 0, $animate = true ) {
         'location'    => get_post_meta( $post_id, 'event_location', true ),
         'title'       => get_the_title( $post_id ),
         'description' => get_the_excerpt( $post_id ),
-        'styles'      => $styles,
         'link_url'    => get_post_meta( $post_id, 'event_link', true ),
         'data_attrs'  => $data_attrs,
         'delay'       => $delay,

@@ -379,81 +379,8 @@
 
 /* ========================================
    Event Card
+   (Styles live in assets/css/pages/events.css)
    ======================================== */
-
-.sd-event-card {
-  display: flex;
-  flex-direction: column;
-  border-radius: var(--sd-radius);
-  overflow: hidden;
-  background-color: var(--sd-white);
-  box-shadow: var(--sd-shadow-sm);
-  transition: box-shadow var(--sd-transition);
-}
-
-.sd-event-card:hover {
-  box-shadow: var(--sd-shadow-md);
-}
-
-.sd-event-card__image {
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-}
-
-.sd-event-card__image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s ease;
-}
-
-.sd-event-card:hover .sd-event-card__image img {
-  transform: scale(1.04);
-}
-
-.sd-event-card__content {
-  padding: var(--sd-space-md);
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  gap: var(--sd-space-xs);
-}
-
-.sd-event-card__date {
-  font-family: var(--sd-font-body);
-  font-size: 14px;
-  color: var(--sd-gold-dark);
-  font-weight: 700;
-}
-
-.sd-event-card__tag {
-  display: inline-block;
-  padding: 3px 12px;
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  background-image: var(--sd-gold-gradient);
-  color: var(--sd-white);
-  border-radius: var(--sd-radius-pill);
-  align-self: flex-start;
-}
-
-.sd-event-card__title {
-  font-family: var(--sd-font-heading);
-  font-weight: 600;
-  font-size: 22px;
-  color: var(--sd-navy);
-  line-height: 1.2;
-}
-
-.sd-event-card__location {
-  font-family: var(--sd-font-body);
-  font-size: 14px;
-  color: var(--sd-body-text);
-  opacity: 0.8;
-  flex: 1;
-}
 
 /* ========================================
    Page Hero (inner pages)
@@ -647,7 +574,8 @@
 
 .sd-page--about .sd-cta > .sd-container,
 .sd-page--classes .sd-cta > .sd-container,
-.sd-page--schedule .sd-cta > .sd-container {
+.sd-page--schedule .sd-cta > .sd-container,
+.sd-page--events .sd-cta > .sd-container {
   position: relative;
   z-index: 2;
   display: flex;
@@ -663,20 +591,24 @@
 .sd-page--classes .sd-cta .sd-cta__title,
 .sd-page--classes .sd-cta .sd-cta__desc,
 .sd-page--schedule .sd-cta .sd-cta__title,
-.sd-page--schedule .sd-cta .sd-cta__desc {
+.sd-page--schedule .sd-cta .sd-cta__desc,
+.sd-page--events .sd-cta .sd-cta__title,
+.sd-page--events .sd-cta .sd-cta__desc {
   color: var(--sd-white);
 }
 
 .sd-page--about .sd-cta .sd-cta__title,
 .sd-page--classes .sd-cta .sd-cta__title,
-.sd-page--schedule .sd-cta .sd-cta__title {
+.sd-page--schedule .sd-cta .sd-cta__title,
+.sd-page--events .sd-cta .sd-cta__title {
   margin-bottom: 0;
   text-wrap: balance;
 }
 
 .sd-page--about .sd-cta .sd-cta__desc,
 .sd-page--classes .sd-cta .sd-cta__desc,
-.sd-page--schedule .sd-cta .sd-cta__desc {
+.sd-page--schedule .sd-cta .sd-cta__desc,
+.sd-page--events .sd-cta .sd-cta__desc {
   max-width: 640px;
   margin: 0;
   line-height: 1.6;
@@ -685,7 +617,8 @@
 
 .sd-page--about .sd-cta .sd-btn,
 .sd-page--classes .sd-cta .sd-btn,
-.sd-page--schedule .sd-cta .sd-btn {
+.sd-page--schedule .sd-cta .sd-btn,
+.sd-page--events .sd-cta .sd-btn {
   margin-top: var(--sd-space-xs);
 }
 
