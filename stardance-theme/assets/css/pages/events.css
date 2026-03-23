@@ -65,7 +65,7 @@
 
 .sd-events-page__sidebar {
   position: sticky;
-  top: 120px;
+  top: 88px;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -163,7 +163,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  border-radius: 0.5rem;
+  border-radius: 1rem;
   overflow: hidden;
   min-height: 520px;
   background: var(--sd-navy);
@@ -344,6 +344,10 @@
 @media (max-width: 767px) {
   .sd-events-page__grid {
     grid-template-columns: 1fr;
+  }
+
+  .sd-events-filter__group {
+    flex: 1 1 100%;
   }
 }
 

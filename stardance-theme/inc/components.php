@@ -331,7 +331,7 @@ function stardance_render_event_item( $post_id, $delay = 0, $animate = true ) {
         'location'    => get_post_meta( $post_id, 'event_location', true ),
         'title'       => get_the_title( $post_id ),
         'description' => get_the_excerpt( $post_id ),
-        'link_url'    => get_post_meta( $post_id, 'event_link', true ),
+        'link_url'    => get_post_meta( $post_id, 'event_link', true ) ?: '#',
         'data_attrs'  => $data_attrs,
         'delay'       => $delay,
         'animate'     => $animate,
