@@ -20,7 +20,6 @@ get_header();
         'title'       => 'Competition Calendar &amp; Events',
         'description' => 'Stay up to date with upcoming dance competitions, studio events, and special performances. Our students regularly compete in local and international championships throughout the year.',
         'modifier'    => 'events',
-        'overlay_img' => 'https://stardance.com.cy/wp-content/uploads/2026/03/long-lines.svg',
     )); ?>
 
     <section class="sd-section sd-events-page" id="events-list">

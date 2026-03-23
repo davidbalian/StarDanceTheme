@@ -27,7 +27,6 @@ function stardance_render_page_hero( $args = array() ) {
         'thumbnail_url' => '',
         'button_text'   => '',
         'button_url'    => '',
-        'overlay_img'   => '',
     ) );
 
     $modifier_class = $args['modifier'] ? ' sd-page-hero--' . sanitize_html_class( $args['modifier'] ) : '';
@@ -51,9 +50,6 @@ function stardance_render_page_hero( $args = array() ) {
             <?php endif; ?>
             <?php if ( $has_content_wrap ) : ?></div><?php endif; ?>
         </div>
-        <?php if ( $args['overlay_img'] ) : ?>
-            <img class="sd-page-hero__overlay-img" src="<?php echo esc_url( $args['overlay_img'] ); ?>" alt="" aria-hidden="true">
-        <?php endif; ?>
     </section>
     <?php
 }

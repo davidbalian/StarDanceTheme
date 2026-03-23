@@ -11,16 +11,20 @@
   --sd-page-hero-bg-image: url('https://stardance.com.cy/wp-content/uploads/2026/03/events-page-her-bg.webp');
 }
 
-/* Full-width long-lines SVG overlay inside hero section */
-.sd-page-hero--events .sd-page-hero__overlay-img {
+/* Full-width long-lines SVG decoration at bottom of events hero */
+.sd-page-hero--events::after {
+  content: '';
   position: absolute;
   bottom: 10%;
   left: 0;
   width: 100%;
-  height: auto;
-  display: block;
-  pointer-events: none;
+  height: 160px;
+  background-image: url('https://stardance.com.cy/wp-content/uploads/2026/03/long-lines.svg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
   z-index: 1;
+  pointer-events: none;
 }
 
 /* ========================================
@@ -354,7 +358,8 @@
 }
 
 @media (max-width: 478px) {
-  .sd-page-hero--events .sd-page-hero__overlay-img {
+  .sd-page-hero--events::after {
+    height: 80px;
     bottom: 6%;
   }
 }
