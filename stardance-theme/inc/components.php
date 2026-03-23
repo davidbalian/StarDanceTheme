@@ -245,7 +245,7 @@ function stardance_render_event_card( $args = array() ) {
             <img class="sd-event-card__bg" src="<?php echo esc_url( $args['image_url'] ); ?>" alt="<?php echo esc_attr( $args['image_alt'] ); ?>" loading="lazy">
         <?php endif; ?>
 
-        <img class="sd-event-card__lines" src="https://stardance.com.cy/wp-content/uploads/2026/03/event-card-lines.svg" alt="" aria-hidden="true">
+        <img class="sd-event-card__lines" src="https://stardance.com.cy/wp-content/uploads/2026/03/event-card-lines-1-cropped.svg" alt="" aria-hidden="true">
 
         <?php if ( $args['category'] || $args['type'] ) : ?>
         <div class="sd-event-card__tags">
