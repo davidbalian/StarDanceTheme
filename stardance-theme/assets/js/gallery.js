@@ -198,9 +198,8 @@
 
   var showMoreButton = document.querySelector('[data-gallery-show-more]');
   var state = {
-    photo_year: 'all',
+    gallery_year: 'all',
     gallery_type: 'all',
-    gallery_occasion: 'all',
     paged: 1,
     posts_per_page: 12,
   };
@@ -241,9 +240,8 @@
     var formData = new FormData();
     formData.append('action', 'stardance_filter_gallery');
     formData.append('nonce', stardanceGallery.nonce);
-    formData.append('photo_year', state.photo_year);
+    formData.append('gallery_year', state.gallery_year);
     formData.append('gallery_type', state.gallery_type);
-    formData.append('gallery_occasion', state.gallery_occasion);
     formData.append('paged', state.paged);
     formData.append('posts_per_page', state.posts_per_page);
 

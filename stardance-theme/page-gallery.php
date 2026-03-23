@@ -28,9 +28,9 @@ get_header();
                 <div class="sd-gallery-page__filter-group" role="group" aria-label="Filter gallery by year">
                     <span class="sd-gallery-page__filter-label">Year</span>
                     <div class="sd-gallery-page__filter-tabs">
-                        <button class="sd-gallery-page__tab is-active" type="button" data-filter-group="photo_year" data-filter-value="all" aria-pressed="true">All</button>
-                        <?php foreach ( $gallery_filters['years'] as $year ) : ?>
-                            <button class="sd-gallery-page__tab" type="button" data-filter-group="photo_year" data-filter-value="<?php echo esc_attr( $year ); ?>" aria-pressed="false"><?php echo esc_html( $year ); ?></button>
+                        <button class="sd-gallery-page__tab is-active" type="button" data-filter-group="gallery_year" data-filter-value="all" aria-pressed="true">All</button>
+                        <?php foreach ( $gallery_filters['years'] as $year_term ) : ?>
+                            <button class="sd-gallery-page__tab" type="button" data-filter-group="gallery_year" data-filter-value="<?php echo esc_attr( $year_term->slug ); ?>" aria-pressed="false"><?php echo esc_html( $year_term->name ); ?></button>
                         <?php endforeach; ?>
                     </div>
                 </div>
@@ -41,16 +41,6 @@ get_header();
                         <button class="sd-gallery-page__tab is-active" type="button" data-filter-group="gallery_type" data-filter-value="all" aria-pressed="true">All</button>
                         <?php foreach ( $gallery_filters['types'] as $type_term ) : ?>
                             <button class="sd-gallery-page__tab" type="button" data-filter-group="gallery_type" data-filter-value="<?php echo esc_attr( $type_term->slug ); ?>" aria-pressed="false"><?php echo esc_html( $type_term->name ); ?></button>
-                        <?php endforeach; ?>
-                    </div>
-                </div>
-
-                <div class="sd-gallery-page__filter-group" role="group" aria-label="Filter gallery by occasion">
-                    <span class="sd-gallery-page__filter-label">Occasion</span>
-                    <div class="sd-gallery-page__filter-tabs">
-                        <button class="sd-gallery-page__tab is-active" type="button" data-filter-group="gallery_occasion" data-filter-value="all" aria-pressed="true">All</button>
-                        <?php foreach ( $gallery_filters['occasions'] as $occasion_term ) : ?>
-                            <button class="sd-gallery-page__tab" type="button" data-filter-group="gallery_occasion" data-filter-value="<?php echo esc_attr( $occasion_term->slug ); ?>" aria-pressed="false"><?php echo esc_html( $occasion_term->name ); ?></button>
                         <?php endforeach; ?>
                     </div>
                 </div>
