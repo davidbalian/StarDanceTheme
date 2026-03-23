@@ -15,14 +15,15 @@
 .sd-page-hero--events::after {
   content: '';
   position: absolute;
-  left: 0;
+  left: 50%;
   bottom: 10%;
-  width: 100%;
+  transform: translateX(-50%);
+  width: 100vw;
   height: 160px;
   background-image: url('https://stardance.com.cy/wp-content/uploads/2026/03/long-lines.svg');
-  background-size: 100% auto;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
-  background-position: left center;
+  background-position: center;
   z-index: 1;
   pointer-events: none;
 }
