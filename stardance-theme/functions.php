@@ -66,6 +66,11 @@ function stardance_enqueue_assets() {
     }
     if ( is_page_template('page-events.php') ) {
         wp_enqueue_style('stardance-page-events', $pages_css_dir . 'events.css', array('stardance-responsive'), stardance_asset_version('assets/css/pages/events.css'));
+        wp_enqueue_script('stardance-events', get_template_directory_uri() . '/assets/js/events.js', array(), stardance_asset_version('assets/js/events.js'), true);
+        wp_localize_script('stardance-events', 'stardanceEvents', array(
+            'ajaxurl' => admin_url('admin-ajax.php'),
+            'nonce'   => wp_create_nonce('stardance_events_nonce'),
+        ));
     }
     if ( is_page_template('page-about.php') ) {
         wp_enqueue_style('stardance-page-about', $pages_css_dir . 'about.css', array('stardance-responsive'), stardance_asset_version('assets/css/pages/about.css'));
@@ -154,6 +159,33 @@ function stardance_register_post_types() {
         'menu_position'      => 22,
         'show_in_rest'       => true,
     ));
+
+    register_post_type('sd_event', array(
+        'labels' => array(
+            'name'               => __('Events', 'stardance'),
+            'singular_name'      => __('Event', 'stardance'),
+            'add_new'            => __('Add New Event', 'stardance'),
+            'add_new_item'       => __('Add New Event', 'stardance'),
+            'edit_item'          => __('Edit Event', 'stardance'),
+            'new_item'           => __('New Event', 'stardance'),
+            'view_item'          => __('View Event', 'stardance'),
+            'search_items'       => __('Search Events', 'stardance'),
+            'not_found'          => __('No events found', 'stardance'),
+            'not_found_in_trash' => __('No events found in trash', 'stardance'),
+            'menu_name'          => __('Events', 'stardance'),
+        ),
+        'public'              => true,
+        'publicly_queryable'  => false,
+        'exclude_from_search' => true,
+        'has_archive'         => false,
+        'rewrite'             => false,
+        'supports'            => array('title', 'editor', 'thumbnail', 'excerpt', 'page-attributes'),
+        'menu_icon'           => 'dashicons-calendar-alt',
+        'show_ui'             => true,
+        'show_in_menu'        => true,
+        'menu_position'       => 23,
+        'show_in_rest'        => true,
+    ));
 }
 add_action('init', 'stardance_register_post_types');
 
@@ -181,6 +213,58 @@ function stardance_register_taxonomies() {
             'name'          => __('Gallery Years', 'stardance'),
             'singular_name' => __('Gallery Year', 'stardance'),
             'menu_name'     => __('Gallery Years', 'stardance'),
+        ),
+        'public'            => false,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'show_in_rest'      => true,
+        'hierarchical'      => true,
+    ));
+
+    register_taxonomy('event_year', array('sd_event'), array(
+        'labels' => array(
+            'name'          => __('Event Years', 'stardance'),
+            'singular_name' => __('Event Year', 'stardance'),
+            'menu_name'     => __('Event Years', 'stardance'),
+        ),
+        'public'            => false,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'show_in_rest'      => true,
+        'hierarchical'      => true,
+    ));
+
+    register_taxonomy('event_category', array('sd_event'), array(
+        'labels' => array(
+            'name'          => __('Event Categories', 'stardance'),
+            'singular_name' => __('Event Category', 'stardance'),
+            'menu_name'     => __('Event Categories', 'stardance'),
+        ),
+        'public'            => false,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'show_in_rest'      => true,
+        'hierarchical'      => true,
+    ));
+
+    register_taxonomy('event_type', array('sd_event'), array(
+        'labels' => array(
+            'name'          => __('Event Types', 'stardance'),
+            'singular_name' => __('Event Type', 'stardance'),
+            'menu_name'     => __('Event Types', 'stardance'),
+        ),
+        'public'            => false,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'show_in_rest'      => true,
+        'hierarchical'      => true,
+    ));
+
+    register_taxonomy('event_style', array('sd_event'), array(
+        'labels' => array(
+            'name'          => __('Event Styles', 'stardance'),
+            'singular_name' => __('Event Style', 'stardance'),
+            'menu_name'     => __('Event Styles', 'stardance'),
         ),
         'public'            => false,
         'show_ui'           => true,
@@ -547,6 +631,84 @@ function stardance_create_pages() {
         }
     }
 
+    // Seed event taxonomy terms
+    $event_years      = array( '2026' );
+    $event_categories = array( 'Cyprus National Competitions', 'WDSF International Competitions', 'Performances', 'Cyprus Cup' );
+    $event_types      = array( 'Championships', 'Cyprus Cup', 'Classification Tournaments' );
+    $event_styles     = array( 'Solo', 'Couples', 'Show Dances' );
+
+    foreach ( $event_years as $term ) {
+        if ( ! term_exists( $term, 'event_year' ) ) {
+            wp_insert_term( $term, 'event_year' );
+        }
+    }
+    foreach ( $event_categories as $term ) {
+        if ( ! term_exists( $term, 'event_category' ) ) {
+            wp_insert_term( $term, 'event_category' );
+        }
+    }
+    foreach ( $event_types as $term ) {
+        if ( ! term_exists( $term, 'event_type' ) ) {
+            wp_insert_term( $term, 'event_type' );
+        }
+    }
+    foreach ( $event_styles as $term ) {
+        if ( ! term_exists( $term, 'event_style' ) ) {
+            wp_insert_term( $term, 'event_style' );
+        }
+    }
+
+    // Seed sample events
+    $seed_events = array();
+    for ( $i = 1; $i <= 6; $i++ ) {
+        $seed_events[] = array(
+            'title'       => 'Cyprus National Dance Championship',
+            'slug'        => 'cyprus-national-dance-championship-' . $i,
+            'excerpt'     => 'Annual national championship organized by the Cyprus Federation of Social & Sport Dance. Open to all age categories and levels.',
+            'image_url'   => 'https://stardance.com.cy/wp-content/uploads/2026/03/seed-events-' . $i . '.webp',
+            'event_date'  => 'March 15, 2026',
+            'event_location' => 'Nicosia, Cyprus',
+            'event_link'  => '',
+            'year'        => array( '2026' ),
+            'category'    => array( 'Cyprus National Competitions' ),
+            'type'        => array( 'Championships' ),
+            'style'       => array( 'Solo', 'Couples', 'Show Dances' ),
+            'menu_order'  => $i,
+        );
+    }
+
+    foreach ( $seed_events as $event_data ) {
+        $existing = get_page_by_path( $event_data['slug'], OBJECT, 'sd_event' );
+        $post_args = array(
+            'post_title'   => $event_data['title'],
+            'post_name'    => $event_data['slug'],
+            'post_excerpt' => $event_data['excerpt'],
+            'post_content' => $event_data['excerpt'],
+            'post_status'  => 'publish',
+            'post_type'    => 'sd_event',
+            'post_author'  => 1,
+            'menu_order'   => $event_data['menu_order'],
+        );
+
+        if ( $existing ) {
+            $post_args['ID'] = $existing->ID;
+            $post_id = wp_update_post( $post_args, true );
+        } else {
+            $post_id = wp_insert_post( $post_args, true );
+        }
+
+        if ( $post_id && ! is_wp_error( $post_id ) ) {
+            update_post_meta( $post_id, 'event_date', $event_data['event_date'] );
+            update_post_meta( $post_id, 'event_location', $event_data['event_location'] );
+            update_post_meta( $post_id, 'event_link', $event_data['event_link'] );
+            wp_set_object_terms( $post_id, $event_data['year'], 'event_year', false );
+            wp_set_object_terms( $post_id, $event_data['category'], 'event_category', false );
+            wp_set_object_terms( $post_id, $event_data['type'], 'event_type', false );
+            wp_set_object_terms( $post_id, $event_data['style'], 'event_style', false );
+            stardance_sync_remote_featured_image( $post_id, $event_data['image_url'] );
+        }
+    }
+
     foreach ( stardance_get_gallery_seed_items() as $gallery_item ) {
         $existing = get_page_by_path( $gallery_item['slug'], OBJECT, 'gallery_item' );
         $post_args = array(
@@ -603,6 +765,276 @@ function stardance_maybe_flush_rewrite_rules() {
     update_option( 'stardance_rewrite_version', STARDANCE_REWRITE_VERSION );
 }
 add_action( 'admin_init', 'stardance_maybe_flush_rewrite_rules', 20 );
+
+/**
+ * Add event details meta box.
+ *
+ * @return void
+ */
+function stardance_add_event_meta_box() {
+    add_meta_box(
+        'stardance_event_details',
+        __('Event Details', 'stardance'),
+        'stardance_render_event_meta_box',
+        'sd_event',
+        'side',
+        'default'
+    );
+}
+add_action('add_meta_boxes', 'stardance_add_event_meta_box');
+
+/**
+ * Render event details meta box.
+ *
+ * @param WP_Post $post Post object.
+ * @return void
+ */
+function stardance_render_event_meta_box( $post ) {
+    wp_nonce_field( 'stardance_save_event_meta', 'stardance_event_meta_nonce' );
+    $event_date     = get_post_meta( $post->ID, 'event_date', true );
+    $event_location = get_post_meta( $post->ID, 'event_location', true );
+    $event_link     = get_post_meta( $post->ID, 'event_link', true );
+    ?>
+    <p>
+        <label for="stardance_event_date"><strong><?php esc_html_e( 'Event Date', 'stardance' ); ?></strong></label>
+    </p>
+    <p>
+        <input type="text" id="stardance_event_date" name="stardance_event_date" value="<?php echo esc_attr( $event_date ); ?>" class="widefat" placeholder="March 15, 2026">
+    </p>
+    <p>
+        <label for="stardance_event_location"><strong><?php esc_html_e( 'Location', 'stardance' ); ?></strong></label>
+    </p>
+    <p>
+        <input type="text" id="stardance_event_location" name="stardance_event_location" value="<?php echo esc_attr( $event_location ); ?>" class="widefat" placeholder="Nicosia, Cyprus">
+    </p>
+    <p>
+        <label for="stardance_event_link"><strong><?php esc_html_e( 'Learn More URL', 'stardance' ); ?></strong></label>
+    </p>
+    <p>
+        <input type="url" id="stardance_event_link" name="stardance_event_link" value="<?php echo esc_attr( $event_link ); ?>" class="widefat" placeholder="https://">
+    </p>
+    <?php
+}
+
+/**
+ * Save event meta.
+ *
+ * @param int $post_id Post ID.
+ * @return void
+ */
+function stardance_save_event_meta( $post_id ) {
+    if ( empty( $_POST['stardance_event_meta_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['stardance_event_meta_nonce'] ) ), 'stardance_save_event_meta' ) ) {
+        return;
+    }
+
+    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+        return;
+    }
+
+    if ( ! current_user_can( 'edit_post', $post_id ) ) {
+        return;
+    }
+
+    if ( isset( $_POST['stardance_event_date'] ) ) {
+        update_post_meta( $post_id, 'event_date', sanitize_text_field( wp_unslash( $_POST['stardance_event_date'] ) ) );
+    }
+    if ( isset( $_POST['stardance_event_location'] ) ) {
+        update_post_meta( $post_id, 'event_location', sanitize_text_field( wp_unslash( $_POST['stardance_event_location'] ) ) );
+    }
+    if ( isset( $_POST['stardance_event_link'] ) ) {
+        update_post_meta( $post_id, 'event_link', esc_url_raw( wp_unslash( $_POST['stardance_event_link'] ) ) );
+    }
+}
+add_action('save_post_sd_event', 'stardance_save_event_meta');
+
+/**
+ * Return event query args from filter input.
+ *
+ * @param array $filters Optional filters.
+ * @return array
+ */
+function stardance_get_events_query_args( $filters = array() ) {
+    $filters = wp_parse_args($filters, array(
+        'event_year'     => '',
+        'event_category' => '',
+        'event_type'     => '',
+        'event_style'    => '',
+        'posts_per_page' => -1,
+        'paged'          => 1,
+    ));
+
+    $tax_query = array();
+
+    if ( '' !== $filters['event_year'] && 'all' !== $filters['event_year'] ) {
+        $tax_query[] = array(
+            'taxonomy' => 'event_year',
+            'field'    => 'slug',
+            'terms'    => sanitize_title( $filters['event_year'] ),
+        );
+    }
+
+    if ( '' !== $filters['event_category'] && 'all' !== $filters['event_category'] ) {
+        $tax_query[] = array(
+            'taxonomy' => 'event_category',
+            'field'    => 'slug',
+            'terms'    => sanitize_title( $filters['event_category'] ),
+        );
+    }
+
+    if ( '' !== $filters['event_type'] && 'all' !== $filters['event_type'] ) {
+        $tax_query[] = array(
+            'taxonomy' => 'event_type',
+            'field'    => 'slug',
+            'terms'    => sanitize_title( $filters['event_type'] ),
+        );
+    }
+
+    if ( '' !== $filters['event_style'] && 'all' !== $filters['event_style'] ) {
+        $tax_query[] = array(
+            'taxonomy' => 'event_style',
+            'field'    => 'slug',
+            'terms'    => sanitize_title( $filters['event_style'] ),
+        );
+    }
+
+    if ( count( $tax_query ) > 1 ) {
+        $tax_query['relation'] = 'AND';
+    }
+
+    $query_args = array(
+        'post_type'      => 'sd_event',
+        'post_status'    => 'publish',
+        'posts_per_page' => (int) $filters['posts_per_page'],
+        'paged'          => max( 1, (int) $filters['paged'] ),
+        'orderby'        => array(
+            'menu_order' => 'ASC',
+            'date'       => 'DESC',
+        ),
+    );
+
+    if ( ! empty( $tax_query ) ) {
+        $query_args['tax_query'] = $tax_query;
+    }
+
+    return $query_args;
+}
+
+/**
+ * Return events filter options from existing terms.
+ *
+ * @return array
+ */
+function stardance_get_events_filter_options() {
+    return array(
+        'years'      => get_terms(array(
+            'taxonomy'   => 'event_year',
+            'hide_empty' => true,
+            'orderby'    => 'name',
+            'order'      => 'DESC',
+        )),
+        'categories' => get_terms(array(
+            'taxonomy'   => 'event_category',
+            'hide_empty' => true,
+            'orderby'    => 'name',
+            'order'      => 'ASC',
+        )),
+        'types'      => get_terms(array(
+            'taxonomy'   => 'event_type',
+            'hide_empty' => true,
+            'orderby'    => 'name',
+            'order'      => 'ASC',
+        )),
+        'styles'     => get_terms(array(
+            'taxonomy'   => 'event_style',
+            'hide_empty' => true,
+            'orderby'    => 'name',
+            'order'      => 'ASC',
+        )),
+    );
+}
+
+/**
+ * Return events query payload for templates and AJAX.
+ *
+ * @param array $filters Optional filters.
+ * @return array
+ */
+function stardance_get_events_query_payload( $filters = array() ) {
+    $filters = wp_parse_args($filters, array(
+        'event_year'     => '',
+        'event_category' => '',
+        'event_type'     => '',
+        'event_style'    => '',
+        'posts_per_page' => 12,
+        'paged'          => 1,
+        'animate'        => true,
+    ));
+
+    $query = new WP_Query( stardance_get_events_query_args( $filters ) );
+
+    ob_start();
+
+    if ( $query->have_posts() ) {
+        $delay = 0;
+
+        while ( $query->have_posts() ) {
+            $query->the_post();
+            stardance_render_event_item( get_the_ID(), min( $delay, 10 ), (bool) $filters['animate'] );
+            $delay++;
+        }
+    } else {
+        if ( (int) $filters['paged'] <= 1 ) {
+            ?>
+            <div class="sd-events-page__empty">
+                <p class="sd-text">No events match those filters yet.</p>
+            </div>
+            <?php
+        }
+    }
+
+    $markup = trim( ob_get_clean() );
+    $current_page = max( 1, (int) $filters['paged'] );
+    $has_more = $query->max_num_pages > $current_page;
+
+    wp_reset_postdata();
+
+    return array(
+        'markup'      => $markup,
+        'has_more'    => $has_more,
+        'max_pages'   => (int) $query->max_num_pages,
+        'found_posts' => (int) $query->found_posts,
+    );
+}
+
+/**
+ * AJAX callback for Events page filtering.
+ *
+ * @return void
+ */
+function stardance_filter_events() {
+    check_ajax_referer( 'stardance_events_nonce', 'nonce' );
+
+    $filters = array(
+        'event_year'     => sanitize_text_field( $_POST['event_year'] ?? '' ),
+        'event_category' => sanitize_text_field( $_POST['event_category'] ?? '' ),
+        'event_type'     => sanitize_text_field( $_POST['event_type'] ?? '' ),
+        'event_style'    => sanitize_text_field( $_POST['event_style'] ?? '' ),
+        'posts_per_page' => max( 1, (int) ( $_POST['posts_per_page'] ?? 12 ) ),
+        'paged'          => max( 1, (int) ( $_POST['paged'] ?? 1 ) ),
+        'animate'        => false,
+    );
+
+    $payload = stardance_get_events_query_payload( $filters );
+
+    wp_send_json_success(array(
+        'markup'      => $payload['markup'],
+        'has_more'    => $payload['has_more'],
+        'max_pages'   => $payload['max_pages'],
+        'found_posts' => $payload['found_posts'],
+    ));
+}
+add_action('wp_ajax_stardance_filter_events', 'stardance_filter_events');
+add_action('wp_ajax_nopriv_stardance_filter_events', 'stardance_filter_events');
 
 /**
  * AJAX callback for Gallery page filtering.

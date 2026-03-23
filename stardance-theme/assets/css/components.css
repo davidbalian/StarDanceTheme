@@ -467,7 +467,8 @@
 .sd-page-hero--about,
 .sd-page-hero--classes,
 .sd-page-hero--schedule,
-.sd-page-hero--gallery {
+.sd-page-hero--gallery,
+.sd-page-hero--events {
   --sd-page-hero-bg-image: none;
   --sd-page-hero-line-image: url('https://stardance.com.cy/wp-content/uploads/2026/03/white-and-gold-lines.svg');
   --sd-page-hero-line-left-width: 520px;
@@ -530,7 +531,8 @@
 .sd-page-hero--about > .sd-container,
 .sd-page-hero--classes > .sd-container,
 .sd-page-hero--schedule > .sd-container,
-.sd-page-hero--gallery > .sd-container {
+.sd-page-hero--gallery > .sd-container,
+.sd-page-hero--events > .sd-container {
   position: relative;
   z-index: 2;
 }
@@ -538,7 +540,8 @@
 .sd-page-hero--about .sd-page-hero__title,
 .sd-page-hero--classes .sd-page-hero__title,
 .sd-page-hero--schedule .sd-page-hero__title,
-.sd-page-hero--gallery .sd-page-hero__title {
+.sd-page-hero--gallery .sd-page-hero__title,
+.sd-page-hero--events .sd-page-hero__title {
   color: var(--sd-white);
   font-size: 5rem;
   line-height: 1;
@@ -550,7 +553,8 @@
 .sd-page-hero--about .sd-page-hero__desc,
 .sd-page-hero--classes .sd-page-hero__desc,
 .sd-page-hero--schedule .sd-page-hero__desc,
-.sd-page-hero--gallery .sd-page-hero__desc {
+.sd-page-hero--gallery .sd-page-hero__desc,
+.sd-page-hero--events .sd-page-hero__desc {
   color: var(--sd-white);
   font-family: var(--sd-font-body);
   font-weight: 400;
@@ -584,7 +588,8 @@
 
 .sd-page--about .sd-cta,
 .sd-page--classes .sd-cta,
-.sd-page--schedule .sd-cta {
+.sd-page--schedule .sd-cta,
+.sd-page--events .sd-cta {
   --sd-page-cta-bg-image: none;
   --sd-page-cta-top-width: 35%;
   --sd-page-cta-bottom-width: 50%;
@@ -600,7 +605,8 @@
 
 .sd-page--about .sd-cta::before,
 .sd-page--classes .sd-cta::before,
-.sd-page--schedule .sd-cta::before {
+.sd-page--schedule .sd-cta::before,
+.sd-page--events .sd-cta::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -611,7 +617,8 @@
 
 .sd-page--about .sd-cta .sd-cta__decoration,
 .sd-page--classes .sd-cta .sd-cta__decoration,
-.sd-page--schedule .sd-cta .sd-cta__decoration {
+.sd-page--schedule .sd-cta .sd-cta__decoration,
+.sd-page--events .sd-cta .sd-cta__decoration {
   position: absolute;
   display: block;
   pointer-events: none;
@@ -622,7 +629,8 @@
 
 .sd-page--about .sd-cta .sd-cta__decoration--top,
 .sd-page--classes .sd-cta .sd-cta__decoration--top,
-.sd-page--schedule .sd-cta .sd-cta__decoration--top {
+.sd-page--schedule .sd-cta .sd-cta__decoration--top,
+.sd-page--events .sd-cta .sd-cta__decoration--top {
   top: 0;
   right: 0;
   width: var(--sd-page-cta-top-width);
@@ -630,7 +638,8 @@
 
 .sd-page--about .sd-cta .sd-cta__decoration--bottom,
 .sd-page--classes .sd-cta .sd-cta__decoration--bottom,
-.sd-page--schedule .sd-cta .sd-cta__decoration--bottom {
+.sd-page--schedule .sd-cta .sd-cta__decoration--bottom,
+.sd-page--events .sd-cta .sd-cta__decoration--bottom {
   left: 0;
   bottom: 0;
   width: var(--sd-page-cta-bottom-width);

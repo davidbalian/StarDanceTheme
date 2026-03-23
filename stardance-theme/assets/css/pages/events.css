@@ -2,3 +2,260 @@
  * Star Dance Studio — Events Page Styles
  * Page template: page-events.php
  */
+
+/* ========================================
+   Hero
+   ======================================== */
+
+.sd-page-hero--events {
+  --sd-page-hero-bg-image: url('https://stardance.com.cy/wp-content/uploads/2026/03/events-page-her-bg.webp');
+}
+
+/* Full-width long-lines SVG, starting ~10% from bottom */
+.sd-page-hero--events::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 10%;
+  width: 100%;
+  height: 160px;
+  background-image: url('https://stardance.com.cy/wp-content/uploads/2026/03/long-lines.svg');
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: left center;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ========================================
+   CTA
+   ======================================== */
+
+.sd-page--events .sd-cta {
+  --sd-page-cta-bg-image: url('https://stardance.com.cy/wp-content/uploads/2026/03/events-page-cta-bg.webp');
+}
+
+/* ========================================
+   Events Section Layout
+   ======================================== */
+
+.sd-events-page__title {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.sd-events-page__layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+/* ========================================
+   Sidebar Filters
+   ======================================== */
+
+.sd-events-page__sidebar {
+  position: sticky;
+  top: 120px;
+}
+
+.sd-events-filter__group {
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(0, 56, 109, 0.12);
+}
+
+.sd-events-filter__group:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.sd-events-filter__label {
+  font-family: var(--sd-font-body);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--sd-navy);
+  margin-bottom: 0.75rem;
+}
+
+.sd-events-filter__options {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sd-events-filter__btn {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-family: var(--sd-font-body);
+  font-size: 14px;
+  color: var(--sd-body-text);
+  cursor: pointer;
+  transition: background var(--sd-transition), color var(--sd-transition);
+  line-height: 1.4;
+}
+
+.sd-events-filter__btn:hover {
+  background: rgba(0, 56, 109, 0.06);
+  color: var(--sd-navy);
+}
+
+.sd-events-filter__btn.is-active {
+  background: rgba(212, 160, 84, 0.12);
+  color: var(--sd-gold-dark);
+  font-weight: 700;
+}
+
+/* ========================================
+   Events Grid
+   ======================================== */
+
+.sd-events-page__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--sd-grid-gap);
+  transition: opacity 0.2s ease;
+}
+
+.sd-events-page__grid.is-loading {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.sd-events-page__empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 3rem 0;
+}
+
+.sd-events-page__actions {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+/* ========================================
+   Event Card — Updated Styles
+   ======================================== */
+
+.sd-event-card__image {
+  position: relative;
+}
+
+.sd-event-card__tags {
+  position: absolute;
+  top: var(--sd-space-sm);
+  left: var(--sd-space-sm);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.sd-event-card__tag {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-family: var(--sd-font-body);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: linear-gradient(65deg, #E4AF78, #DC9A72, #BE6D2B, #EABE81);
+  color: #fff;
+}
+
+.sd-event-card__tag--type {
+  background: var(--sd-navy);
+}
+
+.sd-event-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  align-items: center;
+}
+
+.sd-event-card__date {
+  font-family: var(--sd-font-body);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--sd-gold-dark);
+}
+
+.sd-event-card__location {
+  font-family: var(--sd-font-body);
+  font-size: 13px;
+  color: var(--sd-body-text);
+}
+
+.sd-event-card__desc {
+  font-family: var(--sd-font-body);
+  font-size: 14px;
+  color: var(--sd-body-text);
+  line-height: 1.6;
+}
+
+.sd-event-card__styles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.sd-event-card__style {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 56, 109, 0.2);
+  font-family: var(--sd-font-body);
+  font-size: 12px;
+  color: var(--sd-navy);
+  background: transparent;
+}
+
+/* ========================================
+   Responsive
+   ======================================== */
+
+@media (max-width: 991px) {
+  .sd-events-page__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sd-events-page__sidebar {
+    position: static;
+  }
+
+  .sd-events-filter__options {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .sd-events-filter__btn {
+    width: auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .sd-events-page__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 478px) {
+  .sd-page-hero--events::after {
+    height: 80px;
+    bottom: 8%;
+  }
+}
