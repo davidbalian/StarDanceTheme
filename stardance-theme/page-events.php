@@ -16,19 +16,12 @@ get_header();
 
 <main class="sd-page sd-page--events" id="main-content">
 
-    <div class="sd-events-hero-wrap">
-        <?php stardance_render_page_hero(array(
-            'title'       => 'Competition Calendar &amp; Events',
-            'description' => 'Stay up to date with upcoming dance competitions, studio events, and special performances. Our students regularly compete in local and international championships throughout the year.',
-            'modifier'    => 'events',
-        )); ?>
-        <img
-            class="sd-events-hero__lines"
-            src="https://stardance.com.cy/wp-content/uploads/2026/03/long-lines.svg"
-            alt=""
-            aria-hidden="true"
-        >
-    </div>
+    <?php stardance_render_page_hero(array(
+        'title'       => 'Competition Calendar &amp; Events',
+        'description' => 'Stay up to date with upcoming dance competitions, studio events, and special performances. Our students regularly compete in local and international championships throughout the year.',
+        'modifier'    => 'events',
+        'overlay_img' => 'https://stardance.com.cy/wp-content/uploads/2026/03/long-lines.svg',
+    )); ?>
 
     <section class="sd-section sd-events-page" id="events-list">
         <div class="sd-container">
