@@ -174,10 +174,9 @@ stardance_render_overlay_card(array(
 
 ### `stardance_render_icon_card( $args )`
 
-Centered icon + title + text card. Consolidates three formerly separate patterns:
+Centered icon + title + text card. Consolidates two formerly separate patterns:
 - Homepage about features (`.sd-about__feature`)
 - About page values (`.sd-about-values__card`)
-- Single class detail cards (`.sd-class-details__card`)
 
 ```php
 stardance_render_icon_card(array(
@@ -190,6 +189,25 @@ stardance_render_icon_card(array(
 ```
 
 **Note:** When used inside `.sd-about__features` (the homepage flex container), the cards automatically get `flex: 0 0 calc(33.333% - 30px)` sizing from `sections.css`. No extra wrapper needed.
+
+---
+
+### `stardance_render_class_detail_card( $args )`
+
+Image-backed detail card for the single `dance_class` template (`.sd-class-detail-card`). Implemented in `inc/class-detail-card.php`. Background is a full-width `<img>` so the card keeps the image’s intrinsic aspect ratio. Styles live in `assets/css/pages/single-class.css`.
+
+```php
+stardance_render_class_detail_card(array(
+    'bg_url'        => 'https://…/class-details-card-bg-navy-turqoise.webp', // required
+    'title'         => 'Individual Training',                               // required
+    'paragraphs'    => array( 'Lead paragraph…', 'Second paragraph…' ),    // required
+    'pills'         => array( 'Tag one', 'Tag two' ),                        // required
+    'tone'          => 'dark',       // optional — 'dark' | 'light'. Default 'dark'
+    'pills_style'   => 'gold',       // optional — 'gold' | 'gradient'. Default 'gold'
+    'pills_layout'  => 'stagger',    // optional — '' | 'stagger' (2+1 pill grid)
+    'delay'         => 1,            // optional — fade-in delay index 0–10
+));
+```
 
 ---
 

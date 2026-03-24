@@ -29,25 +29,61 @@ the_post();
             <h2 class="sd-heading sd-class-details__title fade-in fade-in-delay-0">Class Details</h2>
             <div class="sd-class-details__grid sd-grid sd-grid--3">
 
-                <?php stardance_render_icon_card(array(
-                    'icon_url' => get_template_directory_uri() . '/assets/images/icon-star.svg',
-                    'title'    => 'Individual Training',
-                    'text'     => 'One-on-one sessions with Svetlana, tailored entirely to your technique, progress, and goals. Ideal for accelerating development at any level.',
-                    'delay'    => 1,
+                <?php
+                $sd_class_details_lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+                ?>
+
+                <?php stardance_render_class_detail_card(array(
+                    'bg_url'        => 'https://stardance.com.cy/wp-content/uploads/2026/03/class-details-card-bg-navy-turqoise.webp',
+                    'title'         => 'Individual Training',
+                    'paragraphs'    => array(
+                        'Description of solo classes, technique focus, who this is for, and benefits of solo training.',
+                        $sd_class_details_lorem,
+                    ),
+                    'pills'         => array(
+                        'All skill levels',
+                        'Those without a partner',
+                        'Dancers wanting to strengthen individual technique',
+                    ),
+                    'tone'          => 'dark',
+                    'pills_style'   => 'gold',
+                    'pills_layout'  => 'stagger',
+                    'delay'         => 1,
                 )); ?>
 
-                <?php stardance_render_icon_card(array(
-                    'icon_url' => get_template_directory_uri() . '/assets/images/icon-star.svg',
-                    'title'    => 'Partner Training',
-                    'text'     => 'Train as a couple with structured coaching on partnership, synchronisation, and the dynamics that separate good dancers from great ones.',
-                    'delay'    => 2,
+                <?php stardance_render_class_detail_card(array(
+                    'bg_url'      => 'https://stardance.com.cy/wp-content/uploads/2026/03/class-details-card-bg-turqiose-navy.webp',
+                    'title'       => 'Partner Dancing',
+                    'paragraphs'  => array(
+                        'Description of couples training, what\'s covered, skill levels available, and what students can expect.',
+                        $sd_class_details_lorem,
+                    ),
+                    'pills'       => array(
+                        'Beginners',
+                        'Intermediate',
+                        'Competition level',
+                        'Advanced',
+                    ),
+                    'tone'        => 'light',
+                    'pills_style' => 'gold',
+                    'delay'       => 2,
                 )); ?>
 
-                <?php stardance_render_icon_card(array(
-                    'icon_url' => get_template_directory_uri() . '/assets/images/icon-star.svg',
-                    'title'    => 'Performance Groups',
-                    'text'     => 'Join a group rehearsing for showcases or competitions. Build ensemble skills, stage presence, and the energy that only group performance can deliver.',
-                    'delay'    => 3,
+                <?php stardance_render_class_detail_card(array(
+                    'bg_url'      => 'https://stardance.com.cy/wp-content/uploads/2026/03/class-details-card-bg-navy-gold.webp',
+                    'title'       => 'Performance Groups',
+                    'paragraphs'  => array(
+                        'Description of show group training, performance opportunities, and what students will work towards.',
+                        $sd_class_details_lorem,
+                    ),
+                    'pills'       => array(
+                        'Dancers interested in performances',
+                        'Group choreography experience',
+                        'Studio showcases and events',
+                    ),
+                    'tone'        => 'dark',
+                    'pills_style' => 'gradient',
+                    'delay'       => 3,
                 )); ?>
 
             </div>

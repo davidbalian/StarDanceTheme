@@ -5,6 +5,7 @@
 
 // Reusable component render functions
 require get_template_directory() . '/inc/components.php';
+require get_template_directory() . '/inc/class-detail-card.php';
 
 /**
  * Return a filemtime-based asset version for cache busting.

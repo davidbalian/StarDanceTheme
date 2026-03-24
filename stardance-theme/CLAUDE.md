@@ -10,14 +10,14 @@ Before writing **any** HTML, CSS, or PHP for this project, read `stardance-theme
 
 - Theme: `stardance-theme/`
 - CSS: `style.css` → `assets/css/components.css` → `assets/css/sections.css` → `assets/css/responsive.css` → `assets/css/pages/[page].css`
-- PHP components: `inc/components.php`
+- PHP components: `inc/components.php`, `inc/class-detail-card.php`
 - JS: `assets/js/`
 
 ---
 
 ## Non-Negotiable Rules
 
-1. **Use render functions for all repeating UI.** Never write raw HTML for heroes, CTAs, cards, or FAQ items — use the PHP render functions in `inc/components.php`.
+1. **Use render functions for all repeating UI.** Never write raw HTML for heroes, CTAs, cards, or FAQ items — use the PHP render functions in `inc/components.php` (and `inc/class-detail-card.php` for single-class detail cards).
 
 2. **Use `.sd-grid--N` for all card grids.** Never write `grid-template-columns` inline in a template or page-specific CSS when the design system grid modifier covers it.
 
@@ -50,6 +50,7 @@ Before writing **any** HTML, CSS, or PHP for this project, read `stardance-theme
 | `stardance_render_cta($args)` | Call-to-action bands |
 | `stardance_render_overlay_card($args)` | Class cards (`--tall`) and competition cards (`--portrait`) |
 | `stardance_render_icon_card($args)` | Icon + title + text cards |
+| `stardance_render_class_detail_card($args)` | Single-class “Class Details” image cards |
 | `stardance_render_event_card($args)` | Event listing cards |
 | `stardance_render_faq_item($args)` | FAQ accordion items |
 
