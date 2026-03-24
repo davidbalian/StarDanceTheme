@@ -9,6 +9,21 @@
 
 .sd-page-hero--classes {
   --sd-page-hero-bg-image: url('https://stardance.com.cy/wp-content/uploads/2026/03/classes-page-hero-bg.webp');
+  --sd-page-hero-line-image: url('https://stardance.com.cy/wp-content/uploads/2026/03/classes-lines-left.svg');
+}
+
+.sd-page-hero--classes::before {
+  top: auto;
+  bottom: 0;
+  transform: none;
+  background-position: left bottom;
+}
+
+.sd-page-hero--classes::after {
+  right: 0;
+  bottom: 0;
+  transform: scaleX(-1);
+  background-position: left bottom;
 }
 
 .sd-page--classes .sd-cta {
