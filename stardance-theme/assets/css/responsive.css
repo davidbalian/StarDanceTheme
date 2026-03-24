@@ -183,7 +183,8 @@
   .sd-page-hero--classes .sd-page-hero__title,
   .sd-page-hero--schedule .sd-page-hero__title,
   .sd-page-hero--gallery .sd-page-hero__title,
-  .sd-page-hero--events .sd-page-hero__title {
+  .sd-page-hero--events .sd-page-hero__title,
+  .sd-page-hero--single-class .sd-page-hero__title {
     font-size: 42px;
   }
 
@@ -191,7 +192,8 @@
   .sd-page-hero--classes .sd-page-hero__desc,
   .sd-page-hero--schedule .sd-page-hero__desc,
   .sd-page-hero--gallery .sd-page-hero__desc,
-  .sd-page-hero--events .sd-page-hero__desc {
+  .sd-page-hero--events .sd-page-hero__desc,
+  .sd-page-hero--single-class .sd-page-hero__desc {
     font-size: 16px;
     line-height: 1.6;
   }
@@ -285,7 +287,8 @@
   .sd-page-hero--classes .sd-page-hero__title,
   .sd-page-hero--schedule .sd-page-hero__title,
   .sd-page-hero--gallery .sd-page-hero__title,
-  .sd-page-hero--events .sd-page-hero__title {
+  .sd-page-hero--events .sd-page-hero__title,
+  .sd-page-hero--single-class .sd-page-hero__title {
     font-size: 34px;
   }
 
@@ -293,10 +296,12 @@
   .sd-page-hero--classes::before,
   .sd-page-hero--schedule::before,
   .sd-page-hero--gallery::before,
+  .sd-page-hero--single-class::before,
   .sd-page-hero--about::after,
   .sd-page-hero--classes::after,
   .sd-page-hero--schedule::after,
-  .sd-page-hero--gallery::after {
+  .sd-page-hero--gallery::after,
+  .sd-page-hero--single-class::after {
     width: 38vw;
     height: 26vw;
   }

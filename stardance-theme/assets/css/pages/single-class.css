@@ -2,3 +2,50 @@
  * Star Dance Studio — Single Dance Class Styles
  * Template: single-dance_class.php
  */
+
+/* ========================================
+   Hero
+   ======================================== */
+
+.sd-page-hero--single-class {
+  --sd-page-hero-bg-image: url('https://stardance.com.cy/wp-content/uploads/2026/03/individual-class-template-hero-bg.webp');
+  --sd-page-hero-line-image: url('https://stardance.com.cy/wp-content/uploads/2026/03/classes-lines-left.svg');
+}
+
+.sd-page-hero--single-class::before {
+  top: auto;
+  bottom: 0;
+  transform: none;
+  background-position: left bottom;
+}
+
+.sd-page-hero--single-class::after {
+  right: 0;
+  bottom: 0;
+  transform: scaleX(-1);
+  background-position: left bottom;
+}
+
+.sd-page-hero--single-class .sd-page-hero__buttons {
+  display: flex;
+  gap: var(--sd-space-sm);
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: var(--sd-space-md);
+}
+
+/* ========================================
+   Responsive
+   ======================================== */
+
+@media (max-width: 850px) {
+  .sd-page-hero--single-class {
+    min-height: 780px;
+  }
+}
+
+@media (max-width: 478px) {
+  .sd-page-hero--single-class {
+    min-height: 700px;
+  }
+}

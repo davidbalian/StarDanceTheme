@@ -13,22 +13,15 @@ the_post();
 <main class="sd-page sd-page--single-class" id="main-content">
 
     <!-- Hero -->
-    <section class="sd-page-hero sd-page-hero--single-class sd-section">
-        <div class="sd-container">
-            <?php if ( has_post_thumbnail() ) : ?>
-                <div class="sd-page-hero__thumbnail">
-                    <?php the_post_thumbnail('large', array('class' => 'sd-page-hero__bg-image', 'alt' => get_the_title())); ?>
-                </div>
-            <?php endif; ?>
-            <div class="sd-page-hero__content">
-                <h1 class="sd-heading sd-page-hero__title fade-in fade-in-delay-0"><?php the_title(); ?></h1>
-                <?php if ( get_the_excerpt() ) : ?>
-                    <p class="sd-text sd-page-hero__desc fade-in fade-in-delay-1"><?php the_excerpt(); ?></p>
-                <?php endif; ?>
-                <a href="<?php echo esc_url(home_url('/#contact')); ?>" class="sd-btn fade-in fade-in-delay-2">Book a Trial Class</a>
-            </div>
-        </div>
-    </section>
+    <?php stardance_render_page_hero(array(
+        'title'       => get_the_title(),
+        'description' => get_the_excerpt(),
+        'modifier'    => 'single-class',
+        'buttons'     => array(
+            array( 'text' => 'View Schedule', 'url' => '#class-times' ),
+            array( 'text' => 'Contact Us',    'url' => home_url( '/#contact' ) ),
+        ),
+    )); ?>
 
     <!-- Detail Cards -->
     <section class="sd-section sd-class-details" id="class-details">

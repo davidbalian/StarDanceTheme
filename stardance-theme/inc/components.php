@@ -27,11 +27,13 @@ function stardance_render_page_hero( $args = array() ) {
         'thumbnail_url' => '',
         'button_text'   => '',
         'button_url'    => '',
+        'buttons'       => array(),
     ) );
 
     $modifier_class = $args['modifier'] ? ' sd-page-hero--' . sanitize_html_class( $args['modifier'] ) : '';
     $tag            = in_array( $args['tag'], array( 'h1', 'h2', 'h3' ), true ) ? $args['tag'] : 'h1';
-    $has_content_wrap = $args['thumbnail_url'] || $args['button_text'];
+    $has_buttons    = ! empty( $args['buttons'] ) || ( $args['button_text'] && $args['button_url'] );
+    $has_content_wrap = $args['thumbnail_url'] || $has_buttons;
     ?>
     <section class="sd-page-hero<?php echo esc_attr( $modifier_class ); ?> sd-section">
         <div class="sd-container">
@@ -45,7 +47,16 @@ function stardance_render_page_hero( $args = array() ) {
             <?php if ( $args['description'] ) : ?>
                 <p class="sd-text sd-page-hero__desc fade-in fade-in-delay-1"><?php echo wp_kses_post( $args['description'] ); ?></p>
             <?php endif; ?>
-            <?php if ( $args['button_text'] && $args['button_url'] ) : ?>
+            <?php if ( ! empty( $args['buttons'] ) ) : ?>
+                <div class="sd-page-hero__buttons fade-in fade-in-delay-2">
+                    <?php foreach ( $args['buttons'] as $btn ) : ?>
+                        <?php
+                        $btn_class = ! empty( $btn['class'] ) ? esc_attr( $btn['class'] ) : 'sd-btn';
+                        ?>
+                        <a href="<?php echo esc_url( $btn['url'] ); ?>" class="<?php echo $btn_class; ?>"><?php echo esc_html( $btn['text'] ); ?></a>
+                    <?php endforeach; ?>
+                </div>
+            <?php elseif ( $args['button_text'] && $args['button_url'] ) : ?>
                 <a href="<?php echo esc_url( $args['button_url'] ); ?>" class="sd-btn fade-in fade-in-delay-2"><?php echo esc_html( $args['button_text'] ); ?></a>
             <?php endif; ?>
             <?php if ( $has_content_wrap ) : ?></div><?php endif; ?>
