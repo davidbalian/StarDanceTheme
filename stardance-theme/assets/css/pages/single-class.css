@@ -208,6 +208,148 @@
 }
 
 /* ========================================
+  Class Times
+  ======================================== */
+
+.sd-class-times__title {
+  margin-bottom: var(--sd-space-md);
+}
+
+.sd-class-times__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--sd-space-sm);
+}
+
+.sd-class-times__day {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--sd-space-sm);
+  padding: 14px 18px;
+  border-radius: var(--sd-radius);
+  background-color: var(--sd-light-blue);
+  border: 1px solid rgba(0, 56, 109, 0.08);
+}
+
+.sd-class-times__day-name {
+  font-family: var(--sd-font-heading);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--sd-navy);
+}
+
+.sd-class-times__day-time {
+  font-family: var(--sd-font-body);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--sd-body-text);
+}
+
+.sd-class-times__day--closed {
+  opacity: 0.8;
+}
+
+.sd-class-times__day--closed .sd-class-times__day-time {
+  color: var(--sd-gold-dark);
+}
+
+.sd-class-times__note {
+  margin-top: var(--sd-space-md);
+  max-width: 720px;
+  margin-inline: auto;
+}
+
+.sd-class-times__note a {
+  color: var(--sd-navy);
+  text-decoration: underline;
+}
+
+/* ========================================
+  FAQ
+  ======================================== */
+
+.sd-faq--single-class {
+  background-color: var(--sd-light-blue);
+}
+
+.sd-faq--single-class .sd-faq__list {
+  max-width: 860px;
+}
+
+/* ========================================
+  Gallery
+  ======================================== */
+
+.sd-class-gallery__title {
+  margin-bottom: var(--sd-space-md);
+}
+
+.sd-class-gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--sd-space-sm);
+}
+
+.sd-class-gallery__item {
+  display: block;
+  border-radius: var(--sd-radius);
+  overflow: hidden;
+  box-shadow: var(--sd-shadow-sm);
+}
+
+.sd-class-gallery__item img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  transition: transform var(--sd-transition);
+}
+
+.sd-class-gallery__item:hover img {
+  transform: scale(1.04);
+}
+
+/* ========================================
+  Location
+  ======================================== */
+
+.sd-class-location {
+  background-color: var(--sd-light-blue);
+}
+
+.sd-class-location__title {
+  margin-bottom: var(--sd-space-xs);
+}
+
+.sd-class-location__address {
+  margin-bottom: var(--sd-space-md);
+}
+
+.sd-class-location__map {
+  border-radius: var(--sd-radius);
+  overflow: hidden;
+  box-shadow: var(--sd-shadow-md);
+}
+
+.sd-class-location__map iframe {
+  display: block;
+  width: 100%;
+  min-height: 420px;
+  border: 0;
+}
+
+.sd-class-location__map-placeholder {
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--sd-white);
+  color: var(--sd-body-text);
+}
+
+/* ========================================
    Responsive
    ======================================== */
 
@@ -215,10 +357,27 @@
   .sd-page-hero--single-class {
     min-height: 780px;
   }
+
+  .sd-class-times__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sd-class-gallery__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 478px) {
   .sd-page-hero--single-class {
     min-height: 700px;
+  }
+
+  .sd-class-gallery__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sd-class-times__day {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
