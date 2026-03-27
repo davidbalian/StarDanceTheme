@@ -120,16 +120,16 @@ $sd_class_details_lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing el
     <section class="sd-section sd-class-times" id="class-times">
         <div class="sd-container">
             <h2 class="sd-heading sd-class-times__title fade-in fade-in-delay-0">When We Train</h2>
-            <div class="sd-class-times__grid">
+            <div class="sd-schedule-page__grid sd-class-times__schedule-grid">
                 <?php
                 $sd_time_rows = array(
-                    array( 'Monday', 'monday_time', 'monday_closed', '17:00 – 20:00', 1 ),
-                    array( 'Tuesday', 'tuesday_time', 'tuesday_closed', '17:00 – 20:00', 2 ),
-                    array( 'Wednesday', 'wednesday_time', 'wednesday_closed', '17:00 – 20:00', 3 ),
-                    array( 'Thursday', 'thursday_time', 'thursday_closed', '17:00 – 20:00', 4 ),
-                    array( 'Friday', 'friday_time', 'friday_closed', '17:00 – 20:00', 5 ),
-                    array( 'Saturday', 'saturday_time', 'saturday_closed', '10:00 – 14:00', 6 ),
-                    array( 'Sunday', 'sunday_time', 'sunday_closed', 'Closed', 7 ),
+                    array( 'Mon', 'monday_time', 'monday_closed', '17:00 - 20:00', 1 ),
+                    array( 'Tue', 'tuesday_time', 'tuesday_closed', '17:00 - 20:00', 2 ),
+                    array( 'Wed', 'wednesday_time', 'wednesday_closed', '17:00 - 20:00', 3 ),
+                    array( 'Thu', 'thursday_time', 'thursday_closed', '17:00 - 20:00', 4 ),
+                    array( 'Fri', 'friday_time', 'friday_closed', '17:00 - 20:00', 5 ),
+                    array( 'Sat', 'saturday_time', 'saturday_closed', '10:00 - 14:00', 6 ),
+                    array( 'Sun', 'sunday_time', 'sunday_closed', 'Closed', 7 ),
                 );
                 foreach ( $sd_time_rows as $row ) :
                     $day_label   = $row[0];
@@ -141,12 +141,21 @@ $sd_class_details_lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing el
                     $acf_closed  = $sd_has_acf ? (bool) get_field( $closed_key, $sd_class_id ) : false;
                     $is_closed   = $acf_closed || ( '' === $acf_time && 'Closed' === $fallback );
                     $time_text   = $is_closed ? 'Closed' : ( '' !== $acf_time ? $acf_time : $fallback );
-                    $day_class   = $is_closed ? ' sd-class-times__day--closed' : '';
+                    $day_class   = $is_closed ? ' sd-schedule-page__day--closed' : '';
                     ?>
-                    <div class="sd-class-times__day<?php echo esc_attr( $day_class ); ?> fade-in fade-in-delay-<?php echo absint( $delay ); ?>">
-                        <span class="sd-class-times__day-name"><?php echo esc_html( $day_label ); ?></span>
-                        <span class="sd-class-times__day-time"><?php echo esc_html( $time_text ); ?></span>
-                    </div>
+                    <article class="sd-schedule-page__day sd-class-times__schedule-day<?php echo esc_attr( $day_class ); ?> fade-in fade-in-delay-<?php echo absint( $delay ); ?>">
+                        <h3 class="sd-schedule-page__day-title"><?php echo esc_html( $day_label ); ?></h3>
+                        <?php if ( $is_closed ) : ?>
+                            <p class="sd-schedule-page__closed"><?php esc_html_e( 'Closed', 'stardance' ); ?></p>
+                        <?php else : ?>
+                            <div class="sd-schedule-page__sessions">
+                                <div class="sd-schedule-page__session">
+                                    <span class="sd-schedule-page__time"><?php echo esc_html( $time_text ); ?></span>
+                                    <span class="sd-schedule-page__class-name"><?php echo esc_html( get_the_title() ); ?></span>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                    </article>
                 <?php endforeach; ?>
             </div>
             <p class="sd-text sd-class-times__note">
@@ -158,34 +167,55 @@ $sd_class_details_lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing el
     <!-- FAQ Accordion -->
     <section class="sd-section sd-faq sd-faq--single-class" id="faq">
         <div class="sd-container">
-            <h2 class="sd-heading sd-faq__title fade-in fade-in-delay-0">Common Questions</h2>
+            <h2 class="sd-heading sd-faq__title fade-in fade-in-delay-0">FAQs</h2>
+            <div class="sd-classes-faq__layout sd-classes-faq__layout--single">
+                <div class="sd-faq__list">
+                    <?php stardance_render_faq_item(array(
+                        'question' => 'What age can my child start dancing?',
+                        'answer'   => 'We welcome dancers from age 3 and up. Our kids programs are fun and engaging, building dance skills appropriate for each age group.',
+                        'delay'    => 1,
+                    )); ?>
 
-            <div class="sd-faq__list">
+                    <?php stardance_render_faq_item(array(
+                        'question' => 'Do I need a partner to join?',
+                        'answer'   => 'Not at all. Many of our students join solo. We rotate partners in group classes and always ensure everyone gets equal floor time.',
+                        'delay'    => 2,
+                    )); ?>
 
-                <?php stardance_render_faq_item(array(
-                    'question' => 'What level do I need to be to join this class?',
-                    'answer'   => 'This class is open to all levels. Whether you\'re a complete beginner or a more experienced dancer, we\'ll work with you at the right pace and in the right group.',
-                    'delay'    => 1,
-                )); ?>
+                    <?php stardance_render_faq_item(array(
+                        'question' => 'I\'ve never danced before. Which class should I start with?',
+                        'answer'   => 'We recommend starting with a beginner European Ballroom or Latin American group class. Both offer a solid technical foundation. Contact us and we\'ll help you choose the best starting point.',
+                        'delay'    => 3,
+                    )); ?>
 
-                <?php stardance_render_faq_item(array(
-                    'question' => 'Do I need a partner?',
-                    'answer'   => 'No. Many students join solo. We rotate partners in group classes and can always find you someone to train with.',
-                    'delay'    => 2,
-                )); ?>
+                    <?php stardance_render_faq_item(array(
+                        'question' => 'Can I try a class before committing?',
+                        'answer'   => 'Absolutely. We offer trial classes with no obligation. It\'s the best way to experience the teaching style and see if the class is the right fit for you.',
+                        'delay'    => 4,
+                    )); ?>
 
-                <?php stardance_render_faq_item(array(
-                    'question' => 'What age groups are these classes for?',
-                    'answer'   => 'We run separate sessions for children and adults. Check the timetable or contact us for the age-specific schedule for this class.',
-                    'delay'    => 3,
-                )); ?>
+                    <?php stardance_render_faq_item(array(
+                        'question' => 'Do you offer classes for competitive dancers?',
+                        'answer'   => 'Yes. Star Dance Studio has a strong competition programme. Students who wish to compete receive focused coaching, choreography support, and guidance on selecting appropriate events and attire.',
+                        'delay'    => 5,
+                    )); ?>
 
-                <?php stardance_render_faq_item(array(
-                    'question' => 'How often should I attend?',
-                    'answer'   => 'We recommend at least two sessions per week for steady progress. Even one session a week will produce results over time. Private lessons alongside group classes accelerate development significantly.',
-                    'delay'    => 4,
-                )); ?>
+                    <?php stardance_render_faq_item(array(
+                        'question' => 'What should I wear to class?',
+                        'answer'   => 'Comfortable, flexible clothing is ideal. For footwear, dance shoes are preferred but not required for your first session — any clean, flat-soled shoe will do.',
+                        'delay'    => 6,
+                    )); ?>
 
+                    <?php stardance_render_faq_item(array(
+                        'question' => 'How do I know which level I am?',
+                        'answer'   => 'Don\'t worry about labelling yourself. Come in for a trial class and our coaches will assess where you are and place you in the right group. Everyone is welcome regardless of prior experience.',
+                        'delay'    => 7,
+                    )); ?>
+                </div>
+                <div class="sd-classes-faq__image-wrap sd-classes-faq__image-wrap--single fade-in fade-in-delay-2" aria-hidden="true">
+                    <img src="https://stardance.com.cy/wp-content/uploads/2026/02/coach.jpg" alt="" class="sd-classes-faq__image sd-classes-faq__image--single" loading="lazy">
+                    <img src="https://stardance.com.cy/wp-content/uploads/2026/03/card-overlay-tall-gold.svg" alt="" class="sd-classes-faq__image-decoration sd-classes-faq__image-decoration--single" loading="lazy">
+                </div>
             </div>
         </div>
     </section>
@@ -194,58 +224,35 @@ $sd_class_details_lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing el
     <section class="sd-section sd-class-gallery" id="class-gallery">
         <div class="sd-container">
             <h2 class="sd-heading sd-class-gallery__title fade-in fade-in-delay-0">See Our Dancers in Action</h2>
-            <div class="sd-class-gallery__grid"
+            <?php
+            $acf_feature_image = $sd_has_acf ? get_field( 'gallery_image_1', $sd_class_id ) : null;
+            $feature_image_url = ( is_array( $acf_feature_image ) && ! empty( $acf_feature_image['url'] ) )
+                ? $acf_feature_image['url']
+                : 'https://stardance.com.cy/wp-content/uploads/2026/02/European-Ballroom.png';
+            $feature_image_alt = ( is_array( $acf_feature_image ) && ! empty( $acf_feature_image['alt'] ) )
+                ? $acf_feature_image['alt']
+                : get_the_title() . ' dancers';
+            ?>
+            <a href="<?php echo esc_url( $feature_image_url ); ?>"
+               class="sd-class-gallery__feature fade-in fade-in-delay-1"
                  data-gallery-lightbox
                  itemscope
-                 itemtype="https://schema.org/ImageGallery">
-                <?php
-                $sd_fallback_gallery = array(
-                    array(
-                        'url'   => 'http://stardance.com.cy/wp-content/uploads/2026/02/European-Ballroom.png',
-                        'alt'   => get_the_title() . ' class',
-                        'delay' => 1,
-                    ),
-                    array(
-                        'url'   => 'http://stardance.com.cy/wp-content/uploads/2026/02/Latin-American.png',
-                        'alt'   => get_the_title() . ' performance',
-                        'delay' => 2,
-                    ),
-                    array(
-                        'url'   => 'http://stardance.com.cy/wp-content/uploads/2026/02/Latin-Fusion-Ladies.png',
-                        'alt'   => get_the_title() . ' showcase',
-                        'delay' => 3,
-                    ),
-                );
-
-                for ( $g = 1; $g <= 3; $g++ ) :
-                    $acf_image = $sd_has_acf ? get_field( "gallery_image_{$g}", $sd_class_id ) : null;
-                    $image_url = ( is_array( $acf_image ) && ! empty( $acf_image['url'] ) ) ? $acf_image['url'] : $sd_fallback_gallery[ $g - 1 ]['url'];
-                    $thumb_url = ( is_array( $acf_image ) && ! empty( $acf_image['sizes']['large'] ) ) ? $acf_image['sizes']['large'] : $image_url;
-                    $thumb_w   = ( is_array( $acf_image ) && ! empty( $acf_image['sizes']['large-width'] ) ) ? (int) $acf_image['sizes']['large-width'] : 400;
-                    $thumb_h   = ( is_array( $acf_image ) && ! empty( $acf_image['sizes']['large-height'] ) ) ? (int) $acf_image['sizes']['large-height'] : 300;
-                    $image_alt = ( is_array( $acf_image ) && ! empty( $acf_image['alt'] ) ) ? $acf_image['alt'] : $sd_fallback_gallery[ $g - 1 ]['alt'];
-                    ?>
-                    <a href="<?php echo esc_url( $image_url ); ?>"
-                       class="sd-class-gallery__item fade-in fade-in-delay-<?php echo absint( $sd_fallback_gallery[ $g - 1 ]['delay'] ); ?>"
-                       itemprop="associatedMedia"
-                       itemscope
-                       itemtype="https://schema.org/ImageObject">
-                        <img src="<?php echo esc_url( $thumb_url ); ?>"
-                             alt="<?php echo esc_attr( $image_alt ); ?>"
-                             width="<?php echo esc_attr( (string) $thumb_w ); ?>"
-                             height="<?php echo esc_attr( (string) $thumb_h ); ?>"
-                             loading="lazy"
-                             itemprop="thumbnail">
-                    </a>
-                <?php endfor; ?>
-            </div>
+                 itemtype="https://schema.org/ImageObject">
+                <img src="<?php echo esc_url( $feature_image_url ); ?>"
+                     alt="<?php echo esc_attr( $feature_image_alt ); ?>"
+                     class="sd-class-gallery__feature-image"
+                     loading="lazy"
+                     itemprop="thumbnail">
+                <img src="https://stardance.com.cy/wp-content/uploads/2026/03/play-button.svg" alt="" class="sd-class-gallery__feature-play" aria-hidden="true" width="72" height="72">
+                <img src="https://stardance.com.cy/wp-content/uploads/2026/03/card-overlay-tall-gold.svg" alt="" class="sd-class-gallery__feature-decoration" loading="lazy">
+            </a>
         </div>
     </section>
 
     <?php stardance_render_cta(array(
         'title'       => 'Ready to Start?',
-        'description' => 'Book a trial class today — no experience or commitment needed.',
-        'button_text' => 'Book a Trial Class',
+        'description' => 'Contact us to book a trial class or ask any questions about this program.',
+        'button_text' => 'Contact Us',
         'button_url'  => home_url('/#contact'),
     )); ?>
 
