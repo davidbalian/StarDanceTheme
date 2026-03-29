@@ -6,6 +6,7 @@
 // Reusable component render functions
 require get_template_directory() . '/inc/components.php';
 require get_template_directory() . '/inc/class-detail-card.php';
+require get_template_directory() . '/inc/class-stardance-nav-menu-registrar.php';
 
 /**
  * Return a filemtime-based asset version for cache busting.
@@ -746,12 +747,29 @@ function stardance_create_pages() {
  */
 function stardance_activate_theme_setup() {
     stardance_create_pages();
+    $nav_registrar = new Stardance_Nav_Menu_Registrar();
+    $nav_registrar->ensure_default_menus();
     flush_rewrite_rules();
     update_option('stardance_pages_created', true);
     update_option('stardance_rewrite_version', STARDANCE_REWRITE_VERSION );
 }
 add_action('after_switch_theme', 'stardance_activate_theme_setup');
 add_action('admin_init', 'stardance_create_pages');
+
+/**
+ * Assign preset nav menus when locations are empty.
+ *
+ * Runs on admin_init because wp_update_nav_menu_item() requires edit_theme_options;
+ * unauthenticated front-end requests cannot provision menus. Theme activation also
+ * calls Stardance_Nav_Menu_Registrar::ensure_default_menus() while an admin is switching themes.
+ *
+ * @return void
+ */
+function stardance_ensure_default_nav_menus() {
+    $nav_registrar = new Stardance_Nav_Menu_Registrar();
+    $nav_registrar->ensure_default_menus();
+}
+add_action( 'admin_init', 'stardance_ensure_default_nav_menus', 15 );
 
 /**
  * Flush rewrite rules once after routing changes.
