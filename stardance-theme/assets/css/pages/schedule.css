@@ -12,11 +12,6 @@
   --sd-page-cta-top-width: 35%;
   --sd-page-cta-bottom-width: 50%;
   background-position: top center;
-  min-height: 420px;
-}
-
-.sd-page--schedule .sd-cta > .sd-container {
-  min-height: 420px;
 }
 
 .sd-schedule-page__grid {
@@ -132,20 +127,10 @@
   .sd-schedule-page__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-
-  .sd-page--schedule .sd-cta,
-  .sd-page--schedule .sd-cta > .sd-container {
-    min-height: 360px;
-  }
 }
 
 @media (max-width: 478px) {
   .sd-schedule-page__grid {
     grid-template-columns: 1fr;
-  }
-
-  .sd-page--schedule .sd-cta,
-  .sd-page--schedule .sd-cta > .sd-container {
-    min-height: 320px;
   }
 }

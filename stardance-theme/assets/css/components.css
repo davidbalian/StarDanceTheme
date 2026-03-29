@@ -564,7 +564,7 @@
   background-size: cover;
   background-position: center;
   position: relative;
-  min-height: 600px;
+  min-height: var(--sd-page-cta-min-height);
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -628,11 +628,11 @@
   position: relative;
   z-index: 2;
   display: flex;
-  min-height: 600px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: var(--sd-space-md);
+  min-height: var(--sd-page-cta-min-height);
 }
 
 .sd-page--about .sd-cta .sd-cta__title,

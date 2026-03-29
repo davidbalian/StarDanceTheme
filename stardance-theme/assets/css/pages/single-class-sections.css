@@ -362,11 +362,6 @@
     min-height: 780px;
   }
 
-  .sd-page--single-class .sd-cta,
-  .sd-page--single-class .sd-cta > .sd-container {
-    min-height: 520px;
-  }
-
   .sd-page--single-class .sd-faq__list {
     padding: 6px 16px;
   }

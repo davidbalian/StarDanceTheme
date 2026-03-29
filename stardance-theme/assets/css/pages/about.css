@@ -406,11 +406,6 @@
   .sd-about-values__trophy {
     order: -1;
   }
-
-  .sd-page--about .sd-cta,
-  .sd-page--about .sd-cta > .sd-container {
-    min-height: 520px;
-  }
 }
 
 /* ========================================

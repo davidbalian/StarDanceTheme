@@ -274,11 +274,6 @@
     grid-template-columns: 1fr;
   }
 
-  .sd-page--classes .sd-cta,
-  .sd-page--classes .sd-cta > .sd-container {
-    min-height: 520px;
-  }
-
   .sd-page--classes .sd-overlay-card--tall {
     aspect-ratio: 3 / 4;
   }
