@@ -29,45 +29,52 @@ Text Domain: stardance
   --sd-font-heading: 'Cormorant', serif;
   --sd-font-body: 'Libertinus Sans', sans-serif;
 
-  /* Typography — fluid scale (full clamp() per token) */
-  --sd-type-body: clamp(0.9375rem, 0.88rem + 0.25vw, 1rem);
-  /* Slightly larger body for section intros (~16–17px) */
-  --sd-type-body-lg: clamp(1rem, 0.95rem + 0.15vw, 1.0625rem);
-  --sd-type-lead: clamp(1rem, 0.92rem + 0.35vw, 1.375rem);
+  /*
+   * Typography — unified fluid scale (10 canonical clamp() steps, round rem caps).
+   * Order at typical widths: display-home ≥ display-page ≥ hero-tagline ≥ h1 > h2 > h3 > h4 > h5 ≥ h6;
+   * then copy (body/lead), then small (caption + micro).
+   */
+  --sd-type-scale-display-home: clamp(2rem, 1.5rem + 5vw, 5rem);
+  --sd-type-scale-display-page: clamp(1.75rem, 1.35rem + 4vw, 4rem);
+  --sd-type-scale-hero-tagline: clamp(1.625rem, 1.05rem + 2.4vw, 2.75rem);
+  --sd-type-scale-h1: clamp(1.625rem, 1.2rem + 2vw, 2.5rem);
+  --sd-type-scale-h2: clamp(1.375rem, 1.1rem + 1.25vw, 2rem);
+  --sd-type-scale-h3: clamp(1.25rem, 1.05rem + 0.85vw, 1.75rem);
+  --sd-type-scale-h4: clamp(1.125rem, 1rem + 0.4vw, 1.375rem);
+  --sd-type-scale-h5: clamp(1rem, 0.92rem + 0.25vw, 1.125rem);
+  --sd-type-scale-copy: clamp(0.9375rem, 0.88rem + 0.28vw, 1.125rem);
+  --sd-type-scale-small: clamp(0.625rem, 0.58rem + 0.14vw, 0.8125rem);
 
-  --sd-type-h1: clamp(2rem, 1.45rem + 2.5vw, 3.25rem);
-  --sd-type-section: clamp(1.875rem, 1.4rem + 2.4vw, 4rem);
-  --sd-type-h3: clamp(1.375rem, 1.15rem + 1.1vw, 1.875rem);
-  --sd-type-h4: clamp(1.125rem, 1rem + 0.55vw, 1.375rem);
-  --sd-type-h5: clamp(1rem, 0.92rem + 0.35vw, 1.125rem);
-  --sd-type-h6: clamp(0.9375rem, 0.88rem + 0.25vw, 1.0625rem);
-
-  --sd-type-display-home: clamp(1.75rem, 0.95rem + 5.5vw, 5rem);
-  --sd-type-display-page: clamp(2.125rem, 1.45rem + 4.2vw, 5rem);
-  --sd-type-hero-tagline: clamp(1.125rem, 0.95rem + 2vw, 3.125rem);
-
-  --sd-type-card-title: var(--sd-type-h3);
-  --sd-type-card-desc: clamp(0.8125rem, 0.78rem + 0.2vw, 0.9375rem);
-
-  --sd-type-ui-md: clamp(1.125rem, 1.05rem + 0.45vw, 1.5rem);
-  --sd-type-ui-sm: clamp(0.875rem, 0.82rem + 0.22vw, 1rem);
-  --sd-type-ui-xs: clamp(0.6875rem, 0.65rem + 0.12vw, 0.8125rem);
-
-  --sd-type-btn: clamp(0.9375rem, 0.88rem + 0.2vw, 1rem);
-  --sd-type-btn-lg: clamp(1rem, 0.94rem + 0.28vw, 1.125rem);
-
-  --sd-type-caption: clamp(0.8125rem, 0.78rem + 0.15vw, 0.875rem);
-
-  --sd-type-modal-title: clamp(1.5rem, 1.2rem + 1.25vw, 2rem);
-  --sd-type-single-class-title: clamp(1.375rem, 1.15rem + 1.4vw, 1.75rem);
-  --sd-type-accent: clamp(1.5rem, 1.3rem + 1vw, 1.75rem);
-  /* Promo / spotlight headings (about champions, coach name) */
-  --sd-type-promo: clamp(1.65rem, 1.35rem + 1.2vw, 2rem);
-
-  --sd-type-micro-day: clamp(0.75rem, 0.68rem + 0.35vw, 0.9rem);
-  --sd-type-micro-tight-xs: clamp(0.5rem, 0.46rem + 0.2vw, 0.65rem);
-  --sd-type-micro-tight-sm: clamp(0.55rem, 0.5rem + 0.22vw, 0.7rem);
-  --sd-type-micro-tight-md: clamp(0.58rem, 0.54rem + 0.22vw, 0.75rem);
+  /* Semantic aliases (consumers use these; each maps to a scale step above) */
+  --sd-type-display-home: var(--sd-type-scale-display-home);
+  --sd-type-display-page: var(--sd-type-scale-display-page);
+  --sd-type-hero-tagline: var(--sd-type-scale-hero-tagline);
+  --sd-type-h1: var(--sd-type-scale-h1);
+  --sd-type-h2: var(--sd-type-scale-h2);
+  --sd-type-section: var(--sd-type-scale-h2);
+  --sd-type-h3: var(--sd-type-scale-h3);
+  --sd-type-h4: var(--sd-type-scale-h4);
+  --sd-type-h5: var(--sd-type-scale-h5);
+  --sd-type-h6: var(--sd-type-scale-h5);
+  --sd-type-body: var(--sd-type-scale-copy);
+  --sd-type-body-lg: var(--sd-type-scale-copy);
+  --sd-type-lead: var(--sd-type-scale-copy);
+  --sd-type-card-title: var(--sd-type-scale-h3);
+  --sd-type-card-desc: var(--sd-type-scale-small);
+  --sd-type-ui-md: var(--sd-type-scale-h5);
+  --sd-type-ui-sm: var(--sd-type-scale-copy);
+  --sd-type-ui-xs: var(--sd-type-scale-copy);
+  --sd-type-btn: var(--sd-type-scale-copy);
+  --sd-type-btn-lg: var(--sd-type-scale-h5);
+  --sd-type-caption: var(--sd-type-scale-small);
+  --sd-type-modal-title: var(--sd-type-scale-h3);
+  --sd-type-single-class-title: var(--sd-type-scale-h3);
+  --sd-type-accent: var(--sd-type-scale-h3);
+  --sd-type-promo: var(--sd-type-scale-h3);
+  --sd-type-micro-day: var(--sd-type-scale-small);
+  --sd-type-micro-tight-xs: var(--sd-type-scale-small);
+  --sd-type-micro-tight-sm: var(--sd-type-scale-small);
+  --sd-type-micro-tight-md: var(--sd-type-scale-small);
 
   /* Line-height companions */
   --sd-leading-tight: 1;
@@ -165,7 +172,7 @@ h1 {
 }
 
 h2 {
-  font-size: var(--sd-type-section);
+  font-size: var(--sd-type-h2);
 }
 
 h3 {

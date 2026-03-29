@@ -52,38 +52,30 @@ New JS for FAQ accordion: `assets/js/faq.js`.
 
 ### Typography — fluid scale (`clamp()`)
 
-Each `--sd-type-*` is a full `clamp(min, preferred, max)` using **rem + vw** (see `style.css` `:root` for exact formulas). **Do not** paste raw `px` for font sizes in theme CSS; use these variables.
+There are **10 canonical steps** (`--sd-type-scale-*`), each a full `clamp(min, preferred, max)` with **rem + vw** (see `style.css` `:root`). **Semantic** tokens (`--sd-type-h1`, `--sd-type-btn`, …) are **aliases** to those steps so the hierarchy stays consistent and the number of distinct sizes stays small.
 
-| Variable | Role / typical consumers |
+**Do not** paste raw `px` for font sizes in theme CSS; use semantic tokens (or a scale token if you are defining something new).
+
+**Order (largest → smallest):** display-home → display-page → hero-tagline → `h1` → `h2` → `h3` → `h4` → `h5` / `h6` → copy (body, lead, most UI) → small (caption, card meta, timetable micro).
+
+| Canonical step | Maps to semantic tokens / roles |
 |---|---|
-| `--sd-type-body` | `body`; base copy |
-| `--sd-type-body-lg` | Section intros (timetable/competitions description) |
-| `--sd-type-lead` | Hero / page-hero descriptions; event card meta & body; champions text |
-| `--sd-leading-tight` / `--sd-leading-snug` / `--sd-leading-body` / `--sd-leading-ui` | Line-height companions |
-| `--sd-type-h1` | Default `h1` (display heroes override via classes) |
-| `--sd-type-section` | Default `h2` (section titles + `.sd-heading` — class does not set `font-size`) |
-| `--sd-type-h3` … `--sd-type-h6` | Default `h3`–`h6` |
-| `--sd-type-display-home` | `.sd-hero__title` |
-| `--sd-type-display-page` | Inner page hero `.sd-page-hero__title` |
-| `--sd-type-hero-tagline` | `.sd-hero__tagline` |
-| `--sd-type-card-title` | Card headings (alias of `--sd-type-h3`); event card titles |
-| `--sd-type-card-desc` | Card descriptions, overlay meta |
-| `--sd-type-ui-md` | Filter labels, FAQ questions, compact section labels |
-| `--sd-type-ui-sm` | Footer links, coach copy, values body |
-| `--sd-type-ui-xs` | Dense UI (e.g. classes grid excerpt) |
-| `--sd-type-btn` | Primary buttons, header nav, form fields |
-| `--sd-type-btn-lg` | Large buttons, filter tabs, mobile drawer links |
-| `--sd-type-caption` | Legal line, pills, ghost/outline buttons |
-| `--sd-type-modal-title` | Lightbox close affordance |
-| `--sd-type-single-class-title` | Class detail overlay titles |
-| `--sd-type-accent` | Coach name on cards |
-| `--sd-type-promo` | About champions titles, coach name block |
-| `--sd-type-micro-day` | Timetable / schedule day strip |
-| `--sd-type-micro-tight-xs` | Timetable time & level |
-| `--sd-type-micro-tight-sm` | Timetable class name |
-| `--sd-type-micro-tight-md` | Timetable “closed” |
+| `--sd-type-scale-display-home` | `--sd-type-display-home` — home hero title |
+| `--sd-type-scale-display-page` | `--sd-type-display-page` — inner page hero title |
+| `--sd-type-scale-hero-tagline` | `--sd-type-hero-tagline` — hero tagline (≥ `h1` size across widths) |
+| `--sd-type-scale-h1` | `--sd-type-h1` — default `h1` |
+| `--sd-type-scale-h2` | `--sd-type-h2`, `--sd-type-section` — default `h2`, section titles (`.sd-heading` does not set `font-size`) |
+| `--sd-type-scale-h3` | `--sd-type-h3`, `--sd-type-card-title`, `--sd-type-modal-title`, `--sd-type-single-class-title`, `--sd-type-accent`, `--sd-type-promo` |
+| `--sd-type-scale-h4` | `--sd-type-h4` |
+| `--sd-type-scale-h5` | `--sd-type-h5`, `--sd-type-h6` (same step), `--sd-type-ui-md`, `--sd-type-btn-lg` |
+| `--sd-type-scale-copy` | `--sd-type-body`, `--sd-type-body-lg`, `--sd-type-lead`, `--sd-type-ui-sm`, `--sd-type-ui-xs`, `--sd-type-btn` |
+| `--sd-type-scale-small` | `--sd-type-caption`, `--sd-type-card-desc`, `--sd-type-micro-day`, `--sd-type-micro-tight-xs` / `-sm` / `-md` |
 
-**Element defaults** (in `style.css`): `body`, `h1`–`h6`, and `p` use the tokens above. **Exceptions** use BEM classes with higher specificity (e.g. `.sd-schedule-page__day-title` on an `h2`, `.sd-hero__title` on an `h1`).
+| Line-height | Usage |
+|---|---|
+| `--sd-leading-tight` / `--sd-leading-snug` / `--sd-leading-body` / `--sd-leading-ui` | Companions for headings vs UI vs body |
+
+**Element defaults** (in `style.css`): `body` uses copy scale; `h1`–`h6` use the heading aliases; `p` inherits. **Exceptions** use BEM classes with higher specificity (e.g. `.sd-schedule-page__day-title` on an `h2`, `.sd-hero__title` on an `h1`).
 
 ### Layout
 | Variable | Value | Usage |
