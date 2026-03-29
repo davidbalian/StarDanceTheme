@@ -43,7 +43,7 @@ function stardance_setup() {
 }
 add_action('after_setup_theme', 'stardance_setup');
 
-define( 'STARDANCE_REWRITE_VERSION', '2026-03-gallery-filters' );
+define( 'STARDANCE_REWRITE_VERSION', '2026-03-link-audit' );
 
 // Enqueue Styles and Scripts
 function stardance_enqueue_assets() {
@@ -96,10 +96,21 @@ function stardance_enqueue_assets() {
     wp_enqueue_script('stardance-gallery', get_template_directory_uri() . '/assets/js/gallery.js', array(), stardance_asset_version('assets/js/gallery.js'), true);
     wp_enqueue_script('stardance-contact-form', get_template_directory_uri() . '/assets/js/contact-form.js', array(), stardance_asset_version('assets/js/contact-form.js'), true);
 
-    wp_localize_script('stardance-gallery', 'stardanceGallery', array(
-        'ajaxurl' => admin_url('admin-ajax.php'),
-        'nonce'   => wp_create_nonce('stardance_gallery_nonce'),
-    ));
+    $uploads = wp_get_upload_dir();
+    $gallery_arrow = '';
+    if ( empty( $uploads['error'] ) && ! empty( $uploads['baseurl'] ) ) {
+        $gallery_arrow = trailingslashit( $uploads['baseurl'] ) . '2026/03/left-arrow.svg';
+    }
+
+    wp_localize_script(
+        'stardance-gallery',
+        'stardanceGallery',
+        array(
+            'ajaxurl'          => admin_url( 'admin-ajax.php' ),
+            'nonce'            => wp_create_nonce( 'stardance_gallery_nonce' ),
+            'lightboxArrowUrl' => $gallery_arrow ? esc_url_raw( $gallery_arrow ) : '',
+        )
+    );
 
     // Localize script for AJAX
     wp_localize_script('stardance-contact-form', 'stardanceAjax', array(
@@ -111,6 +122,8 @@ add_action('wp_enqueue_scripts', 'stardance_enqueue_assets');
 
 // Register dance_class Custom Post Type
 function stardance_register_post_types() {
+    // Listing uses the Page with slug "classes"; singles use /classes/{post_name}/ (has_archive false).
+    // WordPress serves the page at /classes/ and class singles under the same base segment.
     register_post_type('dance_class', array(
         'labels' => array(
             'name'               => __('Dance Classes', 'stardance'),
@@ -492,6 +505,21 @@ function stardance_get_gallery_query_payload( $filters = array() ) {
     );
 }
 
+/**
+ * Permalink for a published page by slug, or a home_url path fallback if the page is missing.
+ *
+ * @param string $slug Page post_name (no slashes).
+ * @return string
+ */
+function stardance_page_or_path_url( string $slug ): string {
+    $page = get_page_by_path( $slug, OBJECT, 'page' );
+    if ( $page instanceof WP_Post ) {
+        return get_permalink( $page );
+    }
+
+    return home_url( '/' . trim( $slug, '/' ) . '/' );
+}
+
 // Auto-create pages and sync sample posts.
 function stardance_create_pages() {
     $pages = array(
@@ -520,24 +548,38 @@ function stardance_create_pages() {
             'template' => 'page-gallery.php',
             'slug'     => 'gallery',
         ),
+        array(
+            'title'    => 'Privacy Policy',
+            'template' => '',
+            'slug'     => 'privacy-policy',
+        ),
+        array(
+            'title'    => 'Cookie Policy',
+            'template' => '',
+            'slug'     => 'cookie-policy',
+        ),
     );
 
     foreach ( $pages as $page_data ) {
-        $existing = get_page_by_path($page_data['slug'], OBJECT, 'page');
+        $existing = get_page_by_path( $page_data['slug'], OBJECT, 'page' );
         if ( $existing ) {
-            update_post_meta($existing->ID, '_wp_page_template', $page_data['template']);
+            if ( ! empty( $page_data['template'] ) ) {
+                update_post_meta( $existing->ID, '_wp_page_template', $page_data['template'] );
+            }
             continue;
         }
-        $page_id = wp_insert_post(array(
-            'post_title'   => $page_data['title'],
-            'post_name'    => $page_data['slug'],
-            'post_status'  => 'publish',
-            'post_type'    => 'page',
-            'post_author'  => 1,
-            'post_content' => '',
-        ));
-        if ( $page_id && ! is_wp_error($page_id) ) {
-            update_post_meta($page_id, '_wp_page_template', $page_data['template']);
+        $page_id = wp_insert_post(
+            array(
+                'post_title'   => $page_data['title'],
+                'post_name'    => $page_data['slug'],
+                'post_status'  => 'publish',
+                'post_type'    => 'page',
+                'post_author'  => 1,
+                'post_content' => '',
+            )
+        );
+        if ( $page_id && ! is_wp_error( $page_id ) && ! empty( $page_data['template'] ) ) {
+            update_post_meta( $page_id, '_wp_page_template', $page_data['template'] );
         }
     }
 
@@ -762,6 +804,10 @@ add_action('admin_init', 'stardance_create_pages');
  * Runs on admin_init because wp_update_nav_menu_item() requires edit_theme_options;
  * unauthenticated front-end requests cannot provision menus. Theme activation also
  * calls Stardance_Nav_Menu_Registrar::ensure_default_menus() while an admin is switching themes.
+ *
+ * After deploy, confirm under Settings → Reading that a static front page is set (for /#contact
+ * and section anchors on the home template), and under Appearance → Menus that Primary/Footer
+ * URLs match intent. For events, validate `event_link` meta on sd_event posts when used.
  *
  * @return void
  */
@@ -1131,13 +1177,13 @@ add_action('wp_ajax_nopriv_stardance_contact', 'stardance_handle_contact_form');
 function stardance_fallback_menu() {
     ?>
     <ul class="sd-header__menu">
-        <li><a href="<?php echo esc_url(home_url('/')); ?>">Home</a></li>
-        <li><a href="#classes">Classes</a></li>
-        <li><a href="#competitions">Events</a></li>
-        <li><a href="#timetable">Schedule</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Home', 'stardance' ); ?></a></li>
+        <li><a href="<?php echo esc_url( stardance_page_or_path_url( 'classes' ) ); ?>"><?php esc_html_e( 'Classes', 'stardance' ); ?></a></li>
+        <li><a href="<?php echo esc_url( stardance_page_or_path_url( 'events' ) ); ?>"><?php esc_html_e( 'Events', 'stardance' ); ?></a></li>
+        <li><a href="<?php echo esc_url( stardance_page_or_path_url( 'schedule' ) ); ?>"><?php esc_html_e( 'Schedule', 'stardance' ); ?></a></li>
+        <li><a href="<?php echo esc_url( stardance_page_or_path_url( 'about' ) ); ?>"><?php esc_html_e( 'About', 'stardance' ); ?></a></li>
+        <li><a href="<?php echo esc_url( stardance_page_or_path_url( 'gallery' ) ); ?>"><?php esc_html_e( 'Gallery', 'stardance' ); ?></a></li>
+        <li><a href="<?php echo esc_url( home_url( '/#contact' ) ); ?>"><?php esc_html_e( 'Contact', 'stardance' ); ?></a></li>
     </ul>
     <?php
 }
@@ -1145,12 +1191,12 @@ function stardance_fallback_menu() {
 function stardance_fallback_footer_menu() {
     ?>
     <ul class="sd-footer__menu">
-        <li><a href="<?php echo esc_url(home_url('/')); ?>">Home</a></li>
-        <li><a href="#about">About Us</a></li>
-        <li><a href="#coaches">Meet the Coach</a></li>
-        <li><a href="#classes">Dance Classes</a></li>
-        <li><a href="#timetable">Timetable</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Home', 'stardance' ); ?></a></li>
+        <li><a href="<?php echo esc_url( stardance_page_or_path_url( 'about' ) ); ?>"><?php esc_html_e( 'About Us', 'stardance' ); ?></a></li>
+        <li><a href="<?php echo esc_url( home_url( '/#coaches' ) ); ?>"><?php esc_html_e( 'Meet the Coach', 'stardance' ); ?></a></li>
+        <li><a href="<?php echo esc_url( stardance_page_or_path_url( 'classes' ) ); ?>"><?php esc_html_e( 'Dance Classes', 'stardance' ); ?></a></li>
+        <li><a href="<?php echo esc_url( stardance_page_or_path_url( 'schedule' ) ); ?>"><?php esc_html_e( 'Timetable', 'stardance' ); ?></a></li>
+        <li><a href="<?php echo esc_url( home_url( '/#contact' ) ); ?>"><?php esc_html_e( 'Contact', 'stardance' ); ?></a></li>
     </ul>
     <?php
 }

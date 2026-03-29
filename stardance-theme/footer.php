@@ -41,11 +41,11 @@
 
     <div class="sd-footer__legal">
         <div class="sd-container sd-footer__legal-inner">
-            <a href="#">Privacy Policy</a>
+            <a href="<?php echo esc_url( stardance_page_or_path_url( 'privacy-policy' ) ); ?>"><?php esc_html_e( 'Privacy Policy', 'stardance' ); ?></a>
             <span class="sd-footer__legal-sep">|</span>
-            <a href="#">Cookie Policy</a>
+            <a href="<?php echo esc_url( stardance_page_or_path_url( 'cookie-policy' ) ); ?>"><?php esc_html_e( 'Cookie Policy', 'stardance' ); ?></a>
             <span class="sd-footer__legal-sep">|</span>
-            <a href="#">Sitemap</a>
+            <a href="<?php echo esc_url( home_url( '/wp-sitemap.xml' ) ); ?>"><?php esc_html_e( 'Sitemap', 'stardance' ); ?></a>
         </div>
     </div>
 </footer>

@@ -41,15 +41,36 @@
     var counter = document.createElement('div');
     counter.className = 'sd-lightbox__counter';
 
+    var arrowSrc =
+      typeof stardanceGallery !== 'undefined' && stardanceGallery.lightboxArrowUrl
+        ? stardanceGallery.lightboxArrowUrl
+        : '';
+
     var prevBtn = document.createElement('button');
     prevBtn.className = 'sd-lightbox__arrow sd-lightbox__arrow--prev';
     prevBtn.setAttribute('aria-label', 'Previous image');
-    prevBtn.innerHTML = '<img src="https://stardance.com.cy/wp-content/uploads/2026/03/left-arrow.svg" alt="" aria-hidden="true">';
+    if (arrowSrc) {
+      var prevImg = document.createElement('img');
+      prevImg.src = arrowSrc;
+      prevImg.alt = '';
+      prevImg.setAttribute('aria-hidden', 'true');
+      prevBtn.appendChild(prevImg);
+    } else {
+      prevBtn.textContent = '\u2039';
+    }
 
     var nextBtn = document.createElement('button');
     nextBtn.className = 'sd-lightbox__arrow sd-lightbox__arrow--next';
     nextBtn.setAttribute('aria-label', 'Next image');
-    nextBtn.innerHTML = '<img src="https://stardance.com.cy/wp-content/uploads/2026/03/left-arrow.svg" alt="" aria-hidden="true">';
+    if (arrowSrc) {
+      var nextImg = document.createElement('img');
+      nextImg.src = arrowSrc;
+      nextImg.alt = '';
+      nextImg.setAttribute('aria-hidden', 'true');
+      nextBtn.appendChild(nextImg);
+    } else {
+      nextBtn.textContent = '\u203a';
+    }
 
     var sliderDiv = document.createElement('div');
     sliderDiv.className = 'sd-lightbox__slider';
