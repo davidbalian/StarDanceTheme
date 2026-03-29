@@ -8,34 +8,8 @@
     --sd-max-width: 1400px;
   }
 
-  .sd-heading {
-    font-size: 64px;
-  }
-
-  .sd-hero__tagline {
-    font-size: 50px;
-  }
-
-  .sd-hero__title {
-    font-size: 80px;
-  }
-
-  .sd-hero__desc {
-    font-size: 20px;
-  }
-
   .sd-header__logo img {
     width: 60px;
-  }
-
-  /* Overlay card */
-  .sd-overlay-card__title {
-    font-size: 30px;
-  }
-
-  /* Icon card */
-  .sd-icon-card__title {
-    font-size: 28px;
   }
 
   .sd-footer__logo {
@@ -45,18 +19,6 @@
 
 /* Tablet (max-width: 991px) */
 @media (max-width: 991px) {
-  .sd-heading {
-    font-size: 40px;
-  }
-
-  .sd-hero__title {
-    font-size: 42px;
-  }
-
-  .sd-hero__tagline {
-    font-size: 24px;
-  }
-
   /* Grid modifiers */
   .sd-grid--3,
   .sd-grid--4 {
@@ -94,7 +56,6 @@
   }
 
   .sd-heading {
-    font-size: 36px;
     margin-bottom: 30px;
   }
 
@@ -140,7 +101,7 @@
     display: block;
     padding: 16px 0;
     color: var(--sd-navy);
-    font-size: 18px;
+    font-size: var(--sd-type-btn-lg);
   }
 
   body.menu-open {
@@ -157,18 +118,6 @@
     background-attachment: scroll;
   }
 
-  .sd-hero__title {
-    font-size: 36px;
-  }
-
-  .sd-hero__tagline {
-    font-size: 22px;
-  }
-
-  .sd-hero__desc {
-    font-size: 16px;
-  }
-
   .sd-hero__actions {
     flex-direction: column;
     align-items: center;
@@ -177,25 +126,6 @@
   /* Page Hero */
   .sd-page-hero {
     padding-top: 100px;
-  }
-
-  .sd-page-hero--about .sd-page-hero__title,
-  .sd-page-hero--classes .sd-page-hero__title,
-  .sd-page-hero--schedule .sd-page-hero__title,
-  .sd-page-hero--gallery .sd-page-hero__title,
-  .sd-page-hero--events .sd-page-hero__title,
-  .sd-page-hero--single-class .sd-page-hero__title {
-    font-size: 42px;
-  }
-
-  .sd-page-hero--about .sd-page-hero__desc,
-  .sd-page-hero--classes .sd-page-hero__desc,
-  .sd-page-hero--schedule .sd-page-hero__desc,
-  .sd-page-hero--gallery .sd-page-hero__desc,
-  .sd-page-hero--events .sd-page-hero__desc,
-  .sd-page-hero--single-class .sd-page-hero__desc {
-    font-size: 16px;
-    line-height: 1.6;
   }
 
   /* Overlay card */
@@ -275,23 +205,6 @@
 
 /* Small Mobile (max-width: 478px) */
 @media (max-width: 478px) {
-  .sd-heading {
-    font-size: 30px;
-  }
-
-  .sd-hero__title {
-    font-size: 28px;
-  }
-
-  .sd-page-hero--about .sd-page-hero__title,
-  .sd-page-hero--classes .sd-page-hero__title,
-  .sd-page-hero--schedule .sd-page-hero__title,
-  .sd-page-hero--gallery .sd-page-hero__title,
-  .sd-page-hero--events .sd-page-hero__title,
-  .sd-page-hero--single-class .sd-page-hero__title {
-    font-size: 34px;
-  }
-
   .sd-page-hero--about::before,
   .sd-page-hero--classes::before,
   .sd-page-hero--schedule::before,
@@ -304,10 +217,6 @@
   .sd-page-hero--single-class::after {
     width: 38vw;
     height: 26vw;
-  }
-
-  .sd-hero__tagline {
-    font-size: 18px;
   }
 
   /* Grid modifiers */
@@ -326,10 +235,6 @@
     height: 280px;
   }
 
-  .sd-overlay-card__title {
-    font-size: 22px;
-  }
-
   /* Event card */
   .sd-event-card__content {
     padding: var(--sd-space-sm);
@@ -337,6 +242,5 @@
 
   .sd-btn {
     padding: 12px 24px;
-    font-size: 15px;
   }
 }

@@ -25,9 +25,55 @@ Text Domain: stardance
   --sd-form-bg: rgba(0, 56, 109, 0.6);
   --sd-footer-border: linear-gradient(to right, rgb(224, 164, 117), rgb(194, 115, 52), rgb(224, 164, 117));
 
-  /* Typography */
+  /* Typography — font families */
   --sd-font-heading: 'Cormorant', serif;
   --sd-font-body: 'Libertinus Sans', sans-serif;
+
+  /* Typography — fluid scale (full clamp() per token) */
+  --sd-type-body: clamp(0.9375rem, 0.88rem + 0.25vw, 1rem);
+  /* Slightly larger body for section intros (~16–17px) */
+  --sd-type-body-lg: clamp(1rem, 0.95rem + 0.15vw, 1.0625rem);
+  --sd-type-lead: clamp(1rem, 0.92rem + 0.35vw, 1.375rem);
+
+  --sd-type-h1: clamp(2rem, 1.45rem + 2.5vw, 3.25rem);
+  --sd-type-section: clamp(1.875rem, 1.4rem + 2.4vw, 4rem);
+  --sd-type-h3: clamp(1.375rem, 1.15rem + 1.1vw, 1.875rem);
+  --sd-type-h4: clamp(1.125rem, 1rem + 0.55vw, 1.375rem);
+  --sd-type-h5: clamp(1rem, 0.92rem + 0.35vw, 1.125rem);
+  --sd-type-h6: clamp(0.9375rem, 0.88rem + 0.25vw, 1.0625rem);
+
+  --sd-type-display-home: clamp(1.75rem, 0.95rem + 5.5vw, 5rem);
+  --sd-type-display-page: clamp(2.125rem, 1.45rem + 4.2vw, 5rem);
+  --sd-type-hero-tagline: clamp(1.125rem, 0.95rem + 2vw, 3.125rem);
+
+  --sd-type-card-title: var(--sd-type-h3);
+  --sd-type-card-desc: clamp(0.8125rem, 0.78rem + 0.2vw, 0.9375rem);
+
+  --sd-type-ui-md: clamp(1.125rem, 1.05rem + 0.45vw, 1.5rem);
+  --sd-type-ui-sm: clamp(0.875rem, 0.82rem + 0.22vw, 1rem);
+  --sd-type-ui-xs: clamp(0.6875rem, 0.65rem + 0.12vw, 0.8125rem);
+
+  --sd-type-btn: clamp(0.9375rem, 0.88rem + 0.2vw, 1rem);
+  --sd-type-btn-lg: clamp(1rem, 0.94rem + 0.28vw, 1.125rem);
+
+  --sd-type-caption: clamp(0.8125rem, 0.78rem + 0.15vw, 0.875rem);
+
+  --sd-type-modal-title: clamp(1.5rem, 1.2rem + 1.25vw, 2rem);
+  --sd-type-single-class-title: clamp(1.375rem, 1.15rem + 1.4vw, 1.75rem);
+  --sd-type-accent: clamp(1.5rem, 1.3rem + 1vw, 1.75rem);
+  /* Promo / spotlight headings (about champions, coach name) */
+  --sd-type-promo: clamp(1.65rem, 1.35rem + 1.2vw, 2rem);
+
+  --sd-type-micro-day: clamp(0.75rem, 0.68rem + 0.35vw, 0.9rem);
+  --sd-type-micro-tight-xs: clamp(0.5rem, 0.46rem + 0.2vw, 0.65rem);
+  --sd-type-micro-tight-sm: clamp(0.55rem, 0.5rem + 0.22vw, 0.7rem);
+  --sd-type-micro-tight-md: clamp(0.58rem, 0.54rem + 0.22vw, 0.75rem);
+
+  /* Line-height companions */
+  --sd-leading-tight: 1;
+  --sd-leading-snug: 1.15;
+  --sd-leading-body: 1.5;
+  --sd-leading-ui: 1.25;
 
   /* Layout */
   --sd-max-width: 1200px;
@@ -80,8 +126,9 @@ html {
 
 body {
   font-family: var(--sd-font-body);
+  font-size: var(--sd-type-body);
   color: var(--sd-body-text);
-  line-height: 1.5;
+  line-height: var(--sd-leading-body);
   background-color: var(--sd-light-blue);
   overflow-x: hidden;
 }
@@ -101,10 +148,38 @@ ul, ol {
   list-style: none;
 }
 
+p {
+  font-size: inherit;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--sd-font-heading);
   font-weight: 600;
-  line-height: 1;
+  line-height: var(--sd-leading-tight);
+}
+
+h1 {
+  font-size: var(--sd-type-h1);
+}
+
+h2 {
+  font-size: var(--sd-type-section);
+}
+
+h3 {
+  font-size: var(--sd-type-h3);
+}
+
+h4 {
+  font-size: var(--sd-type-h4);
+}
+
+h5 {
+  font-size: var(--sd-type-h5);
+}
+
+h6 {
+  font-size: var(--sd-type-h6);
 }
 
 input, select, textarea, button {

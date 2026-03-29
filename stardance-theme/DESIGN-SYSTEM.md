@@ -1,7 +1,7 @@
 # Star Dance Studio — Design System Reference
 
 **Theme location:** `stardance-theme/`
-**Last updated:** 2026-03-22
+**Last updated:** 2026-03-29
 
 ---
 
@@ -10,13 +10,13 @@
 CSS loads in strict cascade order:
 
 ```
-style.css           ← Design tokens + resets
+style.css           ← Design tokens, fluid type (`--sd-type-*`), element `h1–h6`/`p`/`body`, resets
   ↓
 components.css      ← ALL reusable component classes (buttons, cards, forms, layout)
   ↓
 sections.css        ← Homepage-only section layouts (header, hero, coaches, contact, footer)
   ↓
-responsive.css      ← All media query overrides
+responsive.css      ← Layout/media overrides (type scales via `clamp()`; avoid redundant `font-size` here)
   ↓
 assets/css/pages/   ← Page-specific CSS (conditionally enqueued)
   classes.css | events.css | about.css | schedule.css | gallery.css | single-class.css
@@ -44,11 +44,46 @@ New JS for FAQ accordion: `assets/js/faq.js`.
 | `--sd-overlay-dark` | `rgba(0,0,0,0.35)` | Hero overlays |
 | `--sd-gradient-card` | `linear-gradient(to top, rgba(0,0,0,0.7)…)` | Competition card gradient |
 
-### Typography
+### Typography — font families
 | Variable | Value |
 |---|---|
 | `--sd-font-heading` | `'Cormorant', serif` |
 | `--sd-font-body` | `'Libertinus Sans', sans-serif` |
+
+### Typography — fluid scale (`clamp()`)
+
+Each `--sd-type-*` is a full `clamp(min, preferred, max)` using **rem + vw** (see `style.css` `:root` for exact formulas). **Do not** paste raw `px` for font sizes in theme CSS; use these variables.
+
+| Variable | Role / typical consumers |
+|---|---|
+| `--sd-type-body` | `body`; base copy |
+| `--sd-type-body-lg` | Section intros (timetable/competitions description) |
+| `--sd-type-lead` | Hero / page-hero descriptions; event card meta & body; champions text |
+| `--sd-leading-tight` / `--sd-leading-snug` / `--sd-leading-body` / `--sd-leading-ui` | Line-height companions |
+| `--sd-type-h1` | Default `h1` (display heroes override via classes) |
+| `--sd-type-section` | Default `h2` (section titles + `.sd-heading` — class does not set `font-size`) |
+| `--sd-type-h3` … `--sd-type-h6` | Default `h3`–`h6` |
+| `--sd-type-display-home` | `.sd-hero__title` |
+| `--sd-type-display-page` | Inner page hero `.sd-page-hero__title` |
+| `--sd-type-hero-tagline` | `.sd-hero__tagline` |
+| `--sd-type-card-title` | Card headings (alias of `--sd-type-h3`); event card titles |
+| `--sd-type-card-desc` | Card descriptions, overlay meta |
+| `--sd-type-ui-md` | Filter labels, FAQ questions, compact section labels |
+| `--sd-type-ui-sm` | Footer links, coach copy, values body |
+| `--sd-type-ui-xs` | Dense UI (e.g. classes grid excerpt) |
+| `--sd-type-btn` | Primary buttons, header nav, form fields |
+| `--sd-type-btn-lg` | Large buttons, filter tabs, mobile drawer links |
+| `--sd-type-caption` | Legal line, pills, ghost/outline buttons |
+| `--sd-type-modal-title` | Lightbox close affordance |
+| `--sd-type-single-class-title` | Class detail overlay titles |
+| `--sd-type-accent` | Coach name on cards |
+| `--sd-type-promo` | About champions titles, coach name block |
+| `--sd-type-micro-day` | Timetable / schedule day strip |
+| `--sd-type-micro-tight-xs` | Timetable time & level |
+| `--sd-type-micro-tight-sm` | Timetable class name |
+| `--sd-type-micro-tight-md` | Timetable “closed” |
+
+**Element defaults** (in `style.css`): `body`, `h1`–`h6`, and `p` use the tokens above. **Exceptions** use BEM classes with higher specificity (e.g. `.sd-schedule-page__day-title` on an `h2`, `.sd-hero__title` on an `h1`).
 
 ### Layout
 | Variable | Value | Usage |

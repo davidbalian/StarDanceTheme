@@ -42,7 +42,7 @@
 .sd-gallery-page__filter-label {
   font-family: var(--sd-font-heading);
   font-weight: 600;
-  font-size: 20px;
+  font-size: var(--sd-type-ui-md);
   line-height: 1;
   color: var(--sd-gallery-filter-title);
   flex: 0 0 auto;
@@ -63,7 +63,7 @@
   color: var(--sd-gallery-filter-text);
   font-family: var(--sd-font-body);
   font-weight: 400;
-  font-size: 18px;
+  font-size: var(--sd-type-btn-lg);
   line-height: 20px;
   letter-spacing: 0;
   cursor: pointer;
@@ -178,10 +178,6 @@
 @media (max-width: 850px) {
   .sd-gallery-page {
     padding: 4.5rem 0 5rem;
-  }
-
-  .sd-gallery-page__filter-label {
-    font-size: 18px;
   }
 
   .sd-gallery-page__grid {

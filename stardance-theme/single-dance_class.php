@@ -143,6 +143,7 @@ the_post();
         <div class="sd-container">
             <h2 class="sd-heading sd-faq__title fade-in fade-in-delay-0">Common Questions</h2>
 
+            <div class="sd-classes-faq__layout">
             <div class="sd-faq__list">
 
                 <?php stardance_render_faq_item(array(
@@ -170,54 +171,41 @@ the_post();
                 )); ?>
 
             </div>
+
+            <div class="sd-classes-faq__image-wrap fade-in fade-in-delay-2" aria-hidden="true">
+                <img src="https://stardance.com.cy/wp-content/uploads/2026/03/single-class-faq.webp" alt="" class="sd-classes-faq__image" loading="lazy">
+                <img src="https://stardance.com.cy/wp-content/uploads/2026/03/large-overlay.svg" alt="" class="sd-classes-faq__image-decoration" loading="lazy">
+            </div>
+            </div>
         </div>
     </section>
 
-    <!-- Dancer Gallery -->
-    <section class="sd-section sd-class-gallery" id="class-gallery">
+    <!-- Dancers in action (video poster) -->
+    <section class="sd-section sd-class-video" id="class-gallery">
         <div class="sd-container">
-            <h2 class="sd-heading sd-class-gallery__title fade-in fade-in-delay-0">See Our Dancers in Action</h2>
-            <div class="sd-class-gallery__grid"
-                 data-gallery-lightbox
-                 itemscope
-                 itemtype="http://schema.org/ImageGallery">
-
-                <a href="http://stardance.com.cy/wp-content/uploads/2026/02/European-Ballroom.png"
-                   class="sd-class-gallery__item fade-in fade-in-delay-1"
-                   itemprop="associatedMedia"
-                   itemscope
-                   itemtype="http://schema.org/ImageObject">
-                    <img src="http://stardance.com.cy/wp-content/uploads/2026/02/European-Ballroom.png"
-                         alt="<?php echo esc_attr(get_the_title()); ?> class"
-                         width="400" height="300"
-                         loading="lazy"
-                         itemprop="thumbnail">
-                </a>
-
-                <a href="http://stardance.com.cy/wp-content/uploads/2026/02/Latin-American.png"
-                   class="sd-class-gallery__item fade-in fade-in-delay-2"
-                   itemprop="associatedMedia"
-                   itemscope
-                   itemtype="http://schema.org/ImageObject">
-                    <img src="http://stardance.com.cy/wp-content/uploads/2026/02/Latin-American.png"
-                         alt="<?php echo esc_attr(get_the_title()); ?> performance"
-                         width="400" height="300"
-                         loading="lazy"
-                         itemprop="thumbnail">
-                </a>
-
-                <a href="http://stardance.com.cy/wp-content/uploads/2026/02/Latin-Fusion-Ladies.png"
-                   class="sd-class-gallery__item fade-in fade-in-delay-3"
-                   itemprop="associatedMedia"
-                   itemscope
-                   itemtype="http://schema.org/ImageObject">
-                    <img src="http://stardance.com.cy/wp-content/uploads/2026/02/Latin-Fusion-Ladies.png"
-                         alt="<?php echo esc_attr(get_the_title()); ?> showcase"
-                         width="400" height="300"
-                         loading="lazy"
-                         itemprop="thumbnail">
-                </a>
-
+            <h2 class="sd-heading sd-class-video__title fade-in fade-in-delay-0">See Our Dancers in Action</h2>
+            <div class="sd-class-video__frame fade-in fade-in-delay-1">
+                <img
+                    src="https://stardance.com.cy/wp-content/uploads/2026/03/single-class-video.webp"
+                    alt="<?php echo esc_attr(get_the_title() . ' — ' . __('dancers in action', 'stardance')); ?>"
+                    class="sd-class-video__poster"
+                    loading="lazy"
+                    width="1200"
+                    height="675">
+                <img
+                    src="https://stardance.com.cy/wp-content/uploads/2026/03/large-overlay.svg"
+                    alt=""
+                    class="sd-class-video__overlay"
+                    aria-hidden="true"
+                    loading="lazy">
+                <button type="button" class="sd-class-video__play" aria-label="<?php echo esc_attr__('Play video', 'stardance'); ?>">
+                    <img
+                        src="https://stardance.com.cy/wp-content/uploads/2026/03/play-button-blue.svg"
+                        alt=""
+                        width="80"
+                        height="80"
+                        decoding="async">
+                </button>
             </div>
         </div>
     </section>

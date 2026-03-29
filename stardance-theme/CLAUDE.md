@@ -30,7 +30,7 @@ Before writing **any** HTML, CSS, or PHP for this project, read `stardance-theme
    - Page-specific one-off styles → `assets/css/pages/[page].css`
    - Never put layout or component styles in `style.css` (tokens/resets only).
 
-5. **Use design tokens, not raw values.** Write `var(--sd-navy)` not `#00386D`. Write `var(--sd-space-lg)` not `40px`.
+5. **Use design tokens, not raw values.** Write `var(--sd-navy)` not `#00386D`. Write `var(--sd-space-lg)` not `40px`. For font size, use `var(--sd-type-*)` from `style.css` — each is a fluid `clamp()`; do not add breakpoint `font-size` in `responsive.css` unless there is a layout-specific exception.
 
 6. **Animation classes.** Scroll-triggered fade-in: add `fade-in` + `fade-in-delay-N` (0–10) to elements. No inline `opacity` or `transform` on animated elements.
 
@@ -69,6 +69,7 @@ Full signatures and HTML output are documented in `DESIGN-SYSTEM.md`.
 --sd-body-text: #3a3a3a
 --sd-font-heading: 'Cormorant', serif
 --sd-font-body: 'Libertinus Sans', sans-serif
+--sd-type-body, --sd-type-section, --sd-type-display-home, --sd-type-display-page, --sd-type-lead, --sd-type-card-title, --sd-type-ui-md/sm, --sd-type-btn, --sd-type-caption, --sd-type-micro-* … (full fluid scale in style.css `:root`)
 --sd-space-xs/sm/md/lg/xl: 8/16/24/40/60px
 --sd-radius: 12px
 --sd-section-padding: 80px 0

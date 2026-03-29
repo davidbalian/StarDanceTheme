@@ -26,9 +26,8 @@
   font-family: var(--sd-font-heading);
   font-weight: 600;
   color: var(--sd-navy);
-  line-height: 1;
+  line-height: var(--sd-leading-tight);
   text-align: center;
-  font-size: 48px;
   margin-bottom: 40px;
 }
 
@@ -45,7 +44,7 @@
   display: inline-block;
   padding: 1rem 3rem;
   font-family: var(--sd-font-body);
-  font-size: 16px;
+  font-size: var(--sd-type-btn);
   text-transform: capitalize;
   color: var(--sd-white);
   background-image: var(--sd-gold-gradient);
@@ -72,7 +71,7 @@
   background-image: none;
   background-color: transparent;
   border: 1px solid var(--sd-light-blue);
-  font-size: 14px;
+  font-size: var(--sd-type-caption);
   transition: background-color var(--sd-transition), color var(--sd-transition);
 }
 
@@ -93,7 +92,7 @@
   border: 1px solid var(--sd-gold-border);
   color: var(--sd-navy);
   padding: 0.4rem 1.25rem;
-  font-size: 14px;
+  font-size: var(--sd-type-caption);
   transition: background-color var(--sd-transition), color var(--sd-transition);
 }
 
@@ -117,12 +116,12 @@
 /* Button size variants */
 .sd-btn--sm {
   padding: 0.5rem 1.5rem;
-  font-size: 14px;
+  font-size: var(--sd-type-caption);
 }
 
 .sd-btn--lg {
   padding: 1.25rem 3.5rem;
-  font-size: 18px;
+  font-size: var(--sd-type-btn-lg);
 }
 
 /* Cards (Classes) */
@@ -155,7 +154,7 @@
 .sd-card__title {
   font-family: var(--sd-font-heading);
   font-weight: 600;
-  font-size: 26px;
+  font-size: var(--sd-type-card-title);
   color: var(--sd-white);
   line-height: 1.1;
   margin-bottom: 8px;
@@ -163,7 +162,7 @@
 
 .sd-card__desc {
   font-family: var(--sd-font-body);
-  font-size: 14px;
+  font-size: var(--sd-type-card-desc);
   color: var(--sd-white);
   line-height: 1.4;
   opacity: 0.9;
@@ -182,7 +181,7 @@
   width: 100%;
   padding: 14px 18px;
   font-family: var(--sd-font-body);
-  font-size: 16px;
+  font-size: var(--sd-type-btn);
   color: var(--sd-white);
   background-color: var(--sd-form-bg);
   border: 1px solid var(--sd-gold-border);
@@ -274,7 +273,7 @@
 .sd-icon-card__title {
   font-family: var(--sd-font-heading);
   font-weight: 600;
-  font-size: 22px;
+  font-size: var(--sd-type-h4);
   color: var(--sd-navy);
   line-height: 1.2;
   margin-bottom: 10px;
@@ -282,7 +281,7 @@
 
 .sd-icon-card__text {
   font-family: var(--sd-font-body);
-  font-size: 15px;
+  font-size: var(--sd-type-ui-sm);
   color: var(--sd-body-text);
   line-height: 1.4;
   max-width: 280px;
@@ -332,7 +331,7 @@
 .sd-overlay-card__title {
   font-family: var(--sd-font-heading);
   font-weight: 600;
-  font-size: 26px;
+  font-size: var(--sd-type-card-title);
   color: var(--sd-white);
   line-height: 1.1;
   margin-bottom: var(--sd-space-xs);
@@ -340,7 +339,7 @@
 
 .sd-overlay-card__desc {
   font-family: var(--sd-font-body);
-  font-size: 14px;
+  font-size: var(--sd-type-card-desc);
   color: var(--sd-white);
   line-height: 1.4;
   opacity: 0.9;
@@ -348,7 +347,7 @@
 
 .sd-overlay-card__meta {
   font-family: var(--sd-font-body);
-  font-size: 14px;
+  font-size: var(--sd-type-card-desc);
   color: var(--sd-white);
   margin-bottom: var(--sd-space-xs);
   display: block;
@@ -413,7 +412,7 @@
   background-size: cover;
   background-position: center top;
   position: relative;
-  min-height: 900px;
+  min-height: 80vh;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -475,8 +474,8 @@
 .sd-page-hero--events .sd-page-hero__title,
 .sd-page-hero--single-class .sd-page-hero__title {
   color: var(--sd-white);
-  font-size: 5rem;
-  line-height: 1;
+  font-size: var(--sd-type-display-page);
+  line-height: var(--sd-leading-tight);
   letter-spacing: 0;
   text-shadow: var(--sd-shadow-title-gold);
   text-wrap: balance;
@@ -491,8 +490,8 @@
   color: var(--sd-white);
   font-family: var(--sd-font-body);
   font-weight: 400;
-  font-size: 1.375rem;
-  line-height: 1.5rem;
+  font-size: var(--sd-type-lead);
+  line-height: var(--sd-leading-body);
   letter-spacing: 0;
   text-wrap: pretty;
 }
@@ -522,7 +521,8 @@
 .sd-page--about .sd-cta,
 .sd-page--classes .sd-cta,
 .sd-page--schedule .sd-cta,
-.sd-page--events .sd-cta {
+.sd-page--events .sd-cta,
+.sd-page--single-class .sd-cta {
   --sd-page-cta-bg-image: none;
   --sd-page-cta-top-width: 35%;
   --sd-page-cta-bottom-width: 50%;
@@ -539,7 +539,8 @@
 .sd-page--about .sd-cta::before,
 .sd-page--classes .sd-cta::before,
 .sd-page--schedule .sd-cta::before,
-.sd-page--events .sd-cta::before {
+.sd-page--events .sd-cta::before,
+.sd-page--single-class .sd-cta::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -563,7 +564,8 @@
 .sd-page--about .sd-cta .sd-cta__decoration--top,
 .sd-page--classes .sd-cta .sd-cta__decoration--top,
 .sd-page--schedule .sd-cta .sd-cta__decoration--top,
-.sd-page--events .sd-cta .sd-cta__decoration--top {
+.sd-page--events .sd-cta .sd-cta__decoration--top,
+.sd-page--single-class .sd-cta .sd-cta__decoration--top {
   top: 0;
   right: 0;
   width: var(--sd-page-cta-top-width);
@@ -572,7 +574,8 @@
 .sd-page--about .sd-cta .sd-cta__decoration--bottom,
 .sd-page--classes .sd-cta .sd-cta__decoration--bottom,
 .sd-page--schedule .sd-cta .sd-cta__decoration--bottom,
-.sd-page--events .sd-cta .sd-cta__decoration--bottom {
+.sd-page--events .sd-cta .sd-cta__decoration--bottom,
+.sd-page--single-class .sd-cta .sd-cta__decoration--bottom {
   left: 0;
   bottom: 0;
   width: var(--sd-page-cta-bottom-width);
@@ -581,7 +584,8 @@
 .sd-page--about .sd-cta > .sd-container,
 .sd-page--classes .sd-cta > .sd-container,
 .sd-page--schedule .sd-cta > .sd-container,
-.sd-page--events .sd-cta > .sd-container {
+.sd-page--events .sd-cta > .sd-container,
+.sd-page--single-class .sd-cta > .sd-container {
   position: relative;
   z-index: 2;
   display: flex;
@@ -599,7 +603,9 @@
 .sd-page--schedule .sd-cta .sd-cta__title,
 .sd-page--schedule .sd-cta .sd-cta__desc,
 .sd-page--events .sd-cta .sd-cta__title,
-.sd-page--events .sd-cta .sd-cta__desc {
+.sd-page--events .sd-cta .sd-cta__desc,
+.sd-page--single-class .sd-cta .sd-cta__title,
+.sd-page--single-class .sd-cta .sd-cta__desc {
   color: var(--sd-white);
 }
 
@@ -614,7 +620,8 @@
 .sd-page--about .sd-cta .sd-cta__desc,
 .sd-page--classes .sd-cta .sd-cta__desc,
 .sd-page--schedule .sd-cta .sd-cta__desc,
-.sd-page--events .sd-cta .sd-cta__desc {
+.sd-page--events .sd-cta .sd-cta__desc,
+.sd-page--single-class .sd-cta .sd-cta__desc {
   max-width: 640px;
   margin: 0;
   line-height: 1.6;
@@ -624,7 +631,8 @@
 .sd-page--about .sd-cta .sd-btn,
 .sd-page--classes .sd-cta .sd-btn,
 .sd-page--schedule .sd-cta .sd-btn,
-.sd-page--events .sd-cta .sd-btn {
+.sd-page--events .sd-cta .sd-btn,
+.sd-page--single-class .sd-cta .sd-btn {
   margin-top: var(--sd-space-xs);
 }
 
@@ -662,7 +670,7 @@
   padding: var(--sd-space-sm) 0;
   font-family: var(--sd-font-heading);
   font-weight: 600;
-  font-size: 20px;
+  font-size: var(--sd-type-ui-md);
   color: var(--sd-navy);
   background: none;
   border: none;
@@ -730,7 +738,7 @@
 
 .sd-faq__answer p {
   font-family: var(--sd-font-body);
-  font-size: 16px;
+  font-size: var(--sd-type-body);
   line-height: 1.6;
   color: var(--sd-body-text);
 }
@@ -743,7 +751,7 @@
   width: 100%;
   padding: 14px 18px;
   font-family: var(--sd-font-body);
-  font-size: 16px;
+  font-size: var(--sd-type-btn);
   color: var(--sd-white);
   background-color: var(--sd-form-bg);
   border: 1px solid var(--sd-gold-border);
@@ -858,7 +866,7 @@
   border: none;
   cursor: pointer;
   padding: 8px;
-  font-size: 32px;
+  font-size: var(--sd-type-modal-title);
   line-height: 1;
   color: var(--sd-navy);
   opacity: 0.6;
@@ -875,7 +883,7 @@
   left: 50%;
   transform: translateX(-50%);
   font-family: var(--sd-font-body);
-  font-size: 14px;
+  font-size: var(--sd-type-caption);
   color: var(--sd-navy);
   opacity: 0.6;
   pointer-events: none;
