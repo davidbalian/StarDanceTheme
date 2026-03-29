@@ -446,7 +446,7 @@
   background-size: cover;
   background-position: center top;
   position: relative;
-  min-height: 80vh;
+  min-height: var(--sd-hero-min-height);
   display: flex;
   align-items: center;
   overflow: hidden;
