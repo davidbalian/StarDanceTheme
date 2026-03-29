@@ -552,7 +552,8 @@
 .sd-page--about .sd-cta .sd-cta__decoration,
 .sd-page--classes .sd-cta .sd-cta__decoration,
 .sd-page--schedule .sd-cta .sd-cta__decoration,
-.sd-page--events .sd-cta .sd-cta__decoration {
+.sd-page--events .sd-cta .sd-cta__decoration,
+.sd-page--single-class .sd-cta .sd-cta__decoration {
   position: absolute;
   display: block;
   pointer-events: none;
@@ -612,7 +613,8 @@
 .sd-page--about .sd-cta .sd-cta__title,
 .sd-page--classes .sd-cta .sd-cta__title,
 .sd-page--schedule .sd-cta .sd-cta__title,
-.sd-page--events .sd-cta .sd-cta__title {
+.sd-page--events .sd-cta .sd-cta__title,
+.sd-page--single-class .sd-cta .sd-cta__title {
   margin-bottom: 0;
   text-wrap: balance;
 }

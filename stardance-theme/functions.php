@@ -85,6 +85,7 @@ function stardance_enqueue_assets() {
     }
     if ( is_singular('dance_class') ) {
         wp_enqueue_style('stardance-single-class', $pages_css_dir . 'single-class.css', array('stardance-responsive'), stardance_asset_version('assets/css/pages/single-class.css'));
+        wp_enqueue_style('stardance-single-class-sections', $pages_css_dir . 'single-class-sections.css', array('stardance-single-class'), stardance_asset_version('assets/css/pages/single-class-sections.css'));
     }
 
     // Theme Scripts
