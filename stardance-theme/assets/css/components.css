@@ -72,7 +72,9 @@
   background-color: transparent;
   border: 1px solid var(--sd-light-blue);
   font-size: var(--sd-type-caption);
-  transition: background-color var(--sd-transition), color var(--sd-transition);
+  transition:
+    background-color var(--sd-transition),
+    color var(--sd-transition);
 }
 
 .sd-btn--outline:hover {
@@ -93,7 +95,9 @@
   color: var(--sd-navy);
   padding: 0.4rem 1.25rem;
   font-size: var(--sd-type-caption);
-  transition: background-color var(--sd-transition), color var(--sd-transition);
+  transition:
+    background-color var(--sd-transition),
+    color var(--sd-transition);
 }
 
 .sd-btn--ghost:hover {
@@ -137,7 +141,7 @@
 }
 
 .sd-card::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background: none;
@@ -224,7 +228,9 @@
 .fade-in {
   opacity: 0;
   transform: translateY(24px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
 }
 
 .fade-in.visible {
@@ -232,25 +238,53 @@
   transform: translateY(0);
 }
 
-.fade-in-delay-0 { transition-delay: 0s; }
-.fade-in-delay-1 { transition-delay: 0.1s; }
-.fade-in-delay-2 { transition-delay: 0.2s; }
-.fade-in-delay-3 { transition-delay: 0.3s; }
-.fade-in-delay-4 { transition-delay: 0.4s; }
-.fade-in-delay-5 { transition-delay: 0.5s; }
-.fade-in-delay-6 { transition-delay: 0.6s; }
-.fade-in-delay-7 { transition-delay: 0.7s; }
-.fade-in-delay-8 { transition-delay: 0.8s; }
-.fade-in-delay-9 { transition-delay: 0.9s; }
-.fade-in-delay-10 { transition-delay: 1s; }
+.fade-in-delay-0 {
+  transition-delay: 0s;
+}
+.fade-in-delay-1 {
+  transition-delay: 0.1s;
+}
+.fade-in-delay-2 {
+  transition-delay: 0.2s;
+}
+.fade-in-delay-3 {
+  transition-delay: 0.3s;
+}
+.fade-in-delay-4 {
+  transition-delay: 0.4s;
+}
+.fade-in-delay-5 {
+  transition-delay: 0.5s;
+}
+.fade-in-delay-6 {
+  transition-delay: 0.6s;
+}
+.fade-in-delay-7 {
+  transition-delay: 0.7s;
+}
+.fade-in-delay-8 {
+  transition-delay: 0.8s;
+}
+.fade-in-delay-9 {
+  transition-delay: 0.9s;
+}
+.fade-in-delay-10 {
+  transition-delay: 1s;
+}
 
 /* ========================================
    Grid Modifiers
    ======================================== */
 
-.sd-grid--2 { grid-template-columns: repeat(2, 1fr); }
-.sd-grid--3 { grid-template-columns: repeat(3, 1fr); }
-.sd-grid--4 { grid-template-columns: repeat(4, 1fr); }
+.sd-grid--2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+.sd-grid--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+.sd-grid--4 {
+  grid-template-columns: repeat(4, 1fr);
+}
 
 /* ========================================
    Icon Card
@@ -305,7 +339,7 @@
 }
 
 .sd-overlay-card::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   z-index: 2;
@@ -397,7 +431,7 @@
 .sd-page-hero--events,
 .sd-page-hero--single-class {
   --sd-page-hero-bg-image: none;
-  --sd-page-hero-line-image: url('https://stardance.com.cy/wp-content/uploads/2026/03/white-and-gold-lines.svg');
+  --sd-page-hero-line-image: url("https://stardance.com.cy/wp-content/uploads/2026/03/white-and-gold-lines.svg");
   --sd-page-hero-line-left-width: 520px;
   --sd-page-hero-line-left-height: 352px;
   --sd-page-hero-line-right-width: 520px;
@@ -423,7 +457,7 @@
 .sd-page-hero--schedule::before,
 .sd-page-hero--gallery::before,
 .sd-page-hero--single-class::before {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   top: 50%;
@@ -443,7 +477,7 @@
 .sd-page-hero--schedule::after,
 .sd-page-hero--gallery::after,
 .sd-page-hero--single-class::after {
-  content: '';
+  content: "";
   position: absolute;
   right: 40px;
   bottom: -5rem;
@@ -541,10 +575,14 @@
 .sd-page--schedule .sd-cta::before,
 .sd-page--events .sd-cta::before,
 .sd-page--single-class .sd-cta::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
-  background-image: linear-gradient(180deg, rgba(0, 56, 109, 0.1) 10.1%, rgba(0, 56, 109, 0.8) 100%);
+  background-image: linear-gradient(
+    180deg,
+    rgba(0, 56, 109, 0.1) 10.1%,
+    rgba(0, 56, 109, 0.8) 100%
+  );
   pointer-events: none;
   z-index: 0;
 }
@@ -695,7 +733,7 @@
 
 .sd-faq__icon::before,
 .sd-faq__icon::after {
-  content: '';
+  content: "";
   position: absolute;
   background-color: var(--sd-gold-dark);
   transition: transform var(--sd-transition);
@@ -788,28 +826,52 @@
    Section Background Modifiers
    ======================================== */
 
-.sd-section--white { background-color: var(--sd-white); }
-.sd-section--navy  { background-color: var(--sd-navy); }
+.sd-section--white {
+  background-color: var(--sd-white);
+}
+.sd-section--navy {
+  background-color: var(--sd-navy);
+}
 
 /* ========================================
    Spacing Utilities
    ======================================== */
 
-.sd-mb-0  { margin-bottom: 0; }
-.sd-mb-sm { margin-bottom: var(--sd-space-sm); }
-.sd-mb-md { margin-bottom: var(--sd-space-md); }
-.sd-mb-lg { margin-bottom: var(--sd-space-lg); }
-.sd-mb-xl { margin-bottom: var(--sd-space-xl); }
+.sd-mb-0 {
+  margin-bottom: 0;
+}
+.sd-mb-sm {
+  margin-bottom: var(--sd-space-sm);
+}
+.sd-mb-md {
+  margin-bottom: var(--sd-space-md);
+}
+.sd-mb-lg {
+  margin-bottom: var(--sd-space-lg);
+}
+.sd-mb-xl {
+  margin-bottom: var(--sd-space-xl);
+}
 
 /* ========================================
    Text Utilities
    ======================================== */
 
-.sd-text-center { text-align: center; }
-.sd-text-left   { text-align: left; }
-.sd-text-white  { color: var(--sd-white); }
-.sd-text-navy   { color: var(--sd-navy); }
-.sd-text-gold   { color: var(--sd-gold); }
+.sd-text-center {
+  text-align: center;
+}
+.sd-text-left {
+  text-align: left;
+}
+.sd-text-white {
+  color: var(--sd-white);
+}
+.sd-text-navy {
+  color: var(--sd-navy);
+}
+.sd-text-gold {
+  color: var(--sd-gold);
+}
 
 /* ── Lightbox ──────────────────────────────────────────────────────────────── */
 .sd-lightbox {
@@ -902,7 +964,9 @@
   cursor: pointer;
   padding: 0;
   opacity: 0.8;
-  transition: opacity 150ms ease, transform 150ms ease;
+  transition:
+    opacity 150ms ease,
+    transform 150ms ease;
 }
 
 .sd-lightbox__arrow:hover {

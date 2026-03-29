@@ -8,7 +8,7 @@
    ======================================== */
 
 .sd-page-hero--about {
-  --sd-page-hero-bg-image: url('https://stardance.com.cy/wp-content/uploads/2026/03/about-page-hero-bg.webp');
+  --sd-page-hero-bg-image: url("https://stardance.com.cy/wp-content/uploads/2026/03/about-page-hero-bg.webp");
 }
 
 /* ========================================
@@ -150,8 +150,14 @@
 
 .sd-about-champions__item {
   background-image:
-    linear-gradient(#F3FBFC, #F3FBFC),
-    linear-gradient(85.69deg, #E4AF78 0%, #DC9A72 20%, #BE6D2B 60%, #EABE81 100%);
+    linear-gradient(#f3fbfc, #f3fbfc),
+    linear-gradient(
+      85.69deg,
+      #e4af78 0%,
+      #dc9a72 20%,
+      #be6d2b 60%,
+      #eabe81 100%
+    );
   padding: 56px 40px;
   display: flex;
   flex-direction: column;
@@ -163,13 +169,13 @@
 
 /* Decorative SVG overlay — top-right of text cards */
 .sd-about-champions__item::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   right: 0;
   width: 60%;
   height: 60%;
-  background-image: url('https://stardance.com.cy/wp-content/uploads/2026/03/red-and-gold-lines.svg');
+  background-image: url("https://stardance.com.cy/wp-content/uploads/2026/03/red-and-gold-lines.svg");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: top right;
@@ -202,7 +208,13 @@
 .sd-about-champions__image {
   background-image:
     linear-gradient(transparent, transparent),
-    linear-gradient(85.69deg, #E4AF78 0%, #DC9A72 20%, #BE6D2B 60%, #EABE81 100%);
+    linear-gradient(
+      85.69deg,
+      #e4af78 0%,
+      #dc9a72 20%,
+      #be6d2b 60%,
+      #eabe81 100%
+    );
   overflow: hidden;
   position: relative;
 }
@@ -333,7 +345,7 @@
    ======================================== */
 
 .sd-page--about .sd-cta {
-  --sd-page-cta-bg-image: url('https://stardance.com.cy/wp-content/uploads/2026/03/about-page-cta-bg.webp');
+  --sd-page-cta-bg-image: url("https://stardance.com.cy/wp-content/uploads/2026/03/about-page-cta-bg.webp");
   --sd-page-cta-top-width: 35%;
   --sd-page-cta-bottom-width: 50%;
 }

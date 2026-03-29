@@ -14,6 +14,31 @@ $sd_has_acf  = function_exists( 'get_field' );
 $sd_excerpt  = get_the_excerpt() ? get_the_excerpt() : wp_trim_words( wp_strip_all_tags( get_the_content() ), 34 );
 $sd_map_embed = $sd_has_acf ? trim( (string) get_field( 'map_embed_code', $sd_class_id ) ) : '';
 
+/** Default map when no ACF embed: KIDDOM, Limassol. */
+$sd_map_embed_allowed = array(
+    'iframe' => array(
+        'src'             => true,
+        'width'           => true,
+        'height'          => true,
+        'style'           => true,
+        'allowfullscreen' => true,
+        'loading'         => true,
+        'referrerpolicy'  => true,
+        'title'           => true,
+        'class'           => true,
+    ),
+);
+
+$sd_map_html = $sd_map_embed;
+if ( '' === $sd_map_html ) {
+    $sd_map_src  = 'https://maps.google.com/maps?q=' . rawurlencode( 'KIDDOM, Limassol, Cyprus' ) . '&z=16&output=embed';
+    $sd_map_html = sprintf(
+        '<iframe class="sd-class-location__iframe" title="%s" src="%s" width="600" height="450" style="border:0;width:100%%;min-height:420px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>',
+        esc_attr__( 'Map: KIDDOM, Limassol', 'stardance' ),
+        esc_url( $sd_map_src )
+    );
+}
+
 $sd_class_details_lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
 ?>
 
@@ -274,29 +299,7 @@ $sd_class_details_lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing el
                 Masterland/KIDDOM, Spyrou Kyprianou Ave 48, Limassol 4043, Cyprus
             </p>
             <div class="sd-class-location__map fade-in fade-in-delay-2">
-                <?php if ( $sd_map_embed ) : ?>
-                    <?php
-                    echo wp_kses(
-                        $sd_map_embed,
-                        array(
-                            'iframe' => array(
-                                'src'             => true,
-                                'width'           => true,
-                                'height'          => true,
-                                'style'           => true,
-                                'allowfullscreen' => true,
-                                'loading'         => true,
-                                'referrerpolicy'  => true,
-                                'title'           => true,
-                            ),
-                        )
-                    );
-                    ?>
-                <?php else : ?>
-                    <div class="sd-class-location__map-placeholder" aria-label="<?php esc_attr_e( 'Map unavailable', 'stardance' ); ?>">
-                        <p><?php esc_html_e( 'Map will be added soon.', 'stardance' ); ?></p>
-                    </div>
-                <?php endif; ?>
+                <?php echo wp_kses( $sd_map_html, $sd_map_embed_allowed ); ?>
             </div>
         </div>
     </section>

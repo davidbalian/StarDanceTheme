@@ -8,8 +8,8 @@
    ======================================== */
 
 .sd-page-hero--classes {
-  --sd-page-hero-bg-image: url('https://stardance.com.cy/wp-content/uploads/2026/03/classes-page-hero-bg.webp');
-  --sd-page-hero-line-image: url('https://stardance.com.cy/wp-content/uploads/2026/03/classes-lines-left.svg');
+  --sd-page-hero-bg-image: url("https://stardance.com.cy/wp-content/uploads/2026/03/classes-page-hero-bg.webp");
+  --sd-page-hero-line-image: url("https://stardance.com.cy/wp-content/uploads/2026/03/classes-lines-left.svg");
 }
 
 .sd-page-hero--classes::before {
@@ -27,16 +27,16 @@
 }
 
 .sd-page--classes .sd-cta {
-  --sd-page-cta-bg-image: url('https://stardance.com.cy/wp-content/uploads/2026/03/classes-page-cta-bg.webp');
+  --sd-page-cta-bg-image: url("https://stardance.com.cy/wp-content/uploads/2026/03/classes-page-cta-bg.webp");
   --sd-page-cta-top-width: 35%;
   --sd-page-cta-bottom-width: 50%;
   background-position: top center;
 }
 
 .sd-page--classes {
-  --sd-classes-card-heading-dark: #00386D;
-  --sd-classes-card-body-dark: #2D292A;
-  --sd-classes-card-heading-light: #D9F7FC;
+  --sd-classes-card-heading-dark: #00386d;
+  --sd-classes-card-body-dark: #2d292a;
+  --sd-classes-card-heading-light: #d9f7fc;
   --sd-classes-card-body-light: var(--sd-white);
 }
 
@@ -170,8 +170,14 @@
   border: 1px solid transparent;
   border-radius: 1rem;
   background-image:
-    linear-gradient(#F3FBFC, #F3FBFC),
-    linear-gradient(85.69deg, #E4AF78 0%, #DC9A72 20%, #BE6D2B 60%, #EABE81 100%);
+    linear-gradient(#f3fbfc, #f3fbfc),
+    linear-gradient(
+      85.69deg,
+      #e4af78 0%,
+      #dc9a72 20%,
+      #be6d2b 60%,
+      #eabe81 100%
+    );
   background-origin: border-box;
   background-clip: padding-box, border-box;
   padding: 1.5rem;
@@ -200,7 +206,7 @@
 .sd-page--classes .sd-faq__icon {
   width: 24px;
   height: 24px;
-  background-image: url('https://stardance.com.cy/wp-content/uploads/2026/03/plus-icon.svg');
+  background-image: url("https://stardance.com.cy/wp-content/uploads/2026/03/plus-icon.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -212,7 +218,7 @@
 }
 
 .sd-page--classes .sd-faq__question[aria-expanded="true"] .sd-faq__icon {
-  background-image: url('https://stardance.com.cy/wp-content/uploads/2026/03/minus-icon.svg');
+  background-image: url("https://stardance.com.cy/wp-content/uploads/2026/03/minus-icon.svg");
 }
 
 .sd-classes-faq__image-wrap {
