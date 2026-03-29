@@ -31,11 +31,12 @@ Text Domain: stardance
 
   /*
    * Typography — unified fluid scale (10 canonical clamp() steps, round rem caps).
+   * Global max type size: 3.5rem (--sd-type-scale-display-home).
    * Order at typical widths: display-home ≥ display-page ≥ hero-tagline ≥ h1 > h2 > h3 > h4 > h5 ≥ h6;
    * then copy (body/lead), then small (caption + micro).
    */
-  --sd-type-scale-display-home: clamp(2rem, 1.5rem + 5vw, 5rem);
-  --sd-type-scale-display-page: clamp(1.75rem, 1.35rem + 4vw, 4rem);
+  --sd-type-scale-display-home: clamp(2rem, 1.35rem + 3.5vw, 3.5rem);
+  --sd-type-scale-display-page: clamp(1.5rem, 1.15rem + 2.75vw, 2.75rem);
   --sd-type-scale-hero-tagline: clamp(1.625rem, 1.05rem + 2.4vw, 2.75rem);
   --sd-type-scale-h1: clamp(1.625rem, 1.2rem + 2vw, 2.5rem);
   --sd-type-scale-h2: clamp(1.375rem, 1.1rem + 1.25vw, 2rem);
