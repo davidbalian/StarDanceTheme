@@ -119,8 +119,14 @@
     background-attachment: scroll;
   }
 
+  .sd-hero__content {
+    padding: 60px 0.5rem;
+  }
+
   .sd-hero__actions {
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
   }
 
