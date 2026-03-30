@@ -39,6 +39,18 @@
   color: var(--sd-body-text);
 }
 
+/* Intro copy under section titles (not page heroes). */
+#main-content .sd-section:not(.sd-page-hero) .sd-heading + .sd-text,
+#main-content .sd-class-times .sd-class-times__note {
+  max-width: var(--sd-subheadline-max-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#main-content .sd-about-overview__text .sd-text {
+  max-width: var(--sd-subheadline-max-width);
+}
+
 /* Buttons */
 .sd-btn {
   display: inline-block;
@@ -661,8 +673,6 @@
 .sd-page--schedule .sd-cta .sd-cta__desc,
 .sd-page--events .sd-cta .sd-cta__desc,
 .sd-page--single-class .sd-cta .sd-cta__desc {
-  max-width: 640px;
-  margin: 0;
   line-height: 1.6;
   text-wrap: pretty;
 }

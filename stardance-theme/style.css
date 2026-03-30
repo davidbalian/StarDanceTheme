@@ -86,6 +86,7 @@ Text Domain: stardance
   /* Layout */
   --sd-max-width: 1200px;
   --sd-contact-form-max-width: 800px;
+  --sd-subheadline-max-width: 50ch;
   /* Home hero (.sd-hero) + inner page heroes (.sd-page-hero--*) */
   --sd-hero-min-height: 90vh;
   /* Full-bleed page bottom CTA band (about, classes, schedule, events, single class) */
