@@ -44,7 +44,7 @@ Text Domain: stardance
   --sd-type-scale-h4: clamp(1.125rem, 1rem + 0.4vw, 1.375rem);
   --sd-type-scale-h5: clamp(1rem, 0.92rem + 0.25vw, 1.125rem);
   --sd-type-scale-copy: clamp(0.9375rem, 0.88rem + 0.28vw, 1.125rem);
-  --sd-type-scale-small: clamp(0.625rem, 0.58rem + 0.14vw, 0.8125rem);
+  --sd-type-scale-small: clamp(0.78125rem, 0.725rem + 0.175vw, 1.015625rem);
 
   /* Semantic aliases (consumers use these; each maps to a scale step above) */
   --sd-type-display-home: var(--sd-type-scale-display-home);
