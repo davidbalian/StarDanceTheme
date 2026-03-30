@@ -91,6 +91,8 @@
   width: 100%;
   max-width: 22rem;
   margin-bottom: var(--sd-space-sm);
+  text-align: left;
+  align-self: flex-start;
 }
 
 .sd-class-detail-card__text p {
