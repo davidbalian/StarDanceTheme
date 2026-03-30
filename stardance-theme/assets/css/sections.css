@@ -168,6 +168,12 @@
   margin-bottom: 40px;
 }
 
+/* Tall overlay cards: ::before sits above the photo (z-index 2), below copy (z-index 3). */
+.sd-classes .sd-overlay-card--tall::before {
+  background: var(--sd-gradient-class-card-readability);
+  pointer-events: none;
+}
+
 /* ---- Gallery ---- */
 .sd-gallery__title {
   margin-bottom: 40px;

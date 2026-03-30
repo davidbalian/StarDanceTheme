@@ -110,6 +110,8 @@ Text Domain: stardance
   /* Overlays & Gradients */
   --sd-overlay-dark: rgba(0, 0, 0, 0.35);
   --sd-gradient-card: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.1) 50%, transparent 100%);
+  /* Home “Our Classes” tall cards — readable text over photo */
+  --sd-gradient-class-card-readability: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.5) 100%);
 
   /* Transitions */
   --sd-transition: 0.3s ease;
