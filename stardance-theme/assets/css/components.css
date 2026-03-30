@@ -457,7 +457,7 @@
   background-size: cover;
   background-position: center top;
   position: relative;
-  min-height: var(--sd-hero-min-height);
+  min-height: var(--sd-page-hero-min-height);
   display: flex;
   align-items: center;
   overflow: hidden;
