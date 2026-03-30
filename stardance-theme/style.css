@@ -68,6 +68,8 @@ Text Domain: stardance
   --sd-type-btn: var(--sd-type-scale-copy);
   --sd-type-btn-lg: var(--sd-type-scale-h5);
   --sd-type-caption: var(--sd-type-scale-small);
+  /* Single-class detail cards — pill labels (slightly below caption / small scale) */
+  --sd-type-class-detail-pill: calc(var(--sd-type-caption) * 0.88);
   --sd-type-modal-title: var(--sd-type-scale-h3);
   --sd-type-single-class-title: var(--sd-type-scale-h3);
   --sd-type-accent: var(--sd-type-scale-h3);
