@@ -129,7 +129,7 @@
   margin-inline: auto;
   padding: 0;
   width: fit-content;
-  max-width: 100%;
+  max-width: 80%;
   align-self: center;
 }
 
@@ -206,5 +206,9 @@
 
   .sd-class-detail-card__inner {
     padding: var(--sd-space-md) var(--sd-space-sm);
+  }
+
+  .sd-class-detail-card__pills {
+    max-width: 100%;
   }
 }
