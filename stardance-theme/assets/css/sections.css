@@ -103,7 +103,7 @@
   position: relative;
   min-height: var(--sd-hero-min-height);
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   background-image: url('http://stardance.com.cy/wp-content/uploads/2026/02/Mask-group.jpg');
   background-size: cover;
