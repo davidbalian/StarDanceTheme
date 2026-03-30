@@ -75,7 +75,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: var(--sd-space-lg) var(--sd-space-md);
+  padding-block: var(--sd-space-md);
+  padding-inline: var(--sd-space-md);
   text-align: center;
 }
 
@@ -205,7 +206,8 @@
   }
 
   .sd-class-detail-card__inner {
-    padding: var(--sd-space-md) var(--sd-space-sm);
+    padding-block: var(--sd-space-sm);
+    padding-inline: var(--sd-space-sm);
   }
 
   .sd-class-detail-card__pills {
