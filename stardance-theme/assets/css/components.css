@@ -561,7 +561,7 @@
   --sd-page-cta-bottom-width: 50%;
   background-image: var(--sd-page-cta-bg-image);
   background-size: cover;
-  background-position: center;
+  background-position: center top;
   position: relative;
   min-height: var(--sd-page-cta-min-height);
   overflow: hidden;
