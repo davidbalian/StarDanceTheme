@@ -373,9 +373,9 @@
 
 .sd-overlay-card__desc {
   font-family: var(--sd-font-body);
-  font-size: var(--sd-type-card-desc);
+  font-size: var(--sd-type-body);
   color: var(--sd-white);
-  line-height: 1.4;
+  line-height: var(--sd-leading-body);
   opacity: 0.9;
 }
 
