@@ -479,6 +479,12 @@
   z-index: 1;
 }
 
+body.home .sd-contact > .sd-container {
+  max-width: var(--sd-contact-form-max-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .sd-contact__title {
   color: var(--sd-white);
   margin-bottom: 40px;
