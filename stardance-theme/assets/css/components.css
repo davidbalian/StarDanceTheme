@@ -71,7 +71,6 @@
   background-image: none;
   background-color: transparent;
   border: 1px solid var(--sd-light-blue);
-  font-size: var(--sd-type-caption);
   transition:
     background-color var(--sd-transition),
     color var(--sd-transition);
