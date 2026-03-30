@@ -128,8 +128,9 @@ function stardance_render_cta( $args = array() ) {
  *     @type string $title       Required. Card heading text.
  *     @type string $description Optional. Description text.
  *     @type string $meta        Optional. Meta text displayed above title (e.g. date).
- *     @type string $link_url    Optional. Button URL.
- *     @type string $link_text   Optional. Button label. Default 'Learn More'.
+ *     @type string $link_url    Optional. Button URL, or card href when `card_wrap_link` is true.
+ *     @type string $link_text   Optional. Button label. Default 'Learn More'. Ignored when `card_wrap_link`.
+ *     @type bool   $card_wrap_link Optional. When true with `link_url`, root is an `<a>` (no inner button).
  *     @type string $variant     Optional. 'tall' (class card) or 'portrait' (competition card). Default 'tall'.
  *     @type string $modifier    Optional. Additional modifier class suffix.
  *     @type int    $delay       Optional. Fade-in delay index (0–10). Default 0.
@@ -137,23 +138,28 @@ function stardance_render_cta( $args = array() ) {
  */
 function stardance_render_overlay_card( $args = array() ) {
     $args = wp_parse_args( $args, array(
-        'image_url'   => '',
+        'image_url'      => '',
         'decoration_url' => '',
-        'title'       => '',
-        'description' => '',
-        'meta'        => '',
-        'link_url'    => '',
-        'link_text'   => 'Learn More',
-        'variant'     => 'tall',
-        'modifier'    => '',
-        'delay'       => 0,
+        'title'          => '',
+        'description'    => '',
+        'meta'           => '',
+        'link_url'       => '',
+        'link_text'      => 'Learn More',
+        'card_wrap_link' => false,
+        'variant'        => 'tall',
+        'modifier'       => '',
+        'delay'          => 0,
     ) );
 
     $variant_class = 'sd-overlay-card--' . sanitize_html_class( $args['variant'] );
     $modifier_class = $args['modifier'] ? ' sd-overlay-card--' . sanitize_html_class( $args['modifier'] ) : '';
+    $wrap_as_link   = $args['card_wrap_link'] && $args['link_url'];
+    $link_modifier  = $wrap_as_link ? ' sd-overlay-card--link' : '';
+    $root_tag       = $wrap_as_link ? 'a' : 'div';
     ?>
-    <div class="sd-overlay-card <?php echo esc_attr( $variant_class . $modifier_class ); ?> fade-in fade-in-delay-<?php echo absint( $args['delay'] ); ?>"
-         style="background-image: url('<?php echo esc_url( $args['image_url'] ); ?>');">
+    <<?php echo $root_tag; ?> class="sd-overlay-card <?php echo esc_attr( $variant_class . $modifier_class . $link_modifier ); ?> fade-in fade-in-delay-<?php echo absint( $args['delay'] ); ?>"
+        <?php if ( $wrap_as_link ) : ?>href="<?php echo esc_url( $args['link_url'] ); ?>"<?php endif; ?>
+        style="background-image: url('<?php echo esc_url( $args['image_url'] ); ?>');">
         <?php if ( $args['decoration_url'] ) : ?>
             <img
                 src="<?php echo esc_url( $args['decoration_url'] ); ?>"
@@ -170,11 +176,11 @@ function stardance_render_overlay_card( $args = array() ) {
             <?php if ( $args['description'] ) : ?>
                 <p class="sd-overlay-card__desc"><?php echo esc_html( $args['description'] ); ?></p>
             <?php endif; ?>
-            <?php if ( $args['link_url'] ) : ?>
+            <?php if ( $args['link_url'] && ! $wrap_as_link ) : ?>
                 <a href="<?php echo esc_url( $args['link_url'] ); ?>" class="sd-btn sd-btn--outline"><?php echo esc_html( $args['link_text'] ); ?></a>
             <?php endif; ?>
         </div>
-    </div>
+    </<?php echo $root_tag; ?>>
     <?php
 }
 
