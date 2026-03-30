@@ -177,10 +177,10 @@ class Stardance_Nav_Menu_Registrar {
      */
     private function populate_primary_items( int $menu_id ): void {
         $this->add_home_item( $menu_id );
+        $this->add_page_or_custom_url( $menu_id, __( 'About', 'stardance' ), 'about' );
         $this->add_page_or_custom_url( $menu_id, __( 'Classes', 'stardance' ), 'classes' );
         $this->add_page_or_custom_url( $menu_id, __( 'Events', 'stardance' ), 'events' );
         $this->add_page_or_custom_url( $menu_id, __( 'Schedule', 'stardance' ), 'schedule' );
-        $this->add_page_or_custom_url( $menu_id, __( 'About', 'stardance' ), 'about' );
         $this->add_page_or_custom_url( $menu_id, __( 'Gallery', 'stardance' ), 'gallery' );
         $this->add_custom_nav_item( $menu_id, __( 'Contact', 'stardance' ), home_url( '/#contact' ) );
     }

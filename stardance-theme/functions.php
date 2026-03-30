@@ -1178,10 +1178,10 @@ function stardance_fallback_menu() {
     ?>
     <ul class="sd-header__menu">
         <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Home', 'stardance' ); ?></a></li>
+        <li><a href="<?php echo esc_url( stardance_page_or_path_url( 'about' ) ); ?>"><?php esc_html_e( 'About', 'stardance' ); ?></a></li>
         <li><a href="<?php echo esc_url( stardance_page_or_path_url( 'classes' ) ); ?>"><?php esc_html_e( 'Classes', 'stardance' ); ?></a></li>
         <li><a href="<?php echo esc_url( stardance_page_or_path_url( 'events' ) ); ?>"><?php esc_html_e( 'Events', 'stardance' ); ?></a></li>
         <li><a href="<?php echo esc_url( stardance_page_or_path_url( 'schedule' ) ); ?>"><?php esc_html_e( 'Schedule', 'stardance' ); ?></a></li>
-        <li><a href="<?php echo esc_url( stardance_page_or_path_url( 'about' ) ); ?>"><?php esc_html_e( 'About', 'stardance' ); ?></a></li>
         <li><a href="<?php echo esc_url( stardance_page_or_path_url( 'gallery' ) ); ?>"><?php esc_html_e( 'Gallery', 'stardance' ); ?></a></li>
         <li><a href="<?php echo esc_url( home_url( '/#contact' ) ); ?>"><?php esc_html_e( 'Contact', 'stardance' ); ?></a></li>
     </ul>
