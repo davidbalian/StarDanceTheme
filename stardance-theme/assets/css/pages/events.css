@@ -331,12 +331,24 @@
 
   .sd-events-page__sidebar {
     position: static;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .sd-events-filter {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
   }
 
   .sd-events-filter__group {
-    flex: 1 1 200px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    flex: none;
+    box-sizing: border-box;
   }
 }
 
@@ -345,8 +357,18 @@
     grid-template-columns: 1fr;
   }
 
-  .sd-events-filter__group {
-    flex: 1 1 100%;
+  .sd-event-card__tags {
+    left: var(--sd-space-sm);
+    right: var(--sd-space-sm);
+    top: var(--sd-space-md);
+  }
+
+  .sd-event-card__content {
+    padding: 1.5rem var(--sd-space-sm) 1.25rem;
+  }
+
+  .sd-event-card__btn {
+    padding: 1rem var(--sd-space-sm);
   }
 }
 

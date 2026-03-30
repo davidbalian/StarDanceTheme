@@ -289,9 +289,12 @@
   gap: 0.5rem;
   align-items: start;
   margin-bottom: 20px;
+  width: 100%;
+  max-width: 100%;
 }
 
 .sd-timetable__day {
+  min-width: 0;
   border-radius: 0.9rem;
   overflow: hidden;
   background: linear-gradient(18.43deg, #E8BF94 -6.76%, #F9D79A 16.9%, #DA8B4B 44.44%, #EABE81 70.61%, #D49656 87.11%, #E4AF78 111.57%);
@@ -354,6 +357,7 @@
   line-height: 1.25;
   color: #2D292A;
   text-wrap: balance;
+  overflow-wrap: break-word;
 }
 
 .sd-timetable__class-level {
@@ -361,6 +365,7 @@
   font-size: var(--sd-type-micro-tight-xs);
   line-height: 1.2;
   color: #2D292A;
+  overflow-wrap: break-word;
 }
 
 .sd-timetable__closed {

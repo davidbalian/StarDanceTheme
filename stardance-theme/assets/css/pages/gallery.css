@@ -204,10 +204,6 @@
     width: 100%;
   }
 
-  .sd-gallery-page__grid {
-    grid-template-columns: 1fr;
-  }
-
   .sd-gallery-page__actions {
     margin-top: 2.25rem;
   }

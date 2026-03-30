@@ -53,6 +53,7 @@
 @media (max-width: 767px) {
   :root {
     --sd-section-padding: 60px 0;
+    --sd-hero-min-height: 75vh;
   }
 
   .sd-heading {
@@ -133,6 +134,28 @@
     height: 300px;
   }
 
+  /* Homepage “Our Classes” — taller cards on mobile for imagery + copy */
+  .sd-classes .sd-overlay-card--tall {
+    height: 380px;
+  }
+
+  /* Class timetable (homepage) — single column, readable spacing */
+  .sd-timetable__grid {
+    grid-template-columns: 1fr;
+    gap: var(--sd-space-sm);
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .sd-timetable__day-title {
+    padding: 0.65rem var(--sd-space-sm);
+  }
+
+  .sd-timetable__sessions,
+  .sd-timetable__closed {
+    padding: var(--sd-space-sm) var(--sd-space-md) var(--sd-space-md);
+  }
+
   /* Grid modifiers */
   .sd-grid--3 {
     grid-template-columns: repeat(2, 1fr);
@@ -172,11 +195,16 @@
   /* Footer */
   .sd-footer__main {
     grid-template-columns: 1fr;
-    text-align: center;
+    text-align: left;
   }
 
   .sd-footer__brand {
-    justify-content: center;
+    justify-content: flex-start;
+  }
+
+  .sd-footer__legal-inner {
+    justify-content: flex-start;
+    flex-wrap: wrap;
   }
 
   .sd-footer__logo {
@@ -235,9 +263,8 @@
     height: 280px;
   }
 
-  /* Event card */
-  .sd-event-card__content {
-    padding: var(--sd-space-sm);
+  .sd-classes .sd-overlay-card--tall {
+    height: 360px;
   }
 
   .sd-btn {

@@ -242,6 +242,11 @@
   position: relative;
 }
 
+/* Desktop: nav is transparent to layout so arrows stay absolutely positioned on the wrapper */
+.sd-about-coach__nav {
+  display: contents;
+}
+
 .sd-about-coach__slider {
   overflow: hidden;
 }
@@ -405,6 +410,48 @@
 
   .sd-about-values__trophy {
     order: -1;
+  }
+
+  /* Coach slider — single column slides, arrows below track */
+  .sd-about-coach__slide {
+    grid-template-columns: 1fr;
+    gap: var(--sd-space-lg);
+  }
+
+  .sd-about-coach__slide .sd-about-coach__image {
+    order: -1;
+    max-width: min(400px, 100%);
+    width: 100%;
+    margin-inline: auto;
+  }
+
+  .sd-about-coach__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    margin-top: var(--sd-space-md);
+    padding-inline: var(--sd-space-xs);
+    box-sizing: border-box;
+  }
+
+  .sd-about-coach__arrow {
+    position: static;
+    transform: none;
+    flex-shrink: 0;
+    padding: var(--sd-space-xs);
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sd-about-coach__arrow--prev,
+  .sd-about-coach__arrow--next {
+    left: auto;
+    right: auto;
   }
 }
 

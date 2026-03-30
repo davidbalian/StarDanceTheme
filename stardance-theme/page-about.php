@@ -252,12 +252,14 @@ get_header();
                 </div><!-- /.sd-about-coach__track -->
             </div><!-- /.sd-about-coach__slider -->
 
-            <button class="sd-about-coach__arrow sd-about-coach__arrow--prev" aria-label="Previous coach">
-                <img src="https://stardance.com.cy/wp-content/uploads/2026/03/left-arrow.svg" alt="" aria-hidden="true">
-            </button>
-            <button class="sd-about-coach__arrow sd-about-coach__arrow--next" aria-label="Next coach">
-                <img src="https://stardance.com.cy/wp-content/uploads/2026/03/left-arrow.svg" alt="" aria-hidden="true">
-            </button>
+            <div class="sd-about-coach__nav" role="group" aria-label="<?php esc_attr_e( 'Coach profile slider', 'stardance' ); ?>">
+                <button type="button" class="sd-about-coach__arrow sd-about-coach__arrow--prev" aria-label="<?php esc_attr_e( 'Previous coach', 'stardance' ); ?>">
+                    <img src="https://stardance.com.cy/wp-content/uploads/2026/03/left-arrow.svg" alt="" aria-hidden="true" width="40" height="40">
+                </button>
+                <button type="button" class="sd-about-coach__arrow sd-about-coach__arrow--next" aria-label="<?php esc_attr_e( 'Next coach', 'stardance' ); ?>">
+                    <img src="https://stardance.com.cy/wp-content/uploads/2026/03/left-arrow.svg" alt="" aria-hidden="true" width="40" height="40">
+                </button>
+            </div>
 
             </div><!-- /.sd-about-coach__wrapper -->
 

@@ -282,11 +282,14 @@
   }
 }
 
-@media (max-width: 478px) {
-  .sd-page-hero--classes {
-    min-height: 700px;
+@media (max-width: 767px) {
+  .sd-page--classes .sd-faq__list {
+    padding-left: 0;
+    padding-right: 0;
   }
+}
 
+@media (max-width: 478px) {
   .sd-page--classes .sd-overlay-card--tall {
     aspect-ratio: 3 / 4;
   }
