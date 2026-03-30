@@ -74,7 +74,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   padding: var(--sd-space-lg) var(--sd-space-md);
   text-align: center;
 }
@@ -132,17 +132,13 @@
 
 .sd-class-detail-card__pills-item {
   margin: 0;
-  flex: 1 1 auto;
-  min-width: min(100%, 9.5rem);
   max-width: 100%;
-  display: flex;
-  justify-content: center;
 }
 
 .sd-class-detail-card__pill {
-  display: block;
+  display: inline-block;
   box-sizing: border-box;
-  width: 100%;
+  width: fit-content;
   max-width: 100%;
   padding: 0.45em 1.1em;
   border-radius: var(--sd-radius-pill);
@@ -152,6 +148,7 @@
   line-height: 1.3;
   color: var(--sd-navy);
   text-align: center;
+  text-wrap: pretty;
 }
 
 .sd-class-detail-card--pills-gold .sd-class-detail-card__pill {
@@ -171,18 +168,13 @@
 
 .sd-class-detail-card--pills-gradient .sd-class-detail-card__pills {
   flex-direction: column;
-  align-items: stretch;
-}
-
-.sd-class-detail-card--pills-gradient .sd-class-detail-card__pills-item {
-  min-width: 0;
-  max-width: none;
+  align-items: center;
 }
 
 .sd-class-detail-card--pills-stagger .sd-class-detail-card__pills {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  justify-items: stretch;
+  justify-items: center;
   gap: 0.25rem;
   max-width: none;
 }
@@ -200,7 +192,7 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.25rem;
   max-width: none;
-  justify-items: stretch;
+  justify-items: center;
 }
 
 .sd-class-detail-card--tone-light:not(.sd-class-detail-card--pills-stagger) .sd-class-detail-card__pills-item {
