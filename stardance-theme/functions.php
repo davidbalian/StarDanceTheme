@@ -1196,7 +1196,7 @@ function stardance_fallback_footer_menu() {
     <ul class="sd-footer__menu">
         <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Home', 'stardance' ); ?></a></li>
         <li><a href="<?php echo esc_url( stardance_page_or_path_url( 'about' ) ); ?>"><?php esc_html_e( 'About Us', 'stardance' ); ?></a></li>
-        <li><a href="<?php echo esc_url( home_url( '/#coaches' ) ); ?>"><?php esc_html_e( 'Meet the Coach', 'stardance' ); ?></a></li>
+        <li><a href="<?php echo esc_url( home_url( '/#coaches' ) ); ?>"><?php esc_html_e( 'Meet the Coaches', 'stardance' ); ?></a></li>
         <li><a href="<?php echo esc_url( stardance_page_or_path_url( 'classes' ) ); ?>"><?php esc_html_e( 'Dance Classes', 'stardance' ); ?></a></li>
         <li><a href="<?php echo esc_url( stardance_page_or_path_url( 'schedule' ) ); ?>"><?php esc_html_e( 'Timetable', 'stardance' ); ?></a></li>
         <li><a href="<?php echo esc_url( home_url( '/#contact' ) ); ?>"><?php esc_html_e( 'Contact', 'stardance' ); ?></a></li>

@@ -1,6 +1,6 @@
 <section class="sd-section sd-coaches" id="coaches">
     <div class="sd-container">
-        <h2 class="sd-heading sd-coaches__title fade-in fade-in-delay-0">Meet The Coach</h2>
+        <h2 class="sd-heading sd-coaches__title fade-in fade-in-delay-0">Meet The Coaches</h2>
 
         <div class="sd-coaches__grid sd-grid">
             <?php

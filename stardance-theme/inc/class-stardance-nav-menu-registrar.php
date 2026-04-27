@@ -192,7 +192,7 @@ class Stardance_Nav_Menu_Registrar {
     private function populate_footer_items( int $menu_id ): void {
         $this->add_home_item( $menu_id );
         $this->add_page_or_custom_url( $menu_id, __( 'About Us', 'stardance' ), 'about' );
-        $this->add_custom_nav_item( $menu_id, __( 'Meet the Coach', 'stardance' ), home_url( '/#coaches' ) );
+        $this->add_custom_nav_item( $menu_id, __( 'Meet the Coaches', 'stardance' ), home_url( '/#coaches' ) );
         $this->add_page_or_custom_url( $menu_id, __( 'Dance Classes', 'stardance' ), 'classes' );
         $this->add_page_or_custom_url( $menu_id, __( 'Timetable', 'stardance' ), 'schedule' );
         $this->add_custom_nav_item( $menu_id, __( 'Contact', 'stardance' ), home_url( '/#contact' ) );
