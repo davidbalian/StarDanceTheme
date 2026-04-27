@@ -43,9 +43,6 @@
                             </div>
                             <h3 class="<?php echo esc_attr( $coach_name_classes ); ?>"><?php the_title(); ?></h3>
                         </div>
-                        <?php if ( get_the_content() ) : ?>
-                            <div class="sd-coaches__desc"><?php echo wp_kses_post( wpautop( get_the_content() ) ); ?></div>
-                        <?php endif; ?>
                     </div>
                     <?php
                 endwhile;
