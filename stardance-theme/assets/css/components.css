@@ -431,7 +431,8 @@
    ======================================== */
 
 .sd-page-hero {
-  padding-top: 120px;
+  margin-top: -80px;
+  padding-top: 80px;
   text-align: center;
 }
 

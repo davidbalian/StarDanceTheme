@@ -20,8 +20,8 @@
 /* Desktop hero caps */
 @media (min-width: 992px) {
   :root {
-    --sd-hero-max-height: 700px;
-    --sd-page-hero-max-height: 700px;
+    --sd-hero-max-height: 800px;
+    --sd-page-hero-max-height: 800px;
   }
 }
 
@@ -140,7 +140,8 @@
 
   /* Page Hero */
   .sd-page-hero {
-    padding-top: 100px;
+    margin-top: -80px;
+    padding-top: 80px;
   }
 
   /* Overlay card */
