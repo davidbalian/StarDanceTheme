@@ -162,7 +162,7 @@ get_header();
                                                 <?php echo wp_kses_post( apply_filters( 'the_content', get_the_content() ) ); ?>
                                             </div>
                                         <?php endif; ?>
-                                        <a href="<?php echo esc_url( home_url( '/#contact' ) ); ?>" class="sd-btn"><?php echo esc_html( sprintf( __( 'Train with %s', 'stardance' ), $first_name ) ); ?></a>
+                                        <a href="<?php echo esc_url( stardance_page_or_path_url( 'contact' ) ); ?>" class="sd-btn"><?php echo esc_html( sprintf( __( 'Train with %s', 'stardance' ), $first_name ) ); ?></a>
                                     </div>
                                     <div class="sd-about-coach__image">
                                         <div class="sd-coaches__card">
@@ -203,7 +203,7 @@ get_header();
         'title'       => 'Ready to Join Us?',
         'description' => 'Contact us to learn more about our classes, schedule a trial session, or discuss your dance goals',
         'button_text' => 'Contact Us',
-        'button_url'  => home_url('/#contact'),
+        'button_url'  => stardance_page_or_path_url( 'contact' ),
         'top_decoration_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/flipped-red-and-orange-lines.svg',
         'bottom_decoration_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/red-and-orange-lines.svg',
     )); ?>

@@ -105,7 +105,7 @@ get_header();
         'title'                => 'Want to Compete or Attend an Event?',
         'description'          => 'Contact us to learn more about competition preparation, registration, or upcoming studio events.',
         'button_text'          => 'Contact Us',
-        'button_url'           => home_url('/#contact'),
+        'button_url'           => stardance_page_or_path_url( 'contact' ),
         'top_decoration_url'   => 'https://stardance.com.cy/wp-content/uploads/2026/03/flipped-red-and-orange-lines.svg',
         'bottom_decoration_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/red-and-orange-lines.svg',
     )); ?>

@@ -85,6 +85,9 @@ function stardance_enqueue_assets() {
     if ( is_page_template('page-gallery.php') ) {
         wp_enqueue_style('stardance-page-gallery', $pages_css_dir . 'gallery.css', array('stardance-responsive'), stardance_asset_version('assets/css/pages/gallery.css'));
     }
+    if ( is_page_template('page-contact.php') ) {
+        wp_enqueue_style('stardance-page-contact', $pages_css_dir . 'contact.css', array('stardance-responsive'), stardance_asset_version('assets/css/pages/contact.css'));
+    }
     if ( is_singular('dance_class') ) {
         wp_enqueue_style('stardance-single-class', $pages_css_dir . 'single-class.css', array('stardance-responsive'), stardance_asset_version('assets/css/pages/single-class.css'));
         wp_enqueue_style('stardance-single-class-sections', $pages_css_dir . 'single-class-sections.css', array('stardance-single-class'), stardance_asset_version('assets/css/pages/single-class-sections.css'));
@@ -550,6 +553,11 @@ function stardance_create_pages() {
             'slug'     => 'gallery',
         ),
         array(
+            'title'    => 'Contact',
+            'template' => 'page-contact.php',
+            'slug'     => 'contact',
+        ),
+        array(
             'title'    => 'Privacy Policy',
             'template' => '',
             'slug'     => 'privacy-policy',
@@ -808,7 +816,7 @@ add_action('admin_init', 'stardance_create_pages');
  * unauthenticated front-end requests cannot provision menus. Theme activation also
  * calls Stardance_Nav_Menu_Registrar::ensure_default_menus() while an admin is switching themes.
  *
- * After deploy, confirm under Settings → Reading that a static front page is set (for /#contact
+ * After deploy, confirm under Settings → Reading that a static front page is set (for /contact
  * and section anchors on the home template), and under Appearance → Menus that Primary/Footer
  * URLs match intent. For events, validate `event_link` meta on sd_event posts when used.
  *
@@ -1186,7 +1194,7 @@ function stardance_fallback_menu() {
         <li><a href="<?php echo esc_url( stardance_page_or_path_url( 'events' ) ); ?>"><?php esc_html_e( 'Events', 'stardance' ); ?></a></li>
         <li><a href="<?php echo esc_url( stardance_page_or_path_url( 'schedule' ) ); ?>"><?php esc_html_e( 'Schedule', 'stardance' ); ?></a></li>
         <li><a href="<?php echo esc_url( stardance_page_or_path_url( 'gallery' ) ); ?>"><?php esc_html_e( 'Gallery', 'stardance' ); ?></a></li>
-        <li><a href="<?php echo esc_url( home_url( '/#contact' ) ); ?>"><?php esc_html_e( 'Contact', 'stardance' ); ?></a></li>
+        <li><a href="<?php echo esc_url( stardance_page_or_path_url( 'contact' ) ); ?>"><?php esc_html_e( 'Contact', 'stardance' ); ?></a></li>
     </ul>
     <?php
 }
@@ -1199,7 +1207,7 @@ function stardance_fallback_footer_menu() {
         <li><a href="<?php echo esc_url( home_url( '/#coaches' ) ); ?>"><?php esc_html_e( 'Meet the Coaches', 'stardance' ); ?></a></li>
         <li><a href="<?php echo esc_url( stardance_page_or_path_url( 'classes' ) ); ?>"><?php esc_html_e( 'Dance Classes', 'stardance' ); ?></a></li>
         <li><a href="<?php echo esc_url( stardance_page_or_path_url( 'schedule' ) ); ?>"><?php esc_html_e( 'Timetable', 'stardance' ); ?></a></li>
-        <li><a href="<?php echo esc_url( home_url( '/#contact' ) ); ?>"><?php esc_html_e( 'Contact', 'stardance' ); ?></a></li>
+        <li><a href="<?php echo esc_url( stardance_page_or_path_url( 'contact' ) ); ?>"><?php esc_html_e( 'Contact', 'stardance' ); ?></a></li>
     </ul>
     <?php
 }

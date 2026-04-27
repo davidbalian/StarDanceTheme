@@ -182,7 +182,7 @@ class Stardance_Nav_Menu_Registrar {
         $this->add_page_or_custom_url( $menu_id, __( 'Events', 'stardance' ), 'events' );
         $this->add_page_or_custom_url( $menu_id, __( 'Schedule', 'stardance' ), 'schedule' );
         $this->add_page_or_custom_url( $menu_id, __( 'Gallery', 'stardance' ), 'gallery' );
-        $this->add_custom_nav_item( $menu_id, __( 'Contact', 'stardance' ), home_url( '/#contact' ) );
+        $this->add_custom_nav_item( $menu_id, __( 'Contact', 'stardance' ), stardance_page_or_path_url( 'contact' ) );
     }
 
     /**
@@ -195,7 +195,7 @@ class Stardance_Nav_Menu_Registrar {
         $this->add_custom_nav_item( $menu_id, __( 'Meet the Coaches', 'stardance' ), home_url( '/#coaches' ) );
         $this->add_page_or_custom_url( $menu_id, __( 'Dance Classes', 'stardance' ), 'classes' );
         $this->add_page_or_custom_url( $menu_id, __( 'Timetable', 'stardance' ), 'schedule' );
-        $this->add_custom_nav_item( $menu_id, __( 'Contact', 'stardance' ), home_url( '/#contact' ) );
+        $this->add_custom_nav_item( $menu_id, __( 'Contact', 'stardance' ), stardance_page_or_path_url( 'contact' ) );
     }
 
     /**

@@ -51,7 +51,7 @@ $sd_class_details_lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing el
         'modifier'    => 'single-class',
         'buttons'     => array(
             array( 'text' => 'View Schedule', 'url' => '#class-times' ),
-            array( 'text' => 'Contact Us',    'url' => home_url( '/#contact' ) ),
+            array( 'text' => 'Contact Us',    'url' => stardance_page_or_path_url( 'contact' ) ),
         ),
     )); ?>
 
@@ -321,7 +321,7 @@ $sd_class_details_lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing el
         'title'       => 'Ready to Start?',
         'description' => 'Contact us to book a trial class or ask any questions about this program.',
         'button_text' => 'Contact Us',
-        'button_url'  => home_url('/#contact'),
+        'button_url'  => stardance_page_or_path_url( 'contact' ),
     )); ?>
 
     <!-- Location / Map -->

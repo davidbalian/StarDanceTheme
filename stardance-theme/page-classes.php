@@ -134,7 +134,7 @@ $classes_query = new WP_Query(array(
         'title'       => 'Ready to Start Dancing?',
         'description' => 'Have questions about which class is right for you? Get in touch and we&rsquo;ll help you find your perfect fit.',
         'button_text' => 'Contact Us',
-        'button_url'  => home_url('/#contact'),
+        'button_url'  => stardance_page_or_path_url( 'contact' ),
         'top_decoration_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/flipped-red-and-orange-lines.svg',
         'bottom_decoration_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/red-and-orange-lines.svg',
     )); ?>
