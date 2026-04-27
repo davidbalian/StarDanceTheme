@@ -23,11 +23,17 @@
 
 .sd-schedule-page__grid {
   display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 0.5rem;
   align-items: start;
   width: 100%;
   max-width: 100%;
+}
+
+.sd-schedule-page__weekend-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .sd-schedule-page__day {

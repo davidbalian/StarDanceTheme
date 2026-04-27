@@ -13,11 +13,17 @@
 
 .sd-page--single-class .sd-class-times__schedule-grid {
   display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 0.5rem;
   align-items: start;
   width: 100%;
   max-width: 100%;
+}
+
+.sd-page--single-class .sd-schedule-page__weekend-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .sd-page--single-class .sd-class-times__schedule-day {

@@ -144,7 +144,11 @@ $schedule_days = array(
     <section class="sd-section sd-schedule-page" id="timetable">
         <div class="sd-container">
             <div class="sd-schedule-page__grid">
-                <?php foreach ( $schedule_days as $day_index => $day ) : ?>
+                <?php
+                $weekend_days = array_slice( $schedule_days, -2 );
+                $weekday_days = array_slice( $schedule_days, 0, 5 );
+                ?>
+                <?php foreach ( $weekday_days as $day_index => $day ) : ?>
                     <article class="sd-schedule-page__day fade-in fade-in-delay-<?php echo esc_attr( min( $day_index, 6 ) ); ?>">
                         <h2 class="sd-schedule-page__day-title"><?php echo esc_html( $day['label'] ); ?></h2>
 
@@ -165,6 +169,30 @@ $schedule_days = array(
                         <?php endif; ?>
                     </article>
                 <?php endforeach; ?>
+
+                <div class="sd-schedule-page__weekend-column fade-in fade-in-delay-6">
+                    <?php foreach ( $weekend_days as $day ) : ?>
+                        <article class="sd-schedule-page__day">
+                            <h2 class="sd-schedule-page__day-title"><?php echo esc_html( $day['label'] ); ?></h2>
+
+                            <?php if ( ! empty( $day['closed'] ) ) : ?>
+                                <p class="sd-schedule-page__closed">Closed</p>
+                            <?php else : ?>
+                                <div class="sd-schedule-page__sessions">
+                                    <?php foreach ( $day['sessions'] as $session ) : ?>
+                                        <div class="sd-schedule-page__session">
+                                            <span class="sd-schedule-page__time"><?php echo esc_html( $session['time'] ); ?></span>
+                                            <span class="sd-schedule-page__class-name"><?php echo esc_html( $session['title'] ); ?></span>
+                                            <?php if ( ! empty( $session['meta'] ) ) : ?>
+                                                <span class="sd-schedule-page__class-level"><?php echo esc_html( $session['meta'] ); ?></span>
+                                            <?php endif; ?>
+                                        </div>
+                                    <?php endforeach; ?>
+                                </div>
+                            <?php endif; ?>
+                        </article>
+                    <?php endforeach; ?>
+                </div>
             </div>
         </div>
     </section>
