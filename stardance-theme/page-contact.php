@@ -100,9 +100,11 @@ get_header();
                         <label class="screen-reader-text" for="sd-contact-phone">Phone</label>
                         <input id="sd-contact-phone" class="sd-contact-page__input" type="tel" name="phone" placeholder="Phone">
 
-                        <details class="sd-contact-page__interest-dropdown">
-                            <summary>I&rsquo;m interested in</summary>
-                            <fieldset class="sd-contact-page__interest-options">
+                        <div class="sd-contact-page__interest-dropdown">
+                            <button class="sd-contact-page__interest-toggle" type="button" aria-expanded="false">
+                                I&rsquo;m interested in
+                            </button>
+                            <fieldset class="sd-contact-page__interest-options" hidden>
                                 <legend class="screen-reader-text">Select class interests</legend>
                                 <label><input type="checkbox" name="interests[]" value="european-ballroom"> European Ballroom</label>
                                 <label><input type="checkbox" name="interests[]" value="latin-american"> Latin American</label>
@@ -113,7 +115,7 @@ get_header();
                                 <label><input type="checkbox" name="interests[]" value="wedding-choreography"> Wedding Choreography</label>
                                 <label><input type="checkbox" name="interests[]" value="individual-lessons"> Individual Lessons</label>
                             </fieldset>
-                        </details>
+                        </div>
 
                         <label class="screen-reader-text" for="sd-contact-message">Your Message</label>
                         <textarea id="sd-contact-message" class="sd-contact-page__input sd-contact-page__input--message" name="message" placeholder="Your Message"></textarea>

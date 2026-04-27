@@ -3,6 +3,57 @@
  * AJAX form submission handler
  */
 (function () {
+  function openInterest(dropdown, toggle, panel) {
+    dropdown.classList.add('is-open');
+    toggle.setAttribute('aria-expanded', 'true');
+    panel.hidden = false;
+    panel.style.height = '0px';
+    panel.offsetHeight;
+    panel.style.height = panel.scrollHeight + 'px';
+  }
+
+  function closeInterest(dropdown, toggle, panel) {
+    toggle.setAttribute('aria-expanded', 'false');
+    panel.style.height = panel.scrollHeight + 'px';
+    panel.offsetHeight;
+    panel.style.height = '0px';
+    dropdown.classList.remove('is-open');
+  }
+
+  function initInterestDropdown() {
+    var dropdowns = document.querySelectorAll('.sd-contact-page__interest-dropdown');
+    if (!dropdowns.length) return;
+
+    dropdowns.forEach(function (dropdown) {
+      var toggle = dropdown.querySelector('.sd-contact-page__interest-toggle');
+      var panel = dropdown.querySelector('.sd-contact-page__interest-options');
+      if (!toggle || !panel) return;
+
+      panel.hidden = true;
+      panel.style.height = '0px';
+
+      panel.addEventListener('transitionend', function (event) {
+        if (event.propertyName !== 'height') return;
+        if (toggle.getAttribute('aria-expanded') === 'true') {
+          panel.style.height = 'auto';
+          return;
+        }
+        panel.hidden = true;
+      });
+
+      toggle.addEventListener('click', function () {
+        var isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+        if (isExpanded) {
+          closeInterest(dropdown, toggle, panel);
+          return;
+        }
+        openInterest(dropdown, toggle, panel);
+      });
+    });
+  }
+
+  initInterestDropdown();
+
   var form = document.getElementById('stardance-contact-form');
   var status = document.getElementById('form-status');
 

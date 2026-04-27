@@ -107,7 +107,7 @@
 }
 
 .sd-contact-page__input,
-.sd-contact-page__interest-dropdown summary {
+.sd-contact-page__interest-toggle {
   width: 100%;
   min-height: 3.375rem;
   padding: 0.75rem 1.125rem;
@@ -127,7 +127,7 @@
 }
 
 .sd-contact-page__input:focus-visible,
-.sd-contact-page__interest-dropdown summary:focus-visible {
+.sd-contact-page__interest-toggle:focus-visible {
   outline: 2px solid var(--sd-gold-dark);
   outline-offset: 1px;
 }
@@ -144,21 +144,18 @@
   overflow: hidden;
 }
 
-.sd-contact-page__interest-dropdown summary {
+.sd-contact-page__interest-toggle {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  text-align: left;
   cursor: pointer;
-  list-style: none;
+  background: var(--sd-white);
   border: 0;
   border-radius: inherit;
 }
 
-.sd-contact-page__interest-dropdown summary::-webkit-details-marker {
-  display: none;
-}
-
-.sd-contact-page__interest-dropdown summary::after {
+.sd-contact-page__interest-toggle::after {
   content: "";
   width: 0.5rem;
   height: 0.5rem;
@@ -168,24 +165,29 @@
   transition: transform var(--sd-transition);
 }
 
-.sd-contact-page__interest-dropdown[open] summary::after {
+.sd-contact-page__interest-dropdown.is-open .sd-contact-page__interest-toggle::after {
   transform: rotate(-135deg);
 }
 
-.sd-contact-page__interest-dropdown[open] summary {
-  border-bottom: 1px solid var(--sd-gold-border);
-  border-radius: var(--sd-radius) var(--sd-radius) 0 0;
-}
-
 .sd-contact-page__interest-options {
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
   margin: 0;
   padding: 0.25rem 1.125rem 1rem;
   border: 0;
   display: grid;
   gap: 0.625rem;
   background: var(--sd-white);
-  animation: sdContactDropdownOpen 240ms ease;
-  transform-origin: top center;
+  transition:
+    height 300ms ease,
+    opacity 300ms ease,
+    padding-top 300ms ease,
+    padding-bottom 300ms ease;
+}
+
+.sd-contact-page__interest-dropdown.is-open .sd-contact-page__interest-options {
+  opacity: 1;
 }
 
 .sd-contact-page__interest-options label {
@@ -205,18 +207,6 @@
 
 .sd-contact-page__submit {
   width: 100%;
-}
-
-@keyframes sdContactDropdownOpen {
-  from {
-    opacity: 0;
-    transform: translateY(-0.25rem);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 @media (max-width: 991px) {
