@@ -386,6 +386,24 @@
   font-size: var(--sd-type-body-lg);
 }
 
+.sd-competitions .sd-overlay-card--portrait .sd-overlay-card__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  text-align: center;
+}
+
+.sd-competitions .sd-overlay-card--portrait .sd-overlay-card__meta,
+.sd-competitions .sd-overlay-card--portrait .sd-overlay-card__title {
+  text-align: center;
+}
+
+.sd-competitions .sd-overlay-card--portrait .sd-btn {
+  display: block;
+  width: 100%;
+}
+
 /* ---- Coaches ---- */
 .sd-coaches__title {
   margin-bottom: 40px;
