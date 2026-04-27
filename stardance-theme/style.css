@@ -90,11 +90,11 @@ Text Domain: stardance
   --sd-contact-form-max-width: 800px;
   --sd-subheadline-max-width: 50ch;
   /* Home hero (.sd-hero) */
-  --sd-hero-height: 90vh;
-  --sd-hero-max-height: 1080px;
+  --sd-hero-height: 100vh;
+  --sd-hero-max-height: none;
   /* Inner page heroes (.sd-page-hero--*); mobile overrides in responsive.css */
-  --sd-page-hero-height: 90vh;
-  --sd-page-hero-max-height: 1080px;
+  --sd-page-hero-height: 100vh;
+  --sd-page-hero-max-height: none;
   /* Full-bleed page bottom CTA band (about, classes, schedule, events, single class) */
   --sd-page-cta-min-height: 35vh;
   --sd-section-padding: 80px 0;

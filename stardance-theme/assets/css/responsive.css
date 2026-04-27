@@ -17,6 +17,14 @@
   }
 }
 
+/* Desktop hero caps */
+@media (min-width: 992px) {
+  :root {
+    --sd-hero-max-height: 900px;
+    --sd-page-hero-max-height: 900px;
+  }
+}
+
 /* Tablet (max-width: 991px) */
 @media (max-width: 991px) {
   /* Grid modifiers */
