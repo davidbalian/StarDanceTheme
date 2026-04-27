@@ -489,7 +489,7 @@
 
 /* ---- Contact ---- */
 .sd-contact {
-  background-image: url('http://stardance.com.cy/wp-content/uploads/2026/02/contact-sec-bg-1536x497.jpg');
+  background-image: url('https://stardance.com.cy/wp-content/uploads/2026/04/bottom-cta-background.webp');
   background-size: cover;
   background-position: center;
   position: relative;
@@ -499,13 +499,28 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(0, 56, 109, 0.6);
+  background: rgba(0, 0, 0, 0.5);
   z-index: 0;
+}
+
+.sd-contact::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 2rem;
+  height: 53px;
+  background-image: url('https://stardance.com.cy/wp-content/uploads/2026/04/bottom-cta-horizontal-lines.png');
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: contain;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .sd-contact > .sd-container {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 body.home .sd-contact > .sd-container {
