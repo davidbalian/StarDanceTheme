@@ -12,24 +12,24 @@
 }
 
 .sd-page--single-class .sd-class-times__schedule-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: 0.5rem;
-  align-items: start;
   width: 100%;
   max-width: 100%;
 }
 
-.sd-page--single-class .sd-class-times__schedule-day:nth-child(5) {
-  grid-column: 1;
+.sd-page--single-class .sd-class-times__schedule-row {
+  display: grid;
+  gap: 0.5rem;
 }
 
-.sd-page--single-class .sd-class-times__schedule-day:nth-child(6) {
-  grid-column: 2;
+.sd-page--single-class .sd-class-times__schedule-row--top {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
-.sd-page--single-class .sd-class-times__schedule-day:nth-child(7) {
-  grid-column: 3;
+.sd-page--single-class .sd-class-times__schedule-row--bottom {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .sd-page--single-class .sd-class-times__schedule-day {
@@ -388,14 +388,8 @@
     min-height: 420px;
   }
 
-  .sd-page--single-class .sd-class-times__schedule-grid {
+  .sd-page--single-class .sd-class-times__schedule-row {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .sd-page--single-class .sd-class-times__schedule-day:nth-child(5),
-  .sd-page--single-class .sd-class-times__schedule-day:nth-child(6),
-  .sd-page--single-class .sd-class-times__schedule-day:nth-child(7) {
-    grid-column: auto;
   }
 }
 
@@ -406,8 +400,11 @@
   }
 
   .sd-page--single-class .sd-class-times__schedule-grid {
-    grid-template-columns: 1fr;
     gap: var(--sd-space-sm);
+  }
+
+  .sd-page--single-class .sd-class-times__schedule-row {
+    grid-template-columns: 1fr;
   }
 
   .sd-page--single-class .sd-schedule-page__day-title {
