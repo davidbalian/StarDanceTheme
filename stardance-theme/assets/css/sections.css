@@ -509,11 +509,12 @@
   left: 0;
   right: 0;
   bottom: 1rem;
-  height: 53px;
+  height: auto;
+  aspect-ratio: 1920 / 53;
   background-image: url('https://stardance.com.cy/wp-content/uploads/2026/04/bottom-cta-horizontal-lines.png');
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 100% 100%;
+  background-size: 100% auto;
   z-index: 1;
   pointer-events: none;
 }
