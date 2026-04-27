@@ -10,6 +10,34 @@
 
   if (!header) return;
 
+  function parseRgbColor(color) {
+    if (!color) return null;
+    var match = color.match(/rgba?\(([^)]+)\)/i);
+    if (!match) return null;
+    var parts = match[1].split(',').map(function (part) {
+      return parseFloat(part.trim());
+    });
+    if (parts.length < 3 || parts.some(isNaN)) return null;
+    return {
+      r: parts[0],
+      g: parts[1],
+      b: parts[2],
+      a: typeof parts[3] === 'number' && !isNaN(parts[3]) ? parts[3] : 1
+    };
+  }
+
+  function isLightBackground(color) {
+    var parsed = parseRgbColor(color);
+    if (!parsed || parsed.a < 0.9) return false;
+    var brightness = (parsed.r * 299 + parsed.g * 587 + parsed.b * 114) / 1000;
+    return brightness >= 235;
+  }
+
+  function syncHeaderToneState() {
+    var headerBg = window.getComputedStyle(header).backgroundColor;
+    header.classList.toggle('has-light-bg', isLightBackground(headerBg));
+  }
+
   // Sticky header - add .scrolling class on scroll + hide/show on direction
   const HIDE_THRESHOLD = 400;
   let lastScrollY = 0;
@@ -25,6 +53,7 @@
         } else {
           header.classList.remove('scrolling');
         }
+        syncHeaderToneState();
 
         if (currentScrollY > HIDE_THRESHOLD) {
           if (currentScrollY > lastScrollY) {
@@ -43,6 +72,8 @@
     }
   }
   window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', syncHeaderToneState);
+  syncHeaderToneState();
 
   // Mobile menu toggle
   if (toggle && nav) {
@@ -52,6 +83,7 @@
       nav.classList.toggle('is-open');
       toggle.classList.toggle('is-active');
       document.body.classList.toggle('menu-open');
+      syncHeaderToneState();
     });
 
     // Close menu on anchor link click

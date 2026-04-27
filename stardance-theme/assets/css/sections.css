@@ -27,7 +27,8 @@
 .sd-header__logo img {
   width: 50px;
   height: auto;
-  transition: width 0.3s ease;
+  filter: brightness(0) invert(1);
+  transition: width 0.3s ease, filter 0.3s ease;
 }
 
 .sd-header__nav .sd-header__menu,
@@ -67,6 +68,11 @@
   color: var(--sd-gold-dark);
 }
 
+.sd-header.scrolling .sd-header__logo img,
+.sd-header.has-light-bg .sd-header__logo img {
+  filter: none;
+}
+
 /* Hamburger toggle */
 .sd-header__toggle {
   display: none;
@@ -83,8 +89,13 @@
   display: block;
   width: 28px;
   height: 2px;
-  background-color: var(--sd-gold-border);
+  background-color: var(--sd-white);
   transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.sd-header.scrolling .sd-header__toggle span,
+.sd-header.has-light-bg .sd-header__toggle span {
+  background-color: var(--sd-gold-border);
 }
 
 .sd-header__toggle.is-active span:nth-child(1) {
