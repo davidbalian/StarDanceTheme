@@ -53,16 +53,19 @@ function stardance_seed_coaches() {
         array(
             'title'      => 'Svetlana Grincevschi',
             'slug'       => 'svetlana-grincevschi',
+            'content'    => 'International Adjudicator (License "A") with the World Dance Sport Federation, qualified to judge Latin American and European Standard dance competitions.' . "\n\n" . 'Since 2007, Svetlana has coached champions from Cyprus, Israel, Italy, Greece, Estonia, Poland, Macedonia, and Ireland. Her students compete at the finals level in major international competitions, including events in Stuttgart, Blackpool, and Boston.',
             'menu_order' => 1,
         ),
         array(
             'title'      => 'Olga Turbin',
             'slug'       => 'olga-turbin',
+            'content'    => '',
             'menu_order' => 2,
         ),
         array(
             'title'      => 'Vladimir Merinov',
             'slug'       => 'vladimir-merinov',
+            'content'    => '',
             'menu_order' => 3,
         ),
     );
@@ -72,7 +75,7 @@ function stardance_seed_coaches() {
         $post_args = array(
             'post_title'   => $coach_data['title'],
             'post_name'    => $coach_data['slug'],
-            'post_content' => '',
+            'post_content' => $coach_data['content'],
             'post_status'  => 'publish',
             'post_type'    => 'coach',
             'post_author'  => 1,
