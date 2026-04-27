@@ -92,7 +92,7 @@
 }
 
 .sd-page--classes .sd-overlay-card__title {
-  font-size: var(--sd-type-ui-md);
+  font-size: var(--sd-type-h4);
   margin-bottom: 8px;
   text-wrap: balance;
 }
