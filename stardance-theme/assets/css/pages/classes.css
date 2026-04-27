@@ -12,6 +12,13 @@
   --sd-page-hero-line-image: url("https://stardance.com.cy/wp-content/uploads/2026/03/classes-lines-left.svg");
 }
 
+@media (min-width: 992px) {
+  .sd-page-hero--classes {
+    min-height: min(var(--sd-page-hero-min-height), 1080px);
+    max-height: 1080px;
+  }
+}
+
 .sd-page-hero--classes::before {
   top: auto;
   bottom: 0;

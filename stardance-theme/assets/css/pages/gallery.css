@@ -7,6 +7,13 @@
   --sd-page-hero-bg-image: url("https://stardance.com.cy/wp-content/uploads/2026/03/gallery-page-hero-bg.webp");
 }
 
+@media (min-width: 992px) {
+  .sd-page-hero--gallery {
+    min-height: min(var(--sd-page-hero-min-height), 1080px);
+    max-height: 1080px;
+  }
+}
+
 .sd-gallery-page {
   --sd-gallery-filter-border: linear-gradient(85.69deg, #e4af78 0%, #dc9a72 20%, #be6d2b 60%, #eabe81 100%);
   --sd-gallery-filter-bg: #f3fbfc;
