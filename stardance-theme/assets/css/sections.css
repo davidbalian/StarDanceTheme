@@ -510,6 +510,14 @@
   margin-bottom: 12px;
 }
 
+.sd-coaches__desc p {
+  margin: 0 0 1rem;
+}
+
+.sd-coaches__desc p:last-child {
+  margin-bottom: 0;
+}
+
 /* ---- Contact ---- */
 .sd-contact {
   background-image: url('https://stardance.com.cy/wp-content/uploads/2026/04/bottom-cta-background.webp');

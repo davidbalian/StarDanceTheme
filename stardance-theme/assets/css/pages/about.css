@@ -337,6 +337,14 @@
   line-height: 1.6;
 }
 
+.sd-about-coach__subsection p {
+  margin: 0 0 1rem;
+}
+
+.sd-about-coach__subsection p:last-child {
+  margin-bottom: 0;
+}
+
 .sd-about-coach__list {
   list-style: disc;
   padding-left: var(--sd-space-md);
