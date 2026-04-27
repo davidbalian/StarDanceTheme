@@ -1,4 +1,10 @@
 <section class="sd-section sd-contact" id="contact">
+    <img
+        src="https://stardance.com.cy/wp-content/uploads/2026/04/bottom-cta-horizontal-lines.png"
+        alt=""
+        class="sd-contact__lines"
+        aria-hidden="true"
+    >
     <div class="sd-container">
         <h2 class="sd-heading sd-contact__title fade-in fade-in-delay-0">Get In Touch</h2>
 
