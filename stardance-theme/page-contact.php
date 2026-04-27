@@ -78,8 +78,8 @@ get_header();
 
                     <div class="sd-contact-page__map fade-in fade-in-delay-5">
                         <iframe
-                            src="https://www.google.com/maps?q=0,0&z=14&output=embed"
-                            title="Star Dance location map"
+                            src="<?php echo esc_url( 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3280.1132108655784!2d33.077433075168955!3d34.70232438312667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14e0cb54dec70f4d%3A0x714a12a17bb30bba!2sKIDDOM!5e0!3m2!1sen!2s!4v1777317591419!5m2!1sen!2s' ); ?>"
+                            title="<?php echo esc_attr__( 'KIDDOM — Star Dance location map', 'stardance' ); ?>"
                             loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade"
                             allowfullscreen
