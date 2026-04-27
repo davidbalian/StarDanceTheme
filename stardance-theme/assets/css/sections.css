@@ -98,6 +98,10 @@
   background-color: var(--sd-gold-border);
 }
 
+.sd-header__toggle.is-active span {
+  background-color: var(--sd-gold-border);
+}
+
 .sd-header__toggle.is-active span:nth-child(1) {
   transform: translateY(7px) rotate(45deg);
 }
