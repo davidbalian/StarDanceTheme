@@ -147,6 +147,9 @@ get_header();
                                 $coach_index++;
                                 $wave_index = ( ( $coach_index - 1 ) % 3 ) + 1;
                                 $coach_name_classes = 'sd-coaches__name';
+                                $coach_title = get_the_title();
+                                $title_parts = preg_split( '/\s+/', trim( wp_strip_all_tags( $coach_title ) ) );
+                                $first_name = ! empty( $title_parts[0] ) ? $title_parts[0] : $coach_title;
                                 if ( 0 === $coach_index % 3 ) {
                                     $coach_name_classes .= ' sd-coaches__name--light';
                                 }
@@ -159,7 +162,7 @@ get_header();
                                                 <?php echo wp_kses_post( apply_filters( 'the_content', get_the_content() ) ); ?>
                                             </div>
                                         <?php endif; ?>
-                                        <a href="<?php echo esc_url( home_url( '/#contact' ) ); ?>" class="sd-btn"><?php esc_html_e( 'Train with us', 'stardance' ); ?></a>
+                                        <a href="<?php echo esc_url( home_url( '/#contact' ) ); ?>" class="sd-btn"><?php echo esc_html( sprintf( __( 'Train with %s', 'stardance' ), $first_name ) ); ?></a>
                                     </div>
                                     <div class="sd-about-coach__image">
                                         <div class="sd-coaches__card">
