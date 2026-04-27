@@ -340,7 +340,7 @@
   gap: 0.12rem;
   color: #2D292A;
   padding-bottom: 0.8rem;
-  border-bottom: 1px solid #2D292A;
+  border-bottom: 1px solid rgba(45, 41, 42, 0.3);
 }
 
 .sd-timetable__session:last-child {
