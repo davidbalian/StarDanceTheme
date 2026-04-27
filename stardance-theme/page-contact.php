@@ -89,6 +89,37 @@ get_header();
 
                 <div class="sd-contact-page__column sd-contact-page__column--form">
                     <h2 class="sd-heading sd-contact-page__heading fade-in fade-in-delay-1">Get In Touch</h2>
+
+                    <form class="sd-contact-page__form fade-in fade-in-delay-2" action="#" method="post">
+                        <label class="screen-reader-text" for="sd-contact-first-name">First Name</label>
+                        <input id="sd-contact-first-name" class="sd-contact-page__input" type="text" name="first_name" placeholder="First Name">
+
+                        <label class="screen-reader-text" for="sd-contact-email">Email</label>
+                        <input id="sd-contact-email" class="sd-contact-page__input" type="email" name="email" placeholder="Email">
+
+                        <label class="screen-reader-text" for="sd-contact-phone">Phone</label>
+                        <input id="sd-contact-phone" class="sd-contact-page__input" type="tel" name="phone" placeholder="Phone">
+
+                        <details class="sd-contact-page__interest-dropdown">
+                            <summary>I&rsquo;m interested in</summary>
+                            <fieldset class="sd-contact-page__interest-options">
+                                <legend class="screen-reader-text">Select class interests</legend>
+                                <label><input type="checkbox" name="interests[]" value="european-ballroom"> European Ballroom</label>
+                                <label><input type="checkbox" name="interests[]" value="latin-american"> Latin American</label>
+                                <label><input type="checkbox" name="interests[]" value="hip-hop"> Hip Hop</label>
+                                <label><input type="checkbox" name="interests[]" value="ballet-modern-choreography"> Ballet &amp; Modern Choreography</label>
+                                <label><input type="checkbox" name="interests[]" value="latin-fusion-ladies"> Latin Fusion Ladies</label>
+                                <label><input type="checkbox" name="interests[]" value="kids-programs"> Kids Programs</label>
+                                <label><input type="checkbox" name="interests[]" value="wedding-choreography"> Wedding Choreography</label>
+                                <label><input type="checkbox" name="interests[]" value="individual-lessons"> Individual Lessons</label>
+                            </fieldset>
+                        </details>
+
+                        <label class="screen-reader-text" for="sd-contact-message">Your Message</label>
+                        <textarea id="sd-contact-message" class="sd-contact-page__input sd-contact-page__input--message" name="message" placeholder="Your Message"></textarea>
+
+                        <button class="sd-btn sd-contact-page__submit" type="submit">Submit</button>
+                    </form>
                 </div>
             </div>
         </div>
