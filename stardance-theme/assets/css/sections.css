@@ -115,6 +115,7 @@
 
 @media (min-width: 992px) {
   .sd-hero {
+    min-height: min(var(--sd-hero-min-height), 1080px);
     max-height: 1080px;
   }
 }

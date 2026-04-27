@@ -470,6 +470,7 @@
   .sd-page-hero--gallery,
   .sd-page-hero--events,
   .sd-page-hero--single-class {
+    min-height: min(var(--sd-page-hero-min-height), 1080px);
     max-height: 1080px;
   }
 }
