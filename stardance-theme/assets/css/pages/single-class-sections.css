@@ -13,17 +13,23 @@
 
 .sd-page--single-class .sd-class-times__schedule-grid {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 0.5rem;
   align-items: start;
   width: 100%;
   max-width: 100%;
 }
 
-.sd-page--single-class .sd-schedule-page__weekend-column {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+.sd-page--single-class .sd-class-times__schedule-day:nth-child(5) {
+  grid-column: 1;
+}
+
+.sd-page--single-class .sd-class-times__schedule-day:nth-child(6) {
+  grid-column: 2;
+}
+
+.sd-page--single-class .sd-class-times__schedule-day:nth-child(7) {
+  grid-column: 3;
 }
 
 .sd-page--single-class .sd-class-times__schedule-day {
@@ -384,6 +390,12 @@
 
   .sd-page--single-class .sd-class-times__schedule-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sd-page--single-class .sd-class-times__schedule-day:nth-child(5),
+  .sd-page--single-class .sd-class-times__schedule-day:nth-child(6),
+  .sd-page--single-class .sd-class-times__schedule-day:nth-child(7) {
+    grid-column: auto;
   }
 }
 

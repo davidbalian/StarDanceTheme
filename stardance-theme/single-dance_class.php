@@ -156,14 +156,12 @@ $sd_class_details_lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing el
                     array( 'Sat', 'saturday_time', 'saturday_closed', '10:00 - 14:00', 6 ),
                     array( 'Sun', 'sunday_time', 'sunday_closed', 'Closed', 7 ),
                 );
-                $sd_weekday_rows = array_slice( $sd_time_rows, 0, 5 );
-                $sd_weekend_rows = array_slice( $sd_time_rows, -2 );
-                foreach ( $sd_weekday_rows as $row ) :
+                foreach ( $sd_time_rows as $index => $row ) :
                     $day_label   = $row[0];
                     $time_key    = $row[1];
                     $closed_key  = $row[2];
                     $fallback    = $row[3];
-                    $delay       = $row[4];
+                    $delay       = max( 1, min( 7, $index + 1 ) );
                     $acf_time    = $sd_has_acf ? trim( (string) get_field( $time_key, $sd_class_id ) ) : '';
                     $acf_closed  = $sd_has_acf ? (bool) get_field( $closed_key, $sd_class_id ) : false;
                     $is_closed   = $acf_closed || ( '' === $acf_time && 'Closed' === $fallback );
@@ -184,33 +182,6 @@ $sd_class_details_lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing el
                         <?php endif; ?>
                     </article>
                 <?php endforeach; ?>
-                <div class="sd-schedule-page__weekend-column fade-in fade-in-delay-6">
-                    <?php foreach ( $sd_weekend_rows as $row ) :
-                        $day_label   = $row[0];
-                        $time_key    = $row[1];
-                        $closed_key  = $row[2];
-                        $fallback    = $row[3];
-                        $acf_time    = $sd_has_acf ? trim( (string) get_field( $time_key, $sd_class_id ) ) : '';
-                        $acf_closed  = $sd_has_acf ? (bool) get_field( $closed_key, $sd_class_id ) : false;
-                        $is_closed   = $acf_closed || ( '' === $acf_time && 'Closed' === $fallback );
-                        $time_text   = $is_closed ? 'Closed' : ( '' !== $acf_time ? $acf_time : $fallback );
-                        $day_class   = $is_closed ? ' sd-schedule-page__day--closed' : '';
-                        ?>
-                        <article class="sd-schedule-page__day sd-class-times__schedule-day<?php echo esc_attr( $day_class ); ?>">
-                            <h3 class="sd-schedule-page__day-title"><?php echo esc_html( $day_label ); ?></h3>
-                            <?php if ( $is_closed ) : ?>
-                                <p class="sd-schedule-page__closed"><?php esc_html_e( 'Closed', 'stardance' ); ?></p>
-                            <?php else : ?>
-                                <div class="sd-schedule-page__sessions">
-                                    <div class="sd-schedule-page__session">
-                                        <span class="sd-schedule-page__time"><?php echo esc_html( $time_text ); ?></span>
-                                        <span class="sd-schedule-page__class-name"><?php echo esc_html( get_the_title() ); ?></span>
-                                    </div>
-                                </div>
-                            <?php endif; ?>
-                        </article>
-                    <?php endforeach; ?>
-                </div>
             </div>
             <p class="sd-text sd-class-times__note">
                 Times shown are indicative. <a href="<?php echo esc_url(home_url('/schedule/')); ?>">View the full timetable</a> or contact us to check current availability.
