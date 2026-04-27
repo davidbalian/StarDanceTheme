@@ -59,13 +59,13 @@ function stardance_seed_coaches() {
         array(
             'title'      => 'Olga Turbin',
             'slug'       => 'olga-turbin',
-            'content'    => '',
+            'content'    => 'Eight-time National Champion of Cyprus.' . "\n\n" . 'Winner and Finalist in International Latin American Dance Championships.' . "\n\n" . 'To become the best, you must learn from the best. ✨ We are honored to have Olga Turbin leading our students to professional success. As an 8-time National Champion of Cyprus and a winner and finalist in International Latin American Dance Championships, Olga brings world-class authority and magical precision to every lesson. 🏆' . "\n\n" . 'Whether you are dreaming of a professional sports career or a flawless performance on the international stage, Olga’s expert guidance transforms talent into victory. The journey to the podium starts under the wing of a true master. 🕊️',
             'menu_order' => 2,
         ),
         array(
             'title'      => 'Vladimir Merinov',
             'slug'       => 'vladimir-merinov',
-            'content'    => '',
+            'content'    => 'About Vladimir:' . "\n\n" . 'Multiple-time prize winner in the Russian national ranking.' . "\n" . 'Finalist of the Italian Open Championship "Alassio Open".' . "\n" . 'Winner of international IDSF tournaments.' . "\n" . '"M" Class, Master of Sports of Russia in DanceSport (Latin American program).' . "\n" . 'Multiple-time champion of Tomsk Region.' . "\n" . 'Vice-champion of the Siberian Federal District.' . "\n\n" . 'His students include dancers in the "M", "S", and "A" classes; Masters of Sports of Russia and Candidates for Master of Sports of Russia; winners, medalists, and finalists of the St. Petersburg Championship; and finalists and semifinalists of the Russian Championship.' . "\n\n" . 'His Pro-Am students reached the finals of the UK Open Dance Festival and became winners at the Blackpool Dance Festival in the A category ("Single Dance").' . "\n\n" . 'Mastery is born from experience, and at Star Dance Cyprus we learn from the best. ✨ We are proud to present Vladimir Merinov — a true icon of the Latin American dance program.' . "\n\n" . 'Holding the prestigious "M" class and the title of Master of Sports, Vladimir built his career at the highest level of success: from victories in international IDSF tournaments to the finals of the renowned "Alassio Open" championship in Italy.' . "\n\n" . 'His impact goes far beyond the dance floor — he has trained Masters of Sports and finalists of Russian Championships. From young athletes to Pro-Am winners at the legendary Blackpool festival, Vladimir develops champions at every level. 🏆',
             'menu_order' => 3,
         ),
     );
