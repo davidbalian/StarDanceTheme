@@ -442,7 +442,8 @@
 .sd-page-hero--gallery,
 .sd-page-hero--events,
 .sd-page-hero--contact,
-.sd-page-hero--single-class {
+.sd-page-hero--single-class,
+.sd-page-hero--single-event {
   --sd-page-hero-bg-image: none;
   --sd-page-hero-line-image: url("https://stardance.com.cy/wp-content/uploads/2026/03/white-and-gold-lines.svg");
   --sd-page-hero-line-left-width: 520px;
@@ -471,7 +472,8 @@
 .sd-page-hero--schedule::before,
 .sd-page-hero--gallery::before,
 .sd-page-hero--contact::before,
-.sd-page-hero--single-class::before {
+.sd-page-hero--single-class::before,
+.sd-page-hero--single-event::before {
   content: "";
   position: absolute;
   left: 0;
@@ -492,7 +494,8 @@
 .sd-page-hero--schedule::after,
 .sd-page-hero--gallery::after,
 .sd-page-hero--contact::after,
-.sd-page-hero--single-class::after {
+.sd-page-hero--single-class::after,
+.sd-page-hero--single-event::after {
   content: "";
   position: absolute;
   right: 40px;
@@ -513,7 +516,8 @@
 .sd-page-hero--gallery > .sd-container,
 .sd-page-hero--events > .sd-container,
 .sd-page-hero--contact > .sd-container,
-.sd-page-hero--single-class > .sd-container {
+.sd-page-hero--single-class > .sd-container,
+.sd-page-hero--single-event > .sd-container {
   position: relative;
   z-index: 2;
 }
@@ -524,7 +528,8 @@
 .sd-page-hero--gallery .sd-page-hero__title,
 .sd-page-hero--events .sd-page-hero__title,
 .sd-page-hero--contact .sd-page-hero__title,
-.sd-page-hero--single-class .sd-page-hero__title {
+.sd-page-hero--single-class .sd-page-hero__title,
+.sd-page-hero--single-event .sd-page-hero__title {
   color: var(--sd-white);
   font-size: var(--sd-type-display-page);
   line-height: var(--sd-leading-tight);
@@ -539,7 +544,8 @@
 .sd-page-hero--gallery .sd-page-hero__desc,
 .sd-page-hero--events .sd-page-hero__desc,
 .sd-page-hero--contact .sd-page-hero__desc,
-.sd-page-hero--single-class .sd-page-hero__desc {
+.sd-page-hero--single-class .sd-page-hero__desc,
+.sd-page-hero--single-event .sd-page-hero__desc {
   color: var(--sd-white);
   font-family: var(--sd-font-body);
   font-weight: 400;

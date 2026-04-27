@@ -265,11 +265,13 @@
   .sd-page-hero--schedule::before,
   .sd-page-hero--gallery::before,
   .sd-page-hero--single-class::before,
+  .sd-page-hero--single-event::before,
   .sd-page-hero--about::after,
   .sd-page-hero--classes::after,
   .sd-page-hero--schedule::after,
   .sd-page-hero--gallery::after,
-  .sd-page-hero--single-class::after {
+  .sd-page-hero--single-class::after,
+  .sd-page-hero--single-event::after {
     width: 38vw;
     height: 26vw;
   }

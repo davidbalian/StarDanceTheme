@@ -139,6 +139,7 @@ stardance_render_page_hero(array(
     'modifier'      => 'classes',             // optional — BEM modifier e.g. 'classes', 'events'
     'tag'           => 'h1',                  // optional — 'h1' | 'h2' | 'h3'. Default: 'h1'
     'thumbnail_url' => 'https://...',         // optional — adds .sd-page-hero__thumbnail
+    'bg_image_url'  => 'https://...',         // optional — inline --sd-page-hero-bg-image (e.g. featured image)
     'button_text'   => 'Book a Trial',        // optional — adds CTA button
     'button_url'    => home_url('/#contact'), // optional — required if button_text is set
 ));

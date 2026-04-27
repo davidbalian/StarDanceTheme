@@ -14,6 +14,7 @@
  *     @type string $modifier      Optional. BEM modifier (e.g. 'classes', 'events').
  *     @type string $tag           Optional. Heading tag — 'h1' or 'h2'. Default 'h1'.
  *     @type string $thumbnail_url Optional. Image URL for a thumbnail above content.
+ *     @type string $bg_image_url  Optional. Sets inline --sd-page-hero-bg-image for dynamic hero backgrounds.
  *     @type string $button_text   Optional. CTA button label.
  *     @type string $button_url    Optional. CTA button URL.
  * }
@@ -25,6 +26,7 @@ function stardance_render_page_hero( $args = array() ) {
         'modifier'      => '',
         'tag'           => 'h1',
         'thumbnail_url' => '',
+        'bg_image_url'  => '',
         'button_text'   => '',
         'button_url'    => '',
         'buttons'       => array(),
@@ -34,8 +36,12 @@ function stardance_render_page_hero( $args = array() ) {
     $tag            = in_array( $args['tag'], array( 'h1', 'h2', 'h3' ), true ) ? $args['tag'] : 'h1';
     $has_buttons    = ! empty( $args['buttons'] ) || ( $args['button_text'] && $args['button_url'] );
     $has_content_wrap = $args['thumbnail_url'] || $has_buttons;
+    $section_style    = '';
+    if ( ! empty( $args['bg_image_url'] ) ) {
+        $section_style = '--sd-page-hero-bg-image: url(' . esc_url( $args['bg_image_url'] ) . ');';
+    }
     ?>
-    <section class="sd-page-hero<?php echo esc_attr( $modifier_class ); ?> sd-section">
+    <section class="sd-page-hero<?php echo esc_attr( $modifier_class ); ?> sd-section"<?php echo $section_style ? ' style="' . esc_attr( $section_style ) . '"' : ''; ?>>
         <div class="sd-container">
             <?php if ( $args['thumbnail_url'] ) : ?>
                 <div class="sd-page-hero__thumbnail">
@@ -348,7 +354,8 @@ function stardance_render_event_item( $post_id, $delay = 0, $animate = true ) {
         'location'    => get_post_meta( $post_id, 'event_location', true ),
         'title'       => get_the_title( $post_id ),
         'description' => get_the_excerpt( $post_id ),
-        'link_url'    => get_post_meta( $post_id, 'event_link', true ) ?: '#',
+        'link_url'    => get_permalink( $post_id ),
+        'link_text'   => __( 'View event', 'stardance' ),
         'data_attrs'  => $data_attrs,
         'delay'       => $delay,
         'animate'     => $animate,

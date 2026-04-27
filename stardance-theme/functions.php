@@ -44,7 +44,7 @@ function stardance_setup() {
 }
 add_action('after_setup_theme', 'stardance_setup');
 
-define( 'STARDANCE_REWRITE_VERSION', '2026-03-link-audit' );
+define( 'STARDANCE_REWRITE_VERSION', '2026-04-single-sd-event' );
 
 // Enqueue Styles and Scripts
 function stardance_enqueue_assets() {
@@ -91,6 +91,9 @@ function stardance_enqueue_assets() {
     if ( is_singular('dance_class') ) {
         wp_enqueue_style('stardance-single-class', $pages_css_dir . 'single-class.css', array('stardance-responsive'), stardance_asset_version('assets/css/pages/single-class.css'));
         wp_enqueue_style('stardance-single-class-sections', $pages_css_dir . 'single-class-sections.css', array('stardance-single-class'), stardance_asset_version('assets/css/pages/single-class-sections.css'));
+    }
+    if ( is_singular( 'sd_event' ) ) {
+        wp_enqueue_style( 'stardance-single-event', $pages_css_dir . 'single-event.css', array( 'stardance-responsive' ), stardance_asset_version( 'assets/css/pages/single-event.css' ) );
     }
 
     // Theme Scripts
@@ -180,6 +183,7 @@ function stardance_register_post_types() {
         'show_in_rest'       => true,
     ));
 
+    // Listing uses the Page with slug "events"; singles use /events/{post_name}/ (has_archive false).
     register_post_type('sd_event', array(
         'labels' => array(
             'name'               => __('Events', 'stardance'),
@@ -195,10 +199,10 @@ function stardance_register_post_types() {
             'menu_name'          => __('Events', 'stardance'),
         ),
         'public'              => true,
-        'publicly_queryable'  => false,
+        'publicly_queryable'  => true,
         'exclude_from_search' => true,
         'has_archive'         => false,
-        'rewrite'             => false,
+        'rewrite'             => array( 'slug' => 'events' ),
         'supports'            => array('title', 'editor', 'thumbnail', 'excerpt', 'page-attributes'),
         'menu_icon'           => 'dashicons-calendar-alt',
         'show_ui'             => true,
