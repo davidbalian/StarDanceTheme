@@ -120,149 +120,79 @@ get_header();
     <!-- Coach Profile: Slider -->
     <section class="sd-section sd-about-coach" id="coach">
         <div class="sd-container">
-            <h2 class="sd-heading sd-about-coach__section-title fade-in fade-in-delay-0">Head Coach &amp; International Adjudicator</h2>
+            <h2 class="sd-heading sd-about-coach__section-title fade-in fade-in-delay-0">Our Coaches</h2>
 
-            <div class="sd-about-coach__wrapper">
-            <div class="sd-about-coach__slider" aria-live="polite">
-                <div class="sd-about-coach__track">
+            <?php
+            $coaches_query = new WP_Query(
+                array(
+                    'post_type'      => 'coach',
+                    'post_status'    => 'publish',
+                    'posts_per_page' => -1,
+                    'orderby'        => array(
+                        'menu_order' => 'ASC',
+                        'date'       => 'ASC',
+                    ),
+                )
+            );
+            ?>
 
-                    <!-- Slide 1 -->
-                    <div class="sd-about-coach__slide">
-                        <div class="sd-about-coach__bio">
-                            <h3 class="sd-heading sd-about-coach__name">Svetlana Grincevschi</h3>
-                            <div class="sd-about-coach__subsection">
-                                <h4 class="sd-about-coach__subsection-title">Qualifications</h4>
-                                <p class="sd-text">International Adjudicator (License &ldquo;A&rdquo;) with the World Dance Sport Federation, qualified to judge Latin American and European Standard dance competitions.</p>
-                            </div>
-                            <div class="sd-about-coach__subsection">
-                                <h4 class="sd-about-coach__subsection-title">Experience</h4>
-                                <p class="sd-text">Since 2007, Svetlana has coached competitive dancers at the international level. Her expertise spans both Latin American and European Ballroom programs, with a focus on developing champions from the ground up.</p>
-                            </div>
-                            <div class="sd-about-coach__subsection">
-                                <h4 class="sd-about-coach__subsection-title">Student Achievements</h4>
-                                <p class="sd-text">Svetlana's students have represented Cyprus, Israel, Italy, Greece, Estonia, Poland, Macedonia, and Ireland at international competitions. They regularly compete at finals level in prestigious events including:</p>
-                                <ul class="sd-about-coach__list">
-                                    <li>Blackpool Dance Festival (England)</li>
-                                    <li>German Open Championships (Stuttgart)</li>
-                                    <li>International competitions in Boston</li>
-                                </ul>
-                            </div>
-                            <div class="sd-about-coach__subsection">
-                                <h4 class="sd-about-coach__subsection-title">Coaching Philosophy</h4>
-                                <p class="sd-text">Svetlana combines rigorous technical training with individual attention to each dancer's strengths and goals. Her approach builds not just skilled dancers, but confident performers who excel under pressure.</p>
-                            </div>
-                            <a href="<?php echo esc_url(home_url('/#contact')); ?>" class="sd-btn">Train with Svetlana</a>
-                        </div>
-                        <div class="sd-about-coach__image">
-                            <div class="sd-coaches__card">
-                                <img src="http://stardance.com.cy/wp-content/uploads/2026/02/coach.jpg" alt="Svetlana Grincevschi — Head Coach" loading="lazy">
-                                <div class="sd-coaches__overlay sd-coaches__overlay--top">
-                                    <img class="sd-coaches__wave" src="http://stardance.com.cy/wp-content/uploads/2026/02/coach-top-svg-1.svg" alt="" aria-hidden="true">
+            <?php if ( $coaches_query->have_posts() ) : ?>
+                <div class="sd-about-coach__wrapper">
+                    <div class="sd-about-coach__slider" aria-live="polite">
+                        <div class="sd-about-coach__track">
+                            <?php
+                            $coach_index = 0;
+                            while ( $coaches_query->have_posts() ) :
+                                $coaches_query->the_post();
+                                $coach_index++;
+                                $wave_index = ( ( $coach_index - 1 ) % 3 ) + 1;
+                                $coach_name_classes = 'sd-coaches__name';
+                                if ( 0 === $coach_index % 3 ) {
+                                    $coach_name_classes .= ' sd-coaches__name--light';
+                                }
+                                ?>
+                                <div class="sd-about-coach__slide">
+                                    <div class="sd-about-coach__bio">
+                                        <h3 class="sd-heading sd-about-coach__name"><?php the_title(); ?></h3>
+                                        <?php if ( get_the_content() ) : ?>
+                                            <div class="sd-about-coach__subsection">
+                                                <?php echo wp_kses_post( apply_filters( 'the_content', get_the_content() ) ); ?>
+                                            </div>
+                                        <?php endif; ?>
+                                        <a href="<?php echo esc_url( home_url( '/#contact' ) ); ?>" class="sd-btn"><?php esc_html_e( 'Train with us', 'stardance' ); ?></a>
+                                    </div>
+                                    <div class="sd-about-coach__image">
+                                        <div class="sd-coaches__card">
+                                            <?php if ( has_post_thumbnail() ) : ?>
+                                                <?php the_post_thumbnail( 'large', array( 'alt' => get_the_title(), 'loading' => 'lazy' ) ); ?>
+                                            <?php else : ?>
+                                                <img src="http://stardance.com.cy/wp-content/uploads/2026/02/coach.jpg" alt="<?php echo esc_attr( get_the_title() ); ?>" loading="lazy">
+                                            <?php endif; ?>
+                                            <div class="sd-coaches__overlay sd-coaches__overlay--top">
+                                                <img class="sd-coaches__wave" src="<?php echo esc_url( 'http://stardance.com.cy/wp-content/uploads/2026/02/coach-top-svg-' . $wave_index . '.svg' ); ?>" alt="" aria-hidden="true">
+                                            </div>
+                                            <div class="sd-coaches__overlay">
+                                                <img class="sd-coaches__wave" src="<?php echo esc_url( 'http://stardance.com.cy/wp-content/uploads/2026/02/coach-bottom-svg-' . $wave_index . '.svg' ); ?>" alt="" aria-hidden="true">
+                                            </div>
+                                            <h3 class="<?php echo esc_attr( $coach_name_classes ); ?>"><?php the_title(); ?></h3>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="sd-coaches__overlay">
-                                    <img class="sd-coaches__wave" src="http://stardance.com.cy/wp-content/uploads/2026/02/coach-bottom-svg-1.svg" alt="" aria-hidden="true">
-                                </div>
-                                <h3 class="sd-coaches__name">Svetlana Grincevschi</h3>
-                            </div>
-                        </div>
+                            <?php endwhile; ?>
+                        </div><!-- /.sd-about-coach__track -->
+                    </div><!-- /.sd-about-coach__slider -->
+
+                    <div class="sd-about-coach__nav" role="group" aria-label="<?php esc_attr_e( 'Coach profile slider', 'stardance' ); ?>">
+                        <button type="button" class="sd-about-coach__arrow sd-about-coach__arrow--prev" aria-label="<?php esc_attr_e( 'Previous coach', 'stardance' ); ?>">
+                            <img src="https://stardance.com.cy/wp-content/uploads/2026/03/left-arrow.svg" alt="" aria-hidden="true" width="40" height="40">
+                        </button>
+                        <button type="button" class="sd-about-coach__arrow sd-about-coach__arrow--next" aria-label="<?php esc_attr_e( 'Next coach', 'stardance' ); ?>">
+                            <img src="https://stardance.com.cy/wp-content/uploads/2026/03/left-arrow.svg" alt="" aria-hidden="true" width="40" height="40">
+                        </button>
                     </div>
-
-                    <!-- Slide 2 -->
-                    <div class="sd-about-coach__slide">
-                        <div class="sd-about-coach__bio">
-                            <h3 class="sd-heading sd-about-coach__name">Svetlana Grincevschi</h3>
-                            <div class="sd-about-coach__subsection">
-                                <h4 class="sd-about-coach__subsection-title">Qualifications</h4>
-                                <p class="sd-text">International Adjudicator (License &ldquo;A&rdquo;) with the World Dance Sport Federation, qualified to judge Latin American and European Standard dance competitions.</p>
-                            </div>
-                            <div class="sd-about-coach__subsection">
-                                <h4 class="sd-about-coach__subsection-title">Experience</h4>
-                                <p class="sd-text">Since 2007, Svetlana has coached competitive dancers at the international level. Her expertise spans both Latin American and European Ballroom programs, with a focus on developing champions from the ground up.</p>
-                            </div>
-                            <div class="sd-about-coach__subsection">
-                                <h4 class="sd-about-coach__subsection-title">Student Achievements</h4>
-                                <p class="sd-text">Svetlana's students have represented Cyprus, Israel, Italy, Greece, Estonia, Poland, Macedonia, and Ireland at international competitions. They regularly compete at finals level in prestigious events including:</p>
-                                <ul class="sd-about-coach__list">
-                                    <li>Blackpool Dance Festival (England)</li>
-                                    <li>German Open Championships (Stuttgart)</li>
-                                    <li>International competitions in Boston</li>
-                                </ul>
-                            </div>
-                            <div class="sd-about-coach__subsection">
-                                <h4 class="sd-about-coach__subsection-title">Coaching Philosophy</h4>
-                                <p class="sd-text">Svetlana combines rigorous technical training with individual attention to each dancer's strengths and goals. Her approach builds not just skilled dancers, but confident performers who excel under pressure.</p>
-                            </div>
-                            <a href="<?php echo esc_url(home_url('/#contact')); ?>" class="sd-btn">Train with Svetlana</a>
-                        </div>
-                        <div class="sd-about-coach__image">
-                            <div class="sd-coaches__card">
-                                <img src="http://stardance.com.cy/wp-content/uploads/2026/02/coach.jpg" alt="Svetlana Grincevschi — Head Coach" loading="lazy">
-                                <div class="sd-coaches__overlay sd-coaches__overlay--top">
-                                    <img class="sd-coaches__wave" src="http://stardance.com.cy/wp-content/uploads/2026/02/coach-top-svg-2.svg" alt="" aria-hidden="true">
-                                </div>
-                                <div class="sd-coaches__overlay">
-                                    <img class="sd-coaches__wave" src="http://stardance.com.cy/wp-content/uploads/2026/02/coach-bottom-svg-2.svg" alt="" aria-hidden="true">
-                                </div>
-                                <h3 class="sd-coaches__name">Svetlana Grincevschi</h3>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Slide 3 -->
-                    <div class="sd-about-coach__slide">
-                        <div class="sd-about-coach__bio">
-                            <h3 class="sd-heading sd-about-coach__name">Svetlana Grincevschi</h3>
-                            <div class="sd-about-coach__subsection">
-                                <h4 class="sd-about-coach__subsection-title">Qualifications</h4>
-                                <p class="sd-text">International Adjudicator (License &ldquo;A&rdquo;) with the World Dance Sport Federation, qualified to judge Latin American and European Standard dance competitions.</p>
-                            </div>
-                            <div class="sd-about-coach__subsection">
-                                <h4 class="sd-about-coach__subsection-title">Experience</h4>
-                                <p class="sd-text">Since 2007, Svetlana has coached competitive dancers at the international level. Her expertise spans both Latin American and European Ballroom programs, with a focus on developing champions from the ground up.</p>
-                            </div>
-                            <div class="sd-about-coach__subsection">
-                                <h4 class="sd-about-coach__subsection-title">Student Achievements</h4>
-                                <p class="sd-text">Svetlana's students have represented Cyprus, Israel, Italy, Greece, Estonia, Poland, Macedonia, and Ireland at international competitions. They regularly compete at finals level in prestigious events including:</p>
-                                <ul class="sd-about-coach__list">
-                                    <li>Blackpool Dance Festival (England)</li>
-                                    <li>German Open Championships (Stuttgart)</li>
-                                    <li>International competitions in Boston</li>
-                                </ul>
-                            </div>
-                            <div class="sd-about-coach__subsection">
-                                <h4 class="sd-about-coach__subsection-title">Coaching Philosophy</h4>
-                                <p class="sd-text">Svetlana combines rigorous technical training with individual attention to each dancer's strengths and goals. Her approach builds not just skilled dancers, but confident performers who excel under pressure.</p>
-                            </div>
-                            <a href="<?php echo esc_url(home_url('/#contact')); ?>" class="sd-btn">Train with Svetlana</a>
-                        </div>
-                        <div class="sd-about-coach__image">
-                            <div class="sd-coaches__card">
-                                <img src="http://stardance.com.cy/wp-content/uploads/2026/02/coach.jpg" alt="Svetlana Grincevschi — Head Coach" loading="lazy">
-                                <div class="sd-coaches__overlay sd-coaches__overlay--top">
-                                    <img class="sd-coaches__wave" src="http://stardance.com.cy/wp-content/uploads/2026/02/coach-top-svg-3.svg" alt="" aria-hidden="true">
-                                </div>
-                                <div class="sd-coaches__overlay">
-                                    <img class="sd-coaches__wave" src="http://stardance.com.cy/wp-content/uploads/2026/02/coach-bottom-svg-3.svg" alt="" aria-hidden="true">
-                                </div>
-                                <h3 class="sd-coaches__name sd-coaches__name--light">Svetlana Grincevschi</h3>
-                            </div>
-                        </div>
-                    </div>
-
-                </div><!-- /.sd-about-coach__track -->
-            </div><!-- /.sd-about-coach__slider -->
-
-            <div class="sd-about-coach__nav" role="group" aria-label="<?php esc_attr_e( 'Coach profile slider', 'stardance' ); ?>">
-                <button type="button" class="sd-about-coach__arrow sd-about-coach__arrow--prev" aria-label="<?php esc_attr_e( 'Previous coach', 'stardance' ); ?>">
-                    <img src="https://stardance.com.cy/wp-content/uploads/2026/03/left-arrow.svg" alt="" aria-hidden="true" width="40" height="40">
-                </button>
-                <button type="button" class="sd-about-coach__arrow sd-about-coach__arrow--next" aria-label="<?php esc_attr_e( 'Next coach', 'stardance' ); ?>">
-                    <img src="https://stardance.com.cy/wp-content/uploads/2026/03/left-arrow.svg" alt="" aria-hidden="true" width="40" height="40">
-                </button>
-            </div>
-
-            </div><!-- /.sd-about-coach__wrapper -->
-
+                </div><!-- /.sd-about-coach__wrapper -->
+                <?php wp_reset_postdata(); ?>
+            <?php endif; ?>
         </div>
     </section>
 

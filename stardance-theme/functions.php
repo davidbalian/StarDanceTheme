@@ -7,6 +7,7 @@
 require get_template_directory() . '/inc/components.php';
 require get_template_directory() . '/inc/class-detail-card.php';
 require get_template_directory() . '/inc/class-stardance-nav-menu-registrar.php';
+require get_template_directory() . '/inc/coaches.php';
 
 /**
  * Return a filemtime-based asset version for cache busting.
@@ -582,6 +583,8 @@ function stardance_create_pages() {
             update_post_meta( $page_id, '_wp_page_template', $page_data['template'] );
         }
     }
+
+    stardance_seed_coaches();
 
     // Create sample dance_class posts
     $classes = array(
