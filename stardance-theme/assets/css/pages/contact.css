@@ -15,7 +15,7 @@
 }
 
 .sd-contact-page {
-  background: var(--sd-white);
+  background: var(--sd-light-blue);
 }
 
 .sd-contact-page__layout {
@@ -26,12 +26,13 @@
 
 .sd-contact-page__column {
   display: grid;
-  gap: var(--sd-space-md);
+  gap: var(--sd-space-lg);
   align-content: start;
 }
 
 .sd-contact-page__heading {
   margin: 0;
+  text-align: left;
 }
 
 .sd-contact-page__details-grid {
@@ -48,8 +49,8 @@
 }
 
 .sd-contact-page__detail-icon {
-  width: 2rem;
-  height: 2rem;
+  width: 1rem;
+  height: 1rem;
 }
 
 .sd-contact-page__detail-icon img {
