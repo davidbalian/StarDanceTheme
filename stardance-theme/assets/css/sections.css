@@ -389,7 +389,6 @@
 .sd-competitions .sd-overlay-card--portrait .sd-overlay-card__content {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   height: 100%;
   text-align: center;
 }
@@ -402,6 +401,7 @@
 .sd-competitions .sd-overlay-card--portrait .sd-btn {
   display: block;
   width: 100%;
+  margin-top: auto;
 }
 
 /* ---- Coaches ---- */
