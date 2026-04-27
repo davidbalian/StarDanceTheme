@@ -174,7 +174,7 @@
   overflow: hidden;
   opacity: 0;
   margin: 0;
-  padding: 0.25rem 1.125rem 1rem;
+  padding: 0 1.125rem;
   border: 0;
   display: grid;
   gap: 0.625rem;
@@ -182,12 +182,12 @@
   transition:
     height 300ms ease,
     opacity 300ms ease,
-    padding-top 300ms ease,
     padding-bottom 300ms ease;
 }
 
 .sd-contact-page__interest-dropdown.is-open .sd-contact-page__interest-options {
   opacity: 1;
+  padding-bottom: 1rem;
 }
 
 .sd-contact-page__interest-options label {
