@@ -861,8 +861,76 @@ function stardance_add_event_meta_box() {
         'side',
         'default'
     );
+    add_meta_box(
+        'stardance_event_content',
+        __('Event description, schedule & gallery', 'stardance'),
+        'stardance_render_event_content_meta_box',
+        'sd_event',
+        'normal',
+        'high'
+    );
 }
 add_action('add_meta_boxes', 'stardance_add_event_meta_box');
+
+/**
+ * Enqueue admin scripts for sd_event gallery picker.
+ *
+ * @param string $hook_suffix Current admin screen hook.
+ * @return void
+ */
+function stardance_event_admin_enqueue( $hook_suffix ) {
+    if ( ! in_array( $hook_suffix, array( 'post.php', 'post-new.php' ), true ) ) {
+        return;
+    }
+    $screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
+    if ( ! $screen || 'sd_event' !== $screen->post_type ) {
+        return;
+    }
+
+    wp_enqueue_media();
+    wp_enqueue_script(
+        'stardance-admin-event-gallery',
+        get_template_directory_uri() . '/assets/js/admin-sd-event-gallery.js',
+        array( 'jquery' ),
+        stardance_asset_version( 'assets/js/admin-sd-event-gallery.js' ),
+        true
+    );
+    wp_localize_script(
+        'stardance-admin-event-gallery',
+        'stardanceEventAdmin',
+        array(
+            'galleryTitle'  => __( 'Event gallery images', 'stardance' ),
+            'galleryButton' => __( 'Use images', 'stardance' ),
+        )
+    );
+}
+add_action( 'admin_enqueue_scripts', 'stardance_event_admin_enqueue' );
+
+/**
+ * Parsed attachment IDs for event gallery meta.
+ *
+ * @param int $post_id Event post ID.
+ * @return int[]
+ */
+function stardance_get_event_gallery_ids( $post_id ) {
+    $post_id = absint( $post_id );
+    if ( ! $post_id ) {
+        return array();
+    }
+    $raw = get_post_meta( $post_id, 'event_gallery_ids', true );
+    if ( ! is_string( $raw ) || '' === $raw ) {
+        return array();
+    }
+    $parts = preg_split( '/\s*,\s*/', $raw, -1, PREG_SPLIT_NO_EMPTY );
+    $ids   = array();
+    foreach ( $parts as $p ) {
+        $n = absint( $p );
+        if ( $n ) {
+            $ids[] = $n;
+        }
+    }
+    return array_values( array_unique( $ids ) );
+}
 
 /**
  * Render event details meta box.
@@ -898,6 +966,70 @@ function stardance_render_event_meta_box( $post ) {
 }
 
 /**
+ * Render event content / schedule / gallery meta box.
+ *
+ * @param WP_Post $post Post object.
+ * @return void
+ */
+function stardance_render_event_content_meta_box( $post ) {
+    $gallery_ids = stardance_get_event_gallery_ids( $post->ID );
+    $ids_string  = implode( ',', $gallery_ids );
+    $schedule    = get_post_meta( $post->ID, 'event_schedule', true );
+    if ( ! is_string( $schedule ) ) {
+        $schedule = '';
+    }
+    ?>
+    <p>
+        <label for="stardance_event_short_description"><strong><?php esc_html_e( 'Short description', 'stardance' ); ?></strong></label>
+    </p>
+    <p class="description"><?php esc_html_e( 'Shown in the hero and on event cards. The main editor below is the full “about” text.', 'stardance' ); ?></p>
+    <p>
+        <textarea id="stardance_event_short_description" name="stardance_event_short_description" class="widefat" rows="3"><?php echo esc_textarea( $post->post_excerpt ); ?></textarea>
+    </p>
+    <p>
+        <label for="stardance_event_schedule"><strong><?php esc_html_e( 'Event schedule', 'stardance' ); ?></strong></label>
+    </p>
+    <?php
+    wp_editor(
+        $schedule,
+        'stardance_event_schedule',
+        array(
+            'textarea_name' => 'stardance_event_schedule',
+            'media_buttons' => false,
+            'teeny'         => true,
+            'quicktags'     => true,
+            'textarea_rows' => 8,
+        )
+    );
+    ?>
+    <p style="margin-top:1em;">
+        <strong><?php esc_html_e( 'Event gallery', 'stardance' ); ?></strong>
+    </p>
+    <p class="description"><?php esc_html_e( 'Optional images for the single event page (opens in the site lightbox).', 'stardance' ); ?></p>
+    <input type="hidden" id="stardance_event_gallery_ids" name="stardance_event_gallery_ids" value="<?php echo esc_attr( $ids_string ); ?>">
+    <p>
+        <button type="button" class="button" id="stardance-event-gallery-add"><?php esc_html_e( 'Add images', 'stardance' ); ?></button>
+        <button type="button" class="button" id="stardance-event-gallery-clear"><?php esc_html_e( 'Clear all', 'stardance' ); ?></button>
+    </p>
+    <div id="stardance-event-gallery-preview" class="stardance-event-gallery-preview">
+        <?php
+        foreach ( $gallery_ids as $att_id ) {
+            echo wp_get_attachment_image(
+                $att_id,
+                'thumbnail',
+                false,
+                array(
+                    'class' => 'stardance-event-gallery-preview__img',
+                    'style' => 'width:72px;height:72px;object-fit:cover;border-radius:4px;margin:0 6px 6px 0;',
+                )
+            );
+        }
+        ?>
+    </div>
+    <?php
+}
+
+/**
  * Save event meta.
  *
  * @param int $post_id Post ID.
@@ -916,6 +1048,21 @@ function stardance_save_event_meta( $post_id ) {
         return;
     }
 
+    if ( isset( $_POST['stardance_event_short_description'] ) ) {
+        $excerpt = sanitize_textarea_field( wp_unslash( $_POST['stardance_event_short_description'] ) );
+        $current = (string) get_post_field( 'post_excerpt', $post_id, 'raw' );
+        if ( $current !== $excerpt ) {
+            remove_action( 'save_post_sd_event', 'stardance_save_event_meta' );
+            wp_update_post(
+                array(
+                    'ID'           => $post_id,
+                    'post_excerpt' => $excerpt,
+                )
+            );
+            add_action( 'save_post_sd_event', 'stardance_save_event_meta' );
+        }
+    }
+
     if ( isset( $_POST['stardance_event_date'] ) ) {
         update_post_meta( $post_id, 'event_date', sanitize_text_field( wp_unslash( $_POST['stardance_event_date'] ) ) );
     }
@@ -924,6 +1071,25 @@ function stardance_save_event_meta( $post_id ) {
     }
     if ( isset( $_POST['stardance_event_link'] ) ) {
         update_post_meta( $post_id, 'event_link', esc_url_raw( wp_unslash( $_POST['stardance_event_link'] ) ) );
+    }
+
+    if ( isset( $_POST['stardance_event_schedule'] ) ) {
+        update_post_meta( $post_id, 'event_schedule', wp_kses_post( wp_unslash( $_POST['stardance_event_schedule'] ) ) );
+    }
+
+    if ( isset( $_POST['stardance_event_gallery_ids'] ) ) {
+        $raw = wp_unslash( $_POST['stardance_event_gallery_ids'] );
+        $raw = is_string( $raw ) ? $raw : '';
+        $parts = preg_split( '/\s*,\s*/', $raw, -1, PREG_SPLIT_NO_EMPTY );
+        $ids   = array();
+        foreach ( $parts as $p ) {
+            $n = absint( $p );
+            if ( $n ) {
+                $ids[] = $n;
+            }
+        }
+        $ids = array_values( array_unique( $ids ) );
+        update_post_meta( $post_id, 'event_gallery_ids', implode( ',', $ids ) );
     }
 }
 add_action('save_post_sd_event', 'stardance_save_event_meta');
