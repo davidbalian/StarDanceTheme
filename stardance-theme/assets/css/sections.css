@@ -113,6 +113,12 @@
   padding-top: 80px;
 }
 
+@media (min-width: 992px) {
+  .sd-hero {
+    max-height: 1080px;
+  }
+}
+
 .sd-hero__overlay {
   position: absolute;
   inset: 0;
