@@ -27,6 +27,7 @@
 .sd-header__logo img {
   width: 50px;
   height: auto;
+  transition: width 0.3s ease;
 }
 
 .sd-header__nav .sd-header__menu,

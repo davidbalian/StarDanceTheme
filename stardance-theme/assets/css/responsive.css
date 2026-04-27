@@ -25,6 +25,14 @@
   }
 }
 
+/* Desktop/tablet header spacing */
+@media (min-width: 768px) {
+  .sd-header__inner {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+}
+
 /* Tablet (max-width: 991px) */
 @media (max-width: 991px) {
   /* Grid modifiers */
@@ -120,6 +128,10 @@
   /* Header */
   .sd-header__logo img {
     width: 70px;
+  }
+
+  .sd-header.scrolling .sd-header__logo img {
+    width: 45px;
   }
 
   /* Hero */
