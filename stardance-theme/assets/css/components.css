@@ -464,12 +464,7 @@
 }
 
 @media (min-width: 992px) {
-  .sd-page-hero--about,
-  .sd-page-hero--classes,
-  .sd-page-hero--schedule,
-  .sd-page-hero--gallery,
-  .sd-page-hero--events,
-  .sd-page-hero--single-class {
+  .sd-page-hero {
     min-height: min(var(--sd-page-hero-min-height), 1080px);
     max-height: 1080px;
   }
