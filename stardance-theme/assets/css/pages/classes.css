@@ -182,7 +182,7 @@
 }
 
 .sd-page--classes .sd-faq__question {
-  font-size: var(--sd-type-btn-lg);
+  font-size: var(--sd-type-h4);
   padding: 0;
   gap: 1rem;
   transition: color var(--sd-transition);

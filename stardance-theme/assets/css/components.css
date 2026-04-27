@@ -721,7 +721,7 @@
   padding: var(--sd-space-sm) 0;
   font-family: var(--sd-font-heading);
   font-weight: 600;
-  font-size: var(--sd-type-ui-md);
+  font-size: var(--sd-type-btn-lg);
   color: var(--sd-navy);
   background: none;
   border: none;
