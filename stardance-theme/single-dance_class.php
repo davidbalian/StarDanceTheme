@@ -327,7 +327,7 @@ $sd_class_details_lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing el
     <!-- Location / Map -->
     <section class="sd-section sd-class-location" id="location">
         <div class="sd-container">
-            <h2 class="sd-heading sd-class-location__title fade-in fade-in-delay-0">Find Us</h2>
+            <h2 class="sd-heading sd-class-location__title fade-in fade-in-delay-0">Our Location</h2>
             <p class="sd-text sd-class-location__address fade-in fade-in-delay-1">
                 Masterland/KIDDOM, Spyrou Kyprianou Ave 48, Limassol 4043, Cyprus
             </p>
