@@ -101,7 +101,8 @@
 /* ---- Hero ---- */
 .sd-hero {
   position: relative;
-  min-height: var(--sd-hero-min-height);
+  height: var(--sd-hero-height);
+  max-height: var(--sd-hero-max-height);
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -111,13 +112,6 @@
   background-attachment: fixed;
   margin-top: -80px;
   padding-top: 80px;
-}
-
-@media (min-width: 992px) {
-  .sd-hero {
-    min-height: min(var(--sd-hero-min-height), 1080px);
-    max-height: 1080px;
-  }
 }
 
 .sd-hero__overlay {

@@ -9,8 +9,8 @@
 
 @media (min-width: 992px) {
   .sd-page-hero--schedule {
-    min-height: min(var(--sd-page-hero-min-height), 1080px);
-    max-height: 1080px;
+    height: var(--sd-page-hero-height);
+    max-height: var(--sd-page-hero-max-height);
   }
 }
 

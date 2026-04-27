@@ -53,7 +53,7 @@
 @media (max-width: 767px) {
   :root {
     --sd-section-padding: 60px 0;
-    --sd-page-hero-min-height: 75vh;
+    --sd-page-hero-height: 75vh;
   }
 
   .sd-heading {

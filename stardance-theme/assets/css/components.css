@@ -457,17 +457,11 @@
   background-size: cover;
   background-position: center top;
   position: relative;
-  min-height: var(--sd-page-hero-min-height);
+  height: var(--sd-page-hero-height);
+  max-height: var(--sd-page-hero-max-height);
   display: flex;
   align-items: center;
   overflow: hidden;
-}
-
-@media (min-width: 992px) {
-  .sd-page-hero {
-    min-height: min(var(--sd-page-hero-min-height), 1080px);
-    max-height: 1080px;
-  }
 }
 
 .sd-page-hero--about::before,
