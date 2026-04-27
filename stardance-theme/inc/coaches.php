@@ -84,6 +84,7 @@ function stardance_seed_coaches() {
 
         if ( $existing ) {
             $post_args['ID'] = $existing->ID;
+            unset( $post_args['post_content'] );
             wp_update_post( $post_args, true );
         } else {
             wp_insert_post( $post_args, true );
