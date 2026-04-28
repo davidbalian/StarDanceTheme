@@ -138,6 +138,7 @@
       return;
     }
     currentAttachment = attachment;
+    syncInsertVisibility();
     $(SELECTOR_OVERLAY).removeAttr('hidden');
     refreshAllPreviews();
   }
@@ -321,11 +322,28 @@
   }
 
   function insertUploadedToGallery($card) {
+    if (!hasEventGalleryField()) {
+      return;
+    }
     var uploadedId = parseInt($card.attr('data-uploaded-id'), 10);
     if (!uploadedId) {
       return;
     }
     $(document).trigger('stardance:event-gallery:append', [[uploadedId]]);
+  }
+
+  function hasEventGalleryField() {
+    return $('#stardance_event_gallery_ids').length > 0;
+  }
+
+  function syncInsertVisibility() {
+    var canInsert = hasEventGalleryField();
+    var $buttons = $(SELECTOR_CARD).find('.stardance-media-crop-insert');
+    if (canInsert) {
+      $buttons.removeClass('is-hidden');
+    } else {
+      $buttons.addClass('is-hidden').prop('disabled', true);
+    }
   }
 
   function bindEvents() {

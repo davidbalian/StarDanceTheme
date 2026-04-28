@@ -84,6 +84,10 @@
   flex-wrap: wrap;
 }
 
+.stardance-media-crop-insert.is-hidden {
+  display: none;
+}
+
 .stardance-media-crop-status {
   margin-top: 10px;
   min-height: 24px;

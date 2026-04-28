@@ -847,7 +847,6 @@ function stardance_event_admin_enqueue( $hook_suffix ) {
     }
 
     wp_enqueue_media();
-    Stardance_Event_Media_Crop_Admin::enqueue_assets();
     wp_enqueue_style(
         'stardance-admin-event-schedule',
         get_template_directory_uri() . '/assets/css/admin-event-schedule.css',
@@ -890,6 +889,27 @@ function stardance_event_admin_enqueue( $hook_suffix ) {
     );
 }
 add_action( 'admin_enqueue_scripts', 'stardance_event_admin_enqueue' );
+
+/**
+ * Enqueue media crop tools for media-library capable admin screens.
+ *
+ * @param string $hook_suffix Current admin screen hook.
+ * @return void
+ */
+function stardance_media_crop_admin_enqueue( $hook_suffix ) {
+    $allowed_hooks = array( 'upload.php', 'media-new.php', 'post.php', 'post-new.php' );
+    if ( ! in_array( $hook_suffix, $allowed_hooks, true ) ) {
+        return;
+    }
+
+    if ( ! current_user_can( 'upload_files' ) ) {
+        return;
+    }
+
+    wp_enqueue_media();
+    Stardance_Event_Media_Crop_Admin::enqueue_assets();
+}
+add_action( 'admin_enqueue_scripts', 'stardance_media_crop_admin_enqueue', 12 );
 
 /**
  * Parsed attachment IDs for event gallery meta.
