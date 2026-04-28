@@ -543,7 +543,7 @@
 
 .sd-page-hero[class*="sd-page-hero--"] .sd-page-hero__title {
   color: var(--sd-white);
-  font-size: var(--sd-type-display-page);
+  font-size: var(--sd-type-display-home);
   line-height: var(--sd-leading-tight);
   letter-spacing: 0;
   text-shadow: var(--sd-shadow-title-gold);
