@@ -64,6 +64,27 @@
     grid-column: 1 / -1;
     justify-content: center;
   }
+
+  /* Page hero decorative lines — half desktop size; vw cap so phones don’t overflow */
+  .sd-page-hero--about::before,
+  .sd-page-hero--classes::before,
+  .sd-page-hero--schedule::before,
+  .sd-page-hero--gallery::before,
+  .sd-page-hero--events::before,
+  .sd-page-hero--contact::before,
+  .sd-page-hero--single-class::before,
+  .sd-page-hero--single-event::before,
+  .sd-page-hero--about::after,
+  .sd-page-hero--classes::after,
+  .sd-page-hero--schedule::after,
+  .sd-page-hero--gallery::after,
+  .sd-page-hero--events::after,
+  .sd-page-hero--contact::after,
+  .sd-page-hero--single-class::after,
+  .sd-page-hero--single-event::after {
+    width: min(260px, 38vw);
+    height: min(176px, 26vw);
+  }
 }
 
 /* Mobile (max-width: 767px) */
@@ -256,26 +277,6 @@
 
 /* Small Mobile (max-width: 478px) */
 @media (max-width: 478px) {
-  .sd-page-hero--about::before,
-  .sd-page-hero--classes::before,
-  .sd-page-hero--schedule::before,
-  .sd-page-hero--gallery::before,
-  .sd-page-hero--events::before,
-  .sd-page-hero--contact::before,
-  .sd-page-hero--single-class::before,
-  .sd-page-hero--single-event::before,
-  .sd-page-hero--about::after,
-  .sd-page-hero--classes::after,
-  .sd-page-hero--schedule::after,
-  .sd-page-hero--gallery::after,
-  .sd-page-hero--events::after,
-  .sd-page-hero--contact::after,
-  .sd-page-hero--single-class::after,
-  .sd-page-hero--single-event::after {
-    width: 38vw;
-    height: 26vw;
-  }
-
   /* Grid modifiers */
   .sd-grid--2,
   .sd-grid--3,
