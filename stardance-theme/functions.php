@@ -69,7 +69,7 @@ function stardance_enqueue_assets() {
 
     // Page-specific CSS
     $pages_css_dir = get_template_directory_uri() . '/assets/css/pages/';
-    if ( is_page_template('page-classes.php') ) {
+    if ( is_page_template('page-classes.php') || is_front_page() ) {
         wp_enqueue_style('stardance-page-classes', $pages_css_dir . 'classes.css', array('stardance-responsive'), stardance_asset_version('assets/css/pages/classes.css'));
     }
     if ( is_page_template('page-events.php') ) {

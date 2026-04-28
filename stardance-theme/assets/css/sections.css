@@ -180,16 +180,7 @@
   flex-wrap: wrap;
 }
 
-/* ---- Classes ---- */
-.sd-classes__title {
-  margin-bottom: 40px;
-}
-
-/* Tall overlay cards: ::before sits above the photo (z-index 2), below copy (z-index 3). */
-.sd-classes .sd-overlay-card--tall::before {
-  background: var(--sd-gradient-class-card-readability);
-  pointer-events: none;
-}
+/* ---- Classes (homepage grid matches classes page via assets/css/pages/classes.css) ---- */
 
 /* ---- Gallery ---- */
 .sd-gallery__title {

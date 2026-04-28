@@ -1,8 +1,8 @@
-<section class="sd-section sd-classes" id="classes">
+<section class="sd-section sd-classes sd-classes-page" id="classes">
     <div class="sd-container">
-        <h2 class="sd-heading sd-classes__title fade-in fade-in-delay-0">Our Classes</h2>
+        <h2 class="sd-heading sd-classes-page__title fade-in fade-in-delay-0">Our Classes</h2>
 
-        <div class="sd-classes__grid sd-grid sd-grid--3">
+        <div class="sd-classes-page__grid sd-grid sd-grid--3">
             <?php stardance_render_overlay_card(array(
                 'image_url' => 'http://stardance.com.cy/wp-content/uploads/2026/02/European-Ballroom.png',
                 'title'     => 'European Ballroom',

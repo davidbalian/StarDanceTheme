@@ -161,11 +161,6 @@
     height: 300px;
   }
 
-  /* Homepage “Our Classes” — taller cards on mobile for imagery + copy */
-  .sd-classes .sd-overlay-card--tall {
-    height: 380px;
-  }
-
   /* Class timetable (homepage) — single column, readable spacing */
   .sd-timetable__grid {
     grid-template-columns: 1fr;
@@ -290,10 +285,6 @@
   /* Overlay cards */
   .sd-overlay-card--tall {
     height: 280px;
-  }
-
-  .sd-classes .sd-overlay-card--tall {
-    height: 360px;
   }
 
   .sd-btn {
