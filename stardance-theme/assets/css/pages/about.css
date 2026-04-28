@@ -7,10 +7,6 @@
    Hero
    ======================================== */
 
-.sd-page-hero--about {
-  --sd-page-hero-bg-image: url("https://stardance.com.cy/wp-content/uploads/2026/03/about-page-hero-bg.webp");
-}
-
 /* ========================================
    Training Overview
    ======================================== */
@@ -358,16 +354,9 @@
    ======================================== */
 
 .sd-page--about .sd-cta {
-  --sd-page-cta-bg-image: url("https://stardance.com.cy/wp-content/uploads/2026/04/about-page-cta-bg-normal.jpg");
   --sd-page-cta-top-width: 35%;
   --sd-page-cta-bottom-width: 50%;
   background-position: center center;
-}
-
-@media (min-width: 1920px) {
-  .sd-page--about .sd-cta {
-    --sd-page-cta-bg-image: url("https://stardance.com.cy/wp-content/uploads/2026/04/about-page-cta-bg-large.jpg");
-  }
 }
 
 /* ========================================
@@ -419,10 +408,6 @@
    ======================================== */
 
 @media (max-width: 767px) {
-  .sd-page--about .sd-cta {
-    --sd-page-cta-bg-image: url("https://stardance.com.cy/wp-content/uploads/2026/04/about-page-cta-bg-mobile.jpg");
-  }
-
   .sd-about-values__grid {
     grid-template-columns: 1fr;
   }

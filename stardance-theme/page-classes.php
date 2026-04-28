@@ -6,6 +6,7 @@
  */
 
 get_header();
+$sd_page_id = get_queried_object_id();
 ?>
 
 <main class="sd-page sd-page--classes" id="main-content">
@@ -14,6 +15,7 @@ get_header();
         'title'       => 'Find Your Perfect Dance Class',
         'description' => 'Star Dance Studio offers professional instruction tailored to your goals, from first steps to competition level. As an official member of the Cyprus Federation of Social &amp; Sport Dance, we provide certified training for all ages starting from 3 years old.',
         'modifier'    => 'classes',
+        'bg_image_urls' => stardance_get_responsive_hero_images( $sd_page_id, 'classes' ),
     )); ?>
 
     <!-- Class Card Grid -->
@@ -99,6 +101,7 @@ get_header();
         'button_url'  => stardance_page_or_path_url( 'contact' ),
         'top_decoration_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/flipped-red-and-orange-lines.svg',
         'bottom_decoration_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/red-and-orange-lines.svg',
+        'bg_image_urls' => stardance_get_responsive_bottom_cta_images( $sd_page_id, 'classes' ),
     )); ?>
 
 </main>

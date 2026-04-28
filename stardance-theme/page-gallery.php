@@ -12,6 +12,7 @@ $gallery_payload = stardance_get_gallery_query_payload(array(
 ));
 
 get_header();
+$sd_page_id = get_queried_object_id();
 ?>
 
 <main class="sd-page sd-page--gallery" id="main-content">
@@ -20,6 +21,7 @@ get_header();
         'title'       => 'Gallery',
         'description' => 'Browse photos and videos from competitions, studio events, and performances. See our students in action on dance floors around the world.',
         'modifier'    => 'gallery',
+        'bg_image_urls' => stardance_get_responsive_hero_images( $sd_page_id, 'gallery' ),
     )); ?>
 
     <section class="sd-section sd-gallery-page" id="gallery">

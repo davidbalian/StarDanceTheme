@@ -15,6 +15,7 @@
  *     @type string $tag           Optional. Heading tag — 'h1' or 'h2'. Default 'h1'.
  *     @type string $thumbnail_url Optional. Image URL for a thumbnail above content.
  *     @type string $bg_image_url  Optional. Sets inline --sd-page-hero-bg-image for dynamic hero backgrounds.
+ *     @type array  $bg_image_urls Optional. Responsive hero images keyed by large, tablet, mobile.
  *     @type string $button_text   Optional. CTA button label.
  *     @type string $button_url    Optional. CTA button URL.
  *     @type array  $meta_rows     Optional. Lines under the title; each item: label (e.g. "Date:"), value (string).
@@ -28,6 +29,7 @@ function stardance_render_page_hero( $args = array() ) {
         'tag'           => 'h1',
         'thumbnail_url' => '',
         'bg_image_url'  => '',
+        'bg_image_urls' => array(),
         'button_text'   => '',
         'button_url'    => '',
         'buttons'       => array(),
@@ -45,9 +47,39 @@ function stardance_render_page_hero( $args = array() ) {
     $has_meta         = ! empty( $meta_rows_visible );
     $desc_delay_class = $has_meta ? 'fade-in fade-in-delay-2' : 'fade-in fade-in-delay-1';
     $btn_delay_class  = $has_meta ? 'fade-in fade-in-delay-3' : 'fade-in fade-in-delay-2';
-    $section_style    = '';
-    if ( ! empty( $args['bg_image_url'] ) ) {
-        $section_style = '--sd-page-hero-bg-image: url(' . esc_url( $args['bg_image_url'] ) . ');';
+    $section_style = '';
+    $hero_images   = wp_parse_args(
+        is_array( $args['bg_image_urls'] ) ? $args['bg_image_urls'] : array(),
+        array(
+            'large'  => '',
+            'tablet' => '',
+            'mobile' => '',
+        )
+    );
+    if ( ! $hero_images['tablet'] && ! empty( $args['bg_image_url'] ) ) {
+        $hero_images['tablet'] = $args['bg_image_url'];
+    }
+    if ( ! $hero_images['large'] ) {
+        $hero_images['large'] = $hero_images['tablet'] ? $hero_images['tablet'] : $hero_images['mobile'];
+    }
+    if ( ! $hero_images['mobile'] ) {
+        $hero_images['mobile'] = $hero_images['tablet'] ? $hero_images['tablet'] : $hero_images['large'];
+    }
+
+    $style_parts = array();
+    if ( ! empty( $hero_images['large'] ) ) {
+        $style_parts[] = '--sd-page-hero-bg-image-large: url(' . esc_url( $hero_images['large'] ) . ')';
+    }
+    if ( ! empty( $hero_images['tablet'] ) ) {
+        $style_parts[] = '--sd-page-hero-bg-image-tablet: url(' . esc_url( $hero_images['tablet'] ) . ')';
+        // Keep legacy var for backwards compatibility with existing CSS.
+        $style_parts[] = '--sd-page-hero-bg-image: url(' . esc_url( $hero_images['tablet'] ) . ')';
+    }
+    if ( ! empty( $hero_images['mobile'] ) ) {
+        $style_parts[] = '--sd-page-hero-bg-image-mobile: url(' . esc_url( $hero_images['mobile'] ) . ')';
+    }
+    if ( ! empty( $style_parts ) ) {
+        $section_style = implode( '; ', $style_parts ) . ';';
     }
     ?>
     <section class="sd-page-hero<?php echo esc_attr( $modifier_class ); ?> sd-section"<?php echo $section_style ? ' style="' . esc_attr( $section_style ) . '"' : ''; ?>>
@@ -106,6 +138,7 @@ function stardance_render_page_hero( $args = array() ) {
  *     @type string $id          Optional. Section id attribute. Default 'cta'.
  *     @type string $top_decoration_url Optional. Decorative image shown at the top edge.
  *     @type string $bottom_decoration_url Optional. Decorative image shown at the bottom edge.
+ *     @type array  $bg_image_urls Optional. Responsive CTA images keyed by large, tablet, mobile.
  * }
  */
 function stardance_render_cta( $args = array() ) {
@@ -117,9 +150,41 @@ function stardance_render_cta( $args = array() ) {
         'id'          => 'cta',
         'top_decoration_url' => '',
         'bottom_decoration_url' => '',
+        'bg_image_urls' => array(),
     ) );
+    $cta_images = wp_parse_args(
+        is_array( $args['bg_image_urls'] ) ? $args['bg_image_urls'] : array(),
+        array(
+            'large'  => '',
+            'tablet' => '',
+            'mobile' => '',
+        )
+    );
+    if ( ! $cta_images['large'] ) {
+        $cta_images['large'] = $cta_images['tablet'] ? $cta_images['tablet'] : $cta_images['mobile'];
+    }
+    if ( ! $cta_images['tablet'] ) {
+        $cta_images['tablet'] = $cta_images['large'] ? $cta_images['large'] : $cta_images['mobile'];
+    }
+    if ( ! $cta_images['mobile'] ) {
+        $cta_images['mobile'] = $cta_images['tablet'] ? $cta_images['tablet'] : $cta_images['large'];
+    }
+
+    $cta_style_parts = array();
+    if ( ! empty( $cta_images['large'] ) ) {
+        $cta_style_parts[] = '--sd-page-cta-bg-image-large: url(' . esc_url( $cta_images['large'] ) . ')';
+    }
+    if ( ! empty( $cta_images['tablet'] ) ) {
+        $cta_style_parts[] = '--sd-page-cta-bg-image-tablet: url(' . esc_url( $cta_images['tablet'] ) . ')';
+        // Keep legacy var for backwards compatibility with existing CSS.
+        $cta_style_parts[] = '--sd-page-cta-bg-image: url(' . esc_url( $cta_images['tablet'] ) . ')';
+    }
+    if ( ! empty( $cta_images['mobile'] ) ) {
+        $cta_style_parts[] = '--sd-page-cta-bg-image-mobile: url(' . esc_url( $cta_images['mobile'] ) . ')';
+    }
+    $cta_style = ! empty( $cta_style_parts ) ? implode( '; ', $cta_style_parts ) . ';' : '';
     ?>
-    <section class="sd-section sd-cta" id="<?php echo esc_attr( $args['id'] ); ?>">
+    <section class="sd-section sd-cta" id="<?php echo esc_attr( $args['id'] ); ?>"<?php echo $cta_style ? ' style="' . esc_attr( $cta_style ) . '"' : ''; ?>>
         <?php if ( $args['top_decoration_url'] ) : ?>
             <img
                 src="<?php echo esc_url( $args['top_decoration_url'] ); ?>"

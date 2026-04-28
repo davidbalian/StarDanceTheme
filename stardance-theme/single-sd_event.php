@@ -77,10 +77,16 @@ if ( $sd_has_about xor $sd_has_gallery ) {
         'modifier'    => 'single-event',
         'meta_rows'   => $sd_hero_meta_rows,
         'buttons'     => $sd_hero_buttons,
+        'bg_image_urls' => stardance_get_responsive_hero_images(
+            $sd_event_id,
+            'single_event',
+            $sd_hero_bg ? array(
+                'large'  => $sd_hero_bg,
+                'tablet' => $sd_hero_bg,
+                'mobile' => $sd_hero_bg,
+            ) : array()
+        ),
     );
-    if ( $sd_hero_bg ) {
-        $sd_hero_args['bg_image_url'] = $sd_hero_bg;
-    }
     stardance_render_page_hero( $sd_hero_args );
     ?>
 
@@ -288,6 +294,7 @@ if ( $sd_has_about xor $sd_has_gallery ) {
             'button_url'            => stardance_page_or_path_url( 'contact' ),
             'top_decoration_url'    => 'https://stardance.com.cy/wp-content/uploads/2026/03/flipped-red-and-orange-lines.svg',
             'bottom_decoration_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/red-and-orange-lines.svg',
+            'bg_image_urls'         => stardance_get_responsive_bottom_cta_images( $sd_event_id, 'single_event' ),
         )
     );
     ?>

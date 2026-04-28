@@ -7,10 +7,6 @@
    Hero
    ======================================== */
 
-.sd-page-hero--events {
-  --sd-page-hero-bg-image: url("https://stardance.com.cy/wp-content/uploads/2026/03/events-page-her-bg.webp");
-}
-
 .sd-page-hero--events::before {
   top: auto;
   left: 0;
@@ -27,14 +23,6 @@
 
 .sd-page-hero--events::after {
   content: none;
-}
-
-/* ========================================
-   CTA
-   ======================================== */
-
-.sd-page--events .sd-cta {
-  --sd-page-cta-bg-image: url("https://stardance.com.cy/wp-content/uploads/2026/03/events-page-cta-bg.webp");
 }
 
 /* ========================================

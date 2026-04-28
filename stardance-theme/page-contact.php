@@ -6,6 +6,7 @@
  */
 
 get_header();
+$sd_page_id = get_queried_object_id();
 ?>
 
 <main class="sd-page sd-page--contact" id="main-content">
@@ -16,6 +17,7 @@ get_header();
             'title'       => 'Get In Touch',
             'description' => 'Have questions about our classes or want to book a trial session? We\'d love to hear from you.',
             'modifier'    => 'contact',
+            'bg_image_urls' => stardance_get_responsive_hero_images( $sd_page_id, 'contact' ),
         )
     );
     ?>

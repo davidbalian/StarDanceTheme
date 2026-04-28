@@ -9,7 +9,6 @@
    ======================================== */
 
 .sd-page-hero--single-class {
-  --sd-page-hero-bg-image: url('https://stardance.com.cy/wp-content/uploads/2026/03/individual-class-template-hero-bg.webp');
   --sd-page-hero-line-image: url('https://stardance.com.cy/wp-content/uploads/2026/03/classes-lines-left.svg');
 }
 
@@ -29,7 +28,6 @@
 }
 
 .sd-page--single-class .sd-cta {
-  --sd-page-cta-bg-image: url('https://stardance.com.cy/wp-content/uploads/2026/03/single-class-bottom-cta.webp');
   --sd-page-cta-top-width: 35%;
   --sd-page-cta-bottom-width: 50%;
   background-position: top center;

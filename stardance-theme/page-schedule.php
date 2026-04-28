@@ -6,6 +6,7 @@
  */
 
 get_header();
+$sd_page_id = get_queried_object_id();
 
 $schedule_days = array(
     array(
@@ -139,6 +140,7 @@ $schedule_days = array(
         'title'       => 'Class Timetable',
         'description' => 'View our weekly class schedule below. Classes run Monday through Friday at our Limassol studio. Contact us if you have questions about specific classes or to arrange a trial session.',
         'modifier'    => 'schedule',
+        'bg_image_urls' => stardance_get_responsive_hero_images( $sd_page_id, 'schedule' ),
     )); ?>
 
     <section class="sd-section sd-schedule-page" id="timetable">
@@ -204,6 +206,7 @@ $schedule_days = array(
         'button_url'  => stardance_page_or_path_url( 'contact' ),
         'top_decoration_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/flipped-red-and-orange-lines.svg',
         'bottom_decoration_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/red-and-orange-lines.svg',
+        'bg_image_urls' => stardance_get_responsive_bottom_cta_images( $sd_page_id, 'schedule' ),
     )); ?>
 
 </main>

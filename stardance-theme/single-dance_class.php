@@ -49,6 +49,7 @@ $sd_class_details_lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing el
         'title'       => get_the_title(),
         'description' => $sd_excerpt,
         'modifier'    => 'single-class',
+        'bg_image_urls' => stardance_get_responsive_hero_images( $sd_class_id, 'single_class' ),
         'buttons'     => array(
             array( 'text' => 'View Schedule', 'url' => '#class-times' ),
             array( 'text' => 'Contact Us',    'url' => stardance_page_or_path_url( 'contact' ) ),
@@ -322,6 +323,7 @@ $sd_class_details_lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing el
         'description' => 'Contact us to book a trial class or ask any questions about this program.',
         'button_text' => 'Contact Us',
         'button_url'  => stardance_page_or_path_url( 'contact' ),
+        'bg_image_urls' => stardance_get_responsive_bottom_cta_images( $sd_class_id, 'single_class' ),
     )); ?>
 
     <!-- Location / Map -->

@@ -1,4 +1,14 @@
-<section class="sd-section sd-contact" id="contact">
+<?php
+$sd_home_page_id = get_queried_object_id();
+$sd_home_cta_images = stardance_get_responsive_bottom_cta_images( $sd_home_page_id, 'home' );
+$sd_home_cta_style = sprintf(
+    '--sd-home-cta-bg-image-large: url(%1$s); --sd-home-cta-bg-image-tablet: url(%2$s); --sd-home-cta-bg-image-mobile: url(%3$s);',
+    esc_url( $sd_home_cta_images['large'] ),
+    esc_url( $sd_home_cta_images['tablet'] ),
+    esc_url( $sd_home_cta_images['mobile'] )
+);
+?>
+<section class="sd-section sd-contact" id="contact" style="<?php echo esc_attr( $sd_home_cta_style ); ?>">
     <img
         src="https://stardance.com.cy/wp-content/uploads/2026/04/bottom-cta-horizontal-lines.png"
         alt=""

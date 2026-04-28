@@ -114,13 +114,16 @@
 
 /* ---- Hero ---- */
 .sd-hero {
+  --sd-home-hero-bg-image-large: url('http://stardance.com.cy/wp-content/uploads/2026/02/Mask-group.jpg');
+  --sd-home-hero-bg-image-tablet: url('http://stardance.com.cy/wp-content/uploads/2026/02/Mask-group.jpg');
+  --sd-home-hero-bg-image-mobile: url('http://stardance.com.cy/wp-content/uploads/2026/02/Mask-group.jpg');
   position: relative;
   height: var(--sd-hero-height);
   max-height: var(--sd-hero-max-height);
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  background-image: url('http://stardance.com.cy/wp-content/uploads/2026/02/Mask-group.jpg');
+  background-image: var(--sd-home-hero-bg-image-tablet);
   background-size: cover;
   background-position: center center;
   background-attachment: fixed;
@@ -507,10 +510,33 @@
 
 /* ---- Contact ---- */
 .sd-contact {
-  background-image: url('https://stardance.com.cy/wp-content/uploads/2026/04/bottom-cta-background.webp');
+  --sd-home-cta-bg-image-large: url('https://stardance.com.cy/wp-content/uploads/2026/04/bottom-cta-background.webp');
+  --sd-home-cta-bg-image-tablet: url('https://stardance.com.cy/wp-content/uploads/2026/04/bottom-cta-background.webp');
+  --sd-home-cta-bg-image-mobile: url('https://stardance.com.cy/wp-content/uploads/2026/04/bottom-cta-background.webp');
+  background-image: var(--sd-home-cta-bg-image-tablet);
   background-size: cover;
   background-position: center;
   position: relative;
+}
+
+@media (min-width: 1920px) {
+  .sd-hero {
+    background-image: var(--sd-home-hero-bg-image-large);
+  }
+
+  .sd-contact {
+    background-image: var(--sd-home-cta-bg-image-large);
+  }
+}
+
+@media (max-width: 767px) {
+  .sd-hero {
+    background-image: var(--sd-home-hero-bg-image-mobile);
+  }
+
+  .sd-contact {
+    background-image: var(--sd-home-cta-bg-image-mobile);
+  }
 }
 
 .sd-contact::before {

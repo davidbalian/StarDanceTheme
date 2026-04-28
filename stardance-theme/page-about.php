@@ -6,6 +6,7 @@
  */
 
 get_header();
+$sd_page_id = get_queried_object_id();
 ?>
 
 <main class="sd-page sd-page--about" id="main-content">
@@ -14,6 +15,7 @@ get_header();
         'title'       => 'About Star Dance Studio',
         'description' => 'We are a professional dance school in Limassol offering Latin American and Ballroom instruction for all ages and levels. From young beginners to competitive dancers, we help each student reach their full potential on the dance floor.',
         'modifier'    => 'about',
+        'bg_image_urls' => stardance_get_responsive_hero_images( $sd_page_id, 'about' ),
     )); ?>
 
     <!-- Training Overview -->
@@ -206,6 +208,7 @@ get_header();
         'button_url'  => stardance_page_or_path_url( 'contact' ),
         'top_decoration_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/flipped-red-and-orange-lines.svg',
         'bottom_decoration_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/red-and-orange-lines.svg',
+        'bg_image_urls' => stardance_get_responsive_bottom_cta_images( $sd_page_id, 'about' ),
     )); ?>
 
 </main>

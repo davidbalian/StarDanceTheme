@@ -3,10 +3,6 @@
  * Page template: page-contact.php
  */
 
-.sd-page-hero--contact {
-  --sd-page-hero-bg-image: url("https://stardance.com.cy/wp-content/uploads/2026/04/contact-page-hero-bg-e1777296288202.webp");
-}
-
 .sd-contact-page {
   background: var(--sd-light-blue);
 }
