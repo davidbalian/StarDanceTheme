@@ -28,7 +28,7 @@ function stardance_asset_version( $relative_path ) {
         return (string) filemtime( $full_path );
     }
 
-    return '3.0.0';
+    return '3.0.1';
 }
 
 // Theme Setup

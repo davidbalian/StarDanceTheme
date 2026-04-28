@@ -21,7 +21,13 @@ get_header();
         <div class="sd-container">
             <h2 class="sd-heading sd-classes-page__title fade-in fade-in-delay-0">List of Classes</h2>
             <div class="sd-classes-page__grid sd-grid sd-grid--3">
-                <?php stardance_render_dance_class_overlay_cards(); ?>
+                <?php
+                stardance_render_dance_class_overlay_cards(
+                    array(
+                        'show_description' => true,
+                    )
+                );
+                ?>
             </div>
         </div>
     </section>
