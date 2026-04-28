@@ -116,8 +116,6 @@ if ( $sd_has_about xor $sd_has_gallery ) {
                                     $sd_lc  = 'sd-single-event__preview-link';
                                     if ( ! empty( $sd_pr['sr_only'] ) ) {
                                         $sd_lc .= ' sd-sr-only';
-                                    } elseif ( 'mixed' === $sd_preview_config['modifier'] && false !== strpos( (string) ( $sd_pr['grid_style'] ?? '' ), 'span 2' ) ) {
-                                        $sd_lc .= ' sd-single-event__preview-link--fill';
                                     }
                                     ?>
                                     <a class="<?php echo esc_attr( $sd_lc ); ?>" href="<?php echo esc_url( $sd_full[0] ); ?>"

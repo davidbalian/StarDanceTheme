@@ -166,24 +166,14 @@
 
 .sd-single-event__preview-link {
   display: block;
+  width: 100%;
   min-height: 0;
   border-radius: var(--sd-radius);
   overflow: hidden;
-  aspect-ratio: 4 / 3;
   outline: none;
   transition:
     opacity var(--sd-transition),
     box-shadow var(--sd-transition);
-}
-
-.sd-single-event__preview-link--fill {
-  aspect-ratio: unset;
-  align-self: stretch;
-  height: 100%;
-}
-
-.sd-single-event__preview--pair-portrait .sd-single-event__preview-link:not(.sd-sr-only) {
-  aspect-ratio: 3 / 4;
 }
 
 .sd-single-event__preview-link:focus-visible {
@@ -196,8 +186,7 @@
 
 .sd-single-event__preview-img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
   display: block;
 }
 
