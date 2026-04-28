@@ -419,6 +419,10 @@
    ======================================== */
 
 @media (max-width: 767px) {
+  .sd-page--about .sd-cta {
+    --sd-page-cta-bg-image: url("https://stardance.com.cy/wp-content/uploads/2026/04/about-page-cta-bg-mobile.jpg");
+  }
+
   .sd-about-values__grid {
     grid-template-columns: 1fr;
   }
