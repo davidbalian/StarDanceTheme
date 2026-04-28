@@ -5,6 +5,7 @@
 
 // Reusable component render functions
 require get_template_directory() . '/inc/components.php';
+require get_template_directory() . '/inc/dance-class-overlay-cards.php';
 require get_template_directory() . '/inc/class-detail-card.php';
 require get_template_directory() . '/inc/class-stardance-nav-menu-registrar.php';
 require get_template_directory() . '/inc/coaches.php';

@@ -6,17 +6,6 @@
  */
 
 get_header();
-
-$classes_query = new WP_Query(array(
-    'post_type'      => 'dance_class',
-    'post_status'    => 'publish',
-    'posts_per_page' => -1,
-    'orderby'        => array(
-        'menu_order' => 'ASC',
-        'title'      => 'ASC',
-    ),
-    'order'          => 'ASC',
-));
 ?>
 
 <main class="sd-page sd-page--classes" id="main-content">
@@ -32,40 +21,13 @@ $classes_query = new WP_Query(array(
         <div class="sd-container">
             <h2 class="sd-heading sd-classes-page__title fade-in fade-in-delay-0">List of Classes</h2>
             <div class="sd-classes-page__grid sd-grid sd-grid--3">
-                <?php if ( $classes_query->have_posts() ) : ?>
-                    <?php
-                    $delay = 1;
-                    while ( $classes_query->have_posts() ) :
-                        $classes_query->the_post();
-
-                        $image_url = get_the_post_thumbnail_url( get_the_ID(), 'large' );
-                        $overlay_url = get_post_meta( get_the_ID(), '_stardance_overlay_url', true );
-                        $card_modifier = 'navy';
-
-                        if ( false !== strpos( $overlay_url, 'gold' ) ) {
-                            $card_modifier = 'gold';
-                        } elseif ( false !== strpos( $overlay_url, 'turquise' ) || false !== strpos( $overlay_url, 'turquoise' ) ) {
-                            $card_modifier = 'turquoise';
-                        }
-
-                        stardance_render_overlay_card(array(
-                            'image_url'      => $image_url,
-                            'decoration_url' => $overlay_url,
-                            'title'          => get_the_title(),
-                            'description'    => '',
-                            'link_url'       => get_permalink(),
-                            'card_wrap_link' => true,
-                            'variant'        => 'tall',
-                            'modifier'       => $card_modifier,
-                            'delay'          => min( $delay, 10 ),
-                        ));
-
-                        $delay++;
-                    endwhile;
-                    wp_reset_postdata();
-                    ?>
-                <?php endif; ?>
-
+                <?php
+                stardance_render_dance_class_overlay_cards(
+                    array(
+                        'show_description' => true,
+                    )
+                );
+                ?>
             </div>
         </div>
     </section>
