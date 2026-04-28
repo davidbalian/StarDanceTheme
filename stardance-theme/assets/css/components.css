@@ -545,7 +545,15 @@
 .sd-page-hero--events .sd-page-hero__desc,
 .sd-page-hero--contact .sd-page-hero__desc,
 .sd-page-hero--single-class .sd-page-hero__desc,
-.sd-page-hero--single-event .sd-page-hero__desc {
+.sd-page-hero--single-event .sd-page-hero__desc,
+.sd-page-hero--about .sd-page-hero__meta,
+.sd-page-hero--classes .sd-page-hero__meta,
+.sd-page-hero--schedule .sd-page-hero__meta,
+.sd-page-hero--gallery .sd-page-hero__meta,
+.sd-page-hero--events .sd-page-hero__meta,
+.sd-page-hero--contact .sd-page-hero__meta,
+.sd-page-hero--single-class .sd-page-hero__meta,
+.sd-page-hero--single-event .sd-page-hero__meta {
   color: var(--sd-white);
   font-family: var(--sd-font-body);
   font-weight: 400;
@@ -553,6 +561,25 @@
   line-height: var(--sd-leading-body);
   letter-spacing: 0;
   text-wrap: pretty;
+}
+
+.sd-page-hero__meta {
+  max-width: 65ch;
+  margin: 0 auto var(--sd-space-sm);
+  text-align: center;
+}
+
+.sd-page-hero__meta-line {
+  margin: 0 0 var(--sd-space-xs);
+}
+
+.sd-page-hero__meta-line:last-child {
+  margin-bottom: 0;
+}
+
+.sd-page-hero__meta-label {
+  font-weight: 600;
+  margin-right: var(--sd-space-xs);
 }
 
 .sd-page-hero__title {

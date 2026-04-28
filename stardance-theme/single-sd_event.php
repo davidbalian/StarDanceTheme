@@ -30,18 +30,31 @@ if ( $sd_thumb_id ) {
     }
 }
 
-$sd_hero_buttons = array(
-    array(
-        'text' => __( 'All events', 'stardance' ),
-        'url'  => stardance_page_or_path_url( 'events' ),
-    ),
-);
+$sd_hero_meta_rows = array();
+if ( $sd_event_date ) {
+    $sd_hero_meta_rows[] = array(
+        'label' => __( 'Date', 'stardance' ) . ':',
+        'value' => $sd_event_date,
+    );
+}
+if ( $sd_location ) {
+    $sd_hero_meta_rows[] = array(
+        'label' => __( 'Location', 'stardance' ) . ':',
+        'value' => $sd_location,
+    );
+}
+
+$sd_hero_buttons = array();
 if ( $sd_event_link ) {
     $sd_hero_buttons[] = array(
-        'text' => __( 'Register / Learn more', 'stardance' ),
+        'text' => __( 'Event Website', 'stardance' ),
         'url'  => $sd_event_link,
     );
 }
+$sd_hero_buttons[] = array(
+    'text' => __( 'Contact Us', 'stardance' ),
+    'url'  => stardance_page_or_path_url( 'contact' ),
+);
 
 $sd_raw_content = get_post()->post_content;
 $sd_has_about   = '' !== trim( (string) $sd_raw_content );
@@ -54,6 +67,7 @@ $sd_has_about   = '' !== trim( (string) $sd_raw_content );
         'title'       => get_the_title(),
         'description' => $sd_excerpt,
         'modifier'    => 'single-event',
+        'meta_rows'   => $sd_hero_meta_rows,
         'buttons'     => $sd_hero_buttons,
     );
     if ( $sd_hero_bg ) {
@@ -64,23 +78,6 @@ $sd_has_about   = '' !== trim( (string) $sd_raw_content );
 
     <section class="sd-section sd-single-event" id="event-details">
         <div class="sd-container">
-            <?php if ( $sd_event_date || $sd_location ) : ?>
-                <div class="sd-single-event__meta fade-in fade-in-delay-0">
-                    <?php if ( $sd_event_date ) : ?>
-                        <p class="sd-single-event__meta-item">
-                            <span class="sd-single-event__meta-label"><?php esc_html_e( 'Date', 'stardance' ); ?></span>
-                            <?php echo esc_html( $sd_event_date ); ?>
-                        </p>
-                    <?php endif; ?>
-                    <?php if ( $sd_location ) : ?>
-                        <p class="sd-single-event__meta-item">
-                            <span class="sd-single-event__meta-label"><?php esc_html_e( 'Location', 'stardance' ); ?></span>
-                            <?php echo esc_html( $sd_location ); ?>
-                        </p>
-                    <?php endif; ?>
-                </div>
-            <?php endif; ?>
-
             <?php if ( $sd_has_about ) : ?>
                 <h2 class="sd-heading sd-single-event__section-title fade-in fade-in-delay-1"><?php esc_html_e( 'About this event', 'stardance' ); ?></h2>
                 <div class="sd-single-event__content sd-text entry-content fade-in fade-in-delay-1">

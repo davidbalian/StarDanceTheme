@@ -10,6 +10,13 @@
 .sd-page-hero--single-event {
   --sd-page-hero-bg-image: url("https://stardance.com.cy/wp-content/uploads/2026/03/classes-page-hero-bg.webp");
   --sd-page-hero-line-image: url("https://stardance.com.cy/wp-content/uploads/2026/03/classes-lines-left.svg");
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.sd-page-hero--single-event > .sd-container {
+  width: 100%;
+  padding-bottom: var(--sd-space-xl);
 }
 
 @media (min-width: 992px) {
@@ -44,27 +51,6 @@
 /* ========================================
    Body
    ======================================== */
-
-.sd-single-event__meta {
-  max-width: 65ch;
-  margin: 0 auto var(--sd-space-lg);
-  text-align: center;
-}
-
-.sd-single-event__meta-item {
-  margin: 0 0 var(--sd-space-sm);
-  font-family: var(--sd-font-body);
-  font-size: var(--sd-type-body);
-  line-height: var(--sd-leading-body);
-  color: var(--sd-body-text);
-}
-
-.sd-single-event__meta-label {
-  display: block;
-  font-weight: 700;
-  color: var(--sd-navy);
-  margin-bottom: var(--sd-space-xs);
-}
 
 .sd-single-event__section-title {
   text-align: center;

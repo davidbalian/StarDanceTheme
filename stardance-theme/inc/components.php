@@ -17,6 +17,7 @@
  *     @type string $bg_image_url  Optional. Sets inline --sd-page-hero-bg-image for dynamic hero backgrounds.
  *     @type string $button_text   Optional. CTA button label.
  *     @type string $button_url    Optional. CTA button URL.
+ *     @type array  $meta_rows     Optional. Lines under the title; each item: label (e.g. "Date:"), value (string).
  * }
  */
 function stardance_render_page_hero( $args = array() ) {
@@ -30,12 +31,22 @@ function stardance_render_page_hero( $args = array() ) {
         'button_text'   => '',
         'button_url'    => '',
         'buttons'       => array(),
+        'meta_rows'     => array(),
     ) );
 
     $modifier_class = $args['modifier'] ? ' sd-page-hero--' . sanitize_html_class( $args['modifier'] ) : '';
     $tag            = in_array( $args['tag'], array( 'h1', 'h2', 'h3' ), true ) ? $args['tag'] : 'h1';
     $has_buttons    = ! empty( $args['buttons'] ) || ( $args['button_text'] && $args['button_url'] );
-    $has_content_wrap = $args['thumbnail_url'] || $has_buttons;
+    $meta_rows_visible = array();
+    foreach ( (array) $args['meta_rows'] as $row ) {
+        if ( ! empty( $row['value'] ) ) {
+            $meta_rows_visible[] = $row;
+        }
+    }
+    $has_meta         = ! empty( $meta_rows_visible );
+    $has_content_wrap = $args['thumbnail_url'] || $has_buttons || $has_meta;
+    $desc_delay_class = $has_meta ? 'fade-in fade-in-delay-2' : 'fade-in fade-in-delay-1';
+    $btn_delay_class  = $has_meta ? 'fade-in fade-in-delay-3' : 'fade-in fade-in-delay-2';
     $section_style    = '';
     if ( ! empty( $args['bg_image_url'] ) ) {
         $section_style = '--sd-page-hero-bg-image: url(' . esc_url( $args['bg_image_url'] ) . ');';
@@ -50,11 +61,26 @@ function stardance_render_page_hero( $args = array() ) {
             <?php endif; ?>
             <?php if ( $has_content_wrap ) : ?><div class="sd-page-hero__content"><?php endif; ?>
             <<?php echo $tag; ?> class="sd-heading sd-page-hero__title fade-in fade-in-delay-0"><?php echo wp_kses_post( $args['title'] ); ?></<?php echo $tag; ?>>
+            <?php if ( $has_meta ) : ?>
+                <div class="sd-page-hero__meta fade-in fade-in-delay-1">
+                    <?php foreach ( $meta_rows_visible as $row ) : ?>
+                        <?php
+                        $row_label = isset( $row['label'] ) ? (string) $row['label'] : '';
+                        ?>
+                        <p class="sd-page-hero__meta-line">
+                            <?php if ( '' !== $row_label ) : ?>
+                                <span class="sd-page-hero__meta-label"><?php echo esc_html( $row_label ); ?></span>
+                            <?php endif; ?>
+                            <?php echo esc_html( (string) $row['value'] ); ?>
+                        </p>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
             <?php if ( $args['description'] ) : ?>
-                <p class="sd-text sd-page-hero__desc fade-in fade-in-delay-1"><?php echo wp_kses_post( $args['description'] ); ?></p>
+                <p class="sd-text sd-page-hero__desc <?php echo esc_attr( $desc_delay_class ); ?>"><?php echo wp_kses_post( $args['description'] ); ?></p>
             <?php endif; ?>
             <?php if ( ! empty( $args['buttons'] ) ) : ?>
-                <div class="sd-page-hero__buttons fade-in fade-in-delay-2">
+                <div class="sd-page-hero__buttons <?php echo esc_attr( $btn_delay_class ); ?>">
                     <?php foreach ( $args['buttons'] as $btn ) : ?>
                         <?php
                         $btn_class = ! empty( $btn['class'] ) ? esc_attr( $btn['class'] ) : 'sd-btn';
@@ -63,7 +89,7 @@ function stardance_render_page_hero( $args = array() ) {
                     <?php endforeach; ?>
                 </div>
             <?php elseif ( $args['button_text'] && $args['button_url'] ) : ?>
-                <a href="<?php echo esc_url( $args['button_url'] ); ?>" class="sd-btn fade-in fade-in-delay-2"><?php echo esc_html( $args['button_text'] ); ?></a>
+                <a href="<?php echo esc_url( $args['button_url'] ); ?>" class="sd-btn <?php echo esc_attr( $btn_delay_class ); ?>"><?php echo esc_html( $args['button_text'] ); ?></a>
             <?php endif; ?>
             <?php if ( $has_content_wrap ) : ?></div><?php endif; ?>
         </div>
