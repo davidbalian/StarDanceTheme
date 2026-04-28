@@ -68,8 +68,7 @@
   color: var(--sd-gold-dark);
 }
 
-.sd-header.scrolling .sd-header__logo img,
-.sd-header.has-light-bg .sd-header__logo img {
+.sd-header.scrolling .sd-header__logo img {
   filter: none;
 }
 
@@ -93,8 +92,7 @@
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.sd-header.scrolling .sd-header__toggle span,
-.sd-header.has-light-bg .sd-header__toggle span {
+.sd-header.scrolling .sd-header__toggle span {
   background-color: var(--sd-gold-border);
 }
 
