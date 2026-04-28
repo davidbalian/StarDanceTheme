@@ -110,7 +110,7 @@ final class Stardance_Event_Gallery_Preview {
 	private static function rows_pair_landscape( array $ids ): array {
 		$placements = array(
 			$ids[0] => 'grid-column: 1; grid-row: 1;',
-			$ids[1] => 'grid-column: 1; grid-row: 2;',
+			$ids[1] => 'grid-column: 2; grid-row: 1;',
 		);
 		return array(
 			'modifier' => 'pair-landscape',

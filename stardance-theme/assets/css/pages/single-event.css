@@ -87,6 +87,14 @@
   font-size: var(--sd-type-body);
   line-height: 1.6;
   color: var(--sd-body-text);
+  text-align: left;
+}
+
+/* Override global .sd-text and .sd-heading + .sd-text section rules (centered copy). */
+#main-content .sd-single-event__intro .sd-heading + .sd-single-event__about-prose.sd-text {
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .sd-single-event__about-prose > *:first-child {
@@ -143,8 +151,8 @@
 }
 
 .sd-single-event__preview--pair-landscape {
-  grid-template-columns: minmax(0, 1fr);
-  grid-template-rows: auto auto;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: auto;
 }
 
 .sd-single-event__preview--mixed {
