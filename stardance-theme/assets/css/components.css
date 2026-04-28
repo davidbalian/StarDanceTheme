@@ -457,8 +457,9 @@
       rgba(var(--sd-navy-rgb), 0.8) 100%
     ),
     var(--sd-page-hero-bg-image);
-  background-size: cover;
-  background-position: center top;
+  background-size: cover, cover;
+  /* One position per layer: gradient, then hero photo — both centered. */
+  background-position: center center, center center;
   position: relative;
   height: var(--sd-page-hero-height);
   max-height: var(--sd-page-hero-max-height);
