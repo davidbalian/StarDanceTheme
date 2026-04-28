@@ -186,7 +186,7 @@ if ( $sd_has_about xor $sd_has_gallery ) {
                                 <article class="sd-timetable__day">
                                     <h3 class="sd-timetable__day-title"><?php echo esc_html( $sd_day['label'] ); ?></h3>
                                     <?php if ( ! empty( $sd_day['closed'] ) ) : ?>
-                                        <p class="sd-timetable__closed"><?php esc_html_e( 'Closed', 'stardance' ); ?></p>
+                                        <p class="sd-timetable__closed"><?php esc_html_e( 'No event', 'stardance' ); ?></p>
                                     <?php else : ?>
                                         <div class="sd-timetable__sessions">
                                             <?php foreach ( $sd_day['sessions'] as $sd_session ) : ?>
@@ -212,7 +212,7 @@ if ( $sd_has_about xor $sd_has_gallery ) {
                                     <article class="sd-timetable__day">
                                         <h3 class="sd-timetable__day-title"><?php echo esc_html( $sd_day['label'] ); ?></h3>
                                         <?php if ( ! empty( $sd_day['closed'] ) ) : ?>
-                                            <p class="sd-timetable__closed"><?php esc_html_e( 'Closed', 'stardance' ); ?></p>
+                                            <p class="sd-timetable__closed"><?php esc_html_e( 'No event', 'stardance' ); ?></p>
                                         <?php else : ?>
                                             <div class="sd-timetable__sessions">
                                                 <?php foreach ( $sd_day['sessions'] as $sd_session ) : ?>
