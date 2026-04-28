@@ -436,9 +436,9 @@
   text-align: center;
 }
 
-/* Inner heroes: no .sd-section vertical padding — spacing lives in .sd-page-hero__content */
+/* Inner heroes: bottom band under hero copy; top comes from .sd-page-hero + .sd-section */
 .sd-page-hero.sd-section {
-  padding-bottom: 0;
+  padding-bottom: 8rem;
 }
 
 .sd-page-hero--about,
@@ -464,7 +464,9 @@
     var(--sd-page-hero-bg-image);
   background-size: cover, cover;
   /* One position per layer: gradient, then hero photo — both centered. */
-  background-position: center center, center center;
+  background-position:
+    center center,
+    center center;
   position: relative;
   height: var(--sd-page-hero-height);
   max-height: var(--sd-page-hero-max-height);
