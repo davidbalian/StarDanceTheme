@@ -21,6 +21,9 @@ function stardance_register_responsive_image_fields() {
             'label'        => __( 'Hero Image (Large screens)', 'stardance' ),
             'name'         => 'stardance_hero_image_large',
             'type'         => 'image',
+            'wrapper'      => array(
+                'width' => '33',
+            ),
             'return_format'=> 'array',
             'preview_size' => 'medium',
             'library'      => 'all',
@@ -31,6 +34,9 @@ function stardance_register_responsive_image_fields() {
             'label'        => __( 'Hero Image (Laptop/Tablet)', 'stardance' ),
             'name'         => 'stardance_hero_image_tablet',
             'type'         => 'image',
+            'wrapper'      => array(
+                'width' => '33',
+            ),
             'return_format'=> 'array',
             'preview_size' => 'medium',
             'library'      => 'all',
@@ -41,6 +47,9 @@ function stardance_register_responsive_image_fields() {
             'label'        => __( 'Hero Image (Mobile)', 'stardance' ),
             'name'         => 'stardance_hero_image_mobile',
             'type'         => 'image',
+            'wrapper'      => array(
+                'width' => '33',
+            ),
             'return_format'=> 'array',
             'preview_size' => 'medium',
             'library'      => 'all',
@@ -51,6 +60,9 @@ function stardance_register_responsive_image_fields() {
             'label'        => __( 'Bottom CTA Image (Large screens)', 'stardance' ),
             'name'         => 'stardance_bottom_cta_image_large',
             'type'         => 'image',
+            'wrapper'      => array(
+                'width' => '33',
+            ),
             'return_format'=> 'array',
             'preview_size' => 'medium',
             'library'      => 'all',
@@ -61,6 +73,9 @@ function stardance_register_responsive_image_fields() {
             'label'        => __( 'Bottom CTA Image (Laptop/Tablet)', 'stardance' ),
             'name'         => 'stardance_bottom_cta_image_tablet',
             'type'         => 'image',
+            'wrapper'      => array(
+                'width' => '33',
+            ),
             'return_format'=> 'array',
             'preview_size' => 'medium',
             'library'      => 'all',
@@ -71,6 +86,9 @@ function stardance_register_responsive_image_fields() {
             'label'        => __( 'Bottom CTA Image (Mobile)', 'stardance' ),
             'name'         => 'stardance_bottom_cta_image_mobile',
             'type'         => 'image',
+            'wrapper'      => array(
+                'width' => '33',
+            ),
             'return_format'=> 'array',
             'preview_size' => 'medium',
             'library'      => 'all',
