@@ -38,38 +38,22 @@
 
 .sd-schedule-page__day {
   min-width: 0;
-  border-radius: 0.9rem;
+  border-radius: var(--sd-radius);
   overflow: hidden;
-  background: linear-gradient(
-    18.43deg,
-    #e8bf94 -6.76%,
-    #f9d79a 16.9%,
-    #da8b4b 44.44%,
-    #eabe81 70.61%,
-    #d49656 87.11%,
-    #e4af78 111.57%
-  );
-  box-shadow:
-    0 16px 28px rgba(0, 56, 109, 0.08),
-    0 0 0 1px rgba(255, 255, 255, 0.25) inset;
+  background: var(--sd-light-blue);
+  border: 1px solid var(--sd-gold-border);
+  box-shadow: none;
   min-height: 100%;
 }
 
 .sd-schedule-page__day-title {
   margin: 0;
   padding: 0.55rem 0.4rem;
-  background: linear-gradient(
-    53.55deg,
-    #00386d 0%,
-    #1d1d41 33%,
-    #00386d 65%,
-    #1d1d41 79%,
-    #00386d 100%
-  );
+  background: var(--sd-navy);
   font-family: var(--sd-font-body);
   font-size: var(--sd-type-micro-day);
   font-weight: 700;
-  color: #d9f7fc;
+  color: var(--sd-light-blue);
   letter-spacing: 0.03em;
   text-align: center;
   text-transform: capitalize;
