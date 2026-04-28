@@ -21,7 +21,7 @@
 @media (min-width: 992px) {
   :root {
     --sd-hero-max-height: 800px;
-    --sd-page-hero-max-height: 800px;
+    --sd-page-hero-max-height: 650px;
   }
 }
 
