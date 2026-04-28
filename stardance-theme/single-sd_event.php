@@ -282,10 +282,12 @@ if ( $sd_has_about xor $sd_has_gallery ) {
     <?php
     stardance_render_cta(
         array(
-            'title'       => __( 'Questions about this event?', 'stardance' ),
-            'description' => __( 'Get in touch and we will be happy to help.', 'stardance' ),
-            'button_text' => __( 'Contact Us', 'stardance' ),
-            'button_url'  => stardance_page_or_path_url( 'contact' ),
+            'title'                 => __( 'Questions About This Event?', 'stardance' ),
+            'description'           => __( 'Contact us for more information about attending or competing.', 'stardance' ),
+            'button_text'           => __( 'Contact Us', 'stardance' ),
+            'button_url'            => stardance_page_or_path_url( 'contact' ),
+            'top_decoration_url'    => 'https://stardance.com.cy/wp-content/uploads/2026/03/flipped-red-and-orange-lines.svg',
+            'bottom_decoration_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/red-and-orange-lines.svg',
         )
     );
     ?>
