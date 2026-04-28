@@ -201,6 +201,16 @@
 
   document.querySelectorAll('[data-gallery-lightbox]').forEach(function (container) {
     container.addEventListener('click', function (e) {
+      var openBtn = e.target.closest('[data-gallery-lightbox-open]');
+      if (openBtn) {
+        e.preventDefault();
+        var links = Array.from(container.querySelectorAll('a[href]')).filter(function (a) {
+          return a.querySelector('img');
+        });
+        if (!links.length) return;
+        openLightbox(getSlides(links), 0, null);
+        return;
+      }
       var link = e.target.closest('a[href]');
       if (!link || !link.querySelector('img')) return;
       e.preventDefault();

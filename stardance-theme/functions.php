@@ -10,6 +10,7 @@ require get_template_directory() . '/inc/class-stardance-nav-menu-registrar.php'
 require get_template_directory() . '/inc/coaches.php';
 require get_template_directory() . '/inc/class-stardance-event-schedule.php';
 require get_template_directory() . '/inc/class-stardance-event-schedule-admin.php';
+require get_template_directory() . '/inc/class-stardance-event-gallery-preview.php';
 require get_template_directory() . '/inc/stardance-seed-events.php';
 
 /**

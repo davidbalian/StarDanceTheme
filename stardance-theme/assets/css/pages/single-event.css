@@ -48,7 +48,160 @@
 }
 
 /* ========================================
-   Body
+   Intro (about + gallery preview)
+   ======================================== */
+
+.sd-single-event__intro {
+  background: var(--sd-light-blue);
+}
+
+.sd-single-event__intro-layout {
+  display: grid;
+  gap: 4rem;
+  align-items: start;
+}
+
+.sd-single-event__intro-layout--split {
+  grid-template-columns: 1fr 2fr;
+}
+
+.sd-single-event__intro-layout--about-only,
+.sd-single-event__intro-layout--gallery-only {
+  grid-template-columns: 1fr;
+}
+
+.sd-single-event__intro-about {
+  display: grid;
+  gap: var(--sd-space-lg);
+  align-content: start;
+}
+
+.sd-single-event__intro-title {
+  margin: 0;
+  text-align: left;
+  color: var(--sd-navy);
+}
+
+.sd-single-event__about-prose {
+  font-family: var(--sd-font-body);
+  font-size: var(--sd-type-body);
+  line-height: 1.6;
+  color: var(--sd-body-text);
+}
+
+.sd-single-event__about-prose > *:first-child {
+  margin-top: 0;
+}
+
+.sd-single-event__about-prose > *:last-child {
+  margin-bottom: 0;
+}
+
+.sd-single-event__about-prose p {
+  margin: 0 0 1rem;
+}
+
+.sd-single-event__about-prose p:last-child {
+  margin-bottom: 0;
+}
+
+.sd-single-event__gallery-open {
+  justify-self: start;
+}
+
+.sd-single-event__gallery-open--solo {
+  grid-column: 1 / -1;
+}
+
+.sd-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  border: 0;
+  white-space: nowrap;
+}
+
+.sd-single-event__intro-preview {
+  min-width: 0;
+}
+
+.sd-single-event__preview {
+  position: relative;
+  display: grid;
+  gap: 2rem;
+  min-height: 0;
+}
+
+.sd-single-event__preview--pair-portrait {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: auto;
+}
+
+.sd-single-event__preview--pair-landscape {
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto auto;
+}
+
+.sd-single-event__preview--mixed {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: auto auto;
+}
+
+.sd-single-event__preview--single {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.sd-single-event__preview-link {
+  display: block;
+  min-height: 0;
+  border-radius: var(--sd-radius);
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  outline: none;
+  transition:
+    opacity var(--sd-transition),
+    box-shadow var(--sd-transition);
+}
+
+.sd-single-event__preview-link--fill {
+  aspect-ratio: unset;
+  align-self: stretch;
+  height: 100%;
+}
+
+.sd-single-event__preview--pair-portrait .sd-single-event__preview-link:not(.sd-sr-only) {
+  aspect-ratio: 3 / 4;
+}
+
+.sd-single-event__preview-link:focus-visible {
+  box-shadow: 0 0 0 3px var(--sd-gold);
+}
+
+.sd-single-event__preview-link:hover:not(.sd-sr-only) {
+  opacity: 0.92;
+}
+
+.sd-single-event__preview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 991px) {
+  .sd-single-event__intro-layout--split {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* ========================================
+   Body (schedule)
    ======================================== */
 
 .sd-single-event__section-title {
@@ -59,19 +212,6 @@
 
 .sd-single-event__section-title:first-of-type {
   margin-top: 0;
-}
-
-.sd-single-event__content {
-  max-width: 65ch;
-  margin: 0 auto var(--sd-space-xl);
-}
-
-.sd-single-event__content > *:first-child {
-  margin-top: 0;
-}
-
-.sd-single-event__content > *:last-child {
-  margin-bottom: 0;
 }
 
 .sd-single-event__schedule-cards {
@@ -109,35 +249,4 @@
 
 .sd-single-event__schedule > *:last-child {
   margin-bottom: 0;
-}
-
-.sd-single-event__gallery {
-  margin: 0 auto var(--sd-space-xl);
-  max-width: var(--sd-max-width);
-}
-
-.sd-single-event__gallery-item {
-  display: block;
-  border-radius: var(--sd-radius);
-  overflow: hidden;
-  aspect-ratio: 4 / 3;
-  outline: none;
-  transition:
-    opacity var(--sd-transition),
-    box-shadow var(--sd-transition);
-}
-
-.sd-single-event__gallery-item:focus-visible {
-  box-shadow: 0 0 0 3px var(--sd-gold);
-}
-
-.sd-single-event__gallery-item:hover {
-  opacity: 0.92;
-}
-
-.sd-single-event__gallery-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
 }

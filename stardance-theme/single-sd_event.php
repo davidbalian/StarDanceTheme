@@ -56,8 +56,16 @@ $sd_hero_buttons[] = array(
     'url'  => stardance_page_or_path_url( 'contact' ),
 );
 
-$sd_raw_content = get_post()->post_content;
-$sd_has_about   = '' !== trim( (string) $sd_raw_content );
+$sd_raw_content      = get_post()->post_content;
+$sd_has_about        = '' !== trim( (string) $sd_raw_content );
+$sd_gallery_valid    = Stardance_Event_Gallery_Preview::filter_valid_ids( $sd_gallery );
+$sd_has_gallery      = array() !== $sd_gallery_valid;
+$sd_preview_config   = $sd_has_gallery ? Stardance_Event_Gallery_Preview::build_preview_rows( $sd_gallery ) : null;
+$sd_show_intro       = $sd_has_about || $sd_has_gallery;
+$sd_intro_layout_mod = 'sd-single-event__intro-layout--split';
+if ( $sd_has_about xor $sd_has_gallery ) {
+	$sd_intro_layout_mod = $sd_has_about ? 'sd-single-event__intro-layout--about-only' : 'sd-single-event__intro-layout--gallery-only';
+}
 ?>
 
 <main class="sd-page sd-page--single-event" id="main-content">
@@ -76,15 +84,90 @@ $sd_has_about   = '' !== trim( (string) $sd_raw_content );
     stardance_render_page_hero( $sd_hero_args );
     ?>
 
+    <?php if ( $sd_show_intro ) : ?>
+        <section class="sd-section sd-single-event__intro" id="event-intro">
+            <div class="sd-container">
+                <?php if ( $sd_has_gallery && $sd_preview_config ) : ?>
+                    <div class="sd-single-event__intro-layout <?php echo esc_attr( $sd_intro_layout_mod ); ?> fade-in fade-in-delay-0" data-gallery-lightbox>
+                        <?php if ( $sd_has_about ) : ?>
+                            <div class="sd-single-event__intro-about">
+                                <h2 class="sd-heading sd-single-event__intro-title"><?php esc_html_e( 'About This Event', 'stardance' ); ?></h2>
+                                <div class="sd-single-event__about-prose sd-text entry-content">
+                                    <?php the_content(); ?>
+                                </div>
+                                <button type="button" class="sd-btn sd-single-event__gallery-open" data-gallery-lightbox-open>
+                                    <?php esc_html_e( 'View Full Gallery', 'stardance' ); ?>
+                                </button>
+                            </div>
+                        <?php endif; ?>
+
+                        <div class="sd-single-event__intro-preview">
+                            <div class="sd-single-event__preview sd-single-event__preview--<?php echo esc_attr( $sd_preview_config['modifier'] ); ?>">
+                                <?php
+                                foreach ( $sd_preview_config['rows'] as $sd_pr ) {
+                                    $sd_att_id = (int) $sd_pr['attachment_id'];
+                                    $sd_full   = wp_get_attachment_image_src( $sd_att_id, 'full' );
+                                    $sd_lg     = wp_get_attachment_image_src( $sd_att_id, 'large' );
+                                    if ( ! $sd_full || ! $sd_lg ) {
+                                        continue;
+                                    }
+                                    $sd_alt = get_post_meta( $sd_att_id, '_wp_attachment_image_alt', true );
+                                    $sd_alt = $sd_alt ? $sd_alt : get_the_title();
+                                    $sd_lc  = 'sd-single-event__preview-link';
+                                    if ( ! empty( $sd_pr['sr_only'] ) ) {
+                                        $sd_lc .= ' sd-sr-only';
+                                    } elseif ( 'mixed' === $sd_preview_config['modifier'] && false !== strpos( (string) ( $sd_pr['grid_style'] ?? '' ), 'span 2' ) ) {
+                                        $sd_lc .= ' sd-single-event__preview-link--fill';
+                                    }
+                                    ?>
+                                    <a class="<?php echo esc_attr( $sd_lc ); ?>" href="<?php echo esc_url( $sd_full[0] ); ?>"
+                                        <?php
+                                        if ( ! empty( $sd_pr['grid_style'] ) ) {
+                                            printf( ' style="%s"', esc_attr( $sd_pr['grid_style'] ) );
+                                        }
+                                        ?>
+                                    >
+                                        <?php
+                                        echo wp_get_attachment_image(
+                                            $sd_att_id,
+                                            'large',
+                                            false,
+                                            array(
+                                                'alt'     => $sd_alt,
+                                                'loading' => 'lazy',
+                                                'class'   => 'sd-single-event__preview-img',
+                                            )
+                                        );
+                                        ?>
+                                    </a>
+                                    <?php
+                                }
+                                ?>
+                            </div>
+                        </div>
+
+                        <?php if ( ! $sd_has_about ) : ?>
+                            <button type="button" class="sd-btn sd-single-event__gallery-open sd-single-event__gallery-open--solo" data-gallery-lightbox-open>
+                                <?php esc_html_e( 'View Full Gallery', 'stardance' ); ?>
+                            </button>
+                        <?php endif; ?>
+                    </div>
+                <?php elseif ( $sd_has_about ) : ?>
+                    <div class="sd-single-event__intro-layout sd-single-event__intro-layout--about-only fade-in fade-in-delay-0">
+                        <div class="sd-single-event__intro-about">
+                            <h2 class="sd-heading sd-single-event__intro-title"><?php esc_html_e( 'About This Event', 'stardance' ); ?></h2>
+                            <div class="sd-single-event__about-prose sd-text entry-content">
+                                <?php the_content(); ?>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </section>
+    <?php endif; ?>
+
     <section class="sd-section sd-single-event" id="event-details">
         <div class="sd-container">
-            <?php if ( $sd_has_about ) : ?>
-                <h2 class="sd-heading sd-single-event__section-title fade-in fade-in-delay-1"><?php esc_html_e( 'About this event', 'stardance' ); ?></h2>
-                <div class="sd-single-event__content sd-text entry-content fade-in fade-in-delay-1">
-                    <?php the_content(); ?>
-                </div>
-            <?php endif; ?>
-
             <?php if ( $sd_has_schedule_cards || $sd_has_schedule_notes ) : ?>
                 <h2 class="sd-heading sd-single-event__section-title fade-in fade-in-delay-2"><?php esc_html_e( 'Schedule', 'stardance' ); ?></h2>
                 <?php if ( $sd_has_schedule_cards ) : ?>
@@ -129,39 +212,6 @@ $sd_has_about   = '' !== trim( (string) $sd_raw_content );
                         <?php echo wp_kses_post( $sd_schedule_notes ); ?>
                     </div>
                 <?php endif; ?>
-            <?php endif; ?>
-
-            <?php if ( ! empty( $sd_gallery ) ) : ?>
-                <h2 class="sd-heading sd-single-event__section-title fade-in fade-in-delay-3"><?php esc_html_e( 'Gallery', 'stardance' ); ?></h2>
-                <div class="sd-single-event__gallery sd-grid sd-grid--3 fade-in fade-in-delay-3" data-gallery-lightbox>
-                    <?php
-                    foreach ( $sd_gallery as $sd_att_id ) {
-                        $sd_full = wp_get_attachment_image_src( $sd_att_id, 'full' );
-                        $sd_lg   = wp_get_attachment_image_src( $sd_att_id, 'large' );
-                        if ( ! $sd_full || ! $sd_lg ) {
-                            continue;
-                        }
-                        $sd_alt = get_post_meta( $sd_att_id, '_wp_attachment_image_alt', true );
-                        $sd_alt = $sd_alt ? $sd_alt : get_the_title();
-                        ?>
-                        <a class="sd-single-event__gallery-item" href="<?php echo esc_url( $sd_full[0] ); ?>">
-                            <?php
-                            echo wp_get_attachment_image(
-                                $sd_att_id,
-                                'large',
-                                false,
-                                array(
-                                    'alt'     => $sd_alt,
-                                    'loading' => 'lazy',
-                                    'class'   => 'sd-single-event__gallery-img',
-                                )
-                            );
-                            ?>
-                        </a>
-                        <?php
-                    }
-                    ?>
-                </div>
             <?php endif; ?>
         </div>
     </section>
