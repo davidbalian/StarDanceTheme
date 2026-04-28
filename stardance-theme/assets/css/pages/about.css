@@ -358,9 +358,16 @@
    ======================================== */
 
 .sd-page--about .sd-cta {
-  --sd-page-cta-bg-image: url("https://stardance.com.cy/wp-content/uploads/2026/03/about-page-cta-bg.webp");
+  --sd-page-cta-bg-image: url("https://stardance.com.cy/wp-content/uploads/2026/04/about-page-cta-bg-normal.jpg");
   --sd-page-cta-top-width: 35%;
   --sd-page-cta-bottom-width: 50%;
+  background-position: center center;
+}
+
+@media (min-width: 1920px) {
+  .sd-page--about .sd-cta {
+    --sd-page-cta-bg-image: url("https://stardance.com.cy/wp-content/uploads/2026/04/about-page-cta-bg-large.jpg");
+  }
 }
 
 /* ========================================
