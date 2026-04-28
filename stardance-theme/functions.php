@@ -13,6 +13,7 @@ require get_template_directory() . '/inc/class-stardance-event-schedule.php';
 require get_template_directory() . '/inc/class-stardance-event-schedule-week-display.php';
 require get_template_directory() . '/inc/class-stardance-event-schedule-admin.php';
 require get_template_directory() . '/inc/class-stardance-event-gallery-preview.php';
+require get_template_directory() . '/inc/class-stardance-event-media-crop-admin.php';
 require get_template_directory() . '/inc/stardance-seed-events.php';
 
 /**
@@ -846,6 +847,7 @@ function stardance_event_admin_enqueue( $hook_suffix ) {
     }
 
     wp_enqueue_media();
+    Stardance_Event_Media_Crop_Admin::enqueue_assets();
     wp_enqueue_style(
         'stardance-admin-event-schedule',
         get_template_directory_uri() . '/assets/css/admin-event-schedule.css',

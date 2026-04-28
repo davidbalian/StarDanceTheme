@@ -24,6 +24,14 @@
     });
   }
 
+  function appendIds($hidden, idsToAppend) {
+    var existing = parseIds($hidden.val());
+    idsToAppend.forEach(function (id) {
+      existing.push(id);
+    });
+    $hidden.val(uniqueIds(existing).join(','));
+  }
+
   function refreshPreview($hidden, $preview) {
     var ids = parseIds($hidden.val());
     $preview.empty();
@@ -84,11 +92,11 @@
         library: { type: 'image' },
       });
       frame.on('select', function () {
-        var existing = parseIds($hidden.val());
+        var selected = [];
         frame.state().get('selection').each(function (att) {
-          existing.push(att.id);
+          selected.push(att.id);
         });
-        $hidden.val(uniqueIds(existing).join(','));
+        appendIds($hidden, selected);
         refreshPreview($hidden, $preview);
       });
       frame.open();
@@ -98,6 +106,14 @@
       e.preventDefault();
       $hidden.val('');
       $preview.empty();
+    });
+
+    $(document).on('stardance:event-gallery:append', function (_e, ids) {
+      if (!Array.isArray(ids) || !ids.length) {
+        return;
+      }
+      appendIds($hidden, ids);
+      refreshPreview($hidden, $preview);
     });
   });
 })(jQuery);

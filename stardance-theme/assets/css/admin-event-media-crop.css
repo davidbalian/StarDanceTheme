@@ -1,0 +1,117 @@
+.stardance-media-crop-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 160000;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.stardance-media-crop-modal {
+  width: min(1200px, 100%);
+  max-height: 90vh;
+  overflow: auto;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+  padding: 20px;
+}
+
+.stardance-media-crop-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.stardance-media-crop-header h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.stardance-media-crop-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.stardance-media-crop-card {
+  border: 1px solid #dcdcde;
+  border-radius: 6px;
+  background: #f6f7f7;
+  padding: 12px;
+}
+
+.stardance-media-crop-card h4 {
+  margin: 0 0 10px;
+  font-size: 14px;
+}
+
+.stardance-media-crop-inputs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.stardance-media-crop-inputs label {
+  display: block;
+  width: 100%;
+  font-size: 12px;
+  color: #50575e;
+}
+
+.stardance-media-crop-inputs input {
+  width: 100%;
+  margin-top: 4px;
+}
+
+.stardance-media-crop-preview-canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  border: 1px solid #c3c4c7;
+  background: #fff;
+}
+
+.stardance-media-crop-actions {
+  margin-top: 10px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.stardance-media-crop-status {
+  margin-top: 10px;
+  min-height: 24px;
+  font-size: 12px;
+  color: #1d2327;
+}
+
+.stardance-media-crop-status img {
+  margin-left: 8px;
+  width: 28px;
+  height: 28px;
+  border-radius: 3px;
+  object-fit: cover;
+  vertical-align: middle;
+}
+
+.attachment-actions .stardance-media-crop-open {
+  margin-top: 8px;
+}
+
+@media (max-width: 1200px) {
+  .stardance-media-crop-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 782px) {
+  .stardance-media-crop-grid {
+    grid-template-columns: 1fr;
+  }
+}
