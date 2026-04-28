@@ -223,6 +223,7 @@
 
 .sd-single-event__schedule-week-wrap {
   overflow-x: auto;
+  overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
   margin: 0 auto var(--sd-space-xl);
   max-width: var(--sd-max-width);
