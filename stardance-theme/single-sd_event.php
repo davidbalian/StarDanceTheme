@@ -14,8 +14,11 @@ $sd_excerpt    = get_the_excerpt() ? get_the_excerpt() : wp_trim_words( wp_strip
 $sd_event_date = get_post_meta( $sd_event_id, 'event_date', true );
 $sd_location   = get_post_meta( $sd_event_id, 'event_location', true );
 $sd_event_link = get_post_meta( $sd_event_id, 'event_link', true );
-$sd_schedule   = get_post_meta( $sd_event_id, 'event_schedule', true );
-$sd_schedule   = is_string( $sd_schedule ) ? $sd_schedule : '';
+$sd_schedule_notes = get_post_meta( $sd_event_id, 'event_schedule', true );
+$sd_schedule_notes = is_string( $sd_schedule_notes ) ? $sd_schedule_notes : '';
+$sd_schedule_rows  = Stardance_Event_Schedule::get_entries( $sd_event_id );
+$sd_has_schedule_cards = Stardance_Event_Schedule::has_displayable_entries( $sd_schedule_rows );
+$sd_has_schedule_notes = '' !== trim( wp_strip_all_tags( $sd_schedule_notes ) );
 $sd_gallery    = stardance_get_event_gallery_ids( $sd_event_id );
 
 $sd_thumb_id = get_post_thumbnail_id( $sd_event_id );
@@ -85,11 +88,50 @@ $sd_has_about   = '' !== trim( (string) $sd_raw_content );
                 </div>
             <?php endif; ?>
 
-            <?php if ( '' !== trim( wp_strip_all_tags( $sd_schedule ) ) ) : ?>
+            <?php if ( $sd_has_schedule_cards || $sd_has_schedule_notes ) : ?>
                 <h2 class="sd-heading sd-single-event__section-title fade-in fade-in-delay-2"><?php esc_html_e( 'Schedule', 'stardance' ); ?></h2>
-                <div class="sd-single-event__schedule sd-text fade-in fade-in-delay-2">
-                    <?php echo wp_kses_post( $sd_schedule ); ?>
-                </div>
+                <?php if ( $sd_has_schedule_cards ) : ?>
+                    <div class="sd-single-event__schedule-cards sd-grid sd-grid--3 fade-in fade-in-delay-2">
+                        <?php
+                        $sd_card_delay = 0;
+                        foreach ( $sd_schedule_rows as $sd_row ) {
+                            $sd_day      = isset( $sd_row['day'] ) ? trim( (string) $sd_row['day'] ) : '';
+                            $sd_title    = isset( $sd_row['title'] ) ? trim( (string) $sd_row['title'] ) : '';
+                            $sd_time     = isset( $sd_row['time'] ) ? trim( (string) $sd_row['time'] ) : '';
+                            $sd_loc      = isset( $sd_row['location'] ) ? trim( (string) $sd_row['location'] ) : '';
+                            if ( '' === $sd_day && '' === $sd_title && '' === $sd_time && '' === $sd_loc ) {
+                                continue;
+                            }
+                            $sd_d = min( $sd_card_delay, 10 );
+                            ++$sd_card_delay;
+                            $sd_day_display = '' !== $sd_day ? $sd_day : __( 'TBA', 'stardance' );
+                            ?>
+                            <article class="sd-schedule-page__day sd-single-event__schedule-card fade-in fade-in-delay-<?php echo absint( $sd_d ); ?>">
+                                <h3 class="sd-schedule-page__day-title"><?php echo esc_html( $sd_day_display ); ?></h3>
+                                <div class="sd-schedule-page__sessions">
+                                    <div class="sd-schedule-page__session sd-single-event__schedule-session">
+                                        <?php if ( '' !== $sd_title ) : ?>
+                                            <span class="sd-schedule-page__class-name"><?php echo esc_html( $sd_title ); ?></span>
+                                        <?php endif; ?>
+                                        <?php if ( '' !== $sd_time ) : ?>
+                                            <span class="sd-schedule-page__time"><?php echo esc_html( $sd_time ); ?></span>
+                                        <?php endif; ?>
+                                        <?php if ( '' !== $sd_loc ) : ?>
+                                            <span class="sd-schedule-page__class-level"><?php echo esc_html( $sd_loc ); ?></span>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                            </article>
+                            <?php
+                        }
+                        ?>
+                    </div>
+                <?php endif; ?>
+                <?php if ( $sd_has_schedule_notes ) : ?>
+                    <div class="sd-single-event__schedule sd-single-event__schedule--notes sd-text fade-in fade-in-delay-2">
+                        <?php echo wp_kses_post( $sd_schedule_notes ); ?>
+                    </div>
+                <?php endif; ?>
             <?php endif; ?>
 
             <?php if ( ! empty( $sd_gallery ) ) : ?>

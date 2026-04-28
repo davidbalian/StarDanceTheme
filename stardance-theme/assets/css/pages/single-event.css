@@ -89,6 +89,22 @@
   margin-bottom: 0;
 }
 
+.sd-single-event__schedule-cards {
+  margin: 0 auto var(--sd-space-xl);
+  max-width: var(--sd-max-width);
+  width: 100%;
+}
+
+.sd-single-event__schedule-card {
+  min-height: 0;
+}
+
+.sd-single-event__schedule-session {
+  padding-bottom: 0;
+  border-bottom: 0;
+  gap: var(--sd-space-xs);
+}
+
 .sd-single-event__schedule {
   max-width: 65ch;
   margin: 0 auto var(--sd-space-xl);
@@ -96,6 +112,10 @@
   font-size: var(--sd-type-body);
   line-height: var(--sd-leading-body);
   color: var(--sd-body-text);
+}
+
+.sd-single-event__schedule--notes {
+  margin-top: var(--sd-space-md);
 }
 
 .sd-single-event__schedule > *:first-child {

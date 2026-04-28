@@ -8,6 +8,8 @@ require get_template_directory() . '/inc/components.php';
 require get_template_directory() . '/inc/class-detail-card.php';
 require get_template_directory() . '/inc/class-stardance-nav-menu-registrar.php';
 require get_template_directory() . '/inc/coaches.php';
+require get_template_directory() . '/inc/class-stardance-event-schedule.php';
+require get_template_directory() . '/inc/class-stardance-event-schedule-admin.php';
 
 /**
  * Return a filemtime-based asset version for cache busting.
@@ -93,7 +95,8 @@ function stardance_enqueue_assets() {
         wp_enqueue_style('stardance-single-class-sections', $pages_css_dir . 'single-class-sections.css', array('stardance-single-class'), stardance_asset_version('assets/css/pages/single-class-sections.css'));
     }
     if ( is_singular( 'sd_event' ) ) {
-        wp_enqueue_style( 'stardance-single-event', $pages_css_dir . 'single-event.css', array( 'stardance-responsive' ), stardance_asset_version( 'assets/css/pages/single-event.css' ) );
+        wp_enqueue_style( 'stardance-page-schedule', $pages_css_dir . 'schedule.css', array( 'stardance-responsive' ), stardance_asset_version( 'assets/css/pages/schedule.css' ) );
+        wp_enqueue_style( 'stardance-single-event', $pages_css_dir . 'single-event.css', array( 'stardance-page-schedule' ), stardance_asset_version( 'assets/css/pages/single-event.css' ) );
     }
 
     // Theme Scripts
@@ -888,6 +891,12 @@ function stardance_event_admin_enqueue( $hook_suffix ) {
     }
 
     wp_enqueue_media();
+    wp_enqueue_style(
+        'stardance-admin-event-schedule',
+        get_template_directory_uri() . '/assets/css/admin-event-schedule.css',
+        array(),
+        stardance_asset_version( 'assets/css/admin-event-schedule.css' )
+    );
     wp_enqueue_script(
         'stardance-admin-event-gallery',
         get_template_directory_uri() . '/assets/js/admin-sd-event-gallery.js',
@@ -901,6 +910,25 @@ function stardance_event_admin_enqueue( $hook_suffix ) {
         array(
             'galleryTitle'  => __( 'Event gallery images', 'stardance' ),
             'galleryButton' => __( 'Use images', 'stardance' ),
+        )
+    );
+    wp_enqueue_script(
+        'stardance-admin-event-schedule',
+        get_template_directory_uri() . '/assets/js/admin-sd-event-schedule.js',
+        array( 'jquery' ),
+        stardance_asset_version( 'assets/js/admin-sd-event-schedule.js' ),
+        true
+    );
+    wp_localize_script(
+        'stardance-admin-event-schedule',
+        'stardanceEventScheduleAdmin',
+        array(
+            'labels' => array(
+                'day'      => __( 'Day', 'stardance' ),
+                'title'    => __( 'Session title', 'stardance' ),
+                'time'     => __( 'Time', 'stardance' ),
+                'location' => __( 'Location', 'stardance' ),
+            ),
         )
     );
 }
@@ -986,22 +1014,14 @@ function stardance_render_event_content_meta_box( $post ) {
     <p>
         <textarea id="stardance_event_short_description" name="stardance_event_short_description" class="widefat" rows="3"><?php echo esc_textarea( $post->post_excerpt ); ?></textarea>
     </p>
+    <?php Stardance_Event_Schedule_Admin::render_fields( $post ); ?>
     <p>
-        <label for="stardance_event_schedule"><strong><?php esc_html_e( 'Event schedule', 'stardance' ); ?></strong></label>
+        <label for="stardance_event_schedule"><strong><?php esc_html_e( 'Optional schedule notes', 'stardance' ); ?></strong></label>
     </p>
-    <?php
-    wp_editor(
-        $schedule,
-        'stardance_event_schedule',
-        array(
-            'textarea_name' => 'stardance_event_schedule',
-            'media_buttons' => false,
-            'teeny'         => true,
-            'quicktags'     => true,
-            'textarea_rows' => 8,
-        )
-    );
-    ?>
+    <p class="description"><?php esc_html_e( 'Shown below the schedule cards when present. Use for extra detail, or to preserve older rich-text schedule content until you move it into rows above.', 'stardance' ); ?></p>
+    <p>
+        <textarea id="stardance_event_schedule" name="stardance_event_schedule" class="widefat" rows="6"><?php echo esc_textarea( $schedule ); ?></textarea>
+    </p>
     <p style="margin-top:1em;">
         <strong><?php esc_html_e( 'Event gallery', 'stardance' ); ?></strong>
     </p>
@@ -1075,6 +1095,10 @@ function stardance_save_event_meta( $post_id ) {
 
     if ( isset( $_POST['stardance_event_schedule'] ) ) {
         update_post_meta( $post_id, 'event_schedule', wp_kses_post( wp_unslash( $_POST['stardance_event_schedule'] ) ) );
+    }
+
+    if ( array_key_exists( 'stardance_schedule_entries', $_POST ) && is_array( $_POST['stardance_schedule_entries'] ) ) {
+        Stardance_Event_Schedule::persist_from_post( $post_id, wp_unslash( $_POST['stardance_schedule_entries'] ) );
     }
 
     if ( isset( $_POST['stardance_event_gallery_ids'] ) ) {
