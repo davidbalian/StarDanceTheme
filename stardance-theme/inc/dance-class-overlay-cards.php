@@ -8,18 +8,12 @@
 /**
  * Output overlay cards for all published dance_class posts.
  *
- * @param array $args {
- *     @type bool $show_description When true, card uses the post excerpt as description text. Default false.
- * }
+ * The same markup is rendered everywhere this function is used (home and
+ * Classes page) so the cards stay visually identical. Whether the description
+ * is visible is controlled by CSS scoped to the parent section, not by markup,
+ * which keeps the title position consistent across grids.
  */
-function stardance_render_dance_class_overlay_cards( $args = array() ) {
-    $args = wp_parse_args(
-        $args,
-        array(
-            'show_description' => false,
-        )
-    );
-
+function stardance_render_dance_class_overlay_cards() {
     $classes_query = new WP_Query(
         array(
             'post_type'      => 'dance_class',
@@ -52,13 +46,8 @@ function stardance_render_dance_class_overlay_cards( $args = array() ) {
             $modifier = 'turquoise';
         }
 
-        $description = '';
-        if ( $args['show_description'] ) {
-            $raw = get_post_field( 'post_excerpt', get_the_ID() );
-            if ( '' !== $raw ) {
-                $description = wp_strip_all_tags( $raw );
-            }
-        }
+        $raw         = get_post_field( 'post_excerpt', get_the_ID() );
+        $description = '' !== $raw ? wp_strip_all_tags( $raw ) : '';
 
         stardance_render_overlay_card(
             array(

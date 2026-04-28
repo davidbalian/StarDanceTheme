@@ -94,6 +94,13 @@
   align-self: flex-end;
 }
 
+/* Home "Our Classes" cards mirror the Classes page cards exactly; the
+   description box keeps its layout space so the title sits at the same
+   height, but the text itself is hidden from view and assistive tech. */
+.sd-classes .sd-overlay-card__desc {
+  visibility: hidden;
+}
+
 :is(.sd-page--classes, .sd-classes) .sd-overlay-card--gold .sd-overlay-card__title,
 :is(.sd-page--classes, .sd-classes) .sd-overlay-card--turquoise .sd-overlay-card__title {
   color: var(--sd-classes-card-heading-dark);
