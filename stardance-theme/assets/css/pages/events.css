@@ -12,6 +12,8 @@
 }
 
 .sd-page-hero--events::before {
+  content: "";
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -21,7 +23,9 @@
   background-image: url('https://stardance.com.cy/wp-content/uploads/2026/03/long-lines.svg');
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: center calc(100% - 20%);
+  background-position: center 80%;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .sd-page-hero--events::after {
