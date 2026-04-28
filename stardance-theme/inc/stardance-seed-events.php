@@ -79,7 +79,7 @@ function stardance_seed_sample_events(): void {
             'excerpt'          => 'National championship weekend: qualifications, finals, and awards. Open age categories from Juvenile to Senior.',
             'content'          => '<p>Join competitors from across Cyprus for our flagship national event. The weekend includes scrutineering, warm-up floors, and live music for standard and Latin rounds.</p><p>Registration closes one week before the event. Spectator tickets are available at the door.</p>',
             'image_url'        => $base_img . 'seed-events-1.webp',
-            'event_date'       => 'March 14-15, 2026',
+            'event_date'       => 'March 13-15, 2026',
             'event_location'   => 'Nicosia Municipal Theatre, Cyprus',
             'event_link'       => $contact,
             'event_schedule_notes' => '<p><em>Dummy note:</em> Parking is limited - arrive early or use shuttle from city centre.</p>',
