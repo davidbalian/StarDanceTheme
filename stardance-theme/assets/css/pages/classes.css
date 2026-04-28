@@ -12,6 +12,21 @@
   --sd-page-hero-line-image: url("https://stardance.com.cy/wp-content/uploads/2026/03/classes-lines-left.svg");
 }
 
+/* classes-lines-left.svg is anchored to the bottom; mirror for the right slot */
+.sd-page-hero--classes::before {
+  top: auto;
+  bottom: 0;
+  transform: none;
+  background-position: left bottom;
+}
+
+.sd-page-hero--classes::after {
+  right: 0;
+  bottom: 0;
+  transform: scaleX(-1);
+  background-position: left bottom;
+}
+
 .sd-page--classes .sd-cta {
   --sd-page-cta-bg-image: url("https://stardance.com.cy/wp-content/uploads/2026/03/classes-page-cta-bg.webp");
   --sd-page-cta-top-width: 35%;
