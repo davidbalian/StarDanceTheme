@@ -52,7 +52,7 @@ class Stardance_Event_Schedule_Admin {
                             type="text"
                             name="stardance_schedule_entries[<?php echo esc_attr( (string) $idx ); ?>][title]"
                             value="<?php echo esc_attr( $row['title'] ); ?>"
-                            placeholder="<?php esc_attr_e( 'Day №1 — Event name', 'stardance' ); ?>"
+                            placeholder="<?php esc_attr_e( 'Day No. 1 - Event name', 'stardance' ); ?>"
                             autocomplete="off"
                         />
                     </p>
@@ -63,7 +63,7 @@ class Stardance_Event_Schedule_Admin {
                             type="text"
                             name="stardance_schedule_entries[<?php echo esc_attr( (string) $idx ); ?>][time]"
                             value="<?php echo esc_attr( $row['time'] ); ?>"
-                            placeholder="<?php esc_attr_e( '10:00 – 18:00', 'stardance' ); ?>"
+                            placeholder="<?php esc_attr_e( '10:00 - 18:00', 'stardance' ); ?>"
                             autocomplete="off"
                         />
                     </p>
@@ -95,11 +95,11 @@ class Stardance_Event_Schedule_Admin {
                 </p>
                 <p class="stardance-schedule-row__field">
                     <label class="stardance-schedule-js-label-title"></label>
-                    <input type="text" class="stardance-schedule-js-title" name="" value="" placeholder="<?php echo esc_attr__( 'Day №1 — Event name', 'stardance' ); ?>" autocomplete="off" />
+                    <input type="text" class="stardance-schedule-js-title" name="" value="" placeholder="<?php echo esc_attr__( 'Day No. 1 - Event name', 'stardance' ); ?>" autocomplete="off" />
                 </p>
                 <p class="stardance-schedule-row__field">
                     <label class="stardance-schedule-js-label-time"></label>
-                    <input type="text" class="stardance-schedule-js-time" name="" value="" placeholder="<?php echo esc_attr__( '10:00 – 18:00', 'stardance' ); ?>" autocomplete="off" />
+                    <input type="text" class="stardance-schedule-js-time" name="" value="" placeholder="<?php echo esc_attr__( '10:00 - 18:00', 'stardance' ); ?>" autocomplete="off" />
                 </p>
                 <p class="stardance-schedule-row__field">
                     <label class="stardance-schedule-js-label-location"></label>
