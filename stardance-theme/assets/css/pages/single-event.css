@@ -16,7 +16,6 @@
 
 .sd-page-hero--single-event > .sd-container {
   width: 100%;
-  padding-bottom: var(--sd-space-xl);
 }
 
 @media (min-width: 992px) {
@@ -123,7 +122,9 @@
   overflow: hidden;
   aspect-ratio: 4 / 3;
   outline: none;
-  transition: opacity var(--sd-transition), box-shadow var(--sd-transition);
+  transition:
+    opacity var(--sd-transition),
+    box-shadow var(--sd-transition);
 }
 
 .sd-single-event__gallery-item:focus-visible {
