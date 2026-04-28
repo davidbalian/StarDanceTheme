@@ -909,7 +909,7 @@ function stardance_media_crop_admin_enqueue( $hook_suffix ) {
     wp_enqueue_media();
     Stardance_Event_Media_Crop_Admin::enqueue_assets();
 }
-add_action( 'admin_enqueue_scripts', 'stardance_media_crop_admin_enqueue', 12 );
+// add_action( 'admin_enqueue_scripts', 'stardance_media_crop_admin_enqueue', 12 );
 
 /**
  * Parsed attachment IDs for event gallery meta.
