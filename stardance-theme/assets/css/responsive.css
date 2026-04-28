@@ -6,6 +6,7 @@
 @media (min-width: 1920px) {
   :root {
     --sd-max-width: 1400px;
+    --sd-page-hero-max-height: 800px;
   }
 
   .sd-header__logo img {
