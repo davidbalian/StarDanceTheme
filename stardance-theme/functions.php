@@ -10,6 +10,7 @@ require get_template_directory() . '/inc/class-stardance-nav-menu-registrar.php'
 require get_template_directory() . '/inc/coaches.php';
 require get_template_directory() . '/inc/class-stardance-event-schedule.php';
 require get_template_directory() . '/inc/class-stardance-event-schedule-admin.php';
+require get_template_directory() . '/inc/stardance-seed-events.php';
 
 /**
  * Return a filemtime-based asset version for cache busting.
@@ -721,56 +722,7 @@ function stardance_create_pages() {
         }
     }
 
-    // Seed sample events
-    $seed_events = array();
-    for ( $i = 1; $i <= 6; $i++ ) {
-        $seed_events[] = array(
-            'title'       => 'Cyprus National Dance Championship',
-            'slug'        => 'cyprus-national-dance-championship-' . $i,
-            'excerpt'     => 'Annual national championship organized by the Cyprus Federation of Social & Sport Dance. Open to all age categories and levels.',
-            'image_url'   => 'https://stardance.com.cy/wp-content/uploads/2026/03/seed-events-' . $i . '.webp',
-            'event_date'  => 'March 15, 2026',
-            'event_location' => 'Nicosia, Cyprus',
-            'event_link'  => '',
-            'year'        => array( '2026' ),
-            'category'    => array( 'Cyprus National Competitions' ),
-            'type'        => array( 'Championships' ),
-            'style'       => array( 'Solo', 'Couples', 'Show Dances' ),
-            'menu_order'  => $i,
-        );
-    }
-
-    foreach ( $seed_events as $event_data ) {
-        $existing = get_page_by_path( $event_data['slug'], OBJECT, 'sd_event' );
-        $post_args = array(
-            'post_title'   => $event_data['title'],
-            'post_name'    => $event_data['slug'],
-            'post_excerpt' => $event_data['excerpt'],
-            'post_content' => $event_data['excerpt'],
-            'post_status'  => 'publish',
-            'post_type'    => 'sd_event',
-            'post_author'  => 1,
-            'menu_order'   => $event_data['menu_order'],
-        );
-
-        if ( $existing ) {
-            $post_args['ID'] = $existing->ID;
-            $post_id = wp_update_post( $post_args, true );
-        } else {
-            $post_id = wp_insert_post( $post_args, true );
-        }
-
-        if ( $post_id && ! is_wp_error( $post_id ) ) {
-            update_post_meta( $post_id, 'event_date', $event_data['event_date'] );
-            update_post_meta( $post_id, 'event_location', $event_data['event_location'] );
-            update_post_meta( $post_id, 'event_link', $event_data['event_link'] );
-            wp_set_object_terms( $post_id, $event_data['year'], 'event_year', false );
-            wp_set_object_terms( $post_id, $event_data['category'], 'event_category', false );
-            wp_set_object_terms( $post_id, $event_data['type'], 'event_type', false );
-            wp_set_object_terms( $post_id, $event_data['style'], 'event_style', false );
-            stardance_sync_remote_featured_image( $post_id, $event_data['image_url'] );
-        }
-    }
+    stardance_seed_sample_events();
 
     foreach ( stardance_get_gallery_seed_items() as $gallery_item ) {
         $existing = get_page_by_path( $gallery_item['slug'], OBJECT, 'gallery_item' );
