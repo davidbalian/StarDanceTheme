@@ -22,13 +22,6 @@ get_header();
         'modifier'    => 'events',
     )); ?>
 
-    <img
-        src="https://stardance.com.cy/wp-content/uploads/2026/03/long-lines.svg"
-        alt=""
-        class="sd-events-page__long-lines"
-        aria-hidden="true"
-    />
-
     <section class="sd-section sd-events-page" id="events-list">
         <div class="sd-container">
             <h2 class="sd-heading sd-events-page__title fade-in fade-in-delay-0">List of Events</h2>
