@@ -82,7 +82,7 @@ function stardance_seed_sample_events(): void {
             'event_date'       => 'March 13-15, 2026',
             'event_location'   => 'Nicosia Municipal Theatre, Cyprus',
             'event_link'       => $contact,
-            'event_schedule_notes' => '<p><em>Dummy note:</em> Parking is limited - arrive early or use shuttle from city centre.</p>',
+            'event_schedule_notes' => '',
             'year'             => array( '2026' ),
             'category'         => array( 'Cyprus National Competitions' ),
             'type'             => array( 'Championships' ),
