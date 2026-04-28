@@ -178,55 +178,68 @@ if ( $sd_has_about xor $sd_has_gallery ) {
                 ?>
                 <?php if ( $sd_has_schedule_cards ) : ?>
                     <?php
-                    $sd_week = Stardance_Event_Schedule_Week_Display::build_week_columns( $sd_schedule_rows );
+                    $sd_timetable = Stardance_Event_Schedule_Week_Display::build_timetable_grid_from_entries( $sd_schedule_rows );
                     ?>
-                    <?php if ( ! empty( $sd_week['has_parsed_days'] ) ) : ?>
-                    <div class="sd-single-event__schedule-week-wrap fade-in fade-in-delay-2">
-                        <div class="sd-single-event__schedule-week">
-                            <?php
-                            foreach ( $sd_week['columns'] as $sd_wi => $sd_col ) {
-                                $sd_wd = min( (int) $sd_wi, 10 );
-                                ?>
-                                <article class="sd-schedule-page__day sd-single-event__schedule-card fade-in fade-in-delay-<?php echo absint( $sd_wd ); ?>">
-                                    <h3 class="sd-schedule-page__day-title"><?php echo esc_html( $sd_col['label'] ); ?></h3>
-                                    <?php if ( empty( $sd_col['rows'] ) ) : ?>
-                                        <p class="sd-schedule-page__closed"><?php esc_html_e( 'Closed', 'stardance' ); ?></p>
+                    <?php if ( ! empty( $sd_timetable['has_any_parsed_day'] ) ) : ?>
+                        <div class="sd-timetable__grid sd-single-event__timetable-grid fade-in fade-in-delay-2">
+                            <?php foreach ( $sd_timetable['weekdays'] as $sd_day ) : ?>
+                                <article class="sd-timetable__day">
+                                    <h3 class="sd-timetable__day-title"><?php echo esc_html( $sd_day['label'] ); ?></h3>
+                                    <?php if ( ! empty( $sd_day['closed'] ) ) : ?>
+                                        <p class="sd-timetable__closed"><?php esc_html_e( 'Closed', 'stardance' ); ?></p>
                                     <?php else : ?>
-                                        <div class="sd-schedule-page__sessions">
-                                            <?php
-                                            foreach ( $sd_col['rows'] as $sd_row ) {
-                                                $sd_title = isset( $sd_row['title'] ) ? trim( (string) $sd_row['title'] ) : '';
-                                                $sd_time  = isset( $sd_row['time'] ) ? trim( (string) $sd_row['time'] ) : '';
-                                                $sd_loc   = isset( $sd_row['location'] ) ? trim( (string) $sd_row['location'] ) : '';
-                                                ?>
-                                                <div class="sd-schedule-page__session sd-single-event__schedule-session">
-                                                    <?php if ( '' !== $sd_title ) : ?>
-                                                        <span class="sd-schedule-page__class-name"><?php echo esc_html( $sd_title ); ?></span>
+                                        <div class="sd-timetable__sessions">
+                                            <?php foreach ( $sd_day['sessions'] as $sd_session ) : ?>
+                                                <div class="sd-timetable__session">
+                                                    <?php if ( '' !== $sd_session['time'] ) : ?>
+                                                        <span class="sd-timetable__time"><?php echo esc_html( $sd_session['time'] ); ?></span>
                                                     <?php endif; ?>
-                                                    <?php if ( '' !== $sd_time ) : ?>
-                                                        <span class="sd-schedule-page__time"><?php echo esc_html( $sd_time ); ?></span>
+                                                    <?php if ( '' !== $sd_session['title'] ) : ?>
+                                                        <span class="sd-timetable__class-name"><?php echo esc_html( $sd_session['title'] ); ?></span>
                                                     <?php endif; ?>
-                                                    <?php if ( '' !== $sd_loc ) : ?>
-                                                        <span class="sd-schedule-page__class-level"><?php echo esc_html( $sd_loc ); ?></span>
+                                                    <?php if ( '' !== $sd_session['meta'] ) : ?>
+                                                        <span class="sd-timetable__class-level"><?php echo esc_html( $sd_session['meta'] ); ?></span>
                                                     <?php endif; ?>
                                                 </div>
-                                                <?php
-                                            }
-                                            ?>
+                                            <?php endforeach; ?>
                                         </div>
                                     <?php endif; ?>
                                 </article>
-                                <?php
-                            }
-                            ?>
+                            <?php endforeach; ?>
+
+                            <div class="sd-timetable__weekend-column">
+                                <?php foreach ( $sd_timetable['weekend'] as $sd_day ) : ?>
+                                    <article class="sd-timetable__day">
+                                        <h3 class="sd-timetable__day-title"><?php echo esc_html( $sd_day['label'] ); ?></h3>
+                                        <?php if ( ! empty( $sd_day['closed'] ) ) : ?>
+                                            <p class="sd-timetable__closed"><?php esc_html_e( 'Closed', 'stardance' ); ?></p>
+                                        <?php else : ?>
+                                            <div class="sd-timetable__sessions">
+                                                <?php foreach ( $sd_day['sessions'] as $sd_session ) : ?>
+                                                    <div class="sd-timetable__session">
+                                                        <?php if ( '' !== $sd_session['time'] ) : ?>
+                                                            <span class="sd-timetable__time"><?php echo esc_html( $sd_session['time'] ); ?></span>
+                                                        <?php endif; ?>
+                                                        <?php if ( '' !== $sd_session['title'] ) : ?>
+                                                            <span class="sd-timetable__class-name"><?php echo esc_html( $sd_session['title'] ); ?></span>
+                                                        <?php endif; ?>
+                                                        <?php if ( '' !== $sd_session['meta'] ) : ?>
+                                                            <span class="sd-timetable__class-level"><?php echo esc_html( $sd_session['meta'] ); ?></span>
+                                                        <?php endif; ?>
+                                                    </div>
+                                                <?php endforeach; ?>
+                                            </div>
+                                        <?php endif; ?>
+                                    </article>
+                                <?php endforeach; ?>
+                            </div>
                         </div>
-                    </div>
                     <?php endif; ?>
-                    <?php if ( ! empty( $sd_week['orphans'] ) ) : ?>
+                    <?php if ( ! empty( $sd_timetable['orphans'] ) ) : ?>
                         <div class="sd-single-event__schedule-orphans sd-grid sd-grid--3 fade-in fade-in-delay-2">
                             <?php
                             $sd_card_delay = 7;
-                            foreach ( $sd_week['orphans'] as $sd_row ) {
+                            foreach ( $sd_timetable['orphans'] as $sd_row ) {
                                 $sd_day      = isset( $sd_row['day'] ) ? trim( (string) $sd_row['day'] ) : '';
                                 $sd_title    = isset( $sd_row['title'] ) ? trim( (string) $sd_row['title'] ) : '';
                                 $sd_time     = isset( $sd_row['time'] ) ? trim( (string) $sd_row['time'] ) : '';

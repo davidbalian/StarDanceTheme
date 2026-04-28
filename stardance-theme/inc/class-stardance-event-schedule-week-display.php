@@ -1,6 +1,6 @@
 <?php
 /**
- * Centered 7-day week strip for single event schedules.
+ * Event schedule dateline + homepage-style timetable grid for single events.
  *
  * @package stardance
  */
@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Groups schedule rows by weekday and orders columns so active days sit near the center.
+ * Formats event_date and maps schedule rows to the same Mon–Sun shape as the homepage timetable.
  */
 final class Stardance_Event_Schedule_Week_Display {
 
@@ -53,22 +53,22 @@ final class Stardance_Event_Schedule_Week_Display {
 		$lower  = strtolower( $day );
 		$prefix = substr( $lower, 0, 3 );
 		$map    = array(
-			'mon'     => 0,
-			'monday'  => 0,
-			'tue'     => 1,
-			'tues'    => 1,
-			'tuesday' => 1,
-			'wed'     => 2,
+			'mon'       => 0,
+			'monday'    => 0,
+			'tue'       => 1,
+			'tues'      => 1,
+			'tuesday'   => 1,
+			'wed'       => 2,
 			'wednesday' => 2,
-			'thu'     => 3,
-			'thurs'   => 3,
-			'thursday' => 3,
-			'fri'     => 4,
-			'friday'  => 4,
-			'sat'     => 5,
-			'saturday' => 5,
-			'sun'     => 6,
-			'sunday'  => 6,
+			'thu'       => 3,
+			'thurs'     => 3,
+			'thursday'  => 3,
+			'fri'       => 4,
+			'friday'    => 4,
+			'sat'       => 5,
+			'saturday'  => 5,
+			'sun'       => 6,
+			'sunday'    => 6,
 		);
 		if ( isset( $map[ $lower ] ) ) {
 			return $map[ $lower ];
@@ -80,17 +80,22 @@ final class Stardance_Event_Schedule_Week_Display {
 	}
 
 	/**
+	 * Build weekday + weekend arrays matching template-parts/timetable.php shape.
+	 *
 	 * @param array<int, array<string, string>> $entries Schedule rows.
-	 * @return array{columns: array<int, array{weekday_index: int, label: string, rows: array}>, orphans: array, has_parsed_days: bool}
+	 * @return array{
+	 *   weekdays: array<int, array{label: string, closed: bool, sessions: array<int, array{time: string, title: string, meta: string}>}>,
+	 *   weekend: array<int, array{label: string, closed: bool, sessions: array<int, array{time: string, title: string, meta: string}>}>,
+	 *   orphans: array<int, array<string, string>>,
+	 *   has_any_parsed_day: bool
+	 * }
 	 */
-	public static function build_week_columns( array $entries ): array {
-		$by_day  = array();
+	public static function build_timetable_grid_from_entries( array $entries ): array {
+		$by_day  = array( array(), array(), array(), array(), array(), array(), array() );
 		$orphans = array();
+
 		foreach ( $entries as $row ) {
-			if ( ! is_array( $row ) ) {
-				continue;
-			}
-			if ( ! self::row_has_displayable_content( $row ) ) {
+			if ( ! is_array( $row ) || ! self::row_has_displayable_content( $row ) ) {
 				continue;
 			}
 			$idx = self::parse_weekday_index( (string) ( $row['day'] ?? '' ) );
@@ -98,59 +103,56 @@ final class Stardance_Event_Schedule_Week_Display {
 				$orphans[] = $row;
 				continue;
 			}
-			if ( ! isset( $by_day[ $idx ] ) ) {
-				$by_day[ $idx ] = array();
-			}
 			$by_day[ $idx ][] = $row;
 		}
 
-		$active = array_keys( $by_day );
-		sort( $active );
-		$start = self::choose_week_start( $active );
+		$make_sessions = static function ( array $rows ): array {
+			$sessions = array();
+			foreach ( $rows as $r ) {
+				$time  = trim( (string) ( $r['time'] ?? '' ) );
+				$title = trim( (string) ( $r['title'] ?? '' ) );
+				$meta  = trim( (string) ( $r['location'] ?? '' ) );
+				if ( '' === $time && '' === $title && '' === $meta ) {
+					continue;
+				}
+				$sessions[] = array(
+					'time'  => $time,
+					'title' => $title,
+					'meta'  => $meta,
+				);
+			}
+			return $sessions;
+		};
 
-		$columns = array();
-		for ( $k = 0; $k < 7; $k++ ) {
-			$d = ( $start + $k ) % 7;
-			$columns[] = array(
-				'weekday_index' => $d,
-				'label'         => self::WEEKDAY_LABELS[ $d ],
-				'rows'          => isset( $by_day[ $d ] ) ? $by_day[ $d ] : array(),
+		$make_day = static function ( int $i ) use ( $by_day, $make_sessions ): array {
+			$sessions = $make_sessions( $by_day[ $i ] );
+			return array(
+				'label'    => self::WEEKDAY_LABELS[ $i ],
+				'closed'   => array() === $sessions,
+				'sessions' => $sessions,
 			);
+		};
+
+		$weekdays = array();
+		for ( $i = 0; $i < 5; $i++ ) {
+			$weekdays[] = $make_day( $i );
+		}
+		$weekend = array( $make_day( 5 ), $make_day( 6 ) );
+
+		$has_any = false;
+		for ( $i = 0; $i < 7; $i++ ) {
+			if ( array() !== $by_day[ $i ] ) {
+				$has_any = true;
+				break;
+			}
 		}
 
 		return array(
-			'columns'         => $columns,
-			'orphans'         => $orphans,
-			'has_parsed_days' => array() !== $by_day,
+			'weekdays'           => $weekdays,
+			'weekend'            => $weekend,
+			'orphans'            => $orphans,
+			'has_any_parsed_day' => $has_any,
 		);
-	}
-
-	/**
-	 * @param array<int> $active Sorted weekday indices that have sessions.
-	 * @return int Start weekday index (0–6) for the first column.
-	 */
-	private static function choose_week_start( array $active ): int {
-		if ( array() === $active ) {
-			return 0;
-		}
-
-		$best_start = 0;
-		$best_score = PHP_FLOAT_MAX;
-
-		for ( $s = 0; $s < 7; $s++ ) {
-			$positions = array();
-			foreach ( $active as $a ) {
-				$positions[] = ( $a - $s + 7 ) % 7;
-			}
-			$mean  = array_sum( $positions ) / count( $positions );
-			$score = abs( $mean - 3 );
-			if ( $score < $best_score ) {
-				$best_score = $score;
-				$best_start = $s;
-			}
-		}
-
-		return $best_start;
 	}
 
 	/**

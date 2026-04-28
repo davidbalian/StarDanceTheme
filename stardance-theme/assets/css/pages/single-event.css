@@ -221,22 +221,10 @@
   color: var(--sd-navy);
 }
 
-.sd-single-event__schedule-week-wrap {
-  overflow-x: auto;
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
+/* Same grid as homepage timetable (see sections.css + responsive.css). */
+.sd-single-event__timetable-grid {
   margin: 0 auto var(--sd-space-xl);
   max-width: var(--sd-max-width);
-  width: 100%;
-}
-
-.sd-single-event__schedule-week {
-  display: grid;
-  grid-template-columns: repeat(7, minmax(6.75rem, 1fr));
-  gap: 0.5rem;
-  align-items: start;
-  width: 100%;
-  min-width: min(100%, 56rem);
 }
 
 .sd-single-event__schedule-orphans {
