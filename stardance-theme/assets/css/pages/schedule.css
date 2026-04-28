@@ -7,13 +7,6 @@
   --sd-page-hero-bg-image: url("https://stardance.com.cy/wp-content/uploads/2026/03/european-ballroom-class.webp");
 }
 
-@media (min-width: 992px) {
-  .sd-page-hero--schedule {
-    height: var(--sd-page-hero-height);
-    max-height: var(--sd-page-hero-max-height);
-  }
-}
-
 .sd-page--schedule .sd-cta {
   --sd-page-cta-bg-image: url("https://stardance.com.cy/wp-content/uploads/2026/03/schedule-cta-bg.webp");
   --sd-page-cta-top-width: 35%;

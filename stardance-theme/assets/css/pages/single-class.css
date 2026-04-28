@@ -13,35 +13,6 @@
   --sd-page-hero-line-image: url('https://stardance.com.cy/wp-content/uploads/2026/03/classes-lines-left.svg');
 }
 
-@media (min-width: 992px) {
-  .sd-page-hero--single-class {
-    height: var(--sd-page-hero-height);
-    max-height: var(--sd-page-hero-max-height);
-  }
-}
-
-.sd-page-hero--single-class::before {
-  top: auto;
-  bottom: 0;
-  transform: none;
-  background-position: left bottom;
-}
-
-.sd-page-hero--single-class::after {
-  right: 0;
-  bottom: 0;
-  transform: scaleX(-1);
-  background-position: left bottom;
-}
-
-.sd-page-hero--single-class .sd-page-hero__buttons {
-  display: flex;
-  gap: var(--sd-space-sm);
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: var(--sd-space-md);
-}
-
 .sd-page--single-class .sd-cta {
   --sd-page-cta-bg-image: url('https://stardance.com.cy/wp-content/uploads/2026/03/single-class-bottom-cta.webp');
   --sd-page-cta-top-width: 35%;

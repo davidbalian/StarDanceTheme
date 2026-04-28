@@ -436,6 +436,11 @@
   text-align: center;
 }
 
+/* Inner heroes: no .sd-section vertical padding — spacing lives in .sd-page-hero__content */
+.sd-page-hero.sd-section {
+  padding-bottom: 0;
+}
+
 .sd-page-hero--about,
 .sd-page-hero--classes,
 .sd-page-hero--schedule,
@@ -464,7 +469,8 @@
   height: var(--sd-page-hero-height);
   max-height: var(--sd-page-hero-max-height);
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: flex-end;
   overflow: hidden;
 }
 
@@ -472,6 +478,7 @@
 .sd-page-hero--classes::before,
 .sd-page-hero--schedule::before,
 .sd-page-hero--gallery::before,
+.sd-page-hero--events::before,
 .sd-page-hero--contact::before,
 .sd-page-hero--single-class::before,
 .sd-page-hero--single-event::before {
@@ -494,6 +501,7 @@
 .sd-page-hero--classes::after,
 .sd-page-hero--schedule::after,
 .sd-page-hero--gallery::after,
+.sd-page-hero--events::after,
 .sd-page-hero--contact::after,
 .sd-page-hero--single-class::after,
 .sd-page-hero--single-event::after {
@@ -523,14 +531,15 @@
   z-index: 2;
 }
 
-.sd-page-hero--about .sd-page-hero__title,
-.sd-page-hero--classes .sd-page-hero__title,
-.sd-page-hero--schedule .sd-page-hero__title,
-.sd-page-hero--gallery .sd-page-hero__title,
-.sd-page-hero--events .sd-page-hero__title,
-.sd-page-hero--contact .sd-page-hero__title,
-.sd-page-hero--single-class .sd-page-hero__title,
-.sd-page-hero--single-event .sd-page-hero__title {
+.sd-page-hero .sd-page-hero__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  text-align: center;
+  padding-bottom: var(--sd-space-xl);
+}
+
+.sd-page-hero[class*="sd-page-hero--"] .sd-page-hero__title {
   color: var(--sd-white);
   font-size: var(--sd-type-display-page);
   line-height: var(--sd-leading-tight);
@@ -539,22 +548,8 @@
   text-wrap: balance;
 }
 
-.sd-page-hero--about .sd-page-hero__desc,
-.sd-page-hero--classes .sd-page-hero__desc,
-.sd-page-hero--schedule .sd-page-hero__desc,
-.sd-page-hero--gallery .sd-page-hero__desc,
-.sd-page-hero--events .sd-page-hero__desc,
-.sd-page-hero--contact .sd-page-hero__desc,
-.sd-page-hero--single-class .sd-page-hero__desc,
-.sd-page-hero--single-event .sd-page-hero__desc,
-.sd-page-hero--about .sd-page-hero__meta,
-.sd-page-hero--classes .sd-page-hero__meta,
-.sd-page-hero--schedule .sd-page-hero__meta,
-.sd-page-hero--gallery .sd-page-hero__meta,
-.sd-page-hero--events .sd-page-hero__meta,
-.sd-page-hero--contact .sd-page-hero__meta,
-.sd-page-hero--single-class .sd-page-hero__meta,
-.sd-page-hero--single-event .sd-page-hero__meta {
+.sd-page-hero[class*="sd-page-hero--"] .sd-page-hero__desc,
+.sd-page-hero[class*="sd-page-hero--"] .sd-page-hero__meta {
   color: var(--sd-white);
   font-family: var(--sd-font-body);
   font-weight: 400;
@@ -562,6 +557,18 @@
   line-height: var(--sd-leading-body);
   letter-spacing: 0;
   text-wrap: pretty;
+}
+
+.sd-page-hero__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sd-space-sm);
+  justify-content: center;
+  margin-top: var(--sd-space-md);
+}
+
+.sd-page-hero__content > .sd-btn {
+  margin-top: var(--sd-space-md);
 }
 
 .sd-page-hero__meta {

@@ -11,26 +11,6 @@
   --sd-page-hero-bg-image: url('https://stardance.com.cy/wp-content/uploads/2026/03/events-page-her-bg.webp');
 }
 
-@media (min-width: 992px) {
-  .sd-page-hero--events {
-    height: var(--sd-page-hero-height);
-    max-height: var(--sd-page-hero-max-height);
-  }
-}
-
-/* Full-width long-lines SVG decoration at bottom of events hero */
-.sd-page-hero--events::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url('https://stardance.com.cy/wp-content/uploads/2026/03/long-lines-cropped.svg');
-  background-size: 100% auto;
-  background-repeat: no-repeat;
-  background-position: center 90%;
-  z-index: 1;
-  pointer-events: none;
-}
-
 /* ========================================
    CTA
    ======================================== */
@@ -376,11 +356,5 @@
 
   .sd-event-card__btn {
     padding: 0.35rem 2.5rem;
-  }
-}
-
-@media (max-width: 478px) {
-  .sd-page-hero--events::after {
-    bottom: 6%;
   }
 }

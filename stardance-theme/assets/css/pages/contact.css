@@ -7,13 +7,6 @@
   --sd-page-hero-bg-image: url("https://stardance.com.cy/wp-content/uploads/2026/04/contact-page-hero-bg-e1777296288202.webp");
 }
 
-@media (min-width: 992px) {
-  .sd-page-hero--contact {
-    height: var(--sd-page-hero-height);
-    max-height: var(--sd-page-hero-max-height);
-  }
-}
-
 .sd-contact-page {
   background: var(--sd-light-blue);
 }

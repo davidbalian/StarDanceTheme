@@ -371,12 +371,6 @@
   }
 }
 
-@media (max-width: 850px) and (min-width: 768px) {
-  .sd-page-hero--single-class {
-    min-height: 780px;
-  }
-}
-
 @media (max-width: 850px) {
   .sd-page--single-class .sd-faq__list {
     padding: 6px 16px;
