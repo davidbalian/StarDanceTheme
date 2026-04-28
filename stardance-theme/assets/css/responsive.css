@@ -65,23 +65,12 @@
     justify-content: center;
   }
 
-  /* Page hero decorative lines — half desktop size; vw cap so phones don’t overflow */
-  .sd-page-hero--about::before,
-  .sd-page-hero--classes::before,
-  .sd-page-hero--schedule::before,
-  .sd-page-hero--gallery::before,
-  .sd-page-hero--events::before,
-  .sd-page-hero--contact::before,
-  .sd-page-hero--single-class::before,
-  .sd-page-hero--single-event::before,
-  .sd-page-hero--about::after,
-  .sd-page-hero--classes::after,
-  .sd-page-hero--schedule::after,
-  .sd-page-hero--gallery::after,
-  .sd-page-hero--events::after,
-  .sd-page-hero--contact::after,
-  .sd-page-hero--single-class::after,
-  .sd-page-hero--single-event::after {
+  /*
+   * Inner page hero squiggles (::before/::after) — half desktop size; vw cap on narrow viewports.
+   * Matches any .sd-page-hero--* modifier. Homepage uses .sd-hero only, so it is excluded.
+   */
+  .sd-page-hero[class*="sd-page-hero--"]::before,
+  .sd-page-hero[class*="sd-page-hero--"]::after {
     width: min(260px, 38vw);
     height: min(176px, 26vw);
   }
