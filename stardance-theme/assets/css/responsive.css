@@ -26,6 +26,13 @@
   }
 }
 
+/* XL (>= 1920px) should override the 992px desktop cap for the homepage hero */
+@media (min-width: 1920px) {
+  :root {
+    --sd-hero-max-height: 900px;
+  }
+}
+
 /* Desktop/tablet header spacing */
 @media (min-width: 768px) {
   .sd-header__inner {
