@@ -51,7 +51,7 @@
 }
 
 :is(.sd-page--classes, .sd-classes) .sd-overlay-card--tall {
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 4 / 5;
   height: auto;
   border-radius: 18px;
   background-position: center;
@@ -246,7 +246,7 @@
 
 @media (max-width: 991px) {
   :is(.sd-page--classes, .sd-classes) .sd-overlay-card--tall {
-    aspect-ratio: 3 / 4;
+    aspect-ratio: 4 / 5;
   }
 
   .sd-classes-faq__layout {
@@ -265,7 +265,7 @@
   }
 
   :is(.sd-page--classes, .sd-classes) .sd-overlay-card--tall {
-    aspect-ratio: 3 / 4;
+    aspect-ratio: 4 / 5;
   }
 
   :is(.sd-page--classes, .sd-classes) .sd-overlay-card__content {
@@ -290,7 +290,7 @@
 
 @media (max-width: 478px) {
   :is(.sd-page--classes, .sd-classes) .sd-overlay-card--tall {
-    aspect-ratio: 3 / 4;
+    aspect-ratio: 4 / 5;
   }
 
   .sd-classes-faq__image {

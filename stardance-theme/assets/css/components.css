@@ -366,6 +366,12 @@
   pointer-events: none;
 }
 
+/* Class cards (tall overlay) need the decoration pulled down slightly */
+.sd-overlay-card--tall .sd-overlay-card__decoration {
+  height: auto;
+  margin-bottom: -4rem;
+}
+
 .sd-overlay-card__content {
   position: relative;
   z-index: 3;
