@@ -126,7 +126,7 @@
   background-image: var(--sd-home-hero-bg-image-tablet);
   background-size: cover;
   background-position: center center;
-  background-attachment: fixed;
+  background-attachment: scroll;
   margin-top: -80px;
   padding-top: 80px;
 }
