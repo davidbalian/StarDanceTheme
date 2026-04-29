@@ -26,6 +26,13 @@
   }
 }
 
+/* XL+ (larger than 1920px): inner-page heroes cap higher */
+@media (min-width: 1921px) {
+  :root {
+    --sd-page-hero-max-height: 900px;
+  }
+}
+
 /* XL (>= 1920px) should override the 992px desktop cap for the homepage hero */
 @media (min-width: 1920px) {
   :root {
