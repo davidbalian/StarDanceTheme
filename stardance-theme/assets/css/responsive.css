@@ -29,7 +29,7 @@
 /* XL (>= 1920px) should override the 992px desktop cap for the homepage hero */
 @media (min-width: 1920px) {
   :root {
-    --sd-hero-max-height: 900px;
+    --sd-hero-max-height: 1000px;
   }
 }
 
