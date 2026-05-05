@@ -13,18 +13,13 @@ $schedule_days = array(
         'label'    => 'Mon',
         'sessions' => array(
             array(
-                'time'  => '9:00 - 16:30',
-                'title' => 'Individual Lessons',
-            ),
-            array(
-                'time'  => '16:30 - 18:00',
-                'title' => 'Latin American Dances',
-                'meta'  => '(Age 8-10)',
+                'time'  => '16:30 - 17:45',
+                'title' => 'Classical Choreography',
             ),
             array(
                 'time'  => '18:00 - 19:30',
                 'title' => 'Latin American Dances',
-                'meta'  => '(Age 11-15)',
+                'meta'  => 'Couples & Solo (Age 8+)',
             ),
         ),
     ),
@@ -32,22 +27,19 @@ $schedule_days = array(
         'label'    => 'Tue',
         'sessions' => array(
             array(
-                'time'  => '9:30 - 11:00',
-                'title' => 'Ladies Latin Fusion',
-                'meta'  => '(Age 18+)',
-            ),
-            array(
-                'time'  => '11:00 - 16:30',
-                'title' => 'Individual Lessons',
-            ),
-            array(
                 'time'  => '16:30 - 17:00',
                 'title' => 'Baby Dance',
-                'meta'  => '(Age 3-4)',
+                'meta'  => '(Age 4-5)',
             ),
             array(
-                'time'  => '17:00 - 18:00',
-                'title' => 'Stretching',
+                'time'  => '17:00 - 17:45',
+                'title' => 'Kids Dance',
+                'meta'  => '(Age 6-7)',
+            ),
+            array(
+                'time'  => '18:00 - 19:30',
+                'title' => 'Latin Fusion',
+                'meta'  => 'Ladies Solo',
             ),
         ),
     ),
@@ -55,18 +47,13 @@ $schedule_days = array(
         'label'    => 'Wed',
         'sessions' => array(
             array(
-                'time'  => '9:00 - 16:30',
-                'title' => 'Individual Lessons',
-            ),
-            array(
-                'time'  => '16:30 - 18:00',
-                'title' => 'European Ballroom Dances',
-                'meta'  => '(Age 8-10)',
+                'time'  => '16:30 - 17:45',
+                'title' => 'Physical Conditioning',
             ),
             array(
                 'time'  => '18:00 - 19:30',
-                'title' => 'European Ballroom Dances',
-                'meta'  => '(Age 11-15)',
+                'title' => 'European Ballroom',
+                'meta'  => 'Couples & Solo (Age 8+)',
             ),
         ),
     ),
@@ -74,23 +61,19 @@ $schedule_days = array(
         'label'    => 'Thu',
         'sessions' => array(
             array(
-                'time'  => '9:00 - 16:30',
-                'title' => 'Individual Lessons',
-            ),
-            array(
                 'time'  => '16:30 - 17:00',
                 'title' => 'Baby Dance',
-                'meta'  => '(Age 3-4)',
+                'meta'  => '(Age 4-5)',
             ),
             array(
                 'time'  => '17:00 - 17:45',
                 'title' => 'Kids Dance',
-                'meta'  => '(Age 5-7)',
+                'meta'  => '(Age 6-7)',
             ),
             array(
                 'time'  => '18:00 - 19:30',
-                'title' => 'Show Latin Fusion',
-                'meta'  => '(Age 11-15)',
+                'title' => 'Latin Fusion',
+                'meta'  => 'Ladies Solo',
             ),
         ),
     ),
@@ -98,23 +81,14 @@ $schedule_days = array(
         'label'    => 'Fri',
         'sessions' => array(
             array(
-                'time'  => '9:30 - 11:00',
-                'title' => 'Ladies Latin Fusion',
-                'meta'  => '(Age 18+)',
-            ),
-            array(
-                'time'  => '11:00 - 17:00',
-                'title' => 'Individual Lessons',
-            ),
-            array(
-                'time'  => '17:00 - 17:45',
-                'title' => 'Kids Dance',
-                'meta'  => '(Age 5-7)',
+                'time'  => '16:30 - 17:45',
+                'title' => 'Body Ballet',
+                'meta'  => 'Stretching',
             ),
             array(
                 'time'  => '18:00 - 19:30',
-                'title' => 'Ballroom & Latin American Dances',
-                'meta'  => '(All Ages Practice)',
+                'title' => 'Competition Practice',
+                'meta'  => 'Standard & Latin American',
             ),
         ),
     ),
