@@ -133,6 +133,10 @@
   object-position: bottom center;
 }
 
+.sd-page--classes .sd-overlay-card--tall .sd-overlay-card__decoration {
+  margin-bottom: 0;
+}
+
 /* ========================================
    FAQ Layout
    ======================================== */
