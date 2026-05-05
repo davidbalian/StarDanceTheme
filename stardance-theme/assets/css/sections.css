@@ -448,6 +448,11 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.sd-coaches__link:hover .sd-coaches__card > img {
+  transform: scale(1.05);
 }
 
 .sd-coaches__overlay {
