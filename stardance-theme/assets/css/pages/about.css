@@ -417,6 +417,10 @@
   }
 
   /* Coach slider — single column slides, arrows below track */
+  .sd-about-coach__track {
+    align-items: flex-start;
+  }
+
   .sd-about-coach__slide {
     grid-template-columns: 1fr;
     gap: var(--sd-space-lg);
