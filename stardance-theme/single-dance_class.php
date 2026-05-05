@@ -14,7 +14,7 @@ $sd_has_acf  = function_exists( 'get_field' );
 $sd_excerpt  = get_the_excerpt() ? get_the_excerpt() : wp_trim_words( wp_strip_all_tags( get_the_content() ), 34 );
 $sd_map_embed = $sd_has_acf ? trim( (string) get_field( 'map_embed_code', $sd_class_id ) ) : '';
 
-/** Default map when no ACF embed: KIDDOM, Limassol. */
+/** Default map when no ACF embed: Star Dance Cyprus, Limassol. */
 $sd_map_embed_allowed = array(
     'iframe' => array(
         'src'             => true,
@@ -31,10 +31,10 @@ $sd_map_embed_allowed = array(
 
 $sd_map_html = $sd_map_embed;
 if ( '' === $sd_map_html ) {
-    $sd_map_src  = 'https://maps.google.com/maps?q=' . rawurlencode( 'KIDDOM, Limassol, Cyprus' ) . '&z=16&output=embed';
+    $sd_map_src  = 'https://maps.google.com/maps?q=' . rawurlencode( 'STAR DANCE CYPRUS, Limassol, Cyprus' ) . '&z=16&output=embed';
     $sd_map_html = sprintf(
         '<iframe class="sd-class-location__iframe" title="%s" src="%s" width="600" height="450" style="border:0;width:100%%;min-height:420px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>',
-        esc_attr__( 'Map: KIDDOM, Limassol', 'stardance' ),
+        esc_attr__( 'Map: Star Dance Cyprus, Limassol', 'stardance' ),
         esc_url( $sd_map_src )
     );
 }

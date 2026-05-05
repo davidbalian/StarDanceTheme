@@ -28,7 +28,12 @@
                         $coach_name_classes .= ' sd-coaches__name--light';
                     }
                     ?>
+                    <?php
+                    $coach_slug = get_post_field( 'post_name' );
+                    $coach_link = add_query_arg( 'coach', $coach_slug, stardance_page_or_path_url( 'about' ) ) . '#coach';
+                    ?>
                     <div class="sd-coaches__item fade-in <?php echo esc_attr( 'fade-in-delay-' . $delay ); ?>">
+                        <a class="sd-coaches__link" href="<?php echo esc_url( $coach_link ); ?>" aria-label="<?php echo esc_attr( sprintf( __( 'View %s profile', 'stardance' ), get_the_title() ) ); ?>">
                         <div class="sd-coaches__card">
                             <?php if ( has_post_thumbnail() ) : ?>
                                 <?php the_post_thumbnail( 'large', array( 'alt' => get_the_title(), 'loading' => 'lazy' ) ); ?>
@@ -43,6 +48,7 @@
                             </div>
                             <h3 class="<?php echo esc_attr( $coach_name_classes ); ?>"><?php the_title(); ?></h3>
                         </div>
+                        </a>
                     </div>
                     <?php
                 endwhile;

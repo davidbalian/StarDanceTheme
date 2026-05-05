@@ -24,6 +24,12 @@ document.addEventListener('DOMContentLoaded', function () {
     track.insertBefore(lastClone, slides[0]);
     track.appendChild(firstClone);
 
+    const targetSlug = new URLSearchParams(window.location.search).get('coach');
+    if (targetSlug) {
+        const matchIndex = slides.findIndex(function (s) { return s.dataset.coachSlug === targetSlug; });
+        if (matchIndex !== -1) current = matchIndex + 1;
+    }
+
     function updatePosition(useTransition) {
         track.style.transition = useTransition ? transitionValue : 'none';
         track.style.transform = 'translateX(-' + (current * 100) + '%)';

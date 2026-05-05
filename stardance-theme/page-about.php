@@ -156,7 +156,7 @@ $sd_page_id = get_queried_object_id();
                                     $coach_name_classes .= ' sd-coaches__name--light';
                                 }
                                 ?>
-                                <div class="sd-about-coach__slide">
+                                <div class="sd-about-coach__slide" data-coach-slug="<?php echo esc_attr( get_post_field( 'post_name' ) ); ?>">
                                     <div class="sd-about-coach__bio">
                                         <h3 class="sd-heading sd-about-coach__name"><?php the_title(); ?></h3>
                                         <?php if ( get_the_content() ) : ?>
