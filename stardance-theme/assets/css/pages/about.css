@@ -420,6 +420,7 @@
   .sd-about-coach__slide {
     grid-template-columns: 1fr;
     gap: var(--sd-space-lg);
+    align-content: start;
   }
 
   .sd-about-coach__slide .sd-about-coach__image {
