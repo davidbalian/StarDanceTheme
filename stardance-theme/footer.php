@@ -30,7 +30,7 @@
             </div>
             <div class="sd-footer__contact-item">
                 <strong>Address:</strong>
-                <span>Masterland/KIDDOM, Spyrou Kyprianou Ave 48, Limassol 4043</span>
+                <a href="https://maps.app.goo.gl/DMsuHSYPQcHSBjHA9" target="_blank" rel="noopener noreferrer">Masterland/KIDDOM, Spyrou Kyprianou Ave 48, Limassol 4043</a>
             </div>
             <div class="sd-footer__contact-item">
                 <strong>Operating Hours:</strong>
