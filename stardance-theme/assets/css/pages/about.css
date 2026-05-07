@@ -412,6 +412,10 @@
     grid-template-columns: 1fr;
   }
 
+  .sd-about-values__col {
+    gap: var(--sd-space-sm);
+  }
+
   .sd-about-values__trophy {
     order: -1;
   }
