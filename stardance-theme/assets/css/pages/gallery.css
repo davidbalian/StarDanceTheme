@@ -92,7 +92,7 @@
   position: relative;
   display: block;
   overflow: hidden;
-  border-radius: 0;
+  border-radius: var(--sd-radius);
   aspect-ratio: 1 / 1;
   background: #d9f7fc;
   box-shadow: 0 20px 44px rgba(0, 56, 109, 0.14);
@@ -188,6 +188,12 @@
 
   .sd-gallery-page__filter-tabs {
     gap: 0.75rem 1rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .sd-gallery-page__grid {
+    gap: 5px;
   }
 }
 
