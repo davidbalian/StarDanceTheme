@@ -106,6 +106,10 @@
     padding-top: 20px;
   }
 
+  .sd-coaches__name {
+    font-size: var(--sd-type-h2);
+  }
+
   /* Mobile Menu */
   .sd-header__toggle {
     display: flex;
@@ -263,11 +267,11 @@
   }
 
   .sd-footer__brand {
-    justify-content: flex-start;
+    justify-content: center;
   }
 
   .sd-footer__legal-inner {
-    justify-content: flex-start;
+    justify-content: center;
     flex-wrap: wrap;
   }
 
