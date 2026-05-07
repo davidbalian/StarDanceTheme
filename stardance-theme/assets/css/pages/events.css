@@ -136,19 +136,21 @@
    Filters Mobile Accordion
    ======================================== */
 
-/* Desktop default: toggle hidden, panel always visible */
-.sd-events-filter-mobile__toggle {
-  display: none;
-}
+/* Desktop (≥992px): toggle hidden, panel always visible */
+@media (min-width: 992px) {
+  .sd-events-filter-mobile__toggle {
+    display: none;
+  }
 
-.sd-events-filter-mobile__panel[hidden] {
-  display: block;
-}
+  .sd-events-filter-mobile__panel[hidden] {
+    display: block;
+  }
 
-.sd-events-filter-mobile__panel {
-  height: auto;
-  opacity: 1;
-  overflow: visible;
+  .sd-events-filter-mobile__panel {
+    height: auto;
+    opacity: 1;
+    overflow: visible;
+  }
 }
 
 /* ========================================
@@ -377,15 +379,13 @@
     flex: none;
     box-sizing: border-box;
   }
-}
 
-@media (max-width: 767px) {
   .sd-events-filter-mobile__toggle {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: 1.5rem;
+    padding: 1rem 1.5rem;
     background:
       linear-gradient(var(--sd-events-filter-bg), var(--sd-events-filter-bg)) padding-box,
       var(--sd-events-filter-border) border-box;
@@ -444,7 +444,9 @@
     opacity: 1;
     padding-top: var(--sd-space-sm);
   }
+}
 
+@media (max-width: 767px) {
   .sd-events-page__grid {
     grid-template-columns: 1fr;
   }

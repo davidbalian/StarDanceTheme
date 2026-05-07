@@ -102,7 +102,7 @@
   var panel  = wrapper.querySelector('.sd-events-filter-mobile__panel');
   if (!toggle || !panel) return;
 
-  var mq = window.matchMedia('(max-width: 767px)');
+  var mq = window.matchMedia('(max-width: 991px)');
 
   function openPanel() {
     wrapper.classList.add('is-open');
