@@ -156,7 +156,12 @@
   }
 
   .sd-header.scrolling .sd-header__logo img {
-    width: 45px;
+    width: 40px;
+  }
+
+  .sd-header.scrolling .sd-header__inner {
+    padding-top: 6px;
+    padding-bottom: 6px;
   }
 
   /* Hero */
