@@ -101,6 +101,11 @@
     margin-bottom: 30px;
   }
 
+  .sd-competitions,
+  .sd-coaches {
+    padding-top: 30px;
+  }
+
   /* Mobile Menu */
   .sd-header__toggle {
     display: flex;
