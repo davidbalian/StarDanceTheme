@@ -8,7 +8,7 @@
 
         <div class="sd-about__features">
             <?php stardance_render_icon_card(array(
-                'icon_url'  => get_template_directory_uri() . '/assets/images/icon-ages.svg',
+                'icon_url'  => 'https://stardance.com.cy/wp-content/uploads/2026/02/004-leaderboard.svg',
                 'title'     => 'Ages &amp; Levels:',
                 'text'      => 'All ages welcome, starting from 3+ years old through adults. We offer classes for all levels, from absolute beginners to competitive dancers.',
                 'icon_size' => 60,
@@ -16,7 +16,7 @@
             )); ?>
 
             <?php stardance_render_icon_card(array(
-                'icon_url'  => get_template_directory_uri() . '/assets/images/icon-training.svg',
+                'icon_url'  => 'https://stardance.com.cy/wp-content/uploads/2026/02/002-trophy.svg',
                 'title'     => 'Professional Training &amp; Winning Coaches:',
                 'text'      => 'Learn from professionals who have coached winning competitive dancers. We bring a champion&rsquo;s mindset to every class.',
                 'icon_size' => 60,
@@ -24,7 +24,7 @@
             )); ?>
 
             <?php stardance_render_icon_card(array(
-                'icon_url'  => get_template_directory_uri() . '/assets/images/icon-goal.svg',
+                'icon_url'  => 'https://stardance.com.cy/wp-content/uploads/2026/02/010-leadership.svg',
                 'title'     => 'Your Goal, Your Class:',
                 'text'      => 'Whether you want to compete professionally or simply want to dance for fun, fitness, or a new hobby, we have the right program for you.',
                 'icon_size' => 60,
@@ -32,7 +32,7 @@
             )); ?>
 
             <?php stardance_render_icon_card(array(
-                'icon_url'  => get_template_directory_uri() . '/assets/images/icon-member.svg',
+                'icon_url'  => 'https://stardance.com.cy/wp-content/uploads/2026/02/011-agreement.svg',
                 'title'     => 'Official Member:',
                 'text'      => 'Proud member of the Cyprus Federation of Social &amp; Sport Dance.',
                 'icon_size' => 60,
@@ -40,7 +40,7 @@
             )); ?>
 
             <?php stardance_render_icon_card(array(
-                'icon_url'  => get_template_directory_uri() . '/assets/images/icon-flexible.svg',
+                'icon_url'  => 'https://stardance.com.cy/wp-content/uploads/2026/02/005-dance.svg',
                 'title'     => 'Flexible Programs:',
                 'text'      => 'Choose from couples, solo, and specialized group classes to fit your needs.',
                 'icon_size' => 60,
