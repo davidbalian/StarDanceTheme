@@ -195,6 +195,14 @@
     padding-top: 80px;
   }
 
+  .sd-page-hero[class*="sd-page-hero--"] .sd-page-hero__content {
+    padding-bottom: 0;
+  }
+
+  .sd-page-hero[class*="sd-page-hero--"].sd-section {
+    padding-bottom: 4rem;
+  }
+
   /* Overlay card */
   .sd-overlay-card--tall {
     height: 300px;
