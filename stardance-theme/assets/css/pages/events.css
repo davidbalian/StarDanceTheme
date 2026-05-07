@@ -385,14 +385,16 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: var(--sd-space-sm) var(--sd-space-md);
-    background: var(--sd-white);
-    border: 1px solid rgba(0, 56, 109, 0.12);
-    border-radius: var(--sd-radius);
+    padding: 1.5rem;
+    background:
+      linear-gradient(var(--sd-events-filter-bg), var(--sd-events-filter-bg)) padding-box,
+      var(--sd-events-filter-border) border-box;
+    border: 1px solid transparent;
+    border-radius: 8px;
     font-family: var(--sd-font-heading);
     font-weight: 600;
     font-size: var(--sd-type-btn-lg);
-    color: var(--sd-navy);
+    color: var(--sd-events-filter-title);
     cursor: pointer;
     gap: var(--sd-space-sm);
     transition: color var(--sd-transition);
