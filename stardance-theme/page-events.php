@@ -32,48 +32,56 @@ $sd_page_id = get_queried_object_id();
 
                 <!-- Sidebar Filters -->
                 <aside class="sd-events-page__sidebar fade-in fade-in-delay-1" aria-label="Filter events">
-                    <div class="sd-events-filter">
+                    <div class="sd-events-filter-mobile">
+                        <button class="sd-events-filter-mobile__toggle" type="button" aria-expanded="false" aria-controls="events-filter-panel">
+                            <span class="sd-events-filter-mobile__title">Filters</span>
+                            <span class="sd-events-filter-mobile__icon" aria-hidden="true"></span>
+                        </button>
+                        <div class="sd-events-filter-mobile__panel" id="events-filter-panel" hidden>
+                            <div class="sd-events-filter">
 
-                        <div class="sd-events-filter__group">
-                            <h3 class="sd-events-filter__label">Filter by Year</h3>
-                            <ul class="sd-events-filter__options">
-                                <li><button class="sd-events-filter__btn is-active" type="button" data-filter-group="event_year" data-filter-value="all" aria-pressed="true">All</button></li>
-                                <?php foreach ( $event_filters['years'] as $term ) : ?>
-                                    <li><button class="sd-events-filter__btn" type="button" data-filter-group="event_year" data-filter-value="<?php echo esc_attr( $term->slug ); ?>" aria-pressed="false"><?php echo esc_html( $term->name ); ?></button></li>
-                                <?php endforeach; ?>
-                            </ul>
+                                <div class="sd-events-filter__group">
+                                    <h3 class="sd-events-filter__label">Filter by Year</h3>
+                                    <ul class="sd-events-filter__options">
+                                        <li><button class="sd-events-filter__btn is-active" type="button" data-filter-group="event_year" data-filter-value="all" aria-pressed="true">All</button></li>
+                                        <?php foreach ( $event_filters['years'] as $term ) : ?>
+                                            <li><button class="sd-events-filter__btn" type="button" data-filter-group="event_year" data-filter-value="<?php echo esc_attr( $term->slug ); ?>" aria-pressed="false"><?php echo esc_html( $term->name ); ?></button></li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </div>
+
+                                <div class="sd-events-filter__group">
+                                    <h3 class="sd-events-filter__label">Filter by Category</h3>
+                                    <ul class="sd-events-filter__options">
+                                        <li><button class="sd-events-filter__btn is-active" type="button" data-filter-group="event_category" data-filter-value="all" aria-pressed="true">All</button></li>
+                                        <?php foreach ( $event_filters['categories'] as $term ) : ?>
+                                            <li><button class="sd-events-filter__btn" type="button" data-filter-group="event_category" data-filter-value="<?php echo esc_attr( $term->slug ); ?>" aria-pressed="false"><?php echo esc_html( $term->name ); ?></button></li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </div>
+
+                                <div class="sd-events-filter__group">
+                                    <h3 class="sd-events-filter__label">Filter by Type</h3>
+                                    <ul class="sd-events-filter__options">
+                                        <li><button class="sd-events-filter__btn is-active" type="button" data-filter-group="event_type" data-filter-value="all" aria-pressed="true">All</button></li>
+                                        <?php foreach ( $event_filters['types'] as $term ) : ?>
+                                            <li><button class="sd-events-filter__btn" type="button" data-filter-group="event_type" data-filter-value="<?php echo esc_attr( $term->slug ); ?>" aria-pressed="false"><?php echo esc_html( $term->name ); ?></button></li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </div>
+
+                                <div class="sd-events-filter__group">
+                                    <h3 class="sd-events-filter__label">Filter by Style</h3>
+                                    <ul class="sd-events-filter__options">
+                                        <li><button class="sd-events-filter__btn is-active" type="button" data-filter-group="event_style" data-filter-value="all" aria-pressed="true">All</button></li>
+                                        <?php foreach ( $event_filters['styles'] as $term ) : ?>
+                                            <li><button class="sd-events-filter__btn" type="button" data-filter-group="event_style" data-filter-value="<?php echo esc_attr( $term->slug ); ?>" aria-pressed="false"><?php echo esc_html( $term->name ); ?></button></li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </div>
+
+                            </div>
                         </div>
-
-                        <div class="sd-events-filter__group">
-                            <h3 class="sd-events-filter__label">Filter by Category</h3>
-                            <ul class="sd-events-filter__options">
-                                <li><button class="sd-events-filter__btn is-active" type="button" data-filter-group="event_category" data-filter-value="all" aria-pressed="true">All</button></li>
-                                <?php foreach ( $event_filters['categories'] as $term ) : ?>
-                                    <li><button class="sd-events-filter__btn" type="button" data-filter-group="event_category" data-filter-value="<?php echo esc_attr( $term->slug ); ?>" aria-pressed="false"><?php echo esc_html( $term->name ); ?></button></li>
-                                <?php endforeach; ?>
-                            </ul>
-                        </div>
-
-                        <div class="sd-events-filter__group">
-                            <h3 class="sd-events-filter__label">Filter by Type</h3>
-                            <ul class="sd-events-filter__options">
-                                <li><button class="sd-events-filter__btn is-active" type="button" data-filter-group="event_type" data-filter-value="all" aria-pressed="true">All</button></li>
-                                <?php foreach ( $event_filters['types'] as $term ) : ?>
-                                    <li><button class="sd-events-filter__btn" type="button" data-filter-group="event_type" data-filter-value="<?php echo esc_attr( $term->slug ); ?>" aria-pressed="false"><?php echo esc_html( $term->name ); ?></button></li>
-                                <?php endforeach; ?>
-                            </ul>
-                        </div>
-
-                        <div class="sd-events-filter__group">
-                            <h3 class="sd-events-filter__label">Filter by Style</h3>
-                            <ul class="sd-events-filter__options">
-                                <li><button class="sd-events-filter__btn is-active" type="button" data-filter-group="event_style" data-filter-value="all" aria-pressed="true">All</button></li>
-                                <?php foreach ( $event_filters['styles'] as $term ) : ?>
-                                    <li><button class="sd-events-filter__btn" type="button" data-filter-group="event_style" data-filter-value="<?php echo esc_attr( $term->slug ); ?>" aria-pressed="false"><?php echo esc_html( $term->name ); ?></button></li>
-                                <?php endforeach; ?>
-                            </ul>
-                        </div>
-
                     </div>
                 </aside>
 
