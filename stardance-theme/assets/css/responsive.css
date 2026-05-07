@@ -216,10 +216,17 @@
   /* Gallery — two columns on mobile (portrait + landscape rows) */
   .sd-gallery__portrait {
     grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+    margin-bottom: 5px;
   }
 
   .sd-gallery__landscape {
     grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+  }
+
+  .sd-gallery__landscape a {
+    aspect-ratio: 16 / 9;
   }
 
   /* Homepage about features flex */
