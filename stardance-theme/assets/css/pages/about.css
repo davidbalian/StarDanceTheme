@@ -431,8 +431,12 @@
 
   .sd-about-coach__slide {
     grid-template-columns: 1fr;
-    gap: var(--sd-space-lg);
+    gap: var(--sd-space-md);
     align-content: start;
+  }
+
+  .sd-about-coach__name {
+    display: none;
   }
 
   .sd-about-coach__slide .sd-about-coach__image {
