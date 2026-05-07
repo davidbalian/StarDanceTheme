@@ -416,6 +416,10 @@
     gap: var(--sd-space-sm);
   }
 
+  .sd-about-values__card {
+    padding: var(--sd-space-sm) var(--sd-space-md);
+  }
+
   .sd-about-values__trophy {
     order: -1;
   }
