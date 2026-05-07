@@ -230,11 +230,7 @@
   }
 
   /* Homepage about features flex */
-  .sd-about__features {
-    gap: 20px;
-  }
-
-  .sd-about__features .sd-icon-card {
+.sd-about__features .sd-icon-card {
     flex: 0 0 100%;
     max-width: 100%;
   }
