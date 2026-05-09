@@ -22,7 +22,8 @@
             <h3 class="sd-footer__heading">Contact & Location</h3>
             <div class="sd-footer__contact-item">
                 <strong>Phone:</strong>
-                <a href="tel:+35799288918">+ 357 99 288 918</a>
+                <a href="tel:+35799288918">+ 357 99 288 918</a><br>
+                <a href="tel:+35799301181">+357 99 301 181</a>
             </div>
             <div class="sd-footer__contact-item">
                 <strong>Email:</strong>

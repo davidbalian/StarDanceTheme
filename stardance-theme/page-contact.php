@@ -58,8 +58,8 @@ $sd_page_id = get_queried_object_id();
                             <div class="sd-contact-page__detail-content">
                                 <h3 class="sd-contact-page__detail-title">Phone</h3>
                                 <p class="sd-contact-page__detail-text">
-                                    <a href="tel:+35799301181">+357 99 301 181</a><br>
-                                    <a href="tel:+35799204802">+357 99 204 802</a>
+                                    <a href="tel:+35799288918">+357 99 288 918</a><br>
+                                    <a href="tel:+35799301181">+357 99 301 181</a>
                                 </p>
                             </div>
                         </div>
