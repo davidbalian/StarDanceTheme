@@ -503,7 +503,16 @@
 }
 
 .sd-about-legacy__title {
+  margin-bottom: var(--sd-space-sm);
+}
+
+.sd-about-legacy__subtitle {
+  margin-top: 0;
   margin-bottom: var(--sd-space-md);
+}
+
+#main-content .sd-about-legacy .sd-text {
+  max-width: none;
 }
 
 .sd-about-legacy .sd-text {
