@@ -63,10 +63,12 @@ document.addEventListener('DOMContentLoaded', function () {
         if (current === 0) {
             current = total;
             updatePosition(false);
+            void track.offsetHeight;
             syncHeight(false);
         } else if (current === total + 1) {
             current = 1;
             updatePosition(false);
+            void track.offsetHeight;
             syncHeight(false);
         }
 
