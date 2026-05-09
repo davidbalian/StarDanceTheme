@@ -430,6 +430,19 @@
 .sd-coaches__viewport {
   overflow: hidden;
   position: relative;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: pan-y;
+}
+
+.sd-coaches__viewport.is-dragging {
+  cursor: grabbing;
+}
+
+.sd-coaches__slide img {
+  -webkit-user-drag: none;
+  user-select: none;
 }
 
 .sd-coaches__track {

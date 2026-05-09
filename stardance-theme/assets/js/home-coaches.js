@@ -21,6 +21,15 @@
   var autoplayTimer = null;
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // Drag state
+  var isDragging = false;
+  var dragMoved = false;
+  var dragStartX = 0;
+  var dragStartIndex = 0;
+  var dragDeltaX = 0;
+  var CLICK_THRESHOLD = 5;     // px — below this, treat as a click
+  var SMALL_FLICK_RATIO = 0.2; // 20% of slide width triggers a snap
+
   // Clone slides for infinite loop: prepend last PAD slides, append first PAD slides
   for (var p = 0; p < PAD; p++) {
     var headClone = slides[total - 1 - p].cloneNode(true);
@@ -123,20 +132,59 @@
     else startAutoplay();
   });
 
-  // Swipe (adapted from gallery.js)
-  var touchStartX = 0;
-  viewport.addEventListener('touchstart', function (e) {
-    touchStartX = e.touches[0].clientX;
+  // Drag via Pointer Events (mouse, touch, pen — unified)
+  function onPointerDown(e) {
+    if (e.button !== undefined && e.button !== 0) return;      // ignore right/middle click
+    if (e.target.closest('.sd-coaches__dot')) return;          // let dots click normally
+    isDragging = true;
+    dragMoved = false;
+    dragStartX = e.clientX;
+    dragDeltaX = 0;
+    dragStartIndex = current;
     stopAutoplay();
-  }, { passive: true });
-  viewport.addEventListener('touchend', function (e) {
-    var dx = e.changedTouches[0].clientX - touchStartX;
-    if (Math.abs(dx) >= 50) {
-      if (dx > 0) retreat();
-      else advance();
+    track.style.transition = 'none';
+    viewport.classList.add('is-dragging');
+    try { viewport.setPointerCapture(e.pointerId); } catch (_) {}
+  }
+
+  function onPointerMove(e) {
+    if (!isDragging) return;
+    dragDeltaX = e.clientX - dragStartX;
+    if (Math.abs(dragDeltaX) > CLICK_THRESHOLD) dragMoved = true;
+    track.style.transform = 'translateX(' + (-dragStartIndex * getStep() + dragDeltaX) + 'px)';
+  }
+
+  function onPointerUp(e) {
+    if (!isDragging) return;
+    isDragging = false;
+    viewport.classList.remove('is-dragging');
+
+    var step = getStep();
+    var floatSteps = -dragDeltaX / step;
+    var rounded = Math.round(floatSteps);
+    // Small-flick override: short drag with clear directional intent still commits
+    if (rounded === 0 && Math.abs(floatSteps) >= SMALL_FLICK_RATIO) {
+      rounded = floatSteps > 0 ? 1 : -1;
     }
+
+    isAnimating = true;
+    goTo(dragStartIndex + rounded, true);
     startAutoplay();
-  }, { passive: true });
+  }
+
+  viewport.addEventListener('pointerdown', onPointerDown);
+  viewport.addEventListener('pointermove', onPointerMove);
+  viewport.addEventListener('pointerup', onPointerUp);
+  viewport.addEventListener('pointercancel', onPointerUp);
+
+  // Suppress link navigation when a drag occurred
+  viewport.addEventListener('click', function (e) {
+    if (dragMoved) {
+      e.preventDefault();
+      e.stopPropagation();
+      dragMoved = false;
+    }
+  }, true);
 
   // Re-anchor transform on resize (CSS variable drives slide width automatically)
   var resizePending = false;
