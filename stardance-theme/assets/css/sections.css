@@ -425,6 +425,7 @@
 
 .sd-coaches__viewport {
   overflow: hidden;
+  --swiper-wrapper-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .sd-coaches__slide {

@@ -8,7 +8,8 @@
 
   new Swiper(el, {
     loop: true,
-    speed: reduceMotion ? 0 : 600,
+    loopAdditionalSlides: 2,
+    speed: reduceMotion ? 0 : 950,
     grabCursor: true,
     slidesPerView: 1.2,
     spaceBetween: 24,
