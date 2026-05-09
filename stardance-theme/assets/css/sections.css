@@ -430,13 +430,19 @@
 .sd-coaches__viewport {
   overflow: hidden;
   position: relative;
-  cursor: grab;
   user-select: none;
   -webkit-user-select: none;
   touch-action: pan-y;
 }
 
-.sd-coaches__viewport.is-dragging {
+.sd-coaches__drag-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  cursor: grab;
+}
+
+.sd-coaches__viewport.is-dragging .sd-coaches__drag-overlay {
   cursor: grabbing;
 }
 

@@ -3,6 +3,7 @@
         <h2 class="sd-heading sd-coaches__title fade-in fade-in-delay-0">Meet The Coaches</h2>
 
         <div class="sd-coaches__viewport fade-in fade-in-delay-1" data-sd-coach-carousel aria-live="polite">
+            <div class="sd-coaches__drag-overlay" aria-hidden="true"></div>
             <div class="sd-coaches__track">
                 <?php
                 $coaches_query = new WP_Query(

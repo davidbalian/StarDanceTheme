@@ -5,7 +5,8 @@
   if (!viewport) return;
 
   var track = viewport.querySelector('.sd-coaches__track');
-  if (!track) return;
+  var overlay = viewport.querySelector('.sd-coaches__drag-overlay');
+  if (!track || !overlay) return;
 
   var slides = Array.prototype.slice.call(track.querySelectorAll('.sd-coaches__slide'));
   var total = slides.length;
@@ -27,7 +28,7 @@
   var dragStartX = 0;
   var dragStartIndex = 0;
   var dragDeltaX = 0;
-  var CLICK_THRESHOLD = 5;     // px — below this, treat as a click
+  var CLICK_THRESHOLD = 5;     // px — below this a release is treated as a click
   var SMALL_FLICK_RATIO = 0.2; // 20% of slide width triggers a snap
 
   // Clone slides for infinite loop: prepend last PAD slides, append first PAD slides
@@ -47,11 +48,6 @@
     return firstSlide.offsetWidth + gap;
   }
 
-  function setTransform(index, animate) {
-    track.style.transition = animate ? '' : 'none';
-    track.style.transform = 'translateX(' + (-index * getStep()) + 'px)';
-  }
-
   function updateDots(index) {
     var dotIndex = ((index - PAD) % total + total) % total;
     dots.forEach(function (dot, i) {
@@ -62,7 +58,8 @@
   }
 
   function goTo(index, animate) {
-    setTransform(index, animate);
+    track.style.transition = animate ? '' : 'none';
+    track.style.transform = 'translateX(' + (-index * getStep()) + 'px)';
     current = index;
     updateDots(index);
   }
@@ -132,10 +129,10 @@
     else startAutoplay();
   });
 
-  // Drag via Pointer Events (mouse, touch, pen — unified)
+  // Drag via invisible overlay — bypasses native link/image drag behavior
   function onPointerDown(e) {
-    if (e.button !== undefined && e.button !== 0) return;      // ignore right/middle click
-    if (e.target.closest('.sd-coaches__dot')) return;          // let dots click normally
+    if (e.button !== undefined && e.button !== 0) return;
+    e.preventDefault(); // prevent native link/image drag
     isDragging = true;
     dragMoved = false;
     dragStartX = e.clientX;
@@ -144,7 +141,7 @@
     stopAutoplay();
     track.style.transition = 'none';
     viewport.classList.add('is-dragging');
-    try { viewport.setPointerCapture(e.pointerId); } catch (_) {}
+    try { overlay.setPointerCapture(e.pointerId); } catch (_) {}
   }
 
   function onPointerMove(e) {
@@ -159,6 +156,17 @@
     isDragging = false;
     viewport.classList.remove('is-dragging');
 
+    // No drag — find the element underneath and click it
+    if (!dragMoved) {
+      overlay.style.pointerEvents = 'none';
+      var el = document.elementFromPoint(e.clientX, e.clientY);
+      overlay.style.pointerEvents = '';
+      var link = el && el.closest('a');
+      if (link) link.click();
+      startAutoplay();
+      return;
+    }
+
     var step = getStep();
     var floatSteps = -dragDeltaX / step;
     var rounded = Math.round(floatSteps);
@@ -172,19 +180,10 @@
     startAutoplay();
   }
 
-  viewport.addEventListener('pointerdown', onPointerDown);
-  viewport.addEventListener('pointermove', onPointerMove);
-  viewport.addEventListener('pointerup', onPointerUp);
-  viewport.addEventListener('pointercancel', onPointerUp);
-
-  // Suppress link navigation when a drag occurred
-  viewport.addEventListener('click', function (e) {
-    if (dragMoved) {
-      e.preventDefault();
-      e.stopPropagation();
-      dragMoved = false;
-    }
-  }, true);
+  overlay.addEventListener('pointerdown', onPointerDown);
+  overlay.addEventListener('pointermove', onPointerMove);
+  overlay.addEventListener('pointerup', onPointerUp);
+  overlay.addEventListener('pointercancel', onPointerUp);
 
   // Re-anchor transform on resize (CSS variable drives slide width automatically)
   var resizePending = false;
