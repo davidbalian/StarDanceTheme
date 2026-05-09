@@ -60,10 +60,6 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .sd-coaches {
-    --sd-coaches-visible: 2.2;
-  }
-
   /* Homepage about features flex */
   .sd-about__features .sd-icon-card {
     flex: 0 0 calc(50% - 20px);
@@ -254,11 +250,6 @@
 
   .sd-about__flourish {
     width: 40vw;
-  }
-
-  /* Coaches */
-  .sd-coaches {
-    --sd-coaches-visible: 1.2;
   }
 
   /* Contact */

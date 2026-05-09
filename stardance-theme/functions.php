@@ -83,12 +83,16 @@ function stardance_enqueue_assets() {
             'nonce'   => wp_create_nonce('stardance_events_nonce'),
         ));
     }
+    if ( is_front_page() || is_page_template('page-about.php') ) {
+        wp_enqueue_style('swiper', get_template_directory_uri() . '/assets/css/swiper-bundle.min.css', array(), stardance_asset_version('assets/css/swiper-bundle.min.css'));
+        wp_enqueue_script('swiper', get_template_directory_uri() . '/assets/js/swiper-bundle.min.js', array(), stardance_asset_version('assets/js/swiper-bundle.min.js'), true);
+    }
     if ( is_front_page() ) {
-        wp_enqueue_script('stardance-home-coaches', get_template_directory_uri() . '/assets/js/home-coaches.js', array(), stardance_asset_version('assets/js/home-coaches.js'), true);
+        wp_enqueue_script('stardance-home-coaches', get_template_directory_uri() . '/assets/js/home-coaches.js', array('swiper'), stardance_asset_version('assets/js/home-coaches.js'), true);
     }
     if ( is_page_template('page-about.php') ) {
         wp_enqueue_style('stardance-page-about', $pages_css_dir . 'about.css', array('stardance-responsive'), stardance_asset_version('assets/css/pages/about.css'));
-        wp_enqueue_script('stardance-about', get_template_directory_uri() . '/assets/js/about.js', array(), stardance_asset_version('assets/js/about.js'), true);
+        wp_enqueue_script('stardance-about', get_template_directory_uri() . '/assets/js/about.js', array('swiper'), stardance_asset_version('assets/js/about.js'), true);
     }
     if ( is_page_template('page-schedule.php') ) {
         wp_enqueue_style('stardance-page-schedule', $pages_css_dir . 'schedule.css', array('stardance-responsive'), stardance_asset_version('assets/css/pages/schedule.css'));

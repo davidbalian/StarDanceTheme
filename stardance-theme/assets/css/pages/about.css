@@ -243,18 +243,7 @@
   display: contents;
 }
 
-.sd-about-coach__slider {
-  overflow: hidden;
-}
-
-.sd-about-coach__track {
-  display: flex;
-  transition: transform 500ms ease;
-  will-change: transform;
-}
-
 .sd-about-coach__slide {
-  min-width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--sd-space-xl);

@@ -38,7 +38,7 @@ Before writing **any** HTML, CSS, or PHP for this project, read `stardance-theme
 
 8. **BEM + `sd-` namespace.** All new classes follow `.sd-block__element--modifier`. Never introduce a class that doesn't follow this pattern.
 
-9. **No Bricks Builder. No third-party sliders or lightboxes.** This theme uses a custom vanilla JS lightbox slider (`assets/js/gallery.js`) and a custom coach slider (`assets/js/about.js`). Do not introduce PhotoSwipe, Swiper, Glide, or any similar library. Lightbox styles live in `components.css` (`.sd-lightbox*`). Never use `.brx` classes or `bricks_` PHP hooks.
+9. **No Bricks Builder. No PhotoSwipe / Glide / Splide.** This theme uses a custom vanilla JS lightbox slider (`assets/js/gallery.js`). The two coach carousels — homepage (`assets/js/home-coaches.js`) and about page (`assets/js/about.js`) — use **Swiper** (vendored at `assets/js/swiper-bundle.min.js` + `assets/css/swiper-bundle.min.css`). This is a deliberate exception; do not rip it out or replace it with another library. Lightbox styles live in `components.css` (`.sd-lightbox*`). Never use `.brx` classes or `bricks_` PHP hooks.
 
 ---
 

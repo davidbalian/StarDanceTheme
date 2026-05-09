@@ -152,8 +152,8 @@ $sd_page_id = get_queried_object_id();
 
             <?php if ( $coaches_query->have_posts() ) : ?>
                 <div class="sd-about-coach__wrapper">
-                    <div class="sd-about-coach__slider" aria-live="polite">
-                        <div class="sd-about-coach__track">
+                    <div class="swiper sd-about-coach__slider js-sd-about-coaches" aria-live="polite">
+                        <div class="swiper-wrapper">
                             <?php
                             $coach_index = 0;
                             while ( $coaches_query->have_posts() ) :
@@ -168,7 +168,7 @@ $sd_page_id = get_queried_object_id();
                                     $coach_name_classes .= ' sd-coaches__name--light';
                                 }
                                 ?>
-                                <div class="sd-about-coach__slide" data-coach-slug="<?php echo esc_attr( get_post_field( 'post_name' ) ); ?>">
+                                <div class="swiper-slide sd-about-coach__slide" data-coach-slug="<?php echo esc_attr( get_post_field( 'post_name' ) ); ?>">
                                     <div class="sd-about-coach__bio">
                                         <h3 class="sd-heading sd-about-coach__name"><?php the_title(); ?></h3>
                                         <?php if ( get_the_content() ) : ?>
@@ -196,7 +196,7 @@ $sd_page_id = get_queried_object_id();
                                     </div>
                                 </div>
                             <?php endwhile; ?>
-                        </div><!-- /.sd-about-coach__track -->
+                        </div><!-- /.swiper-wrapper -->
                     </div><!-- /.sd-about-coach__slider -->
 
                     <div class="sd-about-coach__nav" role="group" aria-label="<?php esc_attr_e( 'Coach profile slider', 'stardance' ); ?>">

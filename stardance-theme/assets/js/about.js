@@ -1,85 +1,34 @@
 /**
- * About page — coach slider
+ * About page — coach slider (Swiper)
  */
-document.addEventListener('DOMContentLoaded', function () {
-    const track = document.querySelector('.sd-about-coach__track');
-    if (!track) return;
+(function () {
+  'use strict';
 
-    const slider = track.closest('.sd-about-coach__slider');
-    const prevBtn = document.querySelector('.sd-about-coach__arrow--prev');
-    const nextBtn = document.querySelector('.sd-about-coach__arrow--next');
-    const slides = Array.from(track.querySelectorAll('.sd-about-coach__slide'));
-    const total = slides.length;
-    const transitionValue = 'transform 500ms ease';
-    let current = 1;
-    let isAnimating = false;
+  var el = document.querySelector('.js-sd-about-coaches');
+  if (!el || typeof Swiper === 'undefined') return;
 
-    if (!prevBtn || !nextBtn || total <= 1) return;
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    const firstClone = slides[0].cloneNode(true);
-    const lastClone = slides[total - 1].cloneNode(true);
+  var initialIndex = 0;
+  var slug = new URLSearchParams(window.location.search).get('coach');
+  if (slug) {
+    var slides = Array.from(el.querySelectorAll('.swiper-slide'));
+    var match = slides.findIndex(function (s) { return s.dataset.coachSlug === slug; });
+    if (match !== -1) initialIndex = match;
+  }
 
-    firstClone.setAttribute('aria-hidden', 'true');
-    lastClone.setAttribute('aria-hidden', 'true');
+  var swiper = new Swiper(el, {
+    loop: true,
+    speed: reduceMotion ? 0 : 500,
+    autoHeight: true,
+    slidesPerView: 1,
+    navigation: {
+      prevEl: '.sd-about-coach__arrow--prev',
+      nextEl: '.sd-about-coach__arrow--next',
+    },
+  });
 
-    track.insertBefore(lastClone, slides[0]);
-    track.appendChild(firstClone);
-
-    const targetSlug = new URLSearchParams(window.location.search).get('coach');
-    if (targetSlug) {
-        const matchIndex = slides.findIndex(function (s) { return s.dataset.coachSlug === targetSlug; });
-        if (matchIndex !== -1) current = matchIndex + 1;
-    }
-
-    function syncHeight(animate) {
-        if (window.innerWidth > 767) {
-            slider.style.height = '';
-            return;
-        }
-        slider.style.transition = animate ? 'height 500ms ease' : 'none';
-        slider.style.height = track.children[current].offsetHeight + 'px';
-    }
-
-    function updatePosition(useTransition) {
-        track.style.transition = useTransition ? transitionValue : 'none';
-        track.style.transform = 'translateX(-' + (current * 100) + '%)';
-    }
-
-    function goTo(index) {
-        if (isAnimating) return;
-
-        current = index;
-        isAnimating = true;
-        updatePosition(true);
-        syncHeight(true);
-    }
-
-    updatePosition(false);
-    syncHeight(false);
-
-    track.addEventListener('transitionend', function (event) {
-        if (event.propertyName !== 'transform') return;
-
-        if (current === 0 || current === total + 1) {
-            current = current === 0 ? total : 1;
-            track.style.transition = 'none';
-            track.style.transform = 'translateX(-' + (current * 100) + '%)';
-            syncHeight(false);
-            requestAnimationFrame(function () {
-                track.style.transition = transitionValue;
-            });
-        }
-
-        isAnimating = false;
-    });
-
-    window.addEventListener('resize', function () { syncHeight(false); });
-
-    prevBtn.addEventListener('click', function () {
-        goTo(current - 1);
-    });
-
-    nextBtn.addEventListener('click', function () {
-        goTo(current + 1);
-    });
-});
+  if (initialIndex > 0) {
+    swiper.slideToLoop(initialIndex, 0);
+  }
+}());

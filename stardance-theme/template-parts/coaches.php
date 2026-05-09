@@ -2,9 +2,8 @@
     <div class="sd-container">
         <h2 class="sd-heading sd-coaches__title fade-in fade-in-delay-0">Meet The Coaches</h2>
 
-        <div class="sd-coaches__viewport fade-in fade-in-delay-1" data-sd-coach-carousel aria-live="polite">
-            <div class="sd-coaches__drag-overlay" aria-hidden="true"></div>
-            <div class="sd-coaches__track">
+        <div class="swiper sd-coaches__viewport js-sd-home-coaches fade-in fade-in-delay-1">
+            <div class="swiper-wrapper">
                 <?php
                 $coaches_query = new WP_Query(
                     array(
@@ -31,7 +30,7 @@
                         $coach_slug = get_post_field( 'post_name' );
                         $coach_link = add_query_arg( 'coach', $coach_slug, stardance_page_or_path_url( 'about' ) ) . '#coach';
                         ?>
-                        <div class="sd-coaches__slide">
+                        <div class="swiper-slide sd-coaches__slide">
                             <a class="sd-coaches__link" href="<?php echo esc_url( $coach_link ); ?>" aria-label="<?php echo esc_attr( sprintf( __( 'View %s profile', 'stardance' ), get_the_title() ) ); ?>">
                             <div class="sd-coaches__card">
                                 <?php if ( has_post_thumbnail() ) : ?>
@@ -51,27 +50,12 @@
                         </div>
                         <?php
                     endwhile;
-                    $total_coaches = $coach_index;
                     wp_reset_postdata();
                 endif;
                 ?>
             </div>
         </div>
 
-        <?php if ( isset( $total_coaches ) && $total_coaches > 1 ) : ?>
-        <ol class="sd-coaches__dots" role="tablist" aria-label="Coach slides">
-            <?php for ( $i = 0; $i < $total_coaches; $i++ ) : ?>
-            <li role="presentation">
-                <button
-                    class="sd-coaches__dot<?php echo 0 === $i ? ' sd-coaches__dot--active' : ''; ?>"
-                    role="tab"
-                    aria-selected="<?php echo 0 === $i ? 'true' : 'false'; ?>"
-                    aria-label="<?php echo esc_attr( sprintf( __( 'Slide %d of %d', 'stardance' ), $i + 1, $total_coaches ) ); ?>"
-                    data-dot-index="<?php echo esc_attr( $i ); ?>"
-                ></button>
-            </li>
-            <?php endfor; ?>
-        </ol>
-        <?php endif; ?>
+        <div class="sd-coaches__pagination" aria-label="<?php esc_attr_e( 'Coach slides', 'stardance' ); ?>"></div>
     </div>
 </section>
