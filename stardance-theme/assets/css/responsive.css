@@ -60,8 +60,8 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .sd-coaches__grid {
-    grid-template-columns: repeat(2, 1fr);
+  .sd-coaches {
+    --sd-coaches-visible: 2.2;
   }
 
   /* Homepage about features flex */
@@ -257,10 +257,8 @@
   }
 
   /* Coaches */
-  .sd-coaches__grid {
-    grid-template-columns: 1fr;
-    max-width: 400px;
-    margin: 0 auto;
+  .sd-coaches {
+    --sd-coaches-visible: 1.2;
   }
 
   /* Contact */
