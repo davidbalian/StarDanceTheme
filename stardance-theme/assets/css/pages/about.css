@@ -511,7 +511,7 @@
   margin-bottom: var(--sd-space-md);
 }
 
-#main-content .sd-about-legacy .sd-text {
+#main-content .sd-section.sd-about-legacy .sd-about-legacy__content .sd-text {
   max-width: none;
 }
 
