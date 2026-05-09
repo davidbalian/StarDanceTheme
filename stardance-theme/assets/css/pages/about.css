@@ -488,6 +488,32 @@
    Responsive — Small Mobile (478px)
    ======================================== */
 
+/* ========================================
+   Legacy / Rebrand
+   ======================================== */
+
+.sd-about-legacy {
+  background: var(--sd-light-blue);
+}
+
+.sd-about-legacy__content {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.sd-about-legacy__title {
+  margin-bottom: var(--sd-space-md);
+}
+
+.sd-about-legacy .sd-text {
+  margin-bottom: var(--sd-space-sm);
+}
+
+.sd-about-legacy .sd-text:last-child {
+  margin-bottom: 0;
+}
+
 @media (max-width: 478px) {
   .sd-about-champions__grid {
     grid-template-columns: 1fr;

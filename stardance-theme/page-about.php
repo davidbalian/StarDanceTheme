@@ -45,6 +45,17 @@ $sd_page_id = get_queried_object_id();
         </div>
     </section>
 
+    <!-- Legacy / Rebrand -->
+    <section class="sd-section sd-about-legacy" id="legacy">
+        <div class="sd-container">
+            <div class="sd-about-legacy__content">
+                <h2 class="sd-heading sd-about-legacy__title fade-in fade-in-delay-0">Formerly Olga Dance Academy — Dancing Since 2007</h2>
+                <p class="sd-text fade-in fade-in-delay-1">Star Dance Studio was founded in 2007 under the name Olga Dance Academy. For nearly two decades, Olga Dance Academy built a reputation as one of Limassol's most trusted dance schools — nurturing students from their very first steps all the way to championship-level performance on international stages.</p>
+                <p class="sd-text fade-in fade-in-delay-2">In 2026, Olga Dance Academy was rebranded as Star Dance Studio, marking a new chapter and a broader vision for the future of dance in Cyprus. The same team, the same teaching philosophy, and the same passion that made Olga Dance Academy a Limassol institution continue to drive Star Dance Studio every day.</p>
+            </div>
+        </div>
+    </section>
+
     <!-- Values Grid -->
     <section class="sd-section sd-about-values" id="values">
         <div class="sd-container">
