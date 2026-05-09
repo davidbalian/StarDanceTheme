@@ -60,16 +60,14 @@ document.addEventListener('DOMContentLoaded', function () {
     track.addEventListener('transitionend', function (event) {
         if (event.propertyName !== 'transform') return;
 
-        if (current === 0) {
-            current = total;
-            updatePosition(false);
-            void track.offsetHeight;
+        if (current === 0 || current === total + 1) {
+            current = current === 0 ? total : 1;
+            track.style.transition = 'none';
+            track.style.transform = 'translateX(-' + (current * 100) + '%)';
             syncHeight(false);
-        } else if (current === total + 1) {
-            current = 1;
-            updatePosition(false);
-            void track.offsetHeight;
-            syncHeight(false);
+            requestAnimationFrame(function () {
+                track.style.transition = transitionValue;
+            });
         }
 
         isAnimating = false;
