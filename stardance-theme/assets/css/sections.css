@@ -443,6 +443,7 @@
 .sd-coaches__slide img {
   -webkit-user-drag: none;
   user-select: none;
+  pointer-events: none;
 }
 
 .sd-coaches__track {
