@@ -508,6 +508,7 @@
 
 .sd-about-legacy .sd-text {
   margin-bottom: var(--sd-space-sm);
+  text-align: left;
 }
 
 .sd-about-legacy .sd-text:last-child {
