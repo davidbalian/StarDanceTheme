@@ -1331,7 +1331,7 @@ function stardance_handle_contact_form() {
         wp_send_json_error(array('message' => 'Please enter a valid email address.'));
     }
 
-    $to = get_option('admin_email');
+    $to = 'svetlana@stardance.com.cy';
     $subject = sprintf('New Contact Form Submission from %s', $name);
 
     $body  = "Name: {$name}\n";

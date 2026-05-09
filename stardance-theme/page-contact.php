@@ -46,7 +46,7 @@ $sd_page_id = get_queried_object_id();
                             <div class="sd-contact-page__detail-content">
                                 <h3 class="sd-contact-page__detail-title">Email</h3>
                                 <p class="sd-contact-page__detail-text">
-                                    <a href="mailto:ssvetlana@cytanet.com.cy">ssvetlana@cytanet.com.cy</a>
+                                    <a href="mailto:svetlana@stardance.com.cy">svetlana@stardance.com.cy</a>
                                 </p>
                             </div>
                         </div>

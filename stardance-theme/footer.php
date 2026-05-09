@@ -27,7 +27,7 @@
             </div>
             <div class="sd-footer__contact-item">
                 <strong>Email:</strong>
-                <a href="mailto:ssvetlana@cytanet.com.cy">ssvetlana@cytanet.com.cy</a>
+                <a href="mailto:svetlana@stardance.com.cy">svetlana@stardance.com.cy</a>
             </div>
             <div class="sd-footer__contact-item">
                 <strong>Address:</strong>
