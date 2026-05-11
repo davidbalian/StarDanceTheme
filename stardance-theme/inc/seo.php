@@ -128,3 +128,13 @@ add_action( 'wp_head', function () {
 	echo '<meta name="twitter:image" content="' . $og_image . '">' . "\n";
 	echo "\n";
 }, 1 );
+
+/**
+ * Google Analytics 4 — async, with preconnect hint to avoid connection overhead.
+ * Priority 2 keeps it just after the meta block but well before wp_head closes.
+ */
+add_action( 'wp_head', function () {
+	echo '<link rel="preconnect" href="https://www.googletagmanager.com">' . "\n";
+	echo '<script async src="https://www.googletagmanager.com/gtag/js?id=G-0BQYPLVBTL"></script>' . "\n";
+	echo '<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-0BQYPLVBTL");</script>' . "\n";
+}, 2 );
