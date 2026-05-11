@@ -135,6 +135,13 @@ add_action( 'wp_head', function () {
  */
 add_action( 'wp_head', function () {
 	echo '<link rel="preconnect" href="https://www.googletagmanager.com">' . "\n";
+	echo '<!-- Google tag (gtag.js) -->' . "\n";
 	echo '<script async src="https://www.googletagmanager.com/gtag/js?id=G-0BQYPLVBTL"></script>' . "\n";
-	echo '<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-0BQYPLVBTL");</script>' . "\n";
+	echo '<script>' . "\n";
+	echo '  window.dataLayer = window.dataLayer || [];' . "\n";
+	echo '  function gtag(){dataLayer.push(arguments);}' . "\n";
+	echo '  gtag(\'js\', new Date());' . "\n";
+	echo "\n";
+	echo '  gtag(\'config\', \'G-0BQYPLVBTL\');' . "\n";
+	echo '</script>' . "\n";
 }, 2 );
