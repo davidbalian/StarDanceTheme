@@ -24,6 +24,10 @@
     --sd-hero-max-height: 800px;
     --sd-page-hero-max-height: 650px;
   }
+
+  .sd-hero {
+    min-height: max(700px, var(--sd-hero-height));
+  }
 }
 
 /* XL+ (larger than 1920px): inner-page heroes cap higher */

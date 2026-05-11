@@ -119,7 +119,7 @@
   --sd-home-hero-bg-image-tablet: url('http://stardance.com.cy/wp-content/uploads/2026/02/Mask-group.jpg');
   --sd-home-hero-bg-image-mobile: url('http://stardance.com.cy/wp-content/uploads/2026/02/Mask-group.jpg');
   position: relative;
-  height: var(--sd-hero-height);
+  min-height: var(--sd-hero-height);
   max-height: var(--sd-hero-max-height);
   display: flex;
   align-items: flex-end;

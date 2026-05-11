@@ -476,7 +476,7 @@
     center center,
     center center;
   position: relative;
-  height: var(--sd-page-hero-height);
+  min-height: var(--sd-page-hero-height);
   max-height: var(--sd-page-hero-max-height);
   display: flex;
   flex-direction: column;
