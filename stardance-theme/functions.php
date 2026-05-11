@@ -16,6 +16,8 @@ require get_template_directory() . '/inc/class-stardance-event-schedule-admin.ph
 require get_template_directory() . '/inc/class-stardance-event-gallery-preview.php';
 require get_template_directory() . '/inc/class-stardance-event-media-crop-admin.php';
 require get_template_directory() . '/inc/stardance-seed-events.php';
+require get_template_directory() . '/inc/seo.php';
+require get_template_directory() . '/inc/schema.php';
 
 /**
  * Return a filemtime-based asset version for cache busting.
