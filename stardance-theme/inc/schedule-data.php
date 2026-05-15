@@ -45,7 +45,7 @@ $schedule_days = array(
         'sessions' => array(
             array(
                 'time'  => '16:30 - 17:45',
-                'title' => 'Physical Conditioning',
+                'title' => 'Ballet Conditioning',
             ),
             array(
                 'time'  => '18:00 - 19:30',
