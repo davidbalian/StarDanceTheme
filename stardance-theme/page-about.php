@@ -12,7 +12,7 @@ $sd_page_id = get_queried_object_id();
 <main class="sd-page sd-page--about" id="main-content">
 
     <?php stardance_render_page_hero(array(
-        'title'       => 'About Star Dance Studio',
+        'title'       => 'About Star Dance Cyprus',
         'description' => 'We are a professional dance school in Limassol offering Latin American and Ballroom instruction for all ages and levels. From young beginners to competitive dancers, we help each student reach their full potential on the dance floor.',
         'modifier'    => 'about',
         'bg_image_urls' => stardance_get_responsive_hero_images( $sd_page_id, 'about' ),
@@ -26,7 +26,7 @@ $sd_page_id = get_queried_object_id();
 
                 <div class="sd-about-overview__text fade-in fade-in-delay-1">
                     <p class="sd-text">
-                        Star Dance Studio is an official member of the Cyprus Federation of Social &amp; Sport Dance. Our studio provides certified instruction following international standards for both Latin American and European Ballroom programs.
+                        Star Dance Cyprus is an official member of the Cyprus Federation of Social &amp; Sport Dance. Our studio provides certified instruction following international standards for both Latin American and European Ballroom programs.
                     </p>
                     <p class="sd-text">
                         We welcome students from age 3 through adults, offering group classes, private lessons, and competition training. Whether you want to dance for fun, fitness, or to compete at the highest level, we have a program for you.
@@ -35,7 +35,7 @@ $sd_page_id = get_queried_object_id();
 
                 <div class="sd-about-overview__image fade-in fade-in-delay-1">
                     <div class="sd-about-overview__video">
-                        <img src="https://stardance.com.cy/wp-content/uploads/2026/03/about-page-video-cover.webp" alt="Training at Star Dance Studio" width="600" height="450" loading="lazy">
+                        <img src="https://stardance.com.cy/wp-content/uploads/2026/03/about-page-video-cover.webp" alt="Training at Star Dance Cyprus" width="600" height="450" loading="lazy">
                         <img src="https://stardance.com.cy/wp-content/uploads/2026/03/play-button.svg" alt="" class="sd-about-overview__play-btn" aria-hidden="true" width="72" height="72">
                         <img src="https://stardance.com.cy/wp-content/uploads/2026/02/coach-bottom-svg-1.svg" alt="" class="sd-about-overview__corner-svg" aria-hidden="true">
                     </div>
@@ -51,8 +51,8 @@ $sd_page_id = get_queried_object_id();
             <div class="sd-about-legacy__content">
                 <h2 class="sd-heading sd-about-legacy__title fade-in fade-in-delay-0">Formerly Olga Dance Academy</h2>
                 <h3 class="sd-heading sd-about-legacy__subtitle fade-in fade-in-delay-0">Dancing Since 2007</h3>
-                <p class="sd-text fade-in fade-in-delay-1">Star Dance Studio was founded in 2007 under the name Olga Dance Academy. For nearly two decades, Olga Dance Academy built a reputation as one of Limassol's most trusted dance schools — nurturing students from their very first steps all the way to championship-level performance on international stages.</p>
-                <p class="sd-text fade-in fade-in-delay-2">In 2026, Olga Dance Academy was rebranded as Star Dance Studio, marking a new chapter and a broader vision for the future of dance in Cyprus. The same team, the same teaching philosophy, and the same passion that made Olga Dance Academy a Limassol institution continue to drive Star Dance Studio every day.</p>
+                <p class="sd-text fade-in fade-in-delay-1">Star Dance Cyprus was founded in 2007 under the name Olga Dance Academy. For nearly two decades, Olga Dance Academy built a reputation as one of Limassol's most trusted dance schools — nurturing students from their very first steps all the way to championship-level performance on international stages.</p>
+                <p class="sd-text fade-in fade-in-delay-2">In 2026, Olga Dance Academy was rebranded as Star Dance Cyprus, marking a new chapter and a broader vision for the future of dance in Cyprus. The same team, the same teaching philosophy, and the same passion that made Olga Dance Academy a Limassol institution continue to drive Star Dance Cyprus every day.</p>
             </div>
         </div>
     </section>
@@ -110,11 +110,11 @@ $sd_page_id = get_queried_object_id();
                 </div>
 
                 <div class="sd-about-champions__image fade-in fade-in-delay-3">
-                    <img src="https://stardance.com.cy/wp-content/uploads/2026/03/about-page-we-grow-champions-top-right.webp" alt="Star Dance Studio champions" loading="lazy">
+                    <img src="https://stardance.com.cy/wp-content/uploads/2026/03/about-page-we-grow-champions-top-right.webp" alt="Star Dance Cyprus champions" loading="lazy">
                 </div>
 
                 <div class="sd-about-champions__image fade-in fade-in-delay-3">
-                    <img src="https://stardance.com.cy/wp-content/uploads/2026/03/about-page-we-grow-champions-bottom-left.webp" alt="Star Dance Studio students competing" loading="lazy">
+                    <img src="https://stardance.com.cy/wp-content/uploads/2026/03/about-page-we-grow-champions-bottom-left.webp" alt="Star Dance Cyprus students competing" loading="lazy">
                 </div>
 
                 <div class="sd-about-champions__item fade-in fade-in-delay-4">

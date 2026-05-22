@@ -19,8 +19,10 @@
     width: auto !important;
   }
 
-  /* Hide the duplicate slides that exist only for Swiper loop buffering */
-  .sd-coaches__slide--dup {
+  /* Hide the duplicate slides that exist only for Swiper loop buffering.
+     Two-class specificity (0,2,0) beats swiper-bundle.min.css .swiper-slide { display: block } (0,1,0),
+     which loads after this file. */
+  .sd-coaches__viewport .sd-coaches__slide--dup {
     display: none;
   }
 
