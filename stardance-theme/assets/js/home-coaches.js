@@ -12,7 +12,7 @@
     if (swiper) return;
     swiper = new Swiper(el, {
       loop: true,
-      loopAdditionalSlides: 1,
+      loopAdditionalSlides: 3,
       speed: reduceMotion ? 0 : 700,
       grabCursor: true,
       slidesPerView: 1.2,
