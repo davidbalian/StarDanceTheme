@@ -12,7 +12,6 @@
     if (swiper) return;
     swiper = new Swiper(el, {
       loop: true,
-      loopAdditionalSlides: 3,
       speed: reduceMotion ? 0 : 700,
       grabCursor: true,
       slidesPerView: 1.2,
@@ -31,7 +30,9 @@
         bulletClass: 'sd-coaches__dot',
         bulletActiveClass: 'sd-coaches__dot--active',
         renderBullet: function (i, cls) {
-          return '<button type="button" class="' + cls + '" aria-label="' + (i + 1) + ' of ' + this.slides.length + '"></button>';
+          // Only show 3 bullets (one per real coach); hide the duplicate-set bullets
+          if (i >= 3) return '<span class="' + cls + ' sd-coaches__dot--hidden"></span>';
+          return '<button type="button" class="' + cls + '" aria-label="Coach ' + (i + 1) + '"></button>';
         },
       },
     });

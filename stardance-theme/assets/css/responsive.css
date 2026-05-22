@@ -19,9 +19,19 @@
     width: auto !important;
   }
 
+  /* Hide the duplicate slides that exist only for Swiper loop buffering */
+  .sd-coaches__slide--dup {
+    display: none;
+  }
+
   .sd-coaches__pagination {
     display: none;
   }
+}
+
+/* Hide duplicate pagination bullets (slides 4-6 map to coaches 1-3) */
+.sd-coaches__dot--hidden {
+  display: none;
 }
 
 /* XL Upscale (1920px+) */
