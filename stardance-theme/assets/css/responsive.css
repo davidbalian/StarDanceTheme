@@ -2,6 +2,28 @@
    Responsive - Media Query Overrides
    ======================================== */
 
+/* Coaches — static 3-card grid at desktop (Swiper disabled above 1024px) */
+@media (min-width: 1025px) {
+  .sd-coaches__viewport {
+    overflow: visible;
+  }
+
+  .sd-coaches__viewport .swiper-wrapper {
+    display: flex;
+    gap: var(--sd-grid-gap);
+    transform: none !important;
+  }
+
+  .sd-coaches__viewport .swiper-slide {
+    flex: 1 1 0;
+    width: auto !important;
+  }
+
+  .sd-coaches__pagination {
+    display: none;
+  }
+}
+
 /* XL Upscale (1920px+) */
 @media (min-width: 1920px) {
   :root {
