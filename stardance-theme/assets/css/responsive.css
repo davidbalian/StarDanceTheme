@@ -6,6 +6,7 @@
 @media (min-width: 1920px) {
   :root {
     --sd-max-width: 1400px;
+    --sd-page-hero-height: 800px;
     --sd-page-hero-max-height: 800px;
   }
 
@@ -22,6 +23,7 @@
 @media (min-width: 992px) {
   :root {
     --sd-hero-max-height: 800px;
+    --sd-page-hero-height: 650px;
     --sd-page-hero-max-height: 650px;
   }
 
@@ -33,6 +35,7 @@
 /* XL+ (larger than 1920px): inner-page heroes cap higher */
 @media (min-width: 1921px) {
   :root {
+    --sd-page-hero-height: 900px;
     --sd-page-hero-max-height: 900px;
   }
 }
