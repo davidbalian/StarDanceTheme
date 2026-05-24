@@ -14,8 +14,8 @@ $sd_page_id = get_queried_object_id();
     <?php
     stardance_render_page_hero(
         array(
-            'title'       => 'Get In Touch',
-            'description' => 'Have questions about our classes or want to book a trial session? We\'d love to hear from you.',
+            'title'       => SD_Page_Content::get_text( $sd_page_id, 'contact', 'hero_title' ),
+            'description' => SD_Page_Content::get_text( $sd_page_id, 'contact', 'hero_description' ),
             'modifier'    => 'contact',
             'bg_image_urls' => stardance_get_responsive_hero_images( $sd_page_id, 'contact' ),
         )
@@ -26,7 +26,7 @@ $sd_page_id = get_queried_object_id();
         <div class="sd-container">
             <div class="sd-contact-page__layout">
                 <div class="sd-contact-page__column sd-contact-page__column--details">
-                    <h2 class="sd-heading sd-contact-page__heading fade-in fade-in-delay-0">Contact Details</h2>
+                    <h2 class="sd-heading sd-contact-page__heading fade-in fade-in-delay-0"><?php echo esc_html( SD_Page_Content::get_text( $sd_page_id, 'contact', 'details_heading' ) ); ?></h2>
 
                     <div class="sd-contact-page__details-grid">
                         <div class="sd-contact-page__detail-item fade-in fade-in-delay-1">
@@ -34,7 +34,7 @@ $sd_page_id = get_queried_object_id();
                                 <img src="https://stardance.com.cy/wp-content/uploads/2026/04/sd-pin-icon.png" alt="" width="32" height="32" loading="lazy">
                             </div>
                             <div class="sd-contact-page__detail-content">
-                                <h3 class="sd-contact-page__detail-title">Address</h3>
+                                <h3 class="sd-contact-page__detail-title"><?php te('Address'); ?></h3>
                                 <p class="sd-contact-page__detail-text">Masterland/KIDDOM, Spyrou Kyprianou Ave 48, Limassol 4043, Cyprus</p>
                             </div>
                         </div>
@@ -44,7 +44,7 @@ $sd_page_id = get_queried_object_id();
                                 <img src="https://stardance.com.cy/wp-content/uploads/2026/04/sd-email-icon.png" alt="" width="32" height="32" loading="lazy">
                             </div>
                             <div class="sd-contact-page__detail-content">
-                                <h3 class="sd-contact-page__detail-title">Email</h3>
+                                <h3 class="sd-contact-page__detail-title"><?php te('Email'); ?></h3>
                                 <p class="sd-contact-page__detail-text">
                                     <a href="mailto:svetlana@stardance.com.cy">svetlana@stardance.com.cy</a>
                                 </p>
@@ -56,7 +56,7 @@ $sd_page_id = get_queried_object_id();
                                 <img src="https://stardance.com.cy/wp-content/uploads/2026/04/sd-phone-icon.png" alt="" width="32" height="32" loading="lazy">
                             </div>
                             <div class="sd-contact-page__detail-content">
-                                <h3 class="sd-contact-page__detail-title">Phone</h3>
+                                <h3 class="sd-contact-page__detail-title"><?php te('Phone'); ?></h3>
                                 <p class="sd-contact-page__detail-text">
                                     <a href="tel:+35799288918">+357 99 288 918</a><br>
                                     <a href="tel:+35799301181">+357 99 301 181</a>
@@ -69,10 +69,10 @@ $sd_page_id = get_queried_object_id();
                                 <img src="https://stardance.com.cy/wp-content/uploads/2026/04/sd-clock-icon.png" alt="" width="32" height="32" loading="lazy">
                             </div>
                             <div class="sd-contact-page__detail-content">
-                                <h3 class="sd-contact-page__detail-title">Operating Hours</h3>
+                                <h3 class="sd-contact-page__detail-title"><?php te('Operating Hours'); ?></h3>
                                 <p class="sd-contact-page__detail-text">
-                                    Monday to Saturday: 9:00 - 20:00<br>
-                                    Sunday: Closed
+                                    <?php te('Monday to Saturday: 9:00 - 20:00'); ?><br>
+                                    <?php te('Sunday: Closed'); ?>
                                 </p>
                             </div>
                         </div>
@@ -90,39 +90,39 @@ $sd_page_id = get_queried_object_id();
                 </div>
 
                 <div class="sd-contact-page__column sd-contact-page__column--form">
-                    <h2 class="sd-heading sd-contact-page__heading fade-in fade-in-delay-1">Get In Touch</h2>
+                    <h2 class="sd-heading sd-contact-page__heading fade-in fade-in-delay-1"><?php echo esc_html( SD_Page_Content::get_text( $sd_page_id, 'contact', 'form_heading' ) ); ?></h2>
 
                     <form class="sd-contact-page__form fade-in fade-in-delay-2" action="#" method="post">
-                        <label class="screen-reader-text" for="sd-contact-first-name">First Name</label>
-                        <input id="sd-contact-first-name" class="sd-contact-page__input" type="text" name="first_name" placeholder="First Name">
+                        <label class="screen-reader-text" for="sd-contact-first-name"><?php te('First Name'); ?></label>
+                        <input id="sd-contact-first-name" class="sd-contact-page__input" type="text" name="first_name" placeholder="<?php echo esc_attr( t('First Name') ); ?>">
 
-                        <label class="screen-reader-text" for="sd-contact-email">Email</label>
-                        <input id="sd-contact-email" class="sd-contact-page__input" type="email" name="email" placeholder="Email">
+                        <label class="screen-reader-text" for="sd-contact-email"><?php te('Email'); ?></label>
+                        <input id="sd-contact-email" class="sd-contact-page__input" type="email" name="email" placeholder="<?php echo esc_attr( t('Email') ); ?>">
 
-                        <label class="screen-reader-text" for="sd-contact-phone">Phone</label>
-                        <input id="sd-contact-phone" class="sd-contact-page__input" type="tel" name="phone" placeholder="Phone">
+                        <label class="screen-reader-text" for="sd-contact-phone"><?php te('Phone'); ?></label>
+                        <input id="sd-contact-phone" class="sd-contact-page__input" type="tel" name="phone" placeholder="<?php echo esc_attr( t('Phone') ); ?>">
 
                         <div class="sd-contact-page__interest-dropdown">
                             <button class="sd-contact-page__interest-toggle" type="button" aria-expanded="false">
-                                I&rsquo;m interested in
+                                <?php echo esc_html( t("I'm interested in") ); ?>
                             </button>
                             <fieldset class="sd-contact-page__interest-options" hidden>
-                                <legend class="screen-reader-text">Select class interests</legend>
-                                <label><input type="checkbox" name="interests[]" value="european-ballroom"> European Ballroom</label>
-                                <label><input type="checkbox" name="interests[]" value="latin-american"> Latin American</label>
-                                <label><input type="checkbox" name="interests[]" value="hip-hop"> Hip Hop</label>
-                                <label><input type="checkbox" name="interests[]" value="ballet-modern-choreography"> Ballet &amp; Modern Choreography</label>
-                                <label><input type="checkbox" name="interests[]" value="latin-fusion-ladies"> Latin Fusion Ladies</label>
-                                <label><input type="checkbox" name="interests[]" value="kids-programs"> Kids Programs</label>
-                                <label><input type="checkbox" name="interests[]" value="wedding-choreography"> Wedding Choreography</label>
-                                <label><input type="checkbox" name="interests[]" value="individual-lessons"> Individual Lessons</label>
+                                <legend class="screen-reader-text"><?php te('Select class interests'); ?></legend>
+                                <label><input type="checkbox" name="interests[]" value="european-ballroom"> <?php te('European Ballroom'); ?></label>
+                                <label><input type="checkbox" name="interests[]" value="latin-american"> <?php te('Latin American'); ?></label>
+                                <label><input type="checkbox" name="interests[]" value="hip-hop"> <?php te('Hip Hop'); ?></label>
+                                <label><input type="checkbox" name="interests[]" value="ballet-modern-choreography"> <?php te('Ballet & Modern Choreography'); ?></label>
+                                <label><input type="checkbox" name="interests[]" value="latin-fusion-ladies"> <?php te('Latin Fusion Ladies'); ?></label>
+                                <label><input type="checkbox" name="interests[]" value="kids-programs"> <?php te('Kids Programs'); ?></label>
+                                <label><input type="checkbox" name="interests[]" value="wedding-choreography"> <?php te('Wedding Choreography'); ?></label>
+                                <label><input type="checkbox" name="interests[]" value="individual-lessons"> <?php te('Individual Lessons'); ?></label>
                             </fieldset>
                         </div>
 
-                        <label class="screen-reader-text" for="sd-contact-message">Your Message</label>
-                        <textarea id="sd-contact-message" class="sd-contact-page__input sd-contact-page__input--message" name="message" placeholder="Your Message"></textarea>
+                        <label class="screen-reader-text" for="sd-contact-message"><?php te('Your Message'); ?></label>
+                        <textarea id="sd-contact-message" class="sd-contact-page__input sd-contact-page__input--message" name="message" placeholder="<?php echo esc_attr( t('Your Message') ); ?>"></textarea>
 
-                        <button class="sd-btn sd-contact-page__submit" type="submit">Submit</button>
+                        <button class="sd-btn sd-contact-page__submit" type="submit"><?php te('Submit'); ?></button>
                     </form>
                 </div>
             </div>

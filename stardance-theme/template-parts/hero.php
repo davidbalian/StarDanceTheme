@@ -10,13 +10,16 @@ $sd_home_hero_style = sprintf(
 ?>
 <section class="sd-hero" id="hero" style="<?php echo esc_attr( $sd_home_hero_style ); ?>">
     <div class="sd-hero__overlay"></div>
+    <?php
+    $sd_hero_pid = get_queried_object_id();
+    ?>
     <div class="sd-hero__content sd-container">
-        <span class="sd-hero__tagline fade-in fade-in-delay-0">We grow Champions!</span>
-        <h1 class="sd-hero__title fade-in fade-in-delay-1">Latin American &amp; European Ballroom Dance Classes in Limassol</h1>
-        <p class="sd-hero__desc fade-in fade-in-delay-2">Official member of the Cyprus Federation of Social &amp; Sport Dance, providing professional instruction for all ages and skill levels.</p>
+        <span class="sd-hero__tagline fade-in fade-in-delay-0"><?php echo esc_html( SD_Page_Content::get_text( $sd_hero_pid, 'home', 'hero_tagline' ) ); ?></span>
+        <h1 class="sd-hero__title fade-in fade-in-delay-1"><?php echo esc_html( SD_Page_Content::get_text( $sd_hero_pid, 'home', 'hero_title' ) ); ?></h1>
+        <p class="sd-hero__desc fade-in fade-in-delay-2"><?php echo esc_html( SD_Page_Content::get_text( $sd_hero_pid, 'home', 'hero_description' ) ); ?></p>
         <div class="sd-hero__actions fade-in fade-in-delay-3">
-            <a href="<?php echo esc_url( stardance_page_or_path_url( 'contact' ) ); ?>" class="sd-btn">Register Now</a>
-            <a href="#timetable" class="sd-btn">View Timetable</a>
+            <a href="<?php echo esc_url( sd_localized_url( '/contact/' ) ); ?>" class="sd-btn"><?php echo esc_html( SD_Page_Content::get_text( $sd_hero_pid, 'home', 'hero_btn_register' ) ); ?></a>
+            <a href="#timetable" class="sd-btn"><?php echo esc_html( SD_Page_Content::get_text( $sd_hero_pid, 'home', 'hero_btn_schedule' ) ); ?></a>
         </div>
     </div>
 </section>

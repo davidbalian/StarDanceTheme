@@ -12,8 +12,8 @@ $sd_page_id = get_queried_object_id();
 <main class="sd-page sd-page--about" id="main-content">
 
     <?php stardance_render_page_hero(array(
-        'title'       => 'About Star Dance Cyprus',
-        'description' => 'We are a professional dance school in Limassol offering Latin American and Ballroom instruction for all ages and levels. From young beginners to competitive dancers, we help each student reach their full potential on the dance floor.',
+        'title'       => SD_Page_Content::get_text( $sd_page_id, 'about', 'hero_title' ),
+        'description' => SD_Page_Content::get_text( $sd_page_id, 'about', 'hero_description' ),
         'modifier'    => 'about',
         'bg_image_urls' => stardance_get_responsive_hero_images( $sd_page_id, 'about' ),
     )); ?>
@@ -21,15 +21,15 @@ $sd_page_id = get_queried_object_id();
     <!-- Training Overview -->
     <section class="sd-section sd-about-overview" id="overview">
         <div class="sd-container">
-            <h2 class="sd-heading sd-about-overview__title fade-in fade-in-delay-0">Professional Training in Limassol</h2>
+            <h2 class="sd-heading sd-about-overview__title fade-in fade-in-delay-0"><?php echo esc_html( SD_Page_Content::get_text( $sd_page_id, 'about', 'overview_heading' ) ); ?></h2>
             <div class="sd-about-overview__layout">
 
                 <div class="sd-about-overview__text fade-in fade-in-delay-1">
                     <p class="sd-text">
-                        Star Dance Cyprus is an official member of the Cyprus Federation of Social &amp; Sport Dance. Our studio provides certified instruction following international standards for both Latin American and European Ballroom programs.
+                        <?php echo esc_html( SD_Page_Content::get_text( $sd_page_id, 'about', 'overview_p1' ) ); ?>
                     </p>
                     <p class="sd-text">
-                        We welcome students from age 3 through adults, offering group classes, private lessons, and competition training. Whether you want to dance for fun, fitness, or to compete at the highest level, we have a program for you.
+                        <?php echo esc_html( SD_Page_Content::get_text( $sd_page_id, 'about', 'overview_p2' ) ); ?>
                     </p>
                 </div>
 
@@ -49,10 +49,10 @@ $sd_page_id = get_queried_object_id();
     <section class="sd-section sd-about-legacy" id="legacy">
         <div class="sd-container">
             <div class="sd-about-legacy__content">
-                <h2 class="sd-heading sd-about-legacy__title fade-in fade-in-delay-0">Formerly Olga Dance Academy</h2>
-                <h3 class="sd-heading sd-about-legacy__subtitle fade-in fade-in-delay-0">Dancing Since 2007</h3>
-                <p class="sd-text fade-in fade-in-delay-1">Star Dance Cyprus was founded in 2007 under the name Olga Dance Academy. For nearly two decades, Olga Dance Academy built a reputation as one of Limassol's most trusted dance schools — nurturing students from their very first steps all the way to championship-level performance on international stages.</p>
-                <p class="sd-text fade-in fade-in-delay-2">In 2026, Olga Dance Academy was rebranded as Star Dance Cyprus, marking a new chapter and a broader vision for the future of dance in Cyprus. The same team, the same teaching philosophy, and the same passion that made Olga Dance Academy a Limassol institution continue to drive Star Dance Cyprus every day.</p>
+                <h2 class="sd-heading sd-about-legacy__title fade-in fade-in-delay-0"><?php echo esc_html( SD_Page_Content::get_text( $sd_page_id, 'about', 'legacy_heading' ) ); ?></h2>
+                <h3 class="sd-heading sd-about-legacy__subtitle fade-in fade-in-delay-0"><?php echo esc_html( SD_Page_Content::get_text( $sd_page_id, 'about', 'legacy_subtitle' ) ); ?></h3>
+                <p class="sd-text fade-in fade-in-delay-1"><?php echo esc_html( SD_Page_Content::get_text( $sd_page_id, 'about', 'legacy_p1' ) ); ?></p>
+                <p class="sd-text fade-in fade-in-delay-2"><?php echo esc_html( SD_Page_Content::get_text( $sd_page_id, 'about', 'legacy_p2' ) ); ?></p>
             </div>
         </div>
     </section>
@@ -60,17 +60,17 @@ $sd_page_id = get_queried_object_id();
     <!-- Values Grid -->
     <section class="sd-section sd-about-values" id="values">
         <div class="sd-container">
-            <h2 class="sd-heading sd-about-values__title fade-in fade-in-delay-0">What We Stand For</h2>
+            <h2 class="sd-heading sd-about-values__title fade-in fade-in-delay-0"><?php echo esc_html( SD_Page_Content::get_text( $sd_page_id, 'about', 'values_heading' ) ); ?></h2>
             <div class="sd-about-values__grid">
 
                 <div class="sd-about-values__col">
                     <div class="sd-about-values__card fade-in fade-in-delay-1">
-                        <h3 class="sd-about-values__card-title">Passion for Dance</h3>
-                        <p class="sd-text">We believe dance is more than movement. It's expression, connection, and joy. We bring that energy to every class.</p>
+                        <h3 class="sd-about-values__card-title"><?php echo esc_html( SD_Page_Content::get_text( $sd_page_id, 'about', 'values_v1_title' ) ); ?></h3>
+                        <p class="sd-text"><?php echo esc_html( SD_Page_Content::get_text( $sd_page_id, 'about', 'values_v1_text' ) ); ?></p>
                     </div>
                     <div class="sd-about-values__card fade-in fade-in-delay-2">
-                        <h3 class="sd-about-values__card-title">Individual Growth</h3>
-                        <p class="sd-text">Every student has different goals. We tailor our approach to help each dancer progress at their own pace, whether they're dancing for fun or preparing for competition.</p>
+                        <h3 class="sd-about-values__card-title"><?php echo esc_html( SD_Page_Content::get_text( $sd_page_id, 'about', 'values_v2_title' ) ); ?></h3>
+                        <p class="sd-text"><?php echo esc_html( SD_Page_Content::get_text( $sd_page_id, 'about', 'values_v2_text' ) ); ?></p>
                     </div>
                 </div>
 
@@ -80,12 +80,12 @@ $sd_page_id = get_queried_object_id();
 
                 <div class="sd-about-values__col">
                     <div class="sd-about-values__card fade-in fade-in-delay-1">
-                        <h3 class="sd-about-values__card-title">Excellence in Training</h3>
-                        <p class="sd-text">Our instruction follows international standards. We focus on proper technique, musicality, and performance quality from day one.</p>
+                        <h3 class="sd-about-values__card-title"><?php echo esc_html( SD_Page_Content::get_text( $sd_page_id, 'about', 'values_v3_title' ) ); ?></h3>
+                        <p class="sd-text"><?php echo esc_html( SD_Page_Content::get_text( $sd_page_id, 'about', 'values_v3_text' ) ); ?></p>
                     </div>
                     <div class="sd-about-values__card fade-in fade-in-delay-2">
-                        <h3 class="sd-about-values__card-title">Supportive Community</h3>
-                        <p class="sd-text">Our studio is a welcoming space for all ages and backgrounds. We celebrate each other's progress and create lasting friendships through dance.</p>
+                        <h3 class="sd-about-values__card-title"><?php echo esc_html( SD_Page_Content::get_text( $sd_page_id, 'about', 'values_v4_title' ) ); ?></h3>
+                        <p class="sd-text"><?php echo esc_html( SD_Page_Content::get_text( $sd_page_id, 'about', 'values_v4_text' ) ); ?></p>
                     </div>
                 </div>
 
@@ -96,17 +96,17 @@ $sd_page_id = get_queried_object_id();
     <!-- Champions Section -->
     <section class="sd-section sd-about-champions" id="champions">
         <div class="sd-container">
-            <h2 class="sd-heading sd-about-champions__title fade-in fade-in-delay-0">We Grow Champions</h2>
+            <h2 class="sd-heading sd-about-champions__title fade-in fade-in-delay-0"><?php echo esc_html( SD_Page_Content::get_text( $sd_page_id, 'about', 'champ_heading' ) ); ?></h2>
             <div class="sd-about-champions__grid">
 
                 <div class="sd-about-champions__item fade-in fade-in-delay-1">
-                    <h3 class="sd-about-champions__item-title">Experience</h3>
-                    <p class="sd-text">Over 18 years of professional coaching experience. Our training methods are proven at the highest levels of international competition.</p>
+                    <h3 class="sd-about-champions__item-title"><?php echo esc_html( SD_Page_Content::get_text( $sd_page_id, 'about', 'champ_exp_title' ) ); ?></h3>
+                    <p class="sd-text"><?php echo esc_html( SD_Page_Content::get_text( $sd_page_id, 'about', 'champ_exp_text' ) ); ?></p>
                 </div>
 
                 <div class="sd-about-champions__item fade-in fade-in-delay-2">
-                    <h3 class="sd-about-champions__item-title">Results</h3>
-                    <p class="sd-text">Our students have competed at finals level in major international competitions including Stuttgart, Blackpool, and Boston. We've trained champions from Cyprus, Israel, Italy, Greece, Estonia, Poland, Macedonia, and Ireland.</p>
+                    <h3 class="sd-about-champions__item-title"><?php echo esc_html( SD_Page_Content::get_text( $sd_page_id, 'about', 'champ_res_title' ) ); ?></h3>
+                    <p class="sd-text"><?php echo esc_html( SD_Page_Content::get_text( $sd_page_id, 'about', 'champ_res_text' ) ); ?></p>
                 </div>
 
                 <div class="sd-about-champions__image fade-in fade-in-delay-3">
@@ -118,13 +118,13 @@ $sd_page_id = get_queried_object_id();
                 </div>
 
                 <div class="sd-about-champions__item fade-in fade-in-delay-4">
-                    <h3 class="sd-about-champions__item-title">Approach</h3>
-                    <p class="sd-text">We combine technical excellence with a supportive learning environment. Our coaches give personal attention to each student, focusing on both skill development and confidence building.</p>
+                    <h3 class="sd-about-champions__item-title"><?php echo esc_html( SD_Page_Content::get_text( $sd_page_id, 'about', 'champ_app_title' ) ); ?></h3>
+                    <p class="sd-text"><?php echo esc_html( SD_Page_Content::get_text( $sd_page_id, 'about', 'champ_app_text' ) ); ?></p>
                 </div>
 
                 <div class="sd-about-champions__item fade-in fade-in-delay-5">
-                    <h3 class="sd-about-champions__item-title">Credentials</h3>
-                    <p class="sd-text">Official member of the Cyprus Federation of Social &amp; Sport Dance. International-level coaching and judging qualifications.</p>
+                    <h3 class="sd-about-champions__item-title"><?php echo esc_html( SD_Page_Content::get_text( $sd_page_id, 'about', 'champ_cred_title' ) ); ?></h3>
+                    <p class="sd-text"><?php echo esc_html( SD_Page_Content::get_text( $sd_page_id, 'about', 'champ_cred_text' ) ); ?></p>
                 </div>
 
             </div>
@@ -134,7 +134,7 @@ $sd_page_id = get_queried_object_id();
     <!-- Coach Profile: Slider -->
     <section class="sd-section sd-about-coach" id="coach">
         <div class="sd-container">
-            <h2 class="sd-heading sd-about-coach__section-title fade-in fade-in-delay-0">Our Coaches</h2>
+            <h2 class="sd-heading sd-about-coach__section-title fade-in fade-in-delay-0"><?php echo esc_html( SD_Page_Content::get_text( $sd_page_id, 'about', 'coaches_heading' ) ); ?></h2>
 
             <?php
             $coaches_query = new WP_Query(
@@ -162,21 +162,31 @@ $sd_page_id = get_queried_object_id();
                                 $wave_index = ( ( $coach_index - 1 ) % 3 ) + 1;
                                 $coach_name_classes = 'sd-coaches__name';
                                 $coach_title = get_the_title();
-                                $title_parts = preg_split( '/\s+/', trim( wp_strip_all_tags( $coach_title ) ) );
-                                $first_name = ! empty( $title_parts[0] ) ? $title_parts[0] : $coach_title;
                                 if ( 0 === $coach_index % 3 ) {
                                     $coach_name_classes .= ' sd-coaches__name--light';
                                 }
                                 ?>
+                                <?php
+                                $sd_about_coach_id   = get_the_ID();
+                                $sd_coach_name_disp  = SD_Page_Content::get_post_text( $sd_about_coach_id, 'coach_name' ) ?: get_the_title();
+                                $sd_coach_bio_ru     = SD_Page_Content::get_post_text( $sd_about_coach_id, 'coach_bio' );
+                                ?>
                                 <div class="swiper-slide sd-about-coach__slide" data-coach-slug="<?php echo esc_attr( get_post_field( 'post_name' ) ); ?>">
                                     <div class="sd-about-coach__bio">
-                                        <h3 class="sd-heading sd-about-coach__name"><?php the_title(); ?></h3>
-                                        <?php if ( get_the_content() ) : ?>
+                                        <h3 class="sd-heading sd-about-coach__name"><?php echo esc_html( $sd_coach_name_disp ); ?></h3>
+                                        <?php if ( $sd_coach_bio_ru ) : ?>
+                                            <div class="sd-about-coach__subsection">
+                                                <?php echo wp_kses_post( wpautop( $sd_coach_bio_ru ) ); ?>
+                                            </div>
+                                        <?php elseif ( get_the_content() ) : ?>
                                             <div class="sd-about-coach__subsection">
                                                 <?php echo wp_kses_post( apply_filters( 'the_content', get_the_content() ) ); ?>
                                             </div>
                                         <?php endif; ?>
-                                        <a href="<?php echo esc_url( stardance_page_or_path_url( 'contact' ) ); ?>" class="sd-btn"><?php echo esc_html( sprintf( __( 'Train with %s', 'stardance' ), $first_name ) ); ?></a>
+                                        <a href="<?php echo esc_url( sd_localized_url( '/contact/' ) ); ?>" class="sd-btn"><?php
+                                            $sd_train_first = preg_split( '/\s+/', trim( $sd_coach_name_disp ) );
+                                            echo esc_html( sprintf( t('Train with %s'), $sd_train_first[0] ?? $sd_coach_name_disp ) );
+                                        ?></a>
                                     </div>
                                     <div class="sd-about-coach__image">
                                         <div class="sd-coaches__card">
@@ -191,7 +201,7 @@ $sd_page_id = get_queried_object_id();
                                             <div class="sd-coaches__overlay">
                                                 <img class="sd-coaches__wave" src="<?php echo esc_url( 'http://stardance.com.cy/wp-content/uploads/2026/02/coach-bottom-svg-' . $wave_index . '.svg' ); ?>" alt="" aria-hidden="true">
                                             </div>
-                                            <h3 class="<?php echo esc_attr( $coach_name_classes ); ?>"><?php the_title(); ?></h3>
+                                            <h3 class="<?php echo esc_attr( $coach_name_classes ); ?>"><?php echo esc_html( $sd_coach_name_disp ); ?></h3>
                                         </div>
                                     </div>
                                 </div>
@@ -214,10 +224,10 @@ $sd_page_id = get_queried_object_id();
     </section>
 
     <?php stardance_render_cta(array(
-        'title'       => 'Ready to Join Us?',
-        'description' => 'Contact us to learn more about our classes, schedule a trial session, or discuss your dance goals',
-        'button_text' => 'Contact Us',
-        'button_url'  => stardance_page_or_path_url( 'contact' ),
+        'title'       => SD_Page_Content::get_text( $sd_page_id, 'about', 'cta_title' ),
+        'description' => SD_Page_Content::get_text( $sd_page_id, 'about', 'cta_description' ),
+        'button_text' => SD_Page_Content::get_text( $sd_page_id, 'about', 'cta_btn' ),
+        'button_url'  => sd_localized_url( '/contact/' ),
         'top_decoration_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/flipped-red-and-orange-lines.svg',
         'bottom_decoration_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/red-and-orange-lines.svg',
         'bg_image_urls' => stardance_get_responsive_bottom_cta_images( $sd_page_id, 'about' ),

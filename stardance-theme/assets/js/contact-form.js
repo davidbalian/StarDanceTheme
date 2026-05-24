@@ -70,7 +70,8 @@
 
     var submitBtn = form.querySelector('button[type="submit"]');
     var originalText = submitBtn.textContent;
-    submitBtn.textContent = 'Sending...';
+    var i18n = (typeof sdContactI18n !== 'undefined') ? sdContactI18n : {};
+    submitBtn.textContent = i18n.sending || 'Sending...';
     submitBtn.disabled = true;
 
     status.textContent = '';
@@ -92,11 +93,11 @@
           status.className = 'sd-contact__status success';
           form.reset();
         } else {
-          status.textContent = response.data.message || 'An error occurred. Please try again.';
+          status.textContent = response.data.message || i18n.errorGeneric || 'An error occurred. Please try again.';
           status.className = 'sd-contact__status error';
         }
       } catch (err) {
-        status.textContent = 'An error occurred. Please try again.';
+        status.textContent = i18n.errorGeneric || 'An error occurred. Please try again.';
         status.className = 'sd-contact__status error';
       }
     };
@@ -104,7 +105,7 @@
     xhr.onerror = function () {
       submitBtn.textContent = originalText;
       submitBtn.disabled = false;
-      status.textContent = 'Network error. Please check your connection and try again.';
+      status.textContent = i18n.errorNetwork || 'Network error. Please check your connection and try again.';
       status.className = 'sd-contact__status error';
     };
 

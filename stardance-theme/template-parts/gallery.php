@@ -6,7 +6,7 @@ $sd_gallery_u = ( empty( $sd_uploads['error'] ) && ! empty( $sd_uploads['baseurl
 ?>
 <section class="sd-section sd-gallery" id="gallery">
     <div class="sd-container">
-        <h2 class="sd-heading sd-gallery__title fade-in fade-in-delay-0">Gallery</h2>
+        <h2 class="sd-heading sd-gallery__title fade-in fade-in-delay-0"><?php te('Gallery'); ?></h2>
 
         <div class="sd-gallery__portrait fade-in fade-in-delay-1" id="gallery-portrait" data-gallery-lightbox>
             <a href="<?php echo esc_url( $sd_gallery_u . 'img1.jpg' ); ?>">
@@ -33,7 +33,7 @@ $sd_gallery_u = ( empty( $sd_uploads['error'] ) && ! empty( $sd_uploads['baseurl
         </div>
 
         <div class="sd-section__cta fade-in fade-in-delay-3">
-            <a href="<?php echo esc_url( stardance_page_or_path_url( 'gallery' ) ); ?>" class="sd-btn"><?php esc_html_e( 'View Full Gallery', 'stardance' ); ?></a>
+            <a href="<?php echo esc_url( sd_localized_url( '/gallery/' ) ); ?>" class="sd-btn"><?php te( 'View Full Gallery' ); ?></a>
         </div>
     </div>
 </section>

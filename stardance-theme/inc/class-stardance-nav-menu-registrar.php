@@ -18,6 +18,10 @@ class Stardance_Nav_Menu_Registrar {
 
     private const FOOTER_MENU_NAME = 'Star Dance Footer';
 
+    private const PRIMARY_MENU_RU_NAME = 'Star Dance Primary RU';
+
+    private const FOOTER_MENU_RU_NAME = 'Star Dance Footer RU';
+
     /**
      * Ensure default menus exist and are assigned where locations are unset.
      *
@@ -41,6 +45,22 @@ class Stardance_Nav_Menu_Registrar {
                 'footer',
                 self::FOOTER_MENU_NAME,
                 array( $this, 'populate_footer_items' )
+            );
+        }
+
+        if ( ! has_nav_menu( 'primary-ru' ) ) {
+            $this->ensure_menu_for_location(
+                'primary-ru',
+                self::PRIMARY_MENU_RU_NAME,
+                array( $this, 'populate_primary_ru_items' )
+            );
+        }
+
+        if ( ! has_nav_menu( 'footer-ru' ) ) {
+            $this->ensure_menu_for_location(
+                'footer-ru',
+                self::FOOTER_MENU_RU_NAME,
+                array( $this, 'populate_footer_ru_items' )
             );
         }
     }
@@ -196,6 +216,33 @@ class Stardance_Nav_Menu_Registrar {
         $this->add_page_or_custom_url( $menu_id, __( 'Dance Classes', 'stardance' ), 'classes' );
         $this->add_page_or_custom_url( $menu_id, __( 'Timetable', 'stardance' ), 'schedule' );
         $this->add_custom_nav_item( $menu_id, __( 'Contact', 'stardance' ), stardance_page_or_path_url( 'contact' ) );
+    }
+
+    /**
+     * @param int $menu_id Nav menu term ID.
+     * @return void
+     */
+    private function populate_primary_ru_items( int $menu_id ): void {
+        $this->add_custom_nav_item( $menu_id, 'Главная', home_url( '/ru/' ) );
+        $this->add_custom_nav_item( $menu_id, 'О нас', home_url( '/ru/about/' ) );
+        $this->add_custom_nav_item( $menu_id, 'Классы', home_url( '/ru/classes/' ) );
+        $this->add_custom_nav_item( $menu_id, 'Евенты', home_url( '/ru/events/' ) );
+        $this->add_custom_nav_item( $menu_id, 'Расписание', home_url( '/ru/schedule/' ) );
+        $this->add_custom_nav_item( $menu_id, 'Галерея', home_url( '/ru/gallery/' ) );
+        $this->add_custom_nav_item( $menu_id, 'Контакты', home_url( '/ru/contact/' ) );
+    }
+
+    /**
+     * @param int $menu_id Nav menu term ID.
+     * @return void
+     */
+    private function populate_footer_ru_items( int $menu_id ): void {
+        $this->add_custom_nav_item( $menu_id, 'Главная', home_url( '/ru/' ) );
+        $this->add_custom_nav_item( $menu_id, 'О нас', home_url( '/ru/about/' ) );
+        $this->add_custom_nav_item( $menu_id, 'Наши тренеры', home_url( '/ru/#coaches' ) );
+        $this->add_custom_nav_item( $menu_id, 'Классы', home_url( '/ru/classes/' ) );
+        $this->add_custom_nav_item( $menu_id, 'Расписание', home_url( '/ru/schedule/' ) );
+        $this->add_custom_nav_item( $menu_id, 'Контакты', home_url( '/ru/contact/' ) );
     }
 
     /**

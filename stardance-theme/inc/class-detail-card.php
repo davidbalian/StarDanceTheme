@@ -59,7 +59,7 @@ function stardance_render_class_detail_card( $args = array() ) {
                     <?php endif; ?>
                 <?php endforeach; ?>
             </div>
-            <p class="sd-class-detail-card__suitable"><?php esc_html_e( 'Suitable for:', 'stardance' ); ?></p>
+            <p class="sd-class-detail-card__suitable"><?php echo esc_html( t( 'Suitable for:' ) ); ?></p>
             <?php if ( ! empty( $args['pills'] ) ) : ?>
                 <ul class="sd-class-detail-card__pills" role="list">
                     <?php foreach ( (array) $args['pills'] as $pill ) : ?>

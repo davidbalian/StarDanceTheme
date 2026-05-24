@@ -51,8 +51,8 @@ $sd_class_details_lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing el
         'modifier'    => 'single-class',
         'bg_image_urls' => stardance_get_responsive_hero_images( $sd_class_id, 'single_class' ),
         'buttons'     => array(
-            array( 'text' => 'View Schedule', 'url' => '#class-times' ),
-            array( 'text' => 'Contact Us',    'url' => stardance_page_or_path_url( 'contact' ) ),
+            array( 'text' => t( 'View Schedule' ), 'url' => '#class-times' ),
+            array( 'text' => t( 'Contact Us' ),    'url' => sd_localized_url( '/contact/' ) ),
         ),
     )); ?>
 
@@ -145,17 +145,17 @@ $sd_class_details_lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing el
     <!-- Class Times -->
     <section class="sd-section sd-class-times" id="class-times">
         <div class="sd-container">
-            <h2 class="sd-heading sd-class-times__title fade-in fade-in-delay-0">When We Train</h2>
+            <h2 class="sd-heading sd-class-times__title fade-in fade-in-delay-0"><?php te('When We Train'); ?></h2>
             <div class="sd-schedule-page__grid sd-class-times__schedule-grid">
                 <?php
                 $sd_time_rows = array(
-                    array( 'Mon', 'monday_time', 'monday_closed', '17:00 - 20:00', 1 ),
-                    array( 'Tue', 'tuesday_time', 'tuesday_closed', '17:00 - 20:00', 2 ),
-                    array( 'Wed', 'wednesday_time', 'wednesday_closed', '17:00 - 20:00', 3 ),
-                    array( 'Thu', 'thursday_time', 'thursday_closed', '17:00 - 20:00', 4 ),
-                    array( 'Fri', 'friday_time', 'friday_closed', '17:00 - 20:00', 5 ),
-                    array( 'Sat', 'saturday_time', 'saturday_closed', '10:00 - 14:00', 6 ),
-                    array( 'Sun', 'sunday_time', 'sunday_closed', 'Closed', 7 ),
+                    array( t('Mon'), 'monday_time', 'monday_closed', '17:00 - 20:00', 1 ),
+                    array( t('Tue'), 'tuesday_time', 'tuesday_closed', '17:00 - 20:00', 2 ),
+                    array( t('Wed'), 'wednesday_time', 'wednesday_closed', '17:00 - 20:00', 3 ),
+                    array( t('Thu'), 'thursday_time', 'thursday_closed', '17:00 - 20:00', 4 ),
+                    array( t('Fri'), 'friday_time', 'friday_closed', '17:00 - 20:00', 5 ),
+                    array( t('Sat'), 'saturday_time', 'saturday_closed', '10:00 - 14:00', 6 ),
+                    array( t('Sun'), 'sunday_time', 'sunday_closed', 'Closed', 7 ),
                 );
                 $sd_top_row    = array_slice( $sd_time_rows, 0, 4 );
                 $sd_bottom_row = array_slice( $sd_time_rows, 4, 3 );
@@ -176,7 +176,7 @@ $sd_class_details_lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing el
                         <article class="sd-schedule-page__day sd-class-times__schedule-day<?php echo esc_attr( $day_class ); ?> fade-in fade-in-delay-<?php echo absint( $delay ); ?>">
                             <h3 class="sd-schedule-page__day-title"><?php echo esc_html( $day_label ); ?></h3>
                             <?php if ( $is_closed ) : ?>
-                                <p class="sd-schedule-page__closed"><?php esc_html_e( 'Closed', 'stardance' ); ?></p>
+                                <p class="sd-schedule-page__closed"><?php te('Closed'); ?></p>
                             <?php else : ?>
                                 <div class="sd-schedule-page__sessions">
                                     <div class="sd-schedule-page__session">
@@ -204,7 +204,7 @@ $sd_class_details_lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing el
                         <article class="sd-schedule-page__day sd-class-times__schedule-day<?php echo esc_attr( $day_class ); ?> fade-in fade-in-delay-<?php echo absint( $delay ); ?>">
                             <h3 class="sd-schedule-page__day-title"><?php echo esc_html( $day_label ); ?></h3>
                             <?php if ( $is_closed ) : ?>
-                                <p class="sd-schedule-page__closed"><?php esc_html_e( 'Closed', 'stardance' ); ?></p>
+                                <p class="sd-schedule-page__closed"><?php te('Closed'); ?></p>
                             <?php else : ?>
                                 <div class="sd-schedule-page__sessions">
                                     <div class="sd-schedule-page__session">
@@ -218,7 +218,7 @@ $sd_class_details_lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing el
                 </div>
             </div>
             <p class="sd-text sd-class-times__note">
-                Times shown are indicative. <a href="<?php echo esc_url(home_url('/schedule/')); ?>">View the full timetable</a> or contact us to check current availability.
+                <?php te('Times shown are indicative.'); ?> <a href="<?php echo esc_url( sd_localized_url('/schedule/') ); ?>"><?php te('View the full timetable'); ?></a> or contact us to check current availability.
             </p>
         </div>
     </section>
@@ -226,7 +226,7 @@ $sd_class_details_lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing el
     <!-- FAQ Accordion -->
     <section class="sd-section sd-faq sd-faq--single-class" id="faq">
         <div class="sd-container">
-            <h2 class="sd-heading sd-faq__title fade-in fade-in-delay-0">FAQs</h2>
+            <h2 class="sd-heading sd-faq__title fade-in fade-in-delay-0"><?php te('FAQs'); ?></h2>
             <div class="sd-classes-faq__layout sd-classes-faq__layout--single">
                 <div class="sd-faq__list">
                     <?php stardance_render_faq_item(array(
@@ -282,7 +282,7 @@ $sd_class_details_lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing el
     <!-- Dancers in action (video poster) -->
     <section class="sd-section sd-class-video" id="class-gallery">
         <div class="sd-container">
-            <h2 class="sd-heading sd-class-video__title fade-in fade-in-delay-0">See Our Dancers in Action</h2>
+            <h2 class="sd-heading sd-class-video__title fade-in fade-in-delay-0"><?php te('See Our Dancers in Action'); ?></h2>
             <div class="sd-class-video__frame fade-in fade-in-delay-1">
                 <?php
                 $acf_feature_image = $sd_has_acf ? get_field( 'gallery_image_1', $sd_class_id ) : null;
@@ -319,17 +319,17 @@ $sd_class_details_lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing el
     </section>
 
     <?php stardance_render_cta(array(
-        'title'       => 'Ready to Start?',
-        'description' => 'Contact us to book a trial class or ask any questions about this program.',
-        'button_text' => 'Contact Us',
-        'button_url'  => stardance_page_or_path_url( 'contact' ),
+        'title'       => t( 'Ready to Start?' ),
+        'description' => t( 'Contact us to book a trial class or ask any questions about this program.' ),
+        'button_text' => t( 'Contact Us' ),
+        'button_url'  => sd_localized_url( '/contact/' ),
         'bg_image_urls' => stardance_get_responsive_bottom_cta_images( $sd_class_id, 'single_class' ),
     )); ?>
 
     <!-- Location / Map -->
     <section class="sd-section sd-class-location" id="location">
         <div class="sd-container">
-            <h2 class="sd-heading sd-class-location__title fade-in fade-in-delay-0">Our Location</h2>
+            <h2 class="sd-heading sd-class-location__title fade-in fade-in-delay-0"><?php te('Our Location'); ?></h2>
             <p class="sd-text sd-class-location__address fade-in fade-in-delay-1">
                 Masterland/KIDDOM, Spyrou Kyprianou Ave 48, Limassol 4043, Cyprus
             </p>

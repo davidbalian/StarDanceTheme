@@ -3,6 +3,12 @@
  * Star Dance Studio Theme Functions
  */
 
+// i18n — must load before templates and menus.
+require get_template_directory() . '/inc/i18n/sd-i18n-bootstrap.php';
+
+// ACF page-meta schema + resolver + field groups.
+require get_template_directory() . '/inc/page-meta/sd-page-meta.php';
+
 // Reusable component render functions
 require get_template_directory() . '/inc/components.php';
 require get_template_directory() . '/inc/acf-responsive-images.php';
@@ -50,8 +56,10 @@ function stardance_setup() {
     ));
 
     register_nav_menus(array(
-        'primary' => __('Primary Menu', 'stardance'),
-        'footer'  => __('Footer Menu', 'stardance'),
+        'primary'    => __('Primary Menu', 'stardance'),
+        'footer'     => __('Footer Menu', 'stardance'),
+        'primary-ru' => __('Primary Menu (RU)', 'stardance'),
+        'footer-ru'  => __('Footer Menu (RU)', 'stardance'),
     ));
 }
 add_action('after_setup_theme', 'stardance_setup');
@@ -144,6 +152,15 @@ function stardance_enqueue_assets() {
         'ajaxurl' => admin_url('admin-ajax.php'),
         'nonce'   => wp_create_nonce('stardance_contact_nonce'),
     ));
+
+    // i18n strings for contact-form.js
+    wp_localize_script( 'stardance-contact-form', 'sdContactI18n', array(
+        'sending'      => t( 'Sending...' ),
+        'errorGeneric' => t( 'An error occurred. Please try again.' ),
+        'errorNetwork' => t( 'Network error. Please check your connection and try again.' ),
+        'successMsg'   => t( 'Thank you! Your message has been sent successfully.' ),
+        'errorMsg'     => t( 'Sorry, there was an error sending your message. Please try again.' ),
+    ) );
 }
 add_action('wp_enqueue_scripts', 'stardance_enqueue_assets');
 
@@ -1335,11 +1352,11 @@ function stardance_handle_contact_form() {
     $message = sanitize_textarea_field($_POST['message'] ?? '');
 
     if (empty($name) || empty($email) || empty($message)) {
-        wp_send_json_error(array('message' => 'Please fill in all required fields.'));
+        wp_send_json_error(array('message' => t('Please fill in all required fields.')));
     }
 
     if (!is_email($email)) {
-        wp_send_json_error(array('message' => 'Please enter a valid email address.'));
+        wp_send_json_error(array('message' => t('Please enter a valid email address.')));
     }
 
     $to = 'svetlana@stardance.com.cy';
@@ -1359,9 +1376,9 @@ function stardance_handle_contact_form() {
     $sent = wp_mail($to, $subject, $body, $headers);
 
     if ($sent) {
-        wp_send_json_success(array('message' => 'Thank you! Your message has been sent successfully.'));
+        wp_send_json_success(array('message' => t('Thank you! Your message has been sent successfully.')));
     } else {
-        wp_send_json_error(array('message' => 'Sorry, there was an error sending your message. Please try again.'));
+        wp_send_json_error(array('message' => t('Sorry, there was an error sending your message. Please try again.')));
     }
 }
 add_action('wp_ajax_stardance_contact', 'stardance_handle_contact_form');

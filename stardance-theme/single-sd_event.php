@@ -33,13 +33,13 @@ if ( $sd_thumb_id ) {
 $sd_hero_meta_rows = array();
 if ( $sd_event_date ) {
     $sd_hero_meta_rows[] = array(
-        'label' => __( 'Date', 'stardance' ) . ':',
+        'label' => t( 'Date' ) . ':',
         'value' => $sd_event_date,
     );
 }
 if ( $sd_location ) {
     $sd_hero_meta_rows[] = array(
-        'label' => __( 'Location', 'stardance' ) . ':',
+        'label' => t( 'Location' ) . ':',
         'value' => $sd_location,
     );
 }
@@ -47,13 +47,13 @@ if ( $sd_location ) {
 $sd_hero_buttons = array();
 if ( $sd_event_link ) {
     $sd_hero_buttons[] = array(
-        'text' => __( 'Event Website', 'stardance' ),
+        'text' => t( 'Event Website' ),
         'url'  => $sd_event_link,
     );
 }
 $sd_hero_buttons[] = array(
-    'text' => __( 'Contact Us', 'stardance' ),
-    'url'  => stardance_page_or_path_url( 'contact' ),
+    'text' => t( 'Contact Us' ),
+    'url'  => sd_localized_url( '/contact/' ),
 );
 
 $sd_raw_content      = get_post()->post_content;
@@ -97,12 +97,12 @@ if ( $sd_has_about xor $sd_has_gallery ) {
                     <div class="sd-single-event__intro-layout <?php echo esc_attr( $sd_intro_layout_mod ); ?> fade-in fade-in-delay-0" data-gallery-lightbox>
                         <?php if ( $sd_has_about ) : ?>
                             <div class="sd-single-event__intro-about">
-                                <h2 class="sd-heading sd-single-event__intro-title"><?php esc_html_e( 'About This Event', 'stardance' ); ?></h2>
+                                <h2 class="sd-heading sd-single-event__intro-title"><?php te( 'About This Event' ); ?></h2>
                                 <div class="sd-single-event__about-prose sd-text entry-content">
                                     <?php the_content(); ?>
                                 </div>
                                 <button type="button" class="sd-btn sd-single-event__gallery-open" data-gallery-lightbox-open>
-                                    <?php esc_html_e( 'View Full Gallery', 'stardance' ); ?>
+                                    <?php te( 'View Full Gallery' ); ?>
                                 </button>
                             </div>
                         <?php endif; ?>
@@ -152,7 +152,7 @@ if ( $sd_has_about xor $sd_has_gallery ) {
 
                         <?php if ( ! $sd_has_about ) : ?>
                             <button type="button" class="sd-btn sd-single-event__gallery-open sd-single-event__gallery-open--solo" data-gallery-lightbox-open>
-                                <?php esc_html_e( 'View Full Gallery', 'stardance' ); ?>
+                                <?php te( 'View Full Gallery' ); ?>
                             </button>
                         <?php endif; ?>
                     </div>
@@ -173,7 +173,7 @@ if ( $sd_has_about xor $sd_has_gallery ) {
     <section class="sd-section sd-single-event" id="event-details">
         <div class="sd-container">
             <?php if ( $sd_has_schedule_cards || $sd_has_schedule_notes ) : ?>
-                <h2 class="sd-heading sd-single-event__section-title fade-in fade-in-delay-2"><?php esc_html_e( 'Schedule', 'stardance' ); ?></h2>
+                <h2 class="sd-heading sd-single-event__section-title fade-in fade-in-delay-2"><?php te( 'Schedule' ); ?></h2>
                 <?php
                 $sd_schedule_dateline = Stardance_Event_Schedule_Week_Display::format_event_dateline( is_string( $sd_event_date ) ? $sd_event_date : '' );
                 if ( '' !== $sd_schedule_dateline ) :
@@ -192,7 +192,7 @@ if ( $sd_has_about xor $sd_has_gallery ) {
                                 <article class="sd-timetable__day">
                                     <h3 class="sd-timetable__day-title"><?php echo esc_html( $sd_day['label'] ); ?></h3>
                                     <?php if ( ! empty( $sd_day['closed'] ) ) : ?>
-                                        <p class="sd-timetable__closed"><?php esc_html_e( 'No event', 'stardance' ); ?></p>
+                                        <p class="sd-timetable__closed"><?php te( 'No event' ); ?></p>
                                     <?php else : ?>
                                         <div class="sd-timetable__sessions">
                                             <?php foreach ( $sd_day['sessions'] as $sd_session ) : ?>
@@ -218,7 +218,7 @@ if ( $sd_has_about xor $sd_has_gallery ) {
                                     <article class="sd-timetable__day">
                                         <h3 class="sd-timetable__day-title"><?php echo esc_html( $sd_day['label'] ); ?></h3>
                                         <?php if ( ! empty( $sd_day['closed'] ) ) : ?>
-                                            <p class="sd-timetable__closed"><?php esc_html_e( 'No event', 'stardance' ); ?></p>
+                                            <p class="sd-timetable__closed"><?php te( 'No event' ); ?></p>
                                         <?php else : ?>
                                             <div class="sd-timetable__sessions">
                                                 <?php foreach ( $sd_day['sessions'] as $sd_session ) : ?>
@@ -252,7 +252,7 @@ if ( $sd_has_about xor $sd_has_gallery ) {
                                 $sd_loc      = isset( $sd_row['location'] ) ? trim( (string) $sd_row['location'] ) : '';
                                 $sd_d        = min( $sd_card_delay, 10 );
                                 ++$sd_card_delay;
-                                $sd_day_display = '' !== $sd_day ? $sd_day : __( 'TBA', 'stardance' );
+                                $sd_day_display = '' !== $sd_day ? $sd_day : t( 'TBA' );
                                 ?>
                                 <article class="sd-schedule-page__day sd-single-event__schedule-card fade-in fade-in-delay-<?php echo absint( $sd_d ); ?>">
                                     <h3 class="sd-schedule-page__day-title"><?php echo esc_html( $sd_day_display ); ?></h3>
@@ -288,10 +288,10 @@ if ( $sd_has_about xor $sd_has_gallery ) {
     <?php
     stardance_render_cta(
         array(
-            'title'                 => __( 'Questions About This Event?', 'stardance' ),
-            'description'           => __( 'Contact us for more information about attending or competing.', 'stardance' ),
-            'button_text'           => __( 'Contact Us', 'stardance' ),
-            'button_url'            => stardance_page_or_path_url( 'contact' ),
+            'title'                 => t( 'Questions About This Event?' ),
+            'description'           => t( 'Contact us for more information about attending or competing.' ),
+            'button_text'           => t( 'Contact Us' ),
+            'button_url'            => sd_localized_url( '/contact/' ),
             'top_decoration_url'    => 'https://stardance.com.cy/wp-content/uploads/2026/03/flipped-red-and-orange-lines.svg',
             'bottom_decoration_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/red-and-orange-lines.svg',
             'bg_image_urls'         => stardance_get_responsive_bottom_cta_images( $sd_event_id, 'single_event' ),

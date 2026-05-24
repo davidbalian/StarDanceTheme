@@ -6,16 +6,15 @@
  */
 
 get_header();
-$sd_page_id = get_queried_object_id();
-
-require get_template_directory() . '/inc/schedule-data.php';
+$sd_page_id    = get_queried_object_id();
+$schedule_days = sd_get_schedule_days();
 ?>
 
 <main class="sd-page sd-page--schedule" id="main-content">
 
     <?php stardance_render_page_hero(array(
-        'title'       => 'Class Timetable',
-        'description' => 'View our weekly class schedule below. Classes run Monday through Friday at our Limassol studio. Contact us if you have questions about specific classes or to arrange a trial session.',
+        'title'       => SD_Page_Content::get_text( $sd_page_id, 'schedule', 'hero_title' ),
+        'description' => SD_Page_Content::get_text( $sd_page_id, 'schedule', 'hero_description' ),
         'modifier'    => 'schedule',
         'bg_image_urls' => stardance_get_responsive_hero_images( $sd_page_id, 'schedule' ),
     )); ?>
@@ -32,7 +31,7 @@ require get_template_directory() . '/inc/schedule-data.php';
                         <h2 class="sd-schedule-page__day-title"><?php echo esc_html( $day['label'] ); ?></h2>
 
                         <?php if ( ! empty( $day['closed'] ) ) : ?>
-                            <p class="sd-schedule-page__closed">Closed</p>
+                            <p class="sd-schedule-page__closed"><?php te('Closed'); ?></p>
                         <?php else : ?>
                             <div class="sd-schedule-page__sessions">
                                 <?php foreach ( $day['sessions'] as $session ) : ?>
@@ -55,7 +54,7 @@ require get_template_directory() . '/inc/schedule-data.php';
                             <h2 class="sd-schedule-page__day-title"><?php echo esc_html( $day['label'] ); ?></h2>
 
                             <?php if ( ! empty( $day['closed'] ) ) : ?>
-                                <p class="sd-schedule-page__closed">Closed</p>
+                                <p class="sd-schedule-page__closed"><?php te('Closed'); ?></p>
                             <?php else : ?>
                                 <div class="sd-schedule-page__sessions">
                                     <?php foreach ( $day['sessions'] as $session ) : ?>
@@ -77,10 +76,10 @@ require get_template_directory() . '/inc/schedule-data.php';
     </section>
 
     <?php stardance_render_cta(array(
-        'title'       => 'Questions About Our Schedule?',
-        'description' => 'Looking for a specific class time or want to book a private lesson? Get in touch and we\'ll help you find the best option.',
-        'button_text' => 'Contact Us',
-        'button_url'  => stardance_page_or_path_url( 'contact' ),
+        'title'       => SD_Page_Content::get_text( $sd_page_id, 'schedule', 'cta_title' ),
+        'description' => SD_Page_Content::get_text( $sd_page_id, 'schedule', 'cta_description' ),
+        'button_text' => SD_Page_Content::get_text( $sd_page_id, 'schedule', 'cta_btn' ),
+        'button_url'  => sd_localized_url( '/contact/' ),
         'top_decoration_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/flipped-red-and-orange-lines.svg',
         'bottom_decoration_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/red-and-orange-lines.svg',
         'bg_image_urls' => stardance_get_responsive_bottom_cta_images( $sd_page_id, 'schedule' ),

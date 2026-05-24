@@ -1,6 +1,7 @@
+<?php $sd_coaches_home_pid = get_queried_object_id(); ?>
 <section class="sd-section sd-coaches" id="coaches">
     <div class="sd-container">
-        <h2 class="sd-heading sd-coaches__title fade-in fade-in-delay-0">Meet The Coaches</h2>
+        <h2 class="sd-heading sd-coaches__title fade-in fade-in-delay-0"><?php echo esc_html( SD_Page_Content::get_text( $sd_coaches_home_pid, 'home', 'coaches_heading' ) ); ?></h2>
 
         <div class="swiper sd-coaches__viewport js-sd-home-coaches fade-in fade-in-delay-1">
             <div class="swiper-wrapper">
@@ -21,8 +22,10 @@
                 if ( $coaches_query->have_posts() ) :
                     while ( $coaches_query->have_posts() ) :
                         $coaches_query->the_post();
+                        $sd_coach_id       = get_the_ID();
+                        $sd_coach_name_ru  = SD_Page_Content::get_post_text( $sd_coach_id, 'coach_name' );
                         $coaches_data[] = array(
-                            'title'     => get_the_title(),
+                            'title'     => $sd_coach_name_ru ?: get_the_title(),
                             'slug'      => get_post_field( 'post_name' ),
                             'has_thumb' => has_post_thumbnail(),
                             'thumb_id'  => get_post_thumbnail_id(),
@@ -42,7 +45,7 @@
                     $wave_index  = ( ( $slot - 1 ) % 3 ) + 1;
                     $name_class  = 'sd-coaches__name' . ( 0 === $slot % 3 ? ' sd-coaches__name--light' : '' );
                     $slide_class = 'swiper-slide sd-coaches__slide' . ( $is_dup ? ' sd-coaches__slide--dup' : '' );
-                    $coach_link  = add_query_arg( 'coach', $coach['slug'], stardance_page_or_path_url( 'about' ) ) . '#coach';
+                    $coach_link  = add_query_arg( 'coach', $coach['slug'], sd_localized_url( '/about/' ) ) . '#coach';
                     ?>
                     <div class="<?php echo esc_attr( $slide_class ); ?>"<?php echo $is_dup ? ' aria-hidden="true"' : ''; ?>>
                         <a class="sd-coaches__link" href="<?php echo esc_url( $coach_link ); ?>"<?php echo $is_dup ? ' tabindex="-1"' : ''; ?> aria-label="<?php echo esc_attr( sprintf( __( 'View %s profile', 'stardance' ), $coach['title'] ) ); ?>">
