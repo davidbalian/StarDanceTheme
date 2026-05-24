@@ -51,57 +51,57 @@ add_action( 'init', 'stardance_register_coach_post_type' );
 function stardance_seed_coaches() {
     $coaches = array(
         array(
-            ‘title’      => ‘Svetlana Grincevschi’,
-            ‘title_ru’   => ‘Светлана Гринчевски’,
-            ‘slug’       => ‘svetlana-grincevschi’,
-            ‘content’    => ‘International Adjudicator (License "A") with the World Dance Sport Federation, qualified to judge Latin American and European Standard dance competitions.’ . "\n\n" . ‘Since 2007, Svetlana has coached champions from Cyprus, Israel, Italy, Greece, Estonia, Poland, Macedonia, and Ireland. Her students compete at the finals level in major international competitions, including events in Stuttgart, Blackpool, and Boston.’,
-            ‘content_ru’ => ‘Международный арбитр (Лицензия «A») Всемирной федерации танцевального спорта, имеет право судить соревнования по латиноамериканской программе и европейским стандартным танцам.’ . "\n\n" . ‘С 2007 года Светлана воспитывает чемпионов из Кипра, Израиля, Италии, Греции, Эстонии, Польши, Македонии и Ирландии. Её ученики выходят в финалы крупнейших международных соревнований, в том числе в Штутгарте, Блэкпуле и Бостоне.’,
-            ‘menu_order’ => 1,
+            'title'      => 'Svetlana Grincevschi',
+            'title_ru'   => 'Светлана Гринчевски',
+            'slug'       => 'svetlana-grincevschi',
+            'content'    => 'International Adjudicator (License "A") with the World Dance Sport Federation, qualified to judge Latin American and European Standard dance competitions.' . "\n\n" . 'Since 2007, Svetlana has coached champions from Cyprus, Israel, Italy, Greece, Estonia, Poland, Macedonia, and Ireland. Her students compete at the finals level in major international competitions, including events in Stuttgart, Blackpool, and Boston.',
+            'content_ru' => 'Международный арбитр (Лицензия «A») Всемирной федерации танцевального спорта, имеет право судить соревнования по латиноамериканской программе и европейским стандартным танцам.' . "\n\n" . 'С 2007 года Светлана воспитывает чемпионов из Кипра, Израиля, Италии, Греции, Эстонии, Польши, Македонии и Ирландии. Её ученики выходят в финалы крупнейших международных соревнований, в том числе в Штутгарте, Блэкпуле и Бостоне.',
+            'menu_order' => 1,
         ),
         array(
-            ‘title’      => ‘Olga Turbin’,
-            ‘title_ru’   => ‘Ольга Турбин’,
-            ‘slug’       => ‘olga-turbin’,
-            ‘content’    => ‘Eight-time National Champion of Cyprus.’ . "\n\n" . ‘Winner and Finalist in International Latin American Dance Championships.’ . "\n\n" . ‘To become the best, you must learn from the best. ✨ We are honored to have Olga Turbin leading our students to professional success. As an 8-time National Champion of Cyprus and a winner and finalist in International Latin American Dance Championships, Olga brings world-class authority and magical precision to every lesson. 🏆’ . "\n\n" . ‘Whether you are dreaming of a professional sports career or a flawless performance on the international stage, Olga’s expert guidance transforms talent into victory. The journey to the podium starts under the wing of a true master. 🕊️’,
-            ‘content_ru’ => ‘Восьмикратная чемпионка Кипра.’ . "\n\n" . ‘Победительница и финалистка международных чемпионатов по латиноамериканским танцам.’ . "\n\n" . ‘Чтобы стать лучшим, нужно учиться у лучших. ✨ Мы гордимся тем, что Ольга Турбин ведёт наших учеников к профессиональному успеху. Как 8-кратная чемпионка Кипра и победительница международных чемпионатов по латиноамериканским танцам, Ольга привносит в каждый урок авторитет мирового класса и магическую точность. 🏆’ . "\n\n" . ‘Мечтаете о профессиональной карьере или безупречном выступлении на международной арене? Под руководством Ольги талант превращается в победу. Путь к пьедесталу начинается под крылом настоящего мастера. 🕊️’,
-            ‘menu_order’ => 2,
+            'title'      => 'Olga Turbin',
+            'title_ru'   => 'Ольга Турбин',
+            'slug'       => 'olga-turbin',
+            'content'    => 'Eight-time National Champion of Cyprus.' . "\n\n" . 'Winner and Finalist in International Latin American Dance Championships.' . "\n\n" . 'To become the best, you must learn from the best. ✨ We are honored to have Olga Turbin leading our students to professional success. As an 8-time National Champion of Cyprus and a winner and finalist in International Latin American Dance Championships, Olga brings world-class authority and magical precision to every lesson. 🏆' . "\n\n" . 'Whether you are dreaming of a professional sports career or a flawless performance on the international stage, Olga's expert guidance transforms talent into victory. The journey to the podium starts under the wing of a true master. 🕊️',
+            'content_ru' => 'Восьмикратная чемпионка Кипра.' . "\n\n" . 'Победительница и финалистка международных чемпионатов по латиноамериканским танцам.' . "\n\n" . 'Чтобы стать лучшим, нужно учиться у лучших. ✨ Мы гордимся тем, что Ольга Турбин ведёт наших учеников к профессиональному успеху. Как 8-кратная чемпионка Кипра и победительница международных чемпионатов по латиноамериканским танцам, Ольга привносит в каждый урок авторитет мирового класса и магическую точность. 🏆' . "\n\n" . 'Мечтаете о профессиональной карьере или безупречном выступлении на международной арене? Под руководством Ольги талант превращается в победу. Путь к пьедесталу начинается под крылом настоящего мастера. 🕊️',
+            'menu_order' => 2,
         ),
         array(
-            ‘title’      => ‘Vladimir Merinov’,
-            ‘title_ru’   => ‘Владимир Меринов’,
-            ‘slug’       => ‘vladimir-merinov’,
-            ‘content’    => ‘About Vladimir:’ . "\n\n" . ‘Multiple-time prize winner in the Russian national ranking.’ . "\n" . ‘Finalist of the Italian Open Championship "Alassio Open".’ . "\n" . ‘Winner of international IDSF tournaments.’ . "\n" . ‘"M" Class, Master of Sports of Russia in DanceSport (Latin American program).’ . "\n" . ‘Multiple-time champion of Tomsk Region.’ . "\n" . ‘Vice-champion of the Siberian Federal District.’ . "\n\n" . ‘His students include dancers in the "M", "S", and "A" classes; Masters of Sports of Russia and Candidates for Master of Sports of Russia; winners, medalists, and finalists of the St. Petersburg Championship; and finalists and semifinalists of the Russian Championship.’ . "\n\n" . ‘His Pro-Am students reached the finals of the UK Open Dance Festival and became winners at the Blackpool Dance Festival in the A category ("Single Dance").’ . "\n\n" . ‘Mastery is born from experience, and at Star Dance Cyprus we learn from the best. ✨ We are proud to present Vladimir Merinov — a true icon of the Latin American dance program.’ . "\n\n" . ‘Holding the prestigious "M" class and the title of Master of Sports, Vladimir built his career at the highest level of success: from victories in international IDSF tournaments to the finals of the renowned "Alassio Open" championship in Italy.’ . "\n\n" . ‘His impact goes far beyond the dance floor — he has trained Masters of Sports and finalists of Russian Championships. From young athletes to Pro-Am winners at the legendary Blackpool festival, Vladimir develops champions at every level. 🏆’,
-            ‘content_ru’ => ‘О Владимире:’ . "\n\n" . ‘Многократный призёр российского национального рейтинга.’ . "\n" . ‘Финалист итальянского открытого чемпионата «Alassio Open».’ . "\n" . ‘Победитель международных турниров IDSF.’ . "\n" . ‘Класс «М», Мастер спорта России по танцевальному спорту (латиноамериканская программа).’ . "\n" . ‘Многократный чемпион Томской области.’ . "\n" . ‘Вице-чемпион Сибирского федерального округа.’ . "\n\n" . ‘Среди его учеников — танцоры классов «М», «С» и «А»; мастера спорта России и кандидаты в мастера спорта; победители, призёры и финалисты чемпионата Санкт-Петербурга; финалисты и полуфиналисты чемпионата России.’ . "\n\n" . ‘Его ученики в Pro-Am категории вышли в финал UK Open Dance Festival и стали победителями Blackpool Dance Festival в категории A («Single Dance»).’ . "\n\n" . ‘Мастерство рождается из опыта, и в Star Dance Cyprus мы учимся у лучших. ✨ С гордостью представляем Владимира Меринова — настоящую икону латиноамериканской танцевальной программы.’ . "\n\n" . ‘Обладатель престижного класса «М» и звания Мастера спорта, Владимир построил карьеру на высочайшем уровне: от побед на международных турнирах IDSF до финалов легендарного чемпионата «Alassio Open» в Италии.’ . "\n\n" . ‘Его влияние выходит далеко за пределы танцевального паркета — он вырастил мастеров спорта и финалистов чемпионата России. От молодых спортсменов до победителей Pro-Am на легендарном фестивале в Блэкпуле — Владимир воспитывает чемпионов на всех уровнях. 🏆’,
-            ‘menu_order’ => 3,
+            'title'      => 'Vladimir Merinov',
+            'title_ru'   => 'Владимир Меринов',
+            'slug'       => 'vladimir-merinov',
+            'content'    => 'About Vladimir:' . "\n\n" . 'Multiple-time prize winner in the Russian national ranking.' . "\n" . 'Finalist of the Italian Open Championship "Alassio Open".' . "\n" . 'Winner of international IDSF tournaments.' . "\n" . '"M" Class, Master of Sports of Russia in DanceSport (Latin American program).' . "\n" . 'Multiple-time champion of Tomsk Region.' . "\n" . 'Vice-champion of the Siberian Federal District.' . "\n\n" . 'His students include dancers in the "M", "S", and "A" classes; Masters of Sports of Russia and Candidates for Master of Sports of Russia; winners, medalists, and finalists of the St. Petersburg Championship; and finalists and semifinalists of the Russian Championship.' . "\n\n" . 'His Pro-Am students reached the finals of the UK Open Dance Festival and became winners at the Blackpool Dance Festival in the A category ("Single Dance").' . "\n\n" . 'Mastery is born from experience, and at Star Dance Cyprus we learn from the best. ✨ We are proud to present Vladimir Merinov — a true icon of the Latin American dance program.' . "\n\n" . 'Holding the prestigious "M" class and the title of Master of Sports, Vladimir built his career at the highest level of success: from victories in international IDSF tournaments to the finals of the renowned "Alassio Open" championship in Italy.' . "\n\n" . 'His impact goes far beyond the dance floor — he has trained Masters of Sports and finalists of Russian Championships. From young athletes to Pro-Am winners at the legendary Blackpool festival, Vladimir develops champions at every level. 🏆',
+            'content_ru' => 'О Владимире:' . "\n\n" . 'Многократный призёр российского национального рейтинга.' . "\n" . 'Финалист итальянского открытого чемпионата «Alassio Open».' . "\n" . 'Победитель международных турниров IDSF.' . "\n" . 'Класс «М», Мастер спорта России по танцевальному спорту (латиноамериканская программа).' . "\n" . 'Многократный чемпион Томской области.' . "\n" . 'Вице-чемпион Сибирского федерального округа.' . "\n\n" . 'Среди его учеников — танцоры классов «М», «С» и «А»; мастера спорта России и кандидаты в мастера спорта; победители, призёры и финалисты чемпионата Санкт-Петербурга; финалисты и полуфиналисты чемпионата России.' . "\n\n" . 'Его ученики в Pro-Am категории вышли в финал UK Open Dance Festival и стали победителями Blackpool Dance Festival в категории A («Single Dance»).' . "\n\n" . 'Мастерство рождается из опыта, и в Star Dance Cyprus мы учимся у лучших. ✨ С гордостью представляем Владимира Меринова — настоящую икону латиноамериканской танцевальной программы.' . "\n\n" . 'Обладатель престижного класса «М» и звания Мастера спорта, Владимир построил карьеру на высочайшем уровне: от побед на международных турнирах IDSF до финалов легендарного чемпионата «Alassio Open» в Италии.' . "\n\n" . 'Его влияние выходит далеко за пределы танцевального паркета — он вырастил мастеров спорта и финалистов чемпионата России. От молодых спортсменов до победителей Pro-Am на легендарном фестивале в Блэкпуле — Владимир воспитывает чемпионов на всех уровнях. 🏆',
+            'menu_order' => 3,
         ),
     );
 
     foreach ( $coaches as $coach_data ) {
-        $existing = get_page_by_path( $coach_data[‘slug’], OBJECT, ‘coach’ );
+        $existing = get_page_by_path( $coach_data['slug'], OBJECT, 'coach' );
         $post_args = array(
-            ‘post_title’   => $coach_data[‘title’],
-            ‘post_name’    => $coach_data[‘slug’],
-            ‘post_content’ => $coach_data[‘content’],
-            ‘post_status’  => ‘publish’,
-            ‘post_type’    => ‘coach’,
-            ‘post_author’  => 1,
-            ‘menu_order’   => $coach_data[‘menu_order’],
+            'post_title'   => $coach_data['title'],
+            'post_name'    => $coach_data['slug'],
+            'post_content' => $coach_data['content'],
+            'post_status'  => 'publish',
+            'post_type'    => 'coach',
+            'post_author'  => 1,
+            'menu_order'   => $coach_data['menu_order'],
         );
 
         if ( $existing ) {
-            $post_args[‘ID’] = $existing->ID;
-            unset( $post_args[‘post_content’] );
+            $post_args['ID'] = $existing->ID;
+            unset( $post_args['post_content'] );
             $post_id = wp_update_post( $post_args, true );
         } else {
             $post_id = wp_insert_post( $post_args, true );
         }
 
         if ( $post_id && ! is_wp_error( $post_id ) ) {
-            if ( ! get_post_meta( $post_id, ‘coach_name_ru’, true ) ) {
-                update_post_meta( $post_id, ‘coach_name_ru’, $coach_data[‘title_ru’] );
+            if ( ! get_post_meta( $post_id, 'coach_name_ru', true ) ) {
+                update_post_meta( $post_id, 'coach_name_ru', $coach_data['title_ru'] );
             }
-            if ( ! get_post_meta( $post_id, ‘coach_bio_ru’, true ) ) {
-                update_post_meta( $post_id, ‘coach_bio_ru’, $coach_data[‘content_ru’] );
+            if ( ! get_post_meta( $post_id, 'coach_bio_ru', true ) ) {
+                update_post_meta( $post_id, 'coach_bio_ru', $coach_data['content_ru'] );
             }
         }
     }
