@@ -16,6 +16,7 @@ require get_template_directory() . '/inc/dance-class-overlay-cards.php';
 require get_template_directory() . '/inc/class-detail-card.php';
 require get_template_directory() . '/inc/class-stardance-nav-menu-registrar.php';
 require get_template_directory() . '/inc/coaches.php';
+require get_template_directory() . '/inc/schedule-data.php';
 require get_template_directory() . '/inc/class-stardance-event-schedule.php';
 require get_template_directory() . '/inc/class-stardance-event-schedule-week-display.php';
 require get_template_directory() . '/inc/class-stardance-event-schedule-admin.php';
