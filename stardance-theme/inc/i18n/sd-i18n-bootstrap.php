@@ -143,10 +143,18 @@ function sd_render_language_switcher(): void {
         'ru' => home_url( '/ru/' . ( $clean_path ? $clean_path . '/' : '' ) ),
     );
 
-    echo '<div class="sd-lang-switcher" aria-label="Language switcher">';
-    echo '<a href="' . esc_url( $urls['en'] ) . '" class="sd-lang-switcher__btn' . ( $current_lang === 'en' ? ' is-active' : '' ) . '" lang="en" hreflang="en">EN</a>';
-    echo '<span class="sd-lang-switcher__sep" aria-hidden="true">|</span>';
-    echo '<a href="' . esc_url( $urls['ru'] ) . '" class="sd-lang-switcher__btn' . ( $current_lang === 'ru' ? ' is-active' : '' ) . '" lang="ru" hreflang="ru">RU</a>';
+    $alternate_lang = $current_lang === 'en' ? 'ru' : 'en';
+    $labels         = array(
+        'en' => 'EN',
+        'ru' => 'РУ',
+    );
+    $flag_uri = get_template_directory_uri() . '/assets/images/flag-' . $alternate_lang . '.svg';
+
+    echo '<div class="sd-header__lang" role="navigation" aria-label="' . esc_attr__( 'Language', 'stardance' ) . '">';
+    echo '<a href="' . esc_url( $urls[ $alternate_lang ] ) . '" class="sd-header__lang-btn" lang="' . esc_attr( $alternate_lang ) . '" hreflang="' . esc_attr( $alternate_lang ) . '">';
+    echo '<img class="sd-header__lang-flag" src="' . esc_url( $flag_uri ) . '" alt="" aria-hidden="true">';
+    echo esc_html( $labels[ $alternate_lang ] );
+    echo '</a>';
     echo '</div>';
 }
 
