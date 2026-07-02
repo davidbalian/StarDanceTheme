@@ -636,156 +636,160 @@ function stardance_create_pages() {
         }
     }
 
-    stardance_seed_coaches();
+    // ===== Start of commented-out seed/demo content =====
 
-    // Create sample dance_class posts
-    $classes = array(
-        array(
-            'title'   => 'European Ballroom',
-            'excerpt' => 'Master the elegance of international Ballroom dancing. Our program covers all five classic dances: Slow Waltz, Tango, Viennese Waltz, Foxtrot, and Quickstep. Perfect for couples seeking grace, poise, and timeless dance skills.',
-            'slug'    => 'european-ballroom',
-            'image_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/european-ballroom-class.webp',
-            'overlay_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/card-overlay-tall-gold.svg',
-            'menu_order' => 1,
-        ),
-        array(
-            'title'   => 'Latin American',
-            'excerpt' => 'The international Latin-American dances consist of: Samba, Cha-Cha-Cha, Rumba, Pasodoble, Jive.',
-            'slug'    => 'latin-american',
-            'image_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/latin-american-class.webp',
-            'overlay_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/card-overlay-tall-dark-blue.svg',
-            'menu_order' => 2,
-        ),
-        array(
-            'title'   => 'Latin Fusion Ladies',
-            'excerpt' => 'A high-energy class designed exclusively for women. Blend Latin dance techniques with fitness and feminine styling. Build confidence, improve coordination, and have fun-no partner required.',
-            'slug'    => 'latin-fusion-ladies',
-            'image_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/latin-fusion-ladies-class.webp',
-            'overlay_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/card-overlay-tall-dark-blue.svg',
-            'menu_order' => 3,
-        ),
-        array(
-            'title'   => 'Kids Programs',
-            'excerpt' => 'Introduce your child to the joy of dance from age 3 and up. Our kids programs develop coordination, musicality, discipline, and social skills through age-appropriate instruction in both Ballroom and Latin styles.',
-            'slug'    => 'kids-program',
-            'image_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/kids-programs-class.webp',
-            'overlay_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/card-overlay-tall-turquise.svg',
-            'menu_order' => 4,
-        ),
-        array(
-            'title'   => 'Wedding Choreography',
-            'excerpt' => 'Make your first dance unforgettable. We create custom choreography tailored to your song, skill level, and vision. Private sessions ensure you feel confident and camera-ready on your special day.',
-            'slug'    => 'wedding-choreography',
-            'image_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/wedding-choreography-class.webp',
-            'overlay_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/card-overlay-tall-turquise.svg',
-            'menu_order' => 5,
-        ),
-        array(
-            'title'   => 'Individual Lessons',
-            'excerpt' => 'Accelerate your progress with one-on-one instruction. Private lessons are ideal for competition preparation, perfecting specific techniques, or learning at your own pace with personalized attention from our coaches.',
-            'slug'    => 'individual-lessons',
-            'image_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/individual-lessons-class.webp',
-            'overlay_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/card-overlay-tall-gold.svg',
-            'menu_order' => 6,
-        ),
-    );
+    // // Create sample dance_class posts
+    // $classes = array(
+    //     array(
+    //         'title'   => 'European Ballroom',
+    //         'excerpt' => 'Master the elegance of international Ballroom dancing. Our program covers all five classic dances: Slow Waltz, Tango, Viennese Waltz, Foxtrot, and Quickstep. Perfect for couples seeking grace, poise, and timeless dance skills.',
+    //         'slug'    => 'european-ballroom',
+    //         'image_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/european-ballroom-class.webp',
+    //         'overlay_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/card-overlay-tall-gold.svg',
+    //         'menu_order' => 1,
+    //     ),
+    //     array(
+    //         'title'   => 'Latin American',
+    //         'excerpt' => 'The international Latin-American dances consist of: Samba, Cha-Cha-Cha, Rumba, Pasodoble, Jive.',
+    //         'slug'    => 'latin-american',
+    //         'image_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/latin-american-class.webp',
+    //         'overlay_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/card-overlay-tall-dark-blue.svg',
+    //         'menu_order' => 2,
+    //     ),
+    //     array(
+    //         'title'   => 'Latin Fusion Ladies',
+    //         'excerpt' => 'A high-energy class designed exclusively for women. Blend Latin dance techniques with fitness and feminine styling. Build confidence, improve coordination, and have fun-no partner required.',
+    //         'slug'    => 'latin-fusion-ladies',
+    //         'image_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/latin-fusion-ladies-class.webp',
+    //         'overlay_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/card-overlay-tall-dark-blue.svg',
+    //         'menu_order' => 3,
+    //     ),
+    //     array(
+    //         'title'   => 'Kids Programs',
+    //         'excerpt' => 'Introduce your child to the joy of dance from age 3 and up. Our kids programs develop coordination, musicality, discipline, and social skills through age-appropriate instruction in both Ballroom and Latin styles.',
+    //         'slug'    => 'kids-program',
+    //         'image_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/kids-programs-class.webp',
+    //         'overlay_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/card-overlay-tall-turquise.svg',
+    //         'menu_order' => 4,
+    //     ),
+    //     array(
+    //         'title'   => 'Wedding Choreography',
+    //         'excerpt' => 'Make your first dance unforgettable. We create custom choreography tailored to your song, skill level, and vision. Private sessions ensure you feel confident and camera-ready on your special day.',
+    //         'slug'    => 'wedding-choreography',
+    //         'image_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/wedding-choreography-class.webp',
+    //         'overlay_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/card-overlay-tall-turquise.svg',
+    //         'menu_order' => 5,
+    //     ),
+    //     array(
+    //         'title'   => 'Individual Lessons',
+    //         'excerpt' => 'Accelerate your progress with one-on-one instruction. Private lessons are ideal for competition preparation, perfecting specific techniques, or learning at your own pace with personalized attention from our coaches.',
+    //         'slug'    => 'individual-lessons',
+    //         'image_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/individual-lessons-class.webp',
+    //         'overlay_url' => 'https://stardance.com.cy/wp-content/uploads/2026/03/card-overlay-tall-gold.svg',
+    //         'menu_order' => 6,
+    //     ),
+    // );
 
-    foreach ( $classes as $class_data ) {
-        $existing = get_page_by_path($class_data['slug'], OBJECT, 'dance_class');
-        $post_args = array(
-            'post_title'   => $class_data['title'],
-            'post_name'    => $class_data['slug'],
-            'post_excerpt' => $class_data['excerpt'],
-            'post_content' => $class_data['excerpt'],
-            'post_status'  => 'publish',
-            'post_type'    => 'dance_class',
-            'post_author'  => 1,
-            'menu_order'   => $class_data['menu_order'],
-        );
+    // foreach ( $classes as $class_data ) {
+    //     $existing = get_page_by_path($class_data['slug'], OBJECT, 'dance_class');
+    //     $post_args = array(
+    //         'post_title'   => $class_data['title'],
+    //         'post_name'    => $class_data['slug'],
+    //         'post_excerpt' => $class_data['excerpt'],
+    //         'post_content' => $class_data['excerpt'],
+    //         'post_status'  => 'publish',
+    //         'post_type'    => 'dance_class',
+    //         'post_author'  => 1,
+    //         'menu_order'   => $class_data['menu_order'],
+    //     );
 
-        if ( $existing ) {
-            $post_args['ID'] = $existing->ID;
-            $post_id = wp_update_post( $post_args, true );
-        } else {
-            $post_id = wp_insert_post( $post_args, true );
-        }
+    //     if ( $existing ) {
+    //         $post_args['ID'] = $existing->ID;
+    //         $post_id = wp_update_post( $post_args, true );
+    //     } else {
+    //         $post_id = wp_insert_post( $post_args, true );
+    //     }
 
-        if ( $post_id && ! is_wp_error( $post_id ) ) {
-            update_post_meta( $post_id, '_stardance_overlay_url', esc_url_raw( $class_data['overlay_url'] ) );
-            stardance_sync_remote_featured_image( $post_id, $class_data['image_url'] );
-        }
-    }
+    //     if ( $post_id && ! is_wp_error( $post_id ) ) {
+    //         update_post_meta( $post_id, '_stardance_overlay_url', esc_url_raw( $class_data['overlay_url'] ) );
+    //         stardance_sync_remote_featured_image( $post_id, $class_data['image_url'] );
+    //     }
+    // }
 
-    $gallery_types = array( 'Competition' );
-    $gallery_years = array( '2026' );
+    // stardance_seed_coaches();
 
-    foreach ( $gallery_types as $gallery_type ) {
-        if ( ! term_exists( $gallery_type, 'gallery_type' ) ) {
-            wp_insert_term( $gallery_type, 'gallery_type' );
-        }
-    }
+    // $gallery_types = array( 'Competition' );
+    // $gallery_years = array( '2026' );
 
-    foreach ( $gallery_years as $gallery_year ) {
-        if ( ! term_exists( $gallery_year, 'gallery_year' ) ) {
-            wp_insert_term( $gallery_year, 'gallery_year' );
-        }
-    }
+    // foreach ( $gallery_types as $gallery_type ) {
+    //     if ( ! term_exists( $gallery_type, 'gallery_type' ) ) {
+    //         wp_insert_term( $gallery_type, 'gallery_type' );
+    //     }
+    // }
 
-    // Seed event taxonomy terms
-    $event_years      = array( '2026' );
-    $event_categories = array( 'Cyprus National Competitions', 'WDSF International Competitions', 'Performances', 'Cyprus Cup' );
-    $event_types      = array( 'Championships', 'Cyprus Cup', 'Classification Tournaments' );
-    $event_styles     = array( 'Solo', 'Couples', 'Show Dances' );
+    // foreach ( $gallery_years as $gallery_year ) {
+    //     if ( ! term_exists( $gallery_year, 'gallery_year' ) ) {
+    //         wp_insert_term( $gallery_year, 'gallery_year' );
+    //     }
+    // }
 
-    foreach ( $event_years as $term ) {
-        if ( ! term_exists( $term, 'event_year' ) ) {
-            wp_insert_term( $term, 'event_year' );
-        }
-    }
-    foreach ( $event_categories as $term ) {
-        if ( ! term_exists( $term, 'event_category' ) ) {
-            wp_insert_term( $term, 'event_category' );
-        }
-    }
-    foreach ( $event_types as $term ) {
-        if ( ! term_exists( $term, 'event_type' ) ) {
-            wp_insert_term( $term, 'event_type' );
-        }
-    }
-    foreach ( $event_styles as $term ) {
-        if ( ! term_exists( $term, 'event_style' ) ) {
-            wp_insert_term( $term, 'event_style' );
-        }
-    }
+    // // Seed event taxonomy terms
+    // $event_years      = array( '2026' );
+    // $event_categories = array( 'Cyprus National Competitions', 'WDSF International Competitions', 'Performances', 'Cyprus Cup' );
+    // $event_types      = array( 'Championships', 'Cyprus Cup', 'Classification Tournaments' );
+    // $event_styles     = array( 'Solo', 'Couples', 'Show Dances' );
 
-    stardance_seed_sample_events();
+    // foreach ( $event_years as $term ) {
+    //     if ( ! term_exists( $term, 'event_year' ) ) {
+    //         wp_insert_term( $term, 'event_year' );
+    //     }
+    // }
+    // foreach ( $event_categories as $term ) {
+    //     if ( ! term_exists( $term, 'event_category' ) ) {
+    //         wp_insert_term( $term, 'event_category' );
+    //     }
+    // }
+    // foreach ( $event_types as $term ) {
+    //     if ( ! term_exists( $term, 'event_type' ) ) {
+    //         wp_insert_term( $term, 'event_type' );
+    //     }
+    // }
+    // foreach ( $event_styles as $term ) {
+    //     if ( ! term_exists( $term, 'event_style' ) ) {
+    //         wp_insert_term( $term, 'event_style' );
+    //     }
+    // }
 
-    foreach ( stardance_get_gallery_seed_items() as $gallery_item ) {
-        $existing = get_page_by_path( $gallery_item['slug'], OBJECT, 'gallery_item' );
-        $post_args = array(
-            'post_title'   => $gallery_item['title'],
-            'post_name'    => $gallery_item['slug'],
-            'post_excerpt' => $gallery_item['title'],
-            'post_content' => $gallery_item['title'],
-            'post_status'  => 'publish',
-            'post_type'    => 'gallery_item',
-            'post_author'  => 1,
-            'menu_order'   => $gallery_item['menu_order'],
-        );
+    // stardance_seed_sample_events();
 
-        if ( $existing ) {
-            $post_args['ID'] = $existing->ID;
-            $post_id = wp_update_post( $post_args, true );
-        } else {
-            $post_id = wp_insert_post( $post_args, true );
-        }
+    // foreach ( stardance_get_gallery_seed_items() as $gallery_item ) {
+    //     $existing = get_page_by_path( $gallery_item['slug'], OBJECT, 'gallery_item' );
+    //     $post_args = array(
+    //         'post_title'   => $gallery_item['title'],
+    //         'post_name'    => $gallery_item['slug'],
+    //         'post_excerpt' => $gallery_item['title'],
+    //         'post_content' => $gallery_item['title'],
+    //         'post_status'  => 'publish',
+    //         'post_type'    => 'gallery_item',
+    //         'post_author'  => 1,
+    //         'menu_order'   => $gallery_item['menu_order'],
+    //     );
 
-        if ( $post_id && ! is_wp_error( $post_id ) ) {
-            wp_set_object_terms( $post_id, $gallery_item['gallery_year'], 'gallery_year', false );
-            wp_set_object_terms( $post_id, $gallery_item['gallery_type'], 'gallery_type', false );
-            stardance_sync_remote_featured_image( $post_id, $gallery_item['image_url'] );
-        }
-    }
+    //     if ( $existing ) {
+    //         $post_args['ID'] = $existing->ID;
+    //         $post_id = wp_update_post( $post_args, true );
+    //     } else {
+    //         $post_id = wp_insert_post( $post_args, true );
+    //     }
+
+    //     if ( $post_id && ! is_wp_error( $post_id ) ) {
+    //         wp_set_object_terms( $post_id, $gallery_item['gallery_year'], 'gallery_year', false );
+    //         wp_set_object_terms( $post_id, $gallery_item['gallery_type'], 'gallery_type', false );
+    //         stardance_sync_remote_featured_image( $post_id, $gallery_item['image_url'] );
+    //     }
+    // }
+    
+    // ===== End of commented-out seed/demo content =====
 }
 
 /**
