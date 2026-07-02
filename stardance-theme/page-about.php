@@ -35,8 +35,14 @@ $sd_page_id = get_queried_object_id();
 
                 <div class="sd-about-overview__image fade-in fade-in-delay-1">
                     <div class="sd-about-overview__video">
-                        <img src="https://stardance.com.cy/wp-content/uploads/2026/03/about-page-video-cover.webp" alt="Training at Star Dance Cyprus" width="600" height="450" loading="lazy">
-                        <img src="https://stardance.com.cy/wp-content/uploads/2026/03/play-button.svg" alt="" class="sd-about-overview__play-btn" aria-hidden="true" width="72" height="72">
+                        <video
+                            src="https://stardance.com.cy/wp-content/uploads/2026/06/Star-Dance-Cyprus-website-video-compressed.mp4"
+                            poster="https://stardance.com.cy/wp-content/uploads/2026/03/about-page-video-cover.webp"
+                            controls
+                            playsinline
+                            width="600"
+                            height="450">
+                        </video>
                         <img src="https://stardance.com.cy/wp-content/uploads/2026/02/coach-bottom-svg-1.svg" alt="" class="sd-about-overview__corner-svg" aria-hidden="true">
                     </div>
                 </div>

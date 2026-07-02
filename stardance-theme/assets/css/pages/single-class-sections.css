@@ -288,36 +288,6 @@
   pointer-events: none;
 }
 
-.sd-class-video__play {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  margin: 0;
-  padding: 0;
-  border: none;
-  background: none;
-  cursor: pointer;
-  line-height: 0;
-  transition: transform var(--sd-transition), opacity var(--sd-transition);
-}
-
-.sd-class-video__play:hover {
-  transform: translate(-50%, -50%) scale(1.06);
-  opacity: 0.92;
-}
-
-.sd-class-video__play:focus-visible {
-  outline: 2px solid var(--sd-gold);
-  outline-offset: 4px;
-}
-
-.sd-class-video__play img {
-  display: block;
-  width: clamp(64px, 12vw, 96px);
-  height: auto;
-}
-
 /* ========================================
    Location
    ======================================== */

@@ -292,7 +292,20 @@ $sd_class_details_lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing el
                 $video_poster_alt = ( is_array( $acf_feature_image ) && ! empty( $acf_feature_image['alt'] ) )
                     ? $acf_feature_image['alt']
                     : get_the_title() . ' — ' . __( 'dancers in action', 'stardance' );
+                $sd_class_slug = get_post_field( 'post_name', $sd_class_id );
+                $sd_kids_video_url = 'https://stardance.com.cy/wp-content/uploads/2026/06/Star-Dance-Cyprus-Kids-Dance-class-compressed.mp4';
                 ?>
+<?php if ( 'kids-program' === $sd_class_slug ) : ?>
+                <video
+                    class="sd-class-video__poster"
+                    src="<?php echo esc_url( $sd_kids_video_url ); ?>"
+                    poster="<?php echo esc_url( $video_poster_url ); ?>"
+                    controls
+                    playsinline
+                    width="1200"
+                    height="675">
+                </video>
+<?php else : ?>
                 <img
                     src="<?php echo esc_url( $video_poster_url ); ?>"
                     alt="<?php echo esc_attr( $video_poster_alt ); ?>"
@@ -300,20 +313,13 @@ $sd_class_details_lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing el
                     loading="lazy"
                     width="1200"
                     height="675">
+<?php endif; ?>
                 <img
                     src="https://stardance.com.cy/wp-content/uploads/2026/03/large-overlay.svg"
                     alt=""
                     class="sd-class-video__overlay"
                     aria-hidden="true"
                     loading="lazy">
-                <button type="button" class="sd-class-video__play" aria-label="<?php echo esc_attr__( 'Play video', 'stardance' ); ?>">
-                    <img
-                        src="https://stardance.com.cy/wp-content/uploads/2026/03/play-button-blue.svg"
-                        alt=""
-                        width="80"
-                        height="80"
-                        decoding="async">
-                </button>
             </div>
         </div>
     </section>
