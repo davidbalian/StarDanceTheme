@@ -279,6 +279,10 @@
   vertical-align: middle;
 }
 
+.sd-class-video__player {
+  position: relative;
+}
+
 .sd-class-video__overlay {
   position: absolute;
   right: 0;

@@ -1164,3 +1164,46 @@
     height: 28px;
   }
 }
+
+/* ========================================
+   Video Player — shared play button
+   ======================================== */
+
+.sd-video__play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  line-height: 0;
+  transition: transform var(--sd-transition), opacity var(--sd-transition);
+}
+
+.sd-video__play-btn:hover {
+  transform: translate(-50%, -50%) scale(1.06);
+  opacity: 0.92;
+}
+
+.sd-video__play-btn:focus-visible {
+  outline: 2px solid var(--sd-gold);
+  outline-offset: 4px;
+}
+
+.sd-video__play-btn.is-hidden {
+  display: none;
+}
+
+.sd-video__play-btn img {
+  display: block;
+  width: clamp(64px, 12vw, 96px);
+  height: auto;
+}
+
+[data-video-overlay].is-hidden {
+  display: none;
+}
